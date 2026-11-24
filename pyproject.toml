@@ -1,0 +1,36 @@
+[project]
+name = "release-desk"
+version = "0.1.0"
+description = "AI reads the lot documents, code checks them, a person decides. A quality release review prototype built on Continuum."
+readme = "README.md"
+requires-python = ">=3.13"
+license = { text = "MIT" }
+dependencies = [
+    "shyftlabs-continuum>=2.1.0,<3",
+    "fastapi>=0.115",
+    "uvicorn>=0.30",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3", "pytest-asyncio>=0.24"]
+
+[project.scripts]
+release-desk = "release_desk.cli:main"
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["release_desk*", "web*"]
+
+[tool.setuptools.package-data]
+release_desk = ["fixtures/*.json"]
+web = ["static/*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]

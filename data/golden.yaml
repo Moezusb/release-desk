@@ -1,0 +1,21 @@
+# The answers a careful human reviewer would give for each synthetic lot.
+# The evaluation compares the desk's findings and proposal against these.
+
+LC-24031:
+  expected_findings: []
+  expected_proposal: release
+LC-24032:
+  expected_findings: [test.tymc_cfu_g.out_of_spec]
+  expected_proposal: hold
+LC-24033:
+  expected_findings: [deviation.open]
+  expected_proposal: hold
+LC-24034:
+  expected_findings: [batch.step_unverified]
+  expected_proposal: hold
+LC-24035:
+  expected_findings: [identity.lot_mismatch, test.phenoxyethanol_pct.out_of_spec]
+  expected_proposal: hold
+LC-24036:
+  expected_findings: [test.tymc_cfu_g.missing, dates.expiry]
+  expected_proposal: hold

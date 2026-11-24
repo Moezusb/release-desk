@@ -1,0 +1,970 @@
+{
+ "lots": {
+  "LC-24031": {
+   "review": {
+    "lot_id": "LC-24031",
+    "stage": "decided",
+    "status": "released",
+    "findings": [],
+    "evidence_notes": [],
+    "proposal": {
+     "decision": "release",
+     "rationale": "Every test is within specification, every step carries two signatures, the documents agree on lot and dates, and no deviation is open.",
+     "finding_ids": [],
+     "at": "2026-11-24T15:43:04+00:00"
+    },
+    "second_reading": {
+     "agrees": true,
+     "concerns": []
+    },
+    "decision": {
+     "action": "approve_release",
+     "reviewer": "Demo reviewer",
+     "reason": "",
+     "at": "2026-11-24T15:43:04+00:00",
+     "override": false
+    },
+    "timeline": [
+     {
+      "at": "2026-11-24T15:43:04+00:00",
+      "actor": "desk",
+      "text": "Reading the certificate, batch record and deviation log."
+     },
+     {
+      "at": "2026-11-24T15:43:04+00:00",
+      "actor": "rules",
+      "text": "0 finding(s), 0 blocking."
+     },
+     {
+      "at": "2026-11-24T15:43:04+00:00",
+      "actor": "proposer",
+      "text": "Proposed release. Every test is within specification, every step carries two signatures, the documents agree on lot and dates, and no deviation is open."
+     },
+     {
+      "at": "2026-11-24T15:43:05+00:00",
+      "actor": "second reader",
+      "text": "Agrees."
+     },
+     {
+      "at": "2026-11-24T15:43:05+00:00",
+      "actor": "desk",
+      "text": "Waiting for a named reviewer to approve or refuse the release."
+     },
+     {
+      "at": "2026-11-24T15:43:05+00:00",
+      "actor": "reviewer: Demo reviewer",
+      "text": "Approved the proposed release."
+     },
+     {
+      "at": "2026-11-24T15:43:05+00:00",
+      "actor": "release tool",
+      "text": "Released, approved by Demo reviewer."
+     }
+    ],
+    "mode": "offline (scripted stand-in model)",
+    "model": "scripted/offline",
+    "error": null,
+    "deferred": false,
+    "awaiting_release_approval": false
+   },
+   "running": false,
+   "documents": {
+    "certificate": {
+     "filename": "certificate_of_analysis.md",
+     "lines": [
+      "# Certificate of Analysis",
+      "",
+      "> Synthetic document. Fictional company, product and people, created for demonstration.",
+      "",
+      "Fernhollow Skincare Ltd., Quality Control Laboratory",
+      "Product: Daily Barrier Cream, 50 g (FH-DBC-050)",
+      "Lot number: LC-24031",
+      "Date of manufacture: 2026-09-03",
+      "Expiry: 2029-03",
+      "",
+      "| Test | Specification | Result |",
+      "|---|---|---|",
+      "| Appearance | White to off-white smooth cream | White smooth cream |",
+      "| Odour | Characteristic | Characteristic |",
+      "| pH (25 \u00b0C) | 5.0 to 6.0 | 5.6 |",
+      "| Viscosity, Brookfield RVT sp. 6, 10 rpm, 25 \u00b0C (cP) | 30,000 to 45,000 | 38,200 |",
+      "| Specific gravity (25 \u00b0C) | 0.98 to 1.02 | 1.00 |",
+      "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.91 |",
+      "| Fill weight, mean of 10 (g) | Not less than 50.0 | 50.6 |",
+      "| Total aerobic microbial count (CFU/g) | Not more than 100 | <10 |",
+      "| Total yeast and mould count (CFU/g) | Not more than 10 | <10 |",
+      "| E. coli, P. aeruginosa, S. aureus, C. albicans | Absent in 1 g | Absent in 1 g |",
+      "",
+      "Approved for QC by: M. Chen, 2026-09-09"
+     ]
+    },
+    "batch_record": {
+     "filename": "batch_record.md",
+     "lines": [
+      "# Batch Manufacturing Record (excerpt)",
+      "",
+      "> Synthetic document. Fictional company, product and people, created for demonstration.",
+      "",
+      "Product: Daily Barrier Cream, 50 g (FH-DBC-050)",
+      "Lot number: LC-24031",
+      "Manufacture date: 2026-09-03",
+      "Line clearance verified by: J. Okafor, 2026-09-03",
+      "",
+      "| Step | Operation | Performed by | Verified by |",
+      "|---|---|---|---|",
+      "| 1 | Dispense and weigh raw materials | P. Lindqvist | R. Haddad |",
+      "| 2 | Heat water phase to 75 \u00b0C | R. Haddad | A. Moreau |",
+      "| 3 | Heat oil phase to 75 \u00b0C | A. Moreau | J. Okafor |",
+      "| 4 | Emulsify under homogenizer, 10 min | J. Okafor | P. Lindqvist |",
+      "| 5 | Cool to 40 \u00b0C, add phenoxyethanol and fragrance | P. Lindqvist | R. Haddad |",
+      "| 6 | Adjust pH and sample for in-process checks | R. Haddad | A. Moreau |",
+      "| 7 | Fill into 50 g tubes and crimp | A. Moreau | J. Okafor |",
+      "| 8 | Code, inspect and pack | J. Okafor | P. Lindqvist |",
+      "",
+      "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
+     ]
+    },
+    "deviation_log": {
+     "filename": "deviation_log.md",
+     "lines": [
+      "# Deviation Log",
+      "",
+      "> Synthetic document. Fictional company, product and people, created for demonstration.",
+      "",
+      "Lot number: LC-24031",
+      "",
+      "No deviations were recorded for this lot."
+     ]
+    }
+   }
+  },
+  "LC-24032": {
+   "review": {
+    "lot_id": "LC-24032",
+    "stage": "decided",
+    "status": "rejected",
+    "findings": [
+     {
+      "id": "F1",
+      "rule": "test.tymc_cfu_g.out_of_spec",
+      "severity": "critical",
+      "title": "Total yeast and mould count out of specification",
+      "expected": "not more than 10 CFU/g",
+      "observed": "40",
+      "evidence": [
+       {
+        "document": "certificate_of_analysis.md",
+        "line": 21,
+        "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | 40 |"
+       }
+      ]
+     }
+    ],
+    "evidence_notes": [],
+    "proposal": {
+     "decision": "hold",
+     "rationale": "Blocking findings: F1: Total yeast and mould count out of specification.",
+     "finding_ids": [
+      "F1"
+     ],
+     "at": "2026-11-24T15:43:06+00:00"
+    },
+    "second_reading": {
+     "agrees": true,
+     "concerns": []
+    },
+    "decision": {
+     "action": "reject",
+     "reviewer": "Demo reviewer",
+     "reason": "Yeast and mould count four times the limit. Investigation opened; lot destroyed.",
+     "at": "2026-11-24T15:43:07+00:00",
+     "override": false
+    },
+    "timeline": [
+     {
+      "at": "2026-11-24T15:43:05+00:00",
+      "actor": "desk",
+      "text": "Reading the certificate, batch record and deviation log."
+     },
+     {
+      "at": "2026-11-24T15:43:06+00:00",
+      "actor": "rules",
+      "text": "1 finding(s), 1 blocking."
+     },
+     {
+      "at": "2026-11-24T15:43:06+00:00",
+      "actor": "proposer",
+      "text": "Placed on hold. Blocking findings: F1: Total yeast and mould count out of specification."
+     },
+     {
+      "at": "2026-11-24T15:43:07+00:00",
+      "actor": "second reader",
+      "text": "Agrees."
+     },
+     {
+      "at": "2026-11-24T15:43:07+00:00",
+      "actor": "reviewer: Demo reviewer",
+      "text": "Rejected the lot. Reason: Yeast and mould count four times the limit. Investigation opened; lot destroyed."
+     }
+    ],
+    "mode": "offline (scripted stand-in model)",
+    "model": "scripted/offline",
+    "error": null,
+    "deferred": false,
+    "awaiting_release_approval": false
+   },
+   "running": false,
+   "documents": {
+    "certificate": {
+     "filename": "certificate_of_analysis.md",
+     "lines": [
+      "# Certificate of Analysis",
+      "",
+      "> Synthetic document. Fictional company, product and people, created for demonstration.",
+      "",
+      "Fernhollow Skincare Ltd., Quality Control Laboratory",
+      "Product: Daily Barrier Cream, 50 g (FH-DBC-050)",
+      "Lot number: LC-24032",
+      "Date of manufacture: 2026-09-10",
+      "Expiry: 2029-03",
+      "",
+      "| Test | Specification | Result |",
+      "|---|---|---|",
+      "| Appearance | White to off-white smooth cream | White smooth cream |",
+      "| Odour | Characteristic | Characteristic |",
+      "| pH (25 \u00b0C) | 5.0 to 6.0 | 5.6 |",
+      "| Viscosity, Brookfield RVT sp. 6, 10 rpm, 25 \u00b0C (cP) | 30,000 to 45,000 | 38,200 |",
+      "| Specific gravity (25 \u00b0C) | 0.98 to 1.02 | 1.00 |",
+      "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.91 |",
+      "| Fill weight, mean of 10 (g) | Not less than 50.0 | 50.6 |",
+      "| Total aerobic microbial count (CFU/g) | Not more than 100 | <10 |",
+      "| Total yeast and mould count (CFU/g) | Not more than 10 | 40 |",
+      "| E. coli, P. aeruginosa, S. aureus, C. albicans | Absent in 1 g | Absent in 1 g |",
+      "",
+      "Approved for QC by: M. Chen, 2026-09-16"
+     ]
+    },
+    "batch_record": {
+     "filename": "batch_record.md",
+     "lines": [
+      "# Batch Manufacturing Record (excerpt)",
+      "",
+      "> Synthetic document. Fictional company, product and people, created for demonstration.",
+      "",
+      "Product: Daily Barrier Cream, 50 g (FH-DBC-050)",
+      "Lot number: LC-24032",
+      "Manufacture date: 2026-09-10",
+      "Line clearance verified by: J. Okafor, 2026-09-10",
+      "",
+      "| Step | Operation | Performed by | Verified by |",
+      "|---|---|---|---|",
+      "| 1 | Dispense and weigh raw materials | P. Lindqvist | R. Haddad |",
+      "| 2 | Heat water phase to 75 \u00b0C | R. Haddad | A. Moreau |",
+      "| 3 | Heat oil phase to 75 \u00b0C | A. Moreau | J. Okafor |",
+      "| 4 | Emulsify under homogenizer, 10 min | J. Okafor | P. Lindqvist |",
+      "| 5 | Cool to 40 \u00b0C, add phenoxyethanol and fragrance | P. Lindqvist | R. Haddad |",
+      "| 6 | Adjust pH and sample for in-process checks | R. Haddad | A. Moreau |",
+      "| 7 | Fill into 50 g tubes and crimp | A. Moreau | J. Okafor |",
+      "| 8 | Code, inspect and pack | J. Okafor | P. Lindqvist |",
+      "",
+      "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
+     ]
+    },
+    "deviation_log": {
+     "filename": "deviation_log.md",
+     "lines": [
+      "# Deviation Log",
+      "",
+      "> Synthetic document. Fictional company, product and people, created for demonstration.",
+      "",
+      "Lot number: LC-24032",
+      "",
+      "No deviations were recorded for this lot."
+     ]
+    }
+   }
+  },
+  "LC-24033": {
+   "review": {
+    "lot_id": "LC-24033",
+    "stage": "decided",
+    "status": "on hold",
+    "findings": [
+     {
+      "id": "F1",
+      "rule": "deviation.open",
+      "severity": "major",
+      "title": "DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification",
+      "expected": "Closed",
+      "observed": "Open, investigation pending",
+      "evidence": [
+       {
+        "document": "deviation_log.md",
+        "line": 10,
+        "text": "| DEV-0417 | Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification | Open, investigation pending | Not yet assigned |"
+       }
+      ]
+     }
+    ],
+    "evidence_notes": [],
+    "proposal": {
+     "decision": "hold",
+     "rationale": "Blocking findings: F1: DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification.",
+     "finding_ids": [
+      "F1"
+     ],
+     "at": "2026-11-24T15:43:08+00:00"
+    },
+    "second_reading": {
+     "agrees": true,
+     "concerns": []
+    },
+    "decision": {
+     "action": "confirm_hold",
+     "reviewer": "Demo reviewer",
+     "reason": "",
+     "at": "2026-11-24T15:43:09+00:00",
+     "override": false
+    },
+    "timeline": [
+     {
+      "at": "2026-11-24T15:43:07+00:00",
+      "actor": "desk",
+      "text": "Reading the certificate, batch record and deviation log."
+     },
+     {
+      "at": "2026-11-24T15:43:08+00:00",
+      "actor": "rules",
+      "text": "1 finding(s), 1 blocking."
+     },
+     {
+      "at": "2026-11-24T15:43:08+00:00",
+      "actor": "proposer",
+      "text": "Placed on hold. Blocking findings: F1: DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification."
+     },
+     {
+      "at": "2026-11-24T15:43:09+00:00",
+      "actor": "second reader",
+      "text": "Agrees."
+     },
+     {
+      "at": "2026-11-24T15:43:09+00:00",
+      "actor": "reviewer: Demo reviewer",
+      "text": "Confirmed the hold."
+     }
+    ],
+    "mode": "offline (scripted stand-in model)",
+    "model": "scripted/offline",
+    "error": null,
+    "deferred": false,
+    "awaiting_release_approval": false
+   },
+   "running": false,
+   "documents": {
+    "certificate": {
+     "filename": "certificate_of_analysis.md",
+     "lines": [
+      "# Certificate of Analysis",
+      "",
+      "> Synthetic document. Fictional company, product and people, created for demonstration.",
+      "",
+      "Fernhollow Skincare Ltd., Quality Control Laboratory",
+      "Product: Daily Barrier Cream, 50 g (FH-DBC-050)",
+      "Lot number: LC-24033",
+      "Date of manufacture: 2026-09-17",
+      "Expiry: 2029-03",
+      "",
+      "| Test | Specification | Result |",
+      "|---|---|---|",
+      "| Appearance | White to off-white smooth cream | White smooth cream |",
+      "| Odour | Characteristic | Characteristic |",
+      "| pH (25 \u00b0C) | 5.0 to 6.0 | 5.6 |",
+      "| Viscosity, Brookfield RVT sp. 6, 10 rpm, 25 \u00b0C (cP) | 30,000 to 45,000 | 38,200 |",
+      "| Specific gravity (25 \u00b0C) | 0.98 to 1.02 | 1.00 |",
+      "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.91 |",
+      "| Fill weight, mean of 10 (g) | Not less than 50.0 | 50.6 |",
+      "| Total aerobic microbial count (CFU/g) | Not more than 100 | <10 |",
+      "| Total yeast and mould count (CFU/g) | Not more than 10 | <10 |",
+      "| E. coli, P. aeruginosa, S. aureus, C. albicans | Absent in 1 g | Absent in 1 g |",
+      "",
+      "Approved for QC by: M. Chen, 2026-09-23"
+     ]
+    },
+    "batch_record": {
+     "filename": "batch_record.md",
+     "lines": [
+      "# Batch Manufacturing Record (excerpt)",
+      "",
+      "> Synthetic document. Fictional company, product and people, created for demonstration.",
+      "",
+      "Product: Daily Barrier Cream, 50 g (FH-DBC-050)",
+      "Lot number: LC-24033",
+      "Manufacture date: 2026-09-17",
+      "Line clearance verified by: J. Okafor, 2026-09-17",
+      "",
+      "| Step | Operation | Performed by | Verified by |",
+      "|---|---|---|---|",
+      "| 1 | Dispense and weigh raw materials | P. Lindqvist | R. Haddad |",
+      "| 2 | Heat water phase to 75 \u00b0C | R. Haddad | A. Moreau |",
+      "| 3 | Heat oil phase to 75 \u00b0C | A. Moreau | J. Okafor |",
+      "| 4 | Emulsify under homogenizer, 10 min | J. Okafor | P. Lindqvist |",
+      "| 5 | Cool to 40 \u00b0C, add phenoxyethanol and fragrance | P. Lindqvist | R. Haddad |",
+      "| 6 | Adjust pH and sample for in-process checks | R. Haddad | A. Moreau |",
+      "| 7 | Fill into 50 g tubes and crimp | A. Moreau | J. Okafor |",
+      "| 8 | Code, inspect and pack | J. Okafor | P. Lindqvist |",
+      "",
+      "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
+     ]
+    },
+    "deviation_log": {
+     "filename": "deviation_log.md",
+     "lines": [
+      "# Deviation Log",
+      "",
+      "> Synthetic document. Fictional company, product and people, created for demonstration.",
+      "",
+      "Lot number: LC-24033",
+      "",
+      "| ID | Description | Status | CAPA |",
+      "|---|---|---|---|",
+      "| DEV-0412 | Label roll changed mid-run; reconciliation completed | Closed | None required |",
+      "| DEV-0417 | Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification | Open, investigation pending | Not yet assigned |"
+     ]
+    }
+   }
+  },
+  "LC-24034": {
+   "review": {
+    "lot_id": "LC-24034",
+    "stage": "awaiting reviewer",
+    "status": "on hold",
+    "findings": [
+     {
+      "id": "F1",
+      "rule": "batch.step_unverified",
+      "severity": "major",
+      "title": "Step 7 (Fill into 50 g tubes and crimp) not verified by a second person",
+      "expected": "a second person's name",
+      "observed": "blank or unverified",
+      "evidence": [
+       {
+        "document": "batch_record.md",
+        "line": 18,
+        "text": "| 7 | Fill into 50 g tubes and crimp | A. Moreau |  |"
+       }
+      ]
+     }
+    ],
+    "evidence_notes": [
+     {
+      "field": "batch_record.step7.verified_by",
+      "document": "batch_record.md",
+      "claimed_value": "R. Haddad",
+      "cited_line": 18,
+      "reason": "value does not appear on the cited line"
+     }
+    ],
+    "proposal": {
+     "decision": "hold",
+     "rationale": "Blocking findings: F1: Step 7 (Fill into 50 g tubes and crimp) not verified by a second person.",
+     "finding_ids": [
+      "F1"
+     ],
+     "at": "2026-11-24T15:43:10+00:00"
+    },
+    "second_reading": {
+     "agrees": true,
+     "concerns": []
+    },
+    "decision": null,
+    "timeline": [
+     {
+      "at": "2026-11-24T15:43:09+00:00",
+      "actor": "desk",
+      "text": "Reading the certificate, batch record and deviation log."
+     },
+     {
+      "at": "2026-11-24T15:43:10+00:00",
+      "actor": "evidence check",
+      "text": "Discarded batch_record.step7.verified_by ('R. Haddad', line 18): value does not appear on the cited line."
+     },
+     {
+      "at": "2026-11-24T15:43:10+00:00",
+      "actor": "rules",
+      "text": "1 finding(s), 1 blocking."
+     },
+     {
+      "at": "2026-11-24T15:43:10+00:00",
+      "actor": "proposer",
+      "text": "Placed on hold. Blocking findings: F1: Step 7 (Fill into 50 g tubes and crimp) not verified by a second person."
+     },
+     {
+      "at": "2026-11-24T15:43:11+00:00",
+      "actor": "second reader",
+      "text": "Agrees."
+     }
+    ],
+    "mode": "offline (scripted stand-in model)",
+    "model": "scripted/offline",
+    "error": null,
+    "deferred": false,
+    "awaiting_release_approval": false
+   },
+   "running": false,
+   "documents": {
+    "certificate": {
+     "filename": "certificate_of_analysis.md",
+     "lines": [
+      "# Certificate of Analysis",
+      "",
+      "> Synthetic document. Fictional company, product and people, created for demonstration.",
+      "",
+      "Fernhollow Skincare Ltd., Quality Control Laboratory",
+      "Product: Daily Barrier Cream, 50 g (FH-DBC-050)",
+      "Lot number: LC-24034",
+      "Date of manufacture: 2026-09-24",
+      "Expiry: 2029-03",
+      "",
+      "| Test | Specification | Result |",
+      "|---|---|---|",
+      "| Appearance | White to off-white smooth cream | White smooth cream |",
+      "| Odour | Characteristic | Characteristic |",
+      "| pH (25 \u00b0C) | 5.0 to 6.0 | 6.0 |",
+      "| Viscosity, Brookfield RVT sp. 6, 10 rpm, 25 \u00b0C (cP) | 30,000 to 45,000 | 38,200 |",
+      "| Specific gravity (25 \u00b0C) | 0.98 to 1.02 | 1.00 |",
+      "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.91 |",
+      "| Fill weight, mean of 10 (g) | Not less than 50.0 | 50.6 |",
+      "| Total aerobic microbial count (CFU/g) | Not more than 100 | <10 |",
+      "| Total yeast and mould count (CFU/g) | Not more than 10 | <10 |",
+      "| E. coli, P. aeruginosa, S. aureus, C. albicans | Absent in 1 g | Absent in 1 g |",
+      "",
+      "Approved for QC by: M. Chen, 2026-09-30"
+     ]
+    },
+    "batch_record": {
+     "filename": "batch_record.md",
+     "lines": [
+      "# Batch Manufacturing Record (excerpt)",
+      "",
+      "> Synthetic document. Fictional company, product and people, created for demonstration.",
+      "",
+      "Product: Daily Barrier Cream, 50 g (FH-DBC-050)",
+      "Lot number: LC-24034",
+      "Manufacture date: 2026-09-24",
+      "Line clearance verified by: J. Okafor, 2026-09-24",
+      "",
+      "| Step | Operation | Performed by | Verified by |",
+      "|---|---|---|---|",
+      "| 1 | Dispense and weigh raw materials | P. Lindqvist | R. Haddad |",
+      "| 2 | Heat water phase to 75 \u00b0C | R. Haddad | A. Moreau |",
+      "| 3 | Heat oil phase to 75 \u00b0C | A. Moreau | J. Okafor |",
+      "| 4 | Emulsify under homogenizer, 10 min | J. Okafor | P. Lindqvist |",
+      "| 5 | Cool to 40 \u00b0C, add phenoxyethanol and fragrance | P. Lindqvist | R. Haddad |",
+      "| 6 | Adjust pH and sample for in-process checks | R. Haddad | A. Moreau |",
+      "| 7 | Fill into 50 g tubes and crimp | A. Moreau |  |",
+      "| 8 | Code, inspect and pack | J. Okafor | P. Lindqvist |",
+      "",
+      "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
+     ]
+    },
+    "deviation_log": {
+     "filename": "deviation_log.md",
+     "lines": [
+      "# Deviation Log",
+      "",
+      "> Synthetic document. Fictional company, product and people, created for demonstration.",
+      "",
+      "Lot number: LC-24034",
+      "",
+      "No deviations were recorded for this lot."
+     ]
+    }
+   }
+  },
+  "LC-24035": {
+   "review": {
+    "lot_id": "LC-24035",
+    "stage": "awaiting reviewer",
+    "status": "on hold",
+    "findings": [
+     {
+      "id": "F1",
+      "rule": "identity.lot_mismatch",
+      "severity": "critical",
+      "title": "Lot number on the certificate of analysis does not match",
+      "expected": "LC-24035",
+      "observed": "LC-24053",
+      "evidence": [
+       {
+        "document": "certificate_of_analysis.md",
+        "line": 7,
+        "text": "Lot number: LC-24053"
+       }
+      ]
+     },
+     {
+      "id": "F2",
+      "rule": "test.phenoxyethanol_pct.out_of_spec",
+      "severity": "major",
+      "title": "Phenoxyethanol assay out of specification",
+      "expected": "0.80 to 1.00 % w/w",
+      "observed": "0.78",
+      "evidence": [
+       {
+        "document": "certificate_of_analysis.md",
+        "line": 18,
+        "text": "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.78 |"
+       }
+      ]
+     }
+    ],
+    "evidence_notes": [],
+    "proposal": {
+     "decision": "hold",
+     "rationale": "Blocking findings: F1: Lot number on the certificate of analysis does not match. F2: Phenoxyethanol assay out of specification.",
+     "finding_ids": [
+      "F1",
+      "F2"
+     ],
+     "at": "2026-11-24T15:43:12+00:00"
+    },
+    "second_reading": {
+     "agrees": true,
+     "concerns": []
+    },
+    "decision": null,
+    "timeline": [
+     {
+      "at": "2026-11-24T15:43:11+00:00",
+      "actor": "desk",
+      "text": "Reading the certificate, batch record and deviation log."
+     },
+     {
+      "at": "2026-11-24T15:43:12+00:00",
+      "actor": "rules",
+      "text": "2 finding(s), 2 blocking."
+     },
+     {
+      "at": "2026-11-24T15:43:12+00:00",
+      "actor": "proposer",
+      "text": "Placed on hold. Blocking findings: F1: Lot number on the certificate of analysis does not match. F2: Phenoxyethanol assay out of specification."
+     },
+     {
+      "at": "2026-11-24T15:43:13+00:00",
+      "actor": "second reader",
+      "text": "Agrees."
+     }
+    ],
+    "mode": "offline (scripted stand-in model)",
+    "model": "scripted/offline",
+    "error": null,
+    "deferred": false,
+    "awaiting_release_approval": false
+   },
+   "running": false,
+   "documents": {
+    "certificate": {
+     "filename": "certificate_of_analysis.md",
+     "lines": [
+      "# Certificate of Analysis",
+      "",
+      "> Synthetic document. Fictional company, product and people, created for demonstration.",
+      "",
+      "Fernhollow Skincare Ltd., Quality Control Laboratory",
+      "Product: Daily Barrier Cream, 50 g (FH-DBC-050)",
+      "Lot number: LC-24053",
+      "Date of manufacture: 2026-10-01",
+      "Expiry: 2029-04",
+      "",
+      "| Test | Specification | Result |",
+      "|---|---|---|",
+      "| Appearance | White to off-white smooth cream | White smooth cream |",
+      "| Odour | Characteristic | Characteristic |",
+      "| pH (25 \u00b0C) | 5.0 to 6.0 | 5.6 |",
+      "| Viscosity, Brookfield RVT sp. 6, 10 rpm, 25 \u00b0C (cP) | 30,000 to 45,000 | 38,200 |",
+      "| Specific gravity (25 \u00b0C) | 0.98 to 1.02 | 1.00 |",
+      "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.78 |",
+      "| Fill weight, mean of 10 (g) | Not less than 50.0 | 50.6 |",
+      "| Total aerobic microbial count (CFU/g) | Not more than 100 | <10 |",
+      "| Total yeast and mould count (CFU/g) | Not more than 10 | <10 |",
+      "| E. coli, P. aeruginosa, S. aureus, C. albicans | Absent in 1 g | Absent in 1 g |",
+      "",
+      "Approved for QC by: M. Chen, 2026-10-07"
+     ]
+    },
+    "batch_record": {
+     "filename": "batch_record.md",
+     "lines": [
+      "# Batch Manufacturing Record (excerpt)",
+      "",
+      "> Synthetic document. Fictional company, product and people, created for demonstration.",
+      "",
+      "Product: Daily Barrier Cream, 50 g (FH-DBC-050)",
+      "Lot number: LC-24035",
+      "Manufacture date: 2026-10-01",
+      "Line clearance verified by: J. Okafor, 2026-10-01",
+      "",
+      "| Step | Operation | Performed by | Verified by |",
+      "|---|---|---|---|",
+      "| 1 | Dispense and weigh raw materials | P. Lindqvist | R. Haddad |",
+      "| 2 | Heat water phase to 75 \u00b0C | R. Haddad | A. Moreau |",
+      "| 3 | Heat oil phase to 75 \u00b0C | A. Moreau | J. Okafor |",
+      "| 4 | Emulsify under homogenizer, 10 min | J. Okafor | P. Lindqvist |",
+      "| 5 | Cool to 40 \u00b0C, add phenoxyethanol and fragrance | P. Lindqvist | R. Haddad |",
+      "| 6 | Adjust pH and sample for in-process checks | R. Haddad | A. Moreau |",
+      "| 7 | Fill into 50 g tubes and crimp | A. Moreau | J. Okafor |",
+      "| 8 | Code, inspect and pack | J. Okafor | P. Lindqvist |",
+      "",
+      "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
+     ]
+    },
+    "deviation_log": {
+     "filename": "deviation_log.md",
+     "lines": [
+      "# Deviation Log",
+      "",
+      "> Synthetic document. Fictional company, product and people, created for demonstration.",
+      "",
+      "Lot number: LC-24035",
+      "",
+      "No deviations were recorded for this lot."
+     ]
+    }
+   }
+  },
+  "LC-24036": {
+   "review": {
+    "lot_id": "LC-24036",
+    "stage": "awaiting reviewer",
+    "status": "on hold",
+    "findings": [
+     {
+      "id": "F1",
+      "rule": "test.tymc_cfu_g.missing",
+      "severity": "critical",
+      "title": "Total yeast and mould count: no usable result",
+      "expected": "not more than 10 CFU/g",
+      "observed": "Pending",
+      "evidence": [
+       {
+        "document": "certificate_of_analysis.md",
+        "line": 21,
+        "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | Pending |"
+       }
+      ]
+     },
+     {
+      "id": "F2",
+      "rule": "dates.expiry",
+      "severity": "major",
+      "title": "Expiry date does not match the approved shelf life",
+      "expected": "2029-04 (30 months from manufacture)",
+      "observed": "2029-10",
+      "evidence": [
+       {
+        "document": "certificate_of_analysis.md",
+        "line": 9,
+        "text": "Expiry: 2029-10"
+       }
+      ]
+     }
+    ],
+    "evidence_notes": [],
+    "proposal": {
+     "decision": "hold",
+     "rationale": "Blocking findings: F1: Total yeast and mould count: no usable result. F2: Expiry date does not match the approved shelf life.",
+     "finding_ids": [
+      "F1",
+      "F2"
+     ],
+     "at": "2026-11-24T15:43:14+00:00"
+    },
+    "second_reading": {
+     "agrees": true,
+     "concerns": []
+    },
+    "decision": null,
+    "timeline": [
+     {
+      "at": "2026-11-24T15:43:13+00:00",
+      "actor": "desk",
+      "text": "Reading the certificate, batch record and deviation log."
+     },
+     {
+      "at": "2026-11-24T15:43:14+00:00",
+      "actor": "rules",
+      "text": "2 finding(s), 2 blocking."
+     },
+     {
+      "at": "2026-11-24T15:43:14+00:00",
+      "actor": "proposer",
+      "text": "Placed on hold. Blocking findings: F1: Total yeast and mould count: no usable result. F2: Expiry date does not match the approved shelf life."
+     },
+     {
+      "at": "2026-11-24T15:43:15+00:00",
+      "actor": "second reader",
+      "text": "Agrees."
+     }
+    ],
+    "mode": "offline (scripted stand-in model)",
+    "model": "scripted/offline",
+    "error": null,
+    "deferred": false,
+    "awaiting_release_approval": false
+   },
+   "running": false,
+   "documents": {
+    "certificate": {
+     "filename": "certificate_of_analysis.md",
+     "lines": [
+      "# Certificate of Analysis",
+      "",
+      "> Synthetic document. Fictional company, product and people, created for demonstration.",
+      "",
+      "Fernhollow Skincare Ltd., Quality Control Laboratory",
+      "Product: Daily Barrier Cream, 50 g (FH-DBC-050)",
+      "Lot number: LC-24036",
+      "Date of manufacture: 2026-10-08",
+      "Expiry: 2029-10",
+      "",
+      "| Test | Specification | Result |",
+      "|---|---|---|",
+      "| Appearance | White to off-white smooth cream | White smooth cream |",
+      "| Odour | Characteristic | Characteristic |",
+      "| pH (25 \u00b0C) | 5.0 to 6.0 | 5.6 |",
+      "| Viscosity, Brookfield RVT sp. 6, 10 rpm, 25 \u00b0C (cP) | 30,000 to 45,000 | 38,200 |",
+      "| Specific gravity (25 \u00b0C) | 0.98 to 1.02 | 1.00 |",
+      "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.91 |",
+      "| Fill weight, mean of 10 (g) | Not less than 50.0 | 50.6 |",
+      "| Total aerobic microbial count (CFU/g) | Not more than 100 | <10 |",
+      "| Total yeast and mould count (CFU/g) | Not more than 10 | Pending |",
+      "| E. coli, P. aeruginosa, S. aureus, C. albicans | Absent in 1 g | Absent in 1 g |",
+      "",
+      "Approved for QC by: M. Chen, 2026-10-14"
+     ]
+    },
+    "batch_record": {
+     "filename": "batch_record.md",
+     "lines": [
+      "# Batch Manufacturing Record (excerpt)",
+      "",
+      "> Synthetic document. Fictional company, product and people, created for demonstration.",
+      "",
+      "Product: Daily Barrier Cream, 50 g (FH-DBC-050)",
+      "Lot number: LC-24036",
+      "Manufacture date: 2026-10-08",
+      "Line clearance verified by: J. Okafor, 2026-10-08",
+      "",
+      "| Step | Operation | Performed by | Verified by |",
+      "|---|---|---|---|",
+      "| 1 | Dispense and weigh raw materials | P. Lindqvist | R. Haddad |",
+      "| 2 | Heat water phase to 75 \u00b0C | R. Haddad | A. Moreau |",
+      "| 3 | Heat oil phase to 75 \u00b0C | A. Moreau | J. Okafor |",
+      "| 4 | Emulsify under homogenizer, 10 min | J. Okafor | P. Lindqvist |",
+      "| 5 | Cool to 40 \u00b0C, add phenoxyethanol and fragrance | P. Lindqvist | R. Haddad |",
+      "| 6 | Adjust pH and sample for in-process checks | R. Haddad | A. Moreau |",
+      "| 7 | Fill into 50 g tubes and crimp | A. Moreau | J. Okafor |",
+      "| 8 | Code, inspect and pack | J. Okafor | P. Lindqvist |",
+      "",
+      "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
+     ]
+    },
+    "deviation_log": {
+     "filename": "deviation_log.md",
+     "lines": [
+      "# Deviation Log",
+      "",
+      "> Synthetic document. Fictional company, product and people, created for demonstration.",
+      "",
+      "Lot number: LC-24036",
+      "",
+      "No deviations were recorded for this lot."
+     ]
+    }
+   }
+  }
+ },
+ "queue": [
+  {
+   "lot_id": "LC-24031",
+   "stage": "decided",
+   "status": "released",
+   "running": false,
+   "proposal": "release",
+   "blocking": 0,
+   "awaiting_release_approval": false,
+   "decision": "approve_release"
+  },
+  {
+   "lot_id": "LC-24032",
+   "stage": "decided",
+   "status": "rejected",
+   "running": false,
+   "proposal": "hold",
+   "blocking": 1,
+   "awaiting_release_approval": false,
+   "decision": "reject"
+  },
+  {
+   "lot_id": "LC-24033",
+   "stage": "decided",
+   "status": "on hold",
+   "running": false,
+   "proposal": "hold",
+   "blocking": 1,
+   "awaiting_release_approval": false,
+   "decision": "confirm_hold"
+  },
+  {
+   "lot_id": "LC-24034",
+   "stage": "awaiting reviewer",
+   "status": "on hold",
+   "running": false,
+   "proposal": "hold",
+   "blocking": 1,
+   "awaiting_release_approval": false,
+   "decision": null
+  },
+  {
+   "lot_id": "LC-24035",
+   "stage": "awaiting reviewer",
+   "status": "on hold",
+   "running": false,
+   "proposal": "hold",
+   "blocking": 2,
+   "awaiting_release_approval": false,
+   "decision": null
+  },
+  {
+   "lot_id": "LC-24036",
+   "stage": "awaiting reviewer",
+   "status": "on hold",
+   "running": false,
+   "proposal": "hold",
+   "blocking": 2,
+   "awaiting_release_approval": false,
+   "decision": null
+  }
+ ],
+ "metrics": {
+  "lots_reviewed": 6,
+  "blocking_findings": 7,
+  "evidence_rejected": 1,
+  "decided": 3,
+  "agreed": 3,
+  "overridden": 0,
+  "median_minutes_to_decision": 0.0
+ },
+ "meta": {
+  "mode": "replay",
+  "model": "scripted/offline",
+  "actions": {
+   "approve_release": "Approved the proposed release",
+   "deny_release": "Refused the proposed release; lot held",
+   "confirm_hold": "Confirmed the hold",
+   "reject": "Rejected the lot",
+   "release_over_hold": "Released the lot over the desk's hold"
+  },
+  "replay": true
+ }
+}

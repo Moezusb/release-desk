@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Release Desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..800&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a quality reviewer's working screen, calm and exact
+   IDEA a lot release dossier on a QA desk: findings on the left, the signature block on the right
+   PICTURE the reviewer screen itself: queue, findings tied to highlighted document lines, the decision block
+   COLOUR white, ink black, signal red for anything blocking, one grey; night #0e0e0e
+   TYPE Archivo wide 800 for lot numbers and headings, Archivo for text
+   LAYOUT queue column, then findings and documents, then a sticky decision block; stacks below 900px */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#0e0e0e);--ink:light-dark(#111,#f1f1f1);--mute:light-dark(#5e5e5e,#a5a5a5);--line:light-dark(#dcdcdc,#2c2c2c);--soft:light-dark(#f4f4f4,#171717);--red:#e4002b;--redsoft:light-dark(#fde8ec,#3b1119);--hl:light-dark(#fff3c4,#3a3112)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Archivo,"Helvetica Neue",Arial,sans-serif;overflow-x:clip}
+h1,h2,h3{font-stretch:112%;letter-spacing:-.02em;line-height:1.05;margin:0}
+button,input,textarea{font:inherit;color:inherit}
+button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.top{display:flex;flex-wrap:wrap;gap:10px 24px;align-items:baseline;padding:14px max(2vw,16px);border-top:8px solid var(--ink);border-bottom:1px solid var(--line)}
+.top h1{font-size:26px;font-weight:800}
+.top .prod{color:var(--mute)}
+.mode{margin-left:auto;font-size:13px;font-weight:700;padding:4px 10px;border:1px solid var(--ink)}
+.mode.offline,.mode.replay{border-color:var(--red);color:var(--red)}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5em,1fr));border-bottom:1px solid var(--line)}
+.metrics div{padding:10px max(1vw,12px);border-right:1px solid var(--line)}
+.metrics b{display:block;font-size:24px;font-weight:800;font-stretch:112%;font-variant-numeric:tabular-nums}
+.metrics span{font-size:13px;color:var(--mute)}
+.shell{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:calc(100% - 140px)}
+.queue{border-right:1px solid var(--line);padding:14px 0}
+.queue h2{font-size:15px;padding:0 16px 10px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.qrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 8px;width:100%;text-align:left;padding:10px 16px;background:none;border:0;border-left:4px solid transparent;border-bottom:1px solid var(--line);cursor:pointer;min-height:44px}
+.qrow:hover{background:var(--soft)}
+.qrow.on{border-left-color:var(--ink);background:var(--soft)}
+.qrow b{font-weight:800;font-stretch:112%}
+.qrow small{grid-column:1/-1;color:var(--mute);font-size:13px}
+.chip{font-size:12px;font-weight:700;padding:2px 8px;border:1px solid var(--ink);white-space:nowrap;align-self:center}
+.chip.hold,.chip.wait{border-color:var(--red);color:var(--red)}
+.chip.released{background:var(--ink);color:var(--bg)}
+.chip.rejected{background:var(--red);border-color:var(--red);color:#fff}
+.chip.none{border-color:var(--line);color:var(--mute)}
+.main{padding:18px max(2vw,16px) 40px}
+.lothead{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin-bottom:16px}
+.lothead h2{font-size:clamp(30px,4vw,44px);font-weight:800}
+.lothead .stage{color:var(--mute)}
+.btn{min-height:44px;padding:0 16px;border:2px solid var(--ink);background:var(--bg);cursor:pointer;font-weight:700}
+.btn:hover:not(:disabled){background:var(--ink);color:var(--bg)}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn.primary:hover:not(:disabled){background:var(--bg);color:var(--ink)}
+.btn.danger{border-color:var(--red);color:var(--red)}
+.btn.danger:hover:not(:disabled){background:var(--red);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.small{min-height:36px;padding:0 10px;font-size:13px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,360px);gap:24px;align-items:start}
+.panel{border-top:3px solid var(--ink);padding-top:10px;margin-bottom:22px}
+.panel h3{font-size:17px;margin-bottom:8px;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.panel h3 small{font-weight:500;color:var(--mute);font-size:13px;letter-spacing:0}
+.find{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:10px 0;cursor:pointer}
+.find:hover .ftitle{text-decoration:underline;text-decoration-color:var(--red)}
+.find.on{background:var(--hl)}
+.ftop{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.sev{font-size:12px;font-weight:800;padding:1px 6px;white-space:nowrap}
+.sev.critical{background:var(--red);color:#fff}
+.sev.major{border:1px solid var(--red);color:var(--red)}
+.sev.minor{border:1px solid var(--mute);color:var(--mute)}
+.ftitle{font-weight:700}
+.fio{font-size:14px;margin-top:4px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 10px}
+.fio span:nth-child(odd){color:var(--mute)}
+.ev{font-size:13px;color:var(--mute);margin-top:4px;overflow-wrap:anywhere}
+.clear{padding:14px;background:var(--soft);font-weight:600}
+.note{border-left:4px solid var(--mute);background:var(--soft);padding:8px 12px;margin:6px 0;font-size:14px}
+.tabs{display:flex;flex-wrap:wrap;gap:0;border-bottom:1px solid var(--line)}
+.tabs button{background:none;border:0;border-bottom:3px solid transparent;padding:10px 12px;cursor:pointer;font-weight:600;min-height:44px}
+.tabs button.on{border-bottom-color:var(--ink)}
+.doc{position:relative;font:13px/1.6 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;max-height:480px;overflow:auto;border:1px solid var(--line);border-top:0}
+.ln{display:grid;grid-template-columns:3.2em minmax(0,1fr);border-left:4px solid transparent}
+.ln i{font-style:normal;color:var(--mute);text-align:right;padding-right:10px;user-select:none}
+.ln span{white-space:pre-wrap;overflow-wrap:anywhere;padding-right:8px}
+.ln.cited{border-left-color:var(--red);background:var(--redsoft)}
+.ln.discard{border-left-color:var(--mute);background:var(--soft)}
+.ln.focus{background:var(--hl);outline:1px solid var(--ink)}
+.side{position:sticky;top:12px}
+.decision{border:2px solid var(--ink);padding:16px}
+.decision h3{font-size:20px;margin-bottom:6px}
+.big{font-size:28px;font-weight:800;font-stretch:112%;margin:4px 0 8px}
+.big.release{color:var(--ink)}
+.big.hold{color:var(--red)}
+.rat{margin:0 0 10px}
+.reader{font-size:14px;padding:8px 10px;background:var(--soft);margin-bottom:12px}
+.reader.disagree{background:var(--redsoft)}
+label{display:block;font-size:14px;font-weight:600;margin:10px 0 4px}
+input[type=text],textarea{width:100%;font-size:16px;padding:10px;border:1px solid var(--mute);background:var(--bg)}
+textarea{min-height:70px;resize:vertical}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.err{color:var(--red);font-size:14px;margin-top:8px;min-height:1em}
+.final{font-size:15px}
+.final b{font-size:20px;display:block;margin-bottom:4px}
+.tl{list-style:none;padding:0;margin:0;font-size:14px}
+.tl li{display:grid;grid-template-columns:4.6em minmax(0,1fr);gap:8px;padding:6px 0;border-bottom:1px solid var(--line)}
+.tl time{color:var(--mute);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tl strong{display:block;font-size:13px}
+.empty{padding:40px 0;color:var(--mute)}
+.spin{display:inline-block;width:10px;height:10px;background:var(--red);margin-right:6px;animation:p 1s infinite}
+@keyframes p{50%{opacity:.2}}
+@media(prefers-reduced-motion:reduce){.spin{animation:none}}
+.foot{font-size:13px;color:var(--mute);padding:14px max(2vw,16px);border-top:1px solid var(--line)}
+@media(max-width:1100px){.grid{grid-template-columns:minmax(0,1fr)}.side{position:static;order:-1}}
+@media(max-width:760px){.shell{grid-template-columns:minmax(0,1fr)}.queue{border-right:0;border-bottom:1px solid var(--line);padding:0}.queue h2{display:none}#queue{display:flex;overflow-x:auto}.qrow{flex:none;width:auto;border-left:0;border-bottom:4px solid transparent;grid-template-columns:auto;gap:4px}.qrow.on{border-bottom-color:var(--ink)}.qrow small{display:none}.mode{margin-left:0}}
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>Release Desk</h1>
+  <span class="prod">Daily Barrier Cream, 50 g · FH-DBC-050 · synthetic data</span>
+  <span class="mode" id="mode">Connecting</span>
+</header>
+<section class="metrics" id="metrics" aria-label="Desk metrics"></section>
+<div class="shell">
+  <nav class="queue" aria-label="Lots">
+    <h2>Lots <button class="btn small" id="all">Review all</button></h2>
+    <div id="queue"></div>
+  </nav>
+  <main class="main" id="main"><p class="empty">Loading lots.</p></main>
+</div>
+<footer class="foot" id="foot">The model reads. Code checks. A person decides. All documents, people and products here are invented.</footer>
+
+<script>
+{
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const DOCS = {certificate: "Certificate", batch_record: "Batch record", deviation_log: "Deviation log"};
+const SECTION_OF = {"certificate_of_analysis.md": "certificate", "batch_record.md": "batch_record", "deviation_log.md": "deviation_log"};
+let meta = null, replay = null, lots = [], cur = null, detail = null, tab = "certificate", focus = null, timer = null;
+let reviewer = "";
+try { reviewer = localStorage.getItem("rd-reviewer") || ""; } catch (e) {}
+
+async function api(path, opts) {
+  const r = await fetch(path, opts);
+  const body = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(body.detail || r.statusText);
+  return body;
+}
+
+function chip(l) {
+  if (l.awaiting_release_approval) return '<span class="chip wait">Needs approval</span>';
+  if (["reading","checking","proposing"].includes(l.stage)) return '<span class="chip wait"><span class="spin"></span>Reviewing</span>';
+  const s = l.status;
+  if (s === "released") return '<span class="chip released">Released</span>';
+  if (s === "rejected") return '<span class="chip rejected">Rejected</span>';
+  if (s === "on hold") return '<span class="chip hold">On hold</span>';
+  return '<span class="chip none">Not reviewed</span>';
+}
+
+function sub(l) {
+  if (!l.proposal) return "Not reviewed yet";
+  const p = l.proposal === "release" ? "Desk proposed release" : "Desk proposed hold";
+  return `${p} · ${l.blocking} blocking`;
+}
+
+function renderMetrics(m) {
+  const items = [
+    [m.lots_reviewed, "lots reviewed"], [m.blocking_findings, "blocking findings"],
+    [m.evidence_rejected, "claims refused by the evidence check"], [m.agreed, "decisions agreeing with the desk"],
+    [m.overridden, "decisions overruling the desk"], [m.median_minutes_to_decision ?? "n/a", "median minutes, proposal to decision"]];
+  $("#metrics").innerHTML = items.map(([v, t]) => `<div><b>${esc(v)}</b><span>${t}</span></div>`).join("");
+}
+
+function renderQueue() {
+  $("#queue").innerHTML = lots.map(l => `<button class="qrow ${l.lot_id === cur ? "on" : ""}" data-lot="${l.lot_id}"><b>${l.lot_id}</b>${chip(l)}<small>${sub(l)}</small></button>`).join("");
+  $("#all").hidden = !!replay;
+}
+
+function findingHTML(f) {
+  const e = f.evidence?.[0] || {};
+  const where = e.line ? `${esc(e.document)} · L${e.line}: ${esc(e.text)}` : `${esc(e.document || "")} · no line could be cited`;
+  return `<button class="find ${focus === f.id ? "on" : ""}" data-f="${f.id}">
+    <div class="ftop"><span class="sev ${f.severity}">${f.severity}</span><strong>${f.id}</strong><span class="ftitle">${esc(f.title)}</span></div>
+    <div class="fio"><span>Expected</span><span>${esc(f.expected)}</span><span>Found</span><span>${esc(f.observed)}</span></div>
+    <div class="ev">${where}</div></button>`;
+}
+
+function docHTML(r, docs) {
+  const lines = docs[tab].lines;
+  const cited = new Set(), discard = new Set();
+  for (const f of r.findings) for (const e of f.evidence || []) if (SECTION_OF[e.document] === tab && e.line) cited.add(e.line);
+  for (const n of r.evidence_notes || []) if (SECTION_OF[n.document] === tab && n.cited_line) discard.add(n.cited_line);
+  const fl = focus && r.findings.find(f => f.id === focus)?.evidence?.[0];
+  const focusLine = fl && SECTION_OF[fl.document] === tab ? fl.line : null;
+  return lines.map((t, i) => {
+    const n = i + 1, cls = [cited.has(n) ? "cited" : "", discard.has(n) ? "discard" : "", n === focusLine ? "focus" : ""].join(" ");
+    return `<div class="ln ${cls}" id="ln-${n}"><i>${n}</i><span>${esc(t) || " "}</span></div>`;
+  }).join("");
+}
+
+function decisionHTML(r) {
+  const p = r.proposal;
+  if (!p) return `<div class="decision"><h3>No review yet</h3><p>The desk has not read this lot.</p>
+    <div class="acts">${replay ? "" : '<button class="btn primary" data-act="review">Review this lot</button>'}</div></div>`;
+  const label = p.decision === "release" ? "Release proposed" : p.decision === "hold" ? "Hold proposed" : "No proposal";
+  const rd = r.second_reading;
+  const reader = rd ? `<div class="reader ${rd.agrees ? "" : "disagree"}"><strong>Second reader:</strong> ${rd.agrees ? "agrees with the proposal." : "disagrees. " + esc(rd.concerns.join(" "))}</div>` : "";
+  let body = "";
+  if (r.decision) {
+    const d = r.decision;
+    const verb = {approve_release: "Release approved", deny_release: "Release refused", confirm_hold: "Hold confirmed", reject: "Lot rejected", release_over_hold: "Released over the desk's hold"}[d.action];
+    body = `<div class="final"><b>${verb}</b>by ${esc(d.reviewer)}, ${new Date(d.at).toLocaleString()}${d.reason ? `<br>Reason: ${esc(d.reason)}` : ""}${d.outcome ? `<br><strong>${esc(d.outcome)}</strong>` : ""}</div>`;
+  } else if (r.awaiting_release_approval) {
+    body = form(["approve_release", "Approve release", "primary"], ["deny_release", "Refuse release", "danger"],
+      "Approving runs the release tool, which checks the rules once more before it acts.");
+  } else if (r.status === "on hold" && r.stage === "awaiting reviewer") {
+    body = form(["confirm_hold", "Confirm hold", "primary"], ["reject", "Reject lot", "danger"],
+      "A reason is needed to reject, or to release over the hold.", ["release_over_hold", "Release over hold", ""]);
+  }
+  return `<div class="decision"><h3>Proposal</h3><div class="big ${p.decision}">${label}</div>
+    <p class="rat">${esc(p.rationale)}</p>${reader}${body}</div>`;
+}
+
+function form(a, b, hint, c) {
+  const btn = x => x ? `<button class="btn ${x[2]}" data-act="${x[0]}">${x[1]}</button>` : "";
+  return `<label for="who">Reviewer</label><input type="text" id="who" value="${esc(reviewer)}" placeholder="Your name" autocomplete="name">
+    <label for="why">Reason</label><textarea id="why" placeholder="Required to refuse, reject or overrule"></textarea>
+    <div class="acts">${btn(a)}${btn(b)}${btn(c)}</div><div class="err" id="err"></div><p class="ev">${hint}</p>`;
+}
+
+function render() {
+  if (!detail) return;
+  const r = detail.review, docs = detail.documents;
+  const running = ["reading","checking","proposing"].includes(r.stage);
+  const blocking = r.findings.filter(f => f.severity !== "minor");
+  const findings = r.proposal || r.findings.length
+    ? (r.findings.length ? r.findings.map(findingHTML).join("") : '<div class="clear">No findings. Every rule passed on verified evidence.</div>')
+    : '<p class="empty">Findings appear here once the desk has read the lot.</p>';
+  const notes = (r.evidence_notes || []).map(n => `<div class="note">The reader claimed <strong>${esc(n.claimed_value)}</strong> for ${esc(n.field)}, citing ${esc(n.document)} line ${n.cited_line}. Refused: ${esc(n.reason)}. The value was treated as missing.</div>`).join("");
+  const tl = r.timeline.map(t => `<li><time>${new Date(t.at).toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"})}</time><div><strong>${esc(t.actor)}</strong>${esc(t.text)}</div></li>`).join("");
+  $("#main").innerHTML = `
+    <div class="lothead"><h2>${r.lot_id}</h2>${chip({...r, running})}<span class="stage">${running ? "Reviewing: " + esc(r.stage) : r.mode ? esc(r.mode) : ""}</span>
+      ${r.proposal && !replay && !running && !["released","rejected"].includes(r.status) && !r.awaiting_release_approval ? '<button class="btn small" data-act="review">Review again</button>' : ""}</div>
+    ${r.error ? `<div class="note">Error: ${esc(r.error)}</div>` : ""}
+    <div class="grid">
+      <div>
+        <section class="panel"><h3>Findings <small>${r.findings.length} total, ${blocking.length} blocking</small></h3>${findings}</section>
+        ${notes ? `<section class="panel"><h3>Refused by the evidence check</h3>${notes}</section>` : ""}
+        <section class="panel"><h3>Documents <small>red: cited by a finding · grey: a refused claim</small></h3>
+          <div class="tabs" role="tablist">${Object.keys(DOCS).map(k => `<button role="tab" aria-selected="${k === tab}" class="${k === tab ? "on" : ""}" data-tab="${k}">${DOCS[k]}</button>`).join("")}</div>
+          <div class="doc" id="doc">${docHTML(r, docs)}</div></section>
+      </div>
+      <aside class="side">
+        ${decisionHTML(r)}
+        <section class="panel" style="margin-top:22px"><h3>Decision trail</h3><ul class="tl">${tl || "<li><time></time><div>Nothing yet.</div></li>"}</ul></section>
+      </aside>
+    </div>`;
+  const doc = $("#doc"), hit = $("#doc .focus");
+  if (focus && hit) doc.scrollTop = hit.offsetTop - doc.clientHeight / 2;
+}
+
+async function load(lot) {
+  cur = lot;
+  detail = replay ? structuredClone(replay.lots[lot]) : await api(`/api/lots/${lot}`);
+  renderQueue(); render();
+}
+
+async function refresh() {
+  if (replay) return;
+  const d = await api("/api/lots");
+  lots = d.lots; renderMetrics(d.metrics); renderQueue();
+  if (cur) {
+    const prev = JSON.stringify(detail?.review?.timeline), keep = document.activeElement?.id;
+    const why = $("#why")?.value;
+    const next = await api(`/api/lots/${cur}`);
+    if (JSON.stringify(next.review.timeline) !== prev || next.running !== detail.running) {
+      detail = next; render();
+      if (why && $("#why")) $("#why").value = why;
+      if (keep) $("#" + keep)?.focus();
+    }
+  }
+  const active = lots.some(l => l.running);
+  clearTimeout(timer); timer = setTimeout(refresh, active ? 900 : 4000);
+}
+
+function simulate(lot, action, who, reason) {
+  // Replay mode: decisions are applied in this browser only, with the same rules as the server.
+  const r = replay.lots[lot].review, at = new Date().toISOString();
+  r.decision = {action, reviewer: who, reason, at, override: ["deny_release","release_over_hold"].includes(action)};
+  r.timeline.push({at, actor: "reviewer: " + who, text: meta.actions[action] + (reason ? ". Reason: " + reason : ".")});
+  if (action === "approve_release") {
+    const ok = !r.findings.some(f => f.severity !== "minor");
+    r.status = ok ? "released" : "on hold";
+    r.timeline.push({at, actor: "release tool", text: ok ? `Released, approved by ${who}.` : "Refused: blocking findings are open."});
+  } else r.status = {deny_release: "on hold", confirm_hold: "on hold", reject: "rejected", release_over_hold: "released"}[action];
+  r.awaiting_release_approval = false; r.stage = "decided";
+  const q = lots.find(l => l.lot_id === lot); Object.assign(q, {status: r.status, awaiting_release_approval: false, decision: action});
+}
+
+document.addEventListener("click", async e => {
+  const q = e.target.closest(".qrow"); if (q) { focus = null; return load(q.dataset.lot); }
+  const t = e.target.closest("[data-tab]"); if (t) { tab = t.dataset.tab; return render(); }
+  const f = e.target.closest(".find");
+  if (f) { focus = f.dataset.f; const ev = detail.review.findings.find(x => x.id === focus)?.evidence?.[0]; if (ev && SECTION_OF[ev.document]) tab = SECTION_OF[ev.document]; return render(); }
+  if (e.target.id === "all") { for (const l of lots) if (l.status === "not reviewed" && !l.running) await api(`/api/lots/${l.lot_id}/review`, {method: "POST"}).catch(() => {}); return refresh(); }
+  const a = e.target.closest("[data-act]"); if (!a) return;
+  const act = a.dataset.act;
+  if (act === "review") { await api(`/api/lots/${cur}/review`, {method: "POST"}).catch(err => alertBox(err.message)); return refresh(); }
+  const who = $("#who")?.value.trim() || "", why = $("#why")?.value.trim() || "";
+  if (!who) return alertBox("Add your name. Every decision is signed.");
+  if (["deny_release","reject","release_over_hold"].includes(act) && !why) return alertBox("This decision needs a reason.");
+  reviewer = who; try { localStorage.setItem("rd-reviewer", who); } catch (err) {}
+  if (replay) { simulate(cur, act, who, why); renderQueue(); return load(cur); }
+  a.disabled = true;
+  try { await api(`/api/lots/${cur}/decision`, {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({action: act, reviewer: who, reason: why})}); }
+  catch (err) { a.disabled = false; return alertBox(err.message); }
+  detail = await api(`/api/lots/${cur}`); render(); refresh();
+});
+
+function alertBox(msg) { const el = $("#err"); if (el) el.textContent = msg; }
+
+async function start() {
+  try {
+    meta = await api("/api/meta");
+    $("#mode").textContent = meta.mode === "live" ? `Live · ${meta.model}` : "Offline · scripted stand-in model";
+    $("#mode").className = "mode " + meta.mode;
+    await refresh();
+  } catch (e) {
+    replay = await (await fetch("replay.json")).json();
+    meta = replay.meta; lots = replay.queue;
+    $("#mode").textContent = "Replay · recorded run, decisions stay in this browser";
+    $("#mode").className = "mode replay";
+    renderMetrics(replay.metrics);
+  }
+  await load(lots[0].lot_id);
+}
+start();
+}
+</script>
+</body>
+</html>

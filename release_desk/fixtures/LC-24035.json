@@ -1,0 +1,260 @@
+{
+  "certificate": {
+    "lot_id": {
+      "value": "LC-24053",
+      "line": 7,
+      "quote": "LC-24053"
+    },
+    "product_code": {
+      "value": "FH-DBC-050",
+      "line": 6,
+      "quote": "FH-DBC-050"
+    },
+    "manufacture_date": {
+      "value": "2026-10-01",
+      "line": 8,
+      "quote": "2026-10-01"
+    },
+    "expiry": {
+      "value": "2029-04",
+      "line": 9,
+      "quote": "2029-04"
+    },
+    "approved_by": {
+      "value": "M. Chen",
+      "line": 24,
+      "quote": "M. Chen"
+    },
+    "results": [
+      {
+        "key": "appearance",
+        "result": {
+          "value": "White smooth cream",
+          "line": 13,
+          "quote": "White smooth cream"
+        }
+      },
+      {
+        "key": "odour",
+        "result": {
+          "value": "Characteristic",
+          "line": 14,
+          "quote": "Characteristic"
+        }
+      },
+      {
+        "key": "ph",
+        "result": {
+          "value": "5.6",
+          "line": 15,
+          "quote": "5.6"
+        }
+      },
+      {
+        "key": "viscosity_cp",
+        "result": {
+          "value": "38,200",
+          "line": 16,
+          "quote": "38,200"
+        }
+      },
+      {
+        "key": "specific_gravity",
+        "result": {
+          "value": "1.00",
+          "line": 17,
+          "quote": "1.00"
+        }
+      },
+      {
+        "key": "phenoxyethanol_pct",
+        "result": {
+          "value": "0.78",
+          "line": 18,
+          "quote": "0.78"
+        }
+      },
+      {
+        "key": "fill_weight_g",
+        "result": {
+          "value": "50.6",
+          "line": 19,
+          "quote": "50.6"
+        }
+      },
+      {
+        "key": "tamc_cfu_g",
+        "result": {
+          "value": "<10",
+          "line": 20,
+          "quote": "<10"
+        }
+      },
+      {
+        "key": "tymc_cfu_g",
+        "result": {
+          "value": "<10",
+          "line": 21,
+          "quote": "<10"
+        }
+      },
+      {
+        "key": "pathogens",
+        "result": {
+          "value": "Absent in 1 g",
+          "line": 22,
+          "quote": "Absent in 1 g"
+        }
+      }
+    ]
+  },
+  "batch_record": {
+    "lot_id": {
+      "value": "LC-24035",
+      "line": 6,
+      "quote": "LC-24035"
+    },
+    "product_code": {
+      "value": "FH-DBC-050",
+      "line": 5,
+      "quote": "FH-DBC-050"
+    },
+    "manufacture_date": {
+      "value": "2026-10-01",
+      "line": 7,
+      "quote": "2026-10-01"
+    },
+    "line_clearance_by": {
+      "value": "J. Okafor",
+      "line": 8,
+      "quote": "J. Okafor"
+    },
+    "yield_percent": {
+      "value": "98.4",
+      "line": 21,
+      "quote": "Yield: 98.4%"
+    },
+    "steps": [
+      {
+        "step": 1,
+        "operation": "Dispense and weigh raw materials",
+        "performed_by": {
+          "value": "P. Lindqvist",
+          "line": 12,
+          "quote": "P. Lindqvist"
+        },
+        "verified_by": {
+          "value": "R. Haddad",
+          "line": 12,
+          "quote": "R. Haddad"
+        }
+      },
+      {
+        "step": 2,
+        "operation": "Heat water phase to 75 \u00b0C",
+        "performed_by": {
+          "value": "R. Haddad",
+          "line": 13,
+          "quote": "R. Haddad"
+        },
+        "verified_by": {
+          "value": "A. Moreau",
+          "line": 13,
+          "quote": "A. Moreau"
+        }
+      },
+      {
+        "step": 3,
+        "operation": "Heat oil phase to 75 \u00b0C",
+        "performed_by": {
+          "value": "A. Moreau",
+          "line": 14,
+          "quote": "A. Moreau"
+        },
+        "verified_by": {
+          "value": "J. Okafor",
+          "line": 14,
+          "quote": "J. Okafor"
+        }
+      },
+      {
+        "step": 4,
+        "operation": "Emulsify under homogenizer, 10 min",
+        "performed_by": {
+          "value": "J. Okafor",
+          "line": 15,
+          "quote": "J. Okafor"
+        },
+        "verified_by": {
+          "value": "P. Lindqvist",
+          "line": 15,
+          "quote": "P. Lindqvist"
+        }
+      },
+      {
+        "step": 5,
+        "operation": "Cool to 40 \u00b0C, add phenoxyethanol and fragrance",
+        "performed_by": {
+          "value": "P. Lindqvist",
+          "line": 16,
+          "quote": "P. Lindqvist"
+        },
+        "verified_by": {
+          "value": "R. Haddad",
+          "line": 16,
+          "quote": "R. Haddad"
+        }
+      },
+      {
+        "step": 6,
+        "operation": "Adjust pH and sample for in-process checks",
+        "performed_by": {
+          "value": "R. Haddad",
+          "line": 17,
+          "quote": "R. Haddad"
+        },
+        "verified_by": {
+          "value": "A. Moreau",
+          "line": 17,
+          "quote": "A. Moreau"
+        }
+      },
+      {
+        "step": 7,
+        "operation": "Fill into 50 g tubes and crimp",
+        "performed_by": {
+          "value": "A. Moreau",
+          "line": 18,
+          "quote": "A. Moreau"
+        },
+        "verified_by": {
+          "value": "J. Okafor",
+          "line": 18,
+          "quote": "J. Okafor"
+        }
+      },
+      {
+        "step": 8,
+        "operation": "Code, inspect and pack",
+        "performed_by": {
+          "value": "J. Okafor",
+          "line": 19,
+          "quote": "J. Okafor"
+        },
+        "verified_by": {
+          "value": "P. Lindqvist",
+          "line": 19,
+          "quote": "P. Lindqvist"
+        }
+      }
+    ]
+  },
+  "deviation_log": {
+    "lot_id": {
+      "value": "LC-24035",
+      "line": 5,
+      "quote": "LC-24035"
+    },
+    "deviations": []
+  }
+}
