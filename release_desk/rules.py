@@ -65,9 +65,16 @@ def _num(v) -> float | None:
     return None if v is None else float(v)
 
 
+def _fmt(v) -> str:
+    x = float(v)
+    return f"{x:,.0f}" if x >= 1000 else str(v)
+
+
 def _fmt_range(t: dict) -> str:
     unit = f" {t['unit']}" if t.get("unit") else ""
     lo, hi = t.get("min"), t.get("max")
+    lo = _fmt(lo) if lo is not None else None
+    hi = _fmt(hi) if hi is not None else None
     if lo is not None and hi is not None:
         return f"{lo} to {hi}{unit}"
     if lo is not None:

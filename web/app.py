@@ -103,6 +103,20 @@ def create_app(settings: config.Settings | None = None) -> FastAPI:
             raise HTTPException(400, error)
         return {"ok": True}
 
+    @app.get("/api/evaluation")
+    async def evaluation() -> dict:
+        from release_desk.config import ROOT
+
+        for name in ("results-live.json", "results-offline.json"):
+            path = ROOT / "eval" / name
+            if path.exists():
+                import json
+
+                data = json.loads(path.read_text(encoding="utf-8"))
+                data.pop("runs", None)
+                return data
+        raise HTTPException(404, "No evaluation has been run yet")
+
     @app.get("/api/mapping")
     async def mapping_reports() -> dict:
         from release_desk.mapping import check_all

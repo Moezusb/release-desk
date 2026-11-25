@@ -87,6 +87,13 @@ async def export(settings: Settings) -> Path:
                      "needs_reassessment": False} for r in reviews]
     out["metrics"] = metrics(reviews)
     out["mapping"] = check_all(settings.data_dir)
+    for name in ("results-live.json", "results-offline.json"):  # the most credible evaluation on file
+        path = ROOT / "eval" / name
+        if path.exists():
+            ev = json.loads(path.read_text(encoding="utf-8"))
+            ev.pop("runs", None)
+            out["evaluation"] = ev
+            break
     out["meta"] = {"mode": "replay", "recorded": "offline (scripted stand-in model)" if settings.offline else f"live ({settings.model})",
                    "model": settings.model, "actions": HUMAN_ACTIONS, "replay": True}
 

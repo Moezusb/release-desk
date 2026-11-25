@@ -17,12 +17,15 @@ Most lots are clean. The reviewer's time goes into proving that, so less of it i
 | Action | Who does it | Needs a person first? |
 |---|---|---|
 | Read the documents and extract values with citations | Model | No |
-| Check that each citation is real | Code | No |
+| Check that each citation is real and about the right attribute | Code | No |
+| Choose the specification revision in force on the date of manufacture | Code | No |
 | Compare values with the specification | Code | No |
+| Read records, revisions and corrected documents to explain a finding | Agent | No (it can only read) |
 | Propose release or hold | Model | No (it is only a proposal) |
 | Place a lot on hold | Tool | No. Holding is safe and reversible |
 | Release a lot | Tool | **Yes, a named reviewer, every time** |
 | Reject a lot, or release over a hold | Person | It is the person |
+| Apply a corrected document | Person | It is the person; earlier decisions are voided and kept |
 
 ## What counts as an exception
 
@@ -40,6 +43,8 @@ Rules that apply to everything:
 - A result reported as "<10" meets "not more than 10" but can never prove a minimum.
 - A deviation is open unless its status says closed.
 - The person who performs a step may not be the one who verifies it.
+- A lot is judged by the specification revision in force on its date of manufacture, whatever revision its certificate names.
+- A decision is valid only for the documents it was made on. When a document changes, the lot is reassessed.
 
 ## When it would be ready for real lots
 
@@ -65,6 +70,10 @@ The golden set should come from real history: lots that were released, held and 
 | Trust | How often reviewers overrule the desk, and their reasons |
 
 Baseline the manual process for a few weeks first. Without a before, there is no after.
+
+## Data mappings
+
+Before anything is built on a client's systems, a vendor's mapping is checked against the source dictionary, the canonical fields and the documents. Each check ends as validated, failed, or needs business confirmation. A mapping with any failure is not acceptable; one with open confirmations is acceptable once a named owner confirms them.
 
 ## Not in this version
 
