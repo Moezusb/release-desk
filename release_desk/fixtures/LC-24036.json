@@ -20,9 +20,14 @@
       "line": 9,
       "quote": "2029-10"
     },
+    "spec_revision": {
+      "value": "04",
+      "line": 10,
+      "quote": "rev 04"
+    },
     "approved_by": {
       "value": "M. Chen",
-      "line": 24,
+      "line": 25,
       "quote": "M. Chen"
     },
     "results": [
@@ -30,7 +35,7 @@
         "key": "appearance",
         "result": {
           "value": "White smooth cream",
-          "line": 13,
+          "line": 14,
           "quote": "White smooth cream"
         }
       },
@@ -38,7 +43,7 @@
         "key": "odour",
         "result": {
           "value": "Characteristic",
-          "line": 14,
+          "line": 15,
           "quote": "Characteristic"
         }
       },
@@ -46,7 +51,7 @@
         "key": "ph",
         "result": {
           "value": "5.6",
-          "line": 15,
+          "line": 16,
           "quote": "5.6"
         }
       },
@@ -54,7 +59,7 @@
         "key": "viscosity_cp",
         "result": {
           "value": "38,200",
-          "line": 16,
+          "line": 17,
           "quote": "38,200"
         }
       },
@@ -62,7 +67,7 @@
         "key": "specific_gravity",
         "result": {
           "value": "1.00",
-          "line": 17,
+          "line": 18,
           "quote": "1.00"
         }
       },
@@ -70,7 +75,7 @@
         "key": "phenoxyethanol_pct",
         "result": {
           "value": "0.91",
-          "line": 18,
+          "line": 19,
           "quote": "0.91"
         }
       },
@@ -78,7 +83,7 @@
         "key": "fill_weight_g",
         "result": {
           "value": "50.6",
-          "line": 19,
+          "line": 20,
           "quote": "50.6"
         }
       },
@@ -86,7 +91,7 @@
         "key": "tamc_cfu_g",
         "result": {
           "value": "<10",
-          "line": 20,
+          "line": 21,
           "quote": "<10"
         }
       },
@@ -94,7 +99,7 @@
         "key": "tymc_cfu_g",
         "result": {
           "value": "Pending",
-          "line": 21,
+          "line": 22,
           "quote": "Pending"
         }
       },
@@ -102,7 +107,7 @@
         "key": "pathogens",
         "result": {
           "value": "Absent in 1 g",
-          "line": 22,
+          "line": 23,
           "quote": "Absent in 1 g"
         }
       }

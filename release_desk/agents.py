@@ -36,6 +36,7 @@ A blank table cell is null, even if the cell above or below has a name in it.
 Certificate test results must use these keys, one per row:
 {test_keys}
 
+For spec_revision, report the revision number the certificate says it was tested against (for example "04").
 For the deviation log, list every deviation row; if the log says there were none, return an empty list.
 """
 
@@ -50,7 +51,7 @@ async def extract(settings: Settings, pkg: LotPackage, spec: dict) -> LotExtract
         config=AgentConfig(temperature=0.0, max_tokens=8000, max_turns=2),
     )
     message = (
-        f"Lot: {pkg.lot_id}\n\n"
+        f"Lot: {pkg.lot_id}\nDocument versions: {pkg.version_label()}\n\n"
         f"## certificate (certificate_of_analysis.md)\n{pkg.numbered('certificate')}\n\n"
         f"## batch_record (batch_record.md)\n{pkg.numbered('batch_record')}\n\n"
         f"## deviation_log (deviation_log.md)\n{pkg.numbered('deviation_log')}\n"

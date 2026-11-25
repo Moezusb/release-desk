@@ -18,7 +18,7 @@ def _norm(text: str | None) -> str:
     return re.sub(r"\s+", " ", (text or "")).strip().lower()
 
 
-def check_one(pkg: LotPackage, section: str, field: str, cited: Cited) -> EvidenceNote | None:
+def check_one(pkg: LotPackage, section: str, field: str, cited: Cited, must_mention: list[str] | None = None) -> EvidenceNote | None:
     if cited.value is None:
         return None  # nothing claimed, nothing to verify
     line = pkg.line(section, cited.line)
@@ -29,6 +29,9 @@ def check_one(pkg: LotPackage, section: str, field: str, cited: Cited) -> Eviden
         reason = "value does not appear on the cited line"
     elif cited.quote and _norm(cited.quote) not in _norm(line):
         reason = "quoted text does not appear on the cited line"
+    elif must_mention and not any(_norm(w) in _norm(line) for w in must_mention):
+        # A real number on a real line can still belong to a different test.
+        reason = f"the cited line is not about this attribute (expected it to mention {' or '.join(must_mention)})"
     if reason is None:
         return None
     return EvidenceNote(
@@ -40,22 +43,27 @@ def check_one(pkg: LotPackage, section: str, field: str, cited: Cited) -> Eviden
     )
 
 
-def verify(pkg: LotPackage, ext: LotExtraction) -> tuple[LotExtraction, list[EvidenceNote]]:
-    """Return a copy of the extraction with unsupported values set to None."""
+def verify(pkg: LotPackage, ext: LotExtraction, spec: dict | None = None) -> tuple[LotExtraction, list[EvidenceNote]]:
+    """Return a copy of the extraction with unsupported values set to None.
+
+    Refused claims are returned as notes and kept in the record. They are
+    removed from what the rules see, never from what the reviewer sees.
+    """
     ext = ext.model_copy(deep=True)
     notes: list[EvidenceNote] = []
+    match = {t["key"]: t.get("match") for t in (spec or {}).get("tests", [])}
 
-    def visit(section: str, field: str, cited: Cited) -> None:
-        note = check_one(pkg, section, field, cited)
+    def visit(section: str, field: str, cited: Cited, must_mention: list[str] | None = None) -> None:
+        note = check_one(pkg, section, field, cited, must_mention)
         if note:
             notes.append(note)
             cited.value = None
 
     c = ext.certificate
-    for name in ("lot_id", "product_code", "manufacture_date", "expiry", "approved_by"):
+    for name in ("lot_id", "product_code", "manufacture_date", "expiry", "spec_revision", "approved_by"):
         visit("certificate", f"certificate.{name}", getattr(c, name))
     for r in c.results:
-        visit("certificate", f"certificate.results.{r.key}", r.result)
+        visit("certificate", f"certificate.results.{r.key}", r.result, match.get(r.key))
 
     b = ext.batch_record
     for name in ("lot_id", "product_code", "manufacture_date", "line_clearance_by", "yield_percent"):

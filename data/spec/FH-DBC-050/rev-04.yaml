@@ -5,41 +5,53 @@ product: Daily Barrier Cream, 50 g
 product_code: FH-DBC-050
 manufacturer: Fernhollow Skincare Ltd. (fictional)
 shelf_life_months: 30
+revision: "04"
+effective_from: 2026-10-01
+effective_to: null
+change_note: Viscosity lower limit raised from 30,000 to 32,000 cP after a stability study.
 
 # Every test listed here must appear on the certificate of analysis.
 # A missing or unreadable result is treated as a failure of that test.
 # For text tests, a result passes when it contains one of the accepted phrases.
+# `match` lists words the certificate line for that test must contain, so a
+# value read from the wrong row is caught even when the number is real.
 tests:
   - key: appearance
+    match: ["appearance"]
     name: Appearance
     kind: text
     accepted: ["white smooth cream", "off-white smooth cream"]
     severity: major
   - key: odour
+    match: ["odour"]
     name: Odour
     kind: text
     accepted: ["characteristic"]
     severity: major
   - key: ph
+    match: ["ph ("]
     name: pH (25 °C)
     kind: range
     min: "5.0"
     max: "6.0"
     severity: major
   - key: viscosity_cp
+    match: ["viscosity"]
     name: Viscosity (Brookfield, 25 °C)
     kind: range
-    min: "30000"
+    min: "32000"
     max: "45000"
     unit: cP
     severity: major
   - key: specific_gravity
+    match: ["specific gravity"]
     name: Specific gravity
     kind: range
     min: "0.98"
     max: "1.02"
     severity: major
   - key: phenoxyethanol_pct
+    match: ["phenoxyethanol"]
     name: Phenoxyethanol assay
     kind: range
     min: "0.80"
@@ -47,24 +59,28 @@ tests:
     unit: "% w/w"
     severity: major
   - key: fill_weight_g
+    match: ["fill weight"]
     name: Fill weight (mean of 10)
     kind: range
     min: "50.0"
     unit: g
     severity: major
   - key: tamc_cfu_g
+    match: ["aerobic"]
     name: Total aerobic microbial count
     kind: range
     max: "100"
     unit: CFU/g
     severity: critical
   - key: tymc_cfu_g
+    match: ["yeast"]
     name: Total yeast and mould count
     kind: range
     max: "10"
     unit: CFU/g
     severity: critical
   - key: pathogens
+    match: ["albicans"]
     name: Specified pathogens
     kind: text
     accepted: ["absent"]

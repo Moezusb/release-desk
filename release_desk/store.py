@@ -33,7 +33,19 @@ class LotReview:
     model: str = ""
     error: str | None = None
     deferred: bool = False  # a release proposal left for a reviewer who is not here
+    versions: dict = field(default_factory=dict)  # section -> corrected version in use
+    fingerprint: str = ""  # hash of the documents this review read
+    governing_revision: str | None = None
+    investigation: dict = field(default_factory=lambda: {"calls": [], "notes": []})
+    history: list[dict] = field(default_factory=list)  # earlier reviews of this lot, never deleted
+    usage: dict = field(default_factory=dict)  # seconds and tokens for this review
     pending: asyncio.Future | None = field(default=None, repr=False, compare=False)
+
+    def superseded_reason(self) -> str | None:
+        for t in reversed(self.timeline):
+            if t["actor"] == "correction":
+                return t["text"]
+        return None
 
     def log(self, actor: str, text: str) -> None:
         self.timeline.append({"at": now(), "actor": actor, "text": text})
@@ -69,8 +81,21 @@ class Store:
         return self.lots[lot_id]
 
     def reset(self, lot_id: str) -> LotReview:
-        self.lots[lot_id] = LotReview(lot_id=lot_id)
-        return self.lots[lot_id]
+        """Start a new review. The previous one moves into history; nothing is lost."""
+        old = self.get(lot_id) if (self.runs_dir / f"{lot_id}.json").exists() or lot_id in self.lots else None
+        new = LotReview(lot_id=lot_id)
+        if old is not None:
+            new.versions = dict(old.versions)
+            new.history = list(old.history)
+            if old.proposal or old.decision:
+                new.history.append({
+                    "fingerprint": old.fingerprint, "versions": old.versions, "status": old.status,
+                    "proposal": old.proposal, "decision": old.decision,
+                    "findings": [f"{f['id']} {f['title']}" for f in old.findings],
+                    "superseded_at": now(), "reason": old.superseded_reason() or "reviewed again",
+                })
+        self.lots[lot_id] = new
+        return new
 
     def save(self, review: LotReview) -> None:
         path = self.runs_dir / f"{review.lot_id}.json"

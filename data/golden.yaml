@@ -19,3 +19,6 @@ LC-24035:
 LC-24036:
   expected_findings: [test.tymc_cfu_g.missing, dates.expiry]
   expected_proposal: hold
+LC-24037:
+  expected_findings: [spec.wrong_revision, test.viscosity_cp.out_of_spec]
+  expected_proposal: hold

@@ -13,7 +13,7 @@ from __future__ import annotations
 import re
 from datetime import date
 
-from .documents import LotPackage
+from .documents import LotPackage, governing_spec
 from .schemas import Cited, Evidence, Finding, LotExtraction
 
 _NUM = re.compile(r"^\s*([<>]=?|≤|≥)?\s*([0-9][0-9,]*\.?[0-9]*)\s*$")
@@ -75,9 +75,38 @@ def _fmt_range(t: dict) -> str:
     return f"not more than {hi}{unit}"
 
 
-def evaluate(pkg: LotPackage, ext: LotExtraction, spec: dict) -> list[Finding]:
+def _date(text: str | None) -> date | None:
+    try:
+        return date.fromisoformat(text or "")
+    except ValueError:
+        return None
+
+
+def applicable_spec(specs: list[dict], ext: LotExtraction) -> dict | None:
+    """The specification revision that governs this lot: the one in force on its date of manufacture."""
+    made = _date(ext.batch_record.manufacture_date.value) or _date(ext.certificate.manufacture_date.value)
+    return governing_spec(specs, made)
+
+
+def evaluate(pkg: LotPackage, ext: LotExtraction, specs: list[dict] | dict) -> list[Finding]:
     f = _Collector(pkg)
     c, b, d = ext.certificate, ext.batch_record, ext.deviation_log
+    specs = [specs] if isinstance(specs, dict) else specs
+
+    # Which revision governs? The one in force when the lot was made, not the latest
+    # and not whichever the certificate happens to name.
+    spec = applicable_spec(specs, ext)
+    if spec is None:
+        spec = specs[-1]
+        f.add("spec.no_governing_revision", "major", "No specification revision covers the manufacture date",
+              "a revision in force on the date of manufacture", "none found; checked against the latest",
+              [f.ev("batch_record", b.manufacture_date)])
+    elif c.spec_revision.value != spec["revision"]:
+        f.add("spec.wrong_revision", "major",
+              f"Certificate tested against the wrong specification revision",
+              f"rev {spec['revision']}, in force from {spec['effective_from']}",
+              f"rev {c.spec_revision.value}" if c.spec_revision.value else "not stated or unverified",
+              [f.ev("certificate", c.spec_revision), f.ev("batch_record", b.manufacture_date)])
 
     # Identity: the three documents must describe the same lot and product.
     for section, cited, label in (
@@ -116,10 +145,7 @@ def evaluate(pkg: LotPackage, ext: LotExtraction, spec: dict) -> list[Finding]:
                       " or ".join(t["accepted"]), raw, [f.ev("certificate", cited)])
 
     # Dates: expiry must equal manufacture month plus shelf life.
-    try:
-        mfg = date.fromisoformat(b.manufacture_date.value or c.manufacture_date.value or "")
-    except ValueError:
-        mfg = None
+    mfg = _date(b.manufacture_date.value) or _date(c.manufacture_date.value)
     if c.manufacture_date.value and b.manufacture_date.value and c.manufacture_date.value != b.manufacture_date.value:
         f.add("dates.manufacture_mismatch", "major", "Manufacture date differs between documents",
               b.manufacture_date.value, c.manufacture_date.value,

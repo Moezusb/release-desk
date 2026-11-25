@@ -41,7 +41,10 @@ class Settings:
 
 
 def load(offline: bool | None = None) -> Settings:
-    has_key = bool(os.environ.get("ANTHROPIC_API_KEY"))
+    # A static key, or workload identity federation (a short-lived identity token
+    # exchanged by the Anthropic SDK), which is how the GitHub Actions runs work.
+    has_key = any(os.environ.get(k) for k in (
+        "ANTHROPIC_API_KEY", "ANTHROPIC_IDENTITY_TOKEN_FILE", "ANTHROPIC_IDENTITY_TOKEN", "ANTHROPIC_PROFILE"))
     if offline is None:
         offline = os.environ.get("RELEASE_DESK_OFFLINE", "").lower() in {"1", "true", "yes"} or not has_key
     return Settings(

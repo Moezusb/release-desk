@@ -7,6 +7,7 @@ Product: Daily Barrier Cream, 50 g (FH-DBC-050)
 Lot number: LC-24032
 Date of manufacture: 2026-09-10
 Expiry: 2029-03
+Tested against specification: FH-DBC-050 rev 03
 
 | Test | Specification | Result |
 |---|---|---|

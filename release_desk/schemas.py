@@ -40,6 +40,7 @@ class CertificateExtract(BaseModel):
     product_code: Cited
     manufacture_date: Cited
     expiry: Cited
+    spec_revision: Cited = Field(default_factory=Cited, description="The specification revision the certificate says it tested against, e.g. '04'")
     approved_by: Cited
     results: list[TestResult]
 
@@ -94,6 +95,33 @@ class EvidenceNote(BaseModel):
     claimed_value: str | None
     cited_line: int | None
     reason: str
+
+
+# ------------------------------------------------------------ investigation
+
+NextStep = Literal[
+    "reassess_with_corrected_document",
+    "request_corrected_document",
+    "route_to_deviation_owner",
+    "confirm_with_laboratory",
+    "request_missing_evidence",
+    "no_further_evidence_needed",
+]
+
+
+class EvidenceRef(BaseModel):
+    document: str
+    line: int | None = None
+
+
+class InvestigationNote(BaseModel):
+    """What the investigator found. Advice to the reviewer; it changes no finding."""
+
+    finding_ids: list[str] = Field(description="The findings this note is about")
+    summary: str = Field(description="Two or three plain sentences: what the evidence shows")
+    evidence: list[EvidenceRef] = Field(default_factory=list)
+    next_step: NextStep
+    open_questions: list[str] = Field(default_factory=list)
 
 
 # ---------------------------------------------------------------- proposals

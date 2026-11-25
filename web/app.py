@@ -13,11 +13,17 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 from release_desk import config
-from release_desk.documents import DOCUMENTS, list_lots, load_lot
-from release_desk.pipeline import HUMAN_ACTIONS, decide, pending_approver, run_review
+from release_desk.documents import list_lots, load_lot
+from release_desk.pipeline import HUMAN_ACTIONS, apply_correction, decide, pending_approver, run_review
+from release_desk.views import lot_context
 from release_desk.store import Store, metrics
 
 STATIC = Path(__file__).parent / "static"
+
+
+class Correction(BaseModel):
+    section: str
+    version: str
 
 
 class Decision(BaseModel):
@@ -43,7 +49,7 @@ def create_app(settings: config.Settings | None = None) -> FastAPI:
             "lot_id": lot_id, "stage": r.stage, "status": r.status, "running": busy(lot_id),
             "proposal": (r.proposal or {}).get("decision"), "blocking": len(r.blocking),
             "awaiting_release_approval": d["awaiting_release_approval"],
-            "decision": (r.decision or {}).get("action"),
+            "decision": (r.decision or {}).get("action"), "needs_reassessment": r.stage == "needs reassessment",
         }
 
     @app.get("/")
@@ -64,9 +70,9 @@ def create_app(settings: config.Settings | None = None) -> FastAPI:
     async def lot(lot_id: str) -> dict:
         if lot_id not in list_lots(settings.data_dir):
             raise HTTPException(404, "No such lot")
-        pkg = load_lot(settings.data_dir, lot_id)
-        docs = {k: {"filename": DOCUMENTS[k], "lines": pkg.docs[k]} for k in DOCUMENTS}
-        return {"review": store.get(lot_id).to_dict(), "running": busy(lot_id), "documents": docs}
+        review = store.get(lot_id)
+        pkg = load_lot(settings.data_dir, lot_id, review.versions)
+        return {"review": review.to_dict(), "running": busy(lot_id), **lot_context(settings, lot_id, pkg)}
 
     @app.post("/api/lots/{lot_id}/review")
     async def start(lot_id: str) -> dict:
@@ -74,18 +80,34 @@ def create_app(settings: config.Settings | None = None) -> FastAPI:
             raise HTTPException(404, "No such lot")
         if busy(lot_id):
             raise HTTPException(409, "A review of this lot is already running")
-        if store.get(lot_id).status in ("released", "rejected"):
+        r = store.get(lot_id)
+        if r.status in ("released", "rejected") and r.stage != "needs reassessment":
             raise HTTPException(409, "This lot already has a final decision")
+        if r.pending and not r.pending.done():
+            raise HTTPException(409, "A release proposal is waiting for a reviewer")
         tasks[lot_id] = asyncio.create_task(run_review(settings, store, lot_id, pending_approver))
         return {"started": lot_id}
 
     @app.post("/api/lots/{lot_id}/decision")
     async def decision(lot_id: str, body: Decision) -> dict:
-        error = decide(store, store.get(lot_id), body.action, body.reviewer, body.reason)
+        error = decide(settings, store, store.get(lot_id), body.action, body.reviewer, body.reason)
         if error:
             raise HTTPException(400, error)
         await asyncio.sleep(0.3)  # let an approved release finish before we answer
         return {"ok": True}
+
+    @app.post("/api/lots/{lot_id}/correction")
+    async def correct(lot_id: str, body: Correction) -> dict:
+        error = apply_correction(settings, store, store.get(lot_id), body.section, body.version)
+        if error:
+            raise HTTPException(400, error)
+        return {"ok": True}
+
+    @app.get("/api/mapping")
+    async def mapping_reports() -> dict:
+        from release_desk.mapping import check_all
+
+        return check_all(settings.data_dir)
 
     return app
 

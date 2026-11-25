@@ -1,0 +1,566 @@
+{
+ "bundle_version": 1,
+ "mode": "offline (scripted stand-in model)",
+ "model": "scripted/offline",
+ "commit": "f7656cf",
+ "when": "2026-11-25 05:39 UTC",
+ "repeat": 2,
+ "lots": 7,
+ "summary": {
+  "false_clears": 0,
+  "blocking_findings_found": "18/18",
+  "clean_case_completion": "2/2",
+  "all_runs_correct_lots": "7/7",
+  "lots_with_any_failure": [],
+  "unexpected_findings": 0,
+  "mean_seconds_per_lot": 3.1,
+  "mean_input_tokens_per_lot": 0.0,
+  "mean_output_tokens_per_lot": 0.0
+ },
+ "per_lot": [
+  {
+   "lot": "LC-24031",
+   "expected": [],
+   "expected_proposal": "release",
+   "runs_correct": 2,
+   "runs": 2,
+   "all_correct": true,
+   "any_failure": false,
+   "false_clears": 0,
+   "seen_in_any_run": [],
+   "missed_in_some_run": [],
+   "agreement": 1.0,
+   "investigator_paths": [
+    ""
+   ]
+  },
+  {
+   "lot": "LC-24032",
+   "expected": [
+    "test.tymc_cfu_g.out_of_spec"
+   ],
+   "expected_proposal": "hold",
+   "runs_correct": 2,
+   "runs": 2,
+   "all_correct": true,
+   "any_failure": false,
+   "false_clears": 0,
+   "seen_in_any_run": [
+    "test.tymc_cfu_g.out_of_spec"
+   ],
+   "missed_in_some_run": [],
+   "agreement": 1.0,
+   "investigator_paths": [
+    "list_supporting_records > submit_note"
+   ]
+  },
+  {
+   "lot": "LC-24033",
+   "expected": [
+    "deviation.open"
+   ],
+   "expected_proposal": "hold",
+   "runs_correct": 2,
+   "runs": 2,
+   "all_correct": true,
+   "any_failure": false,
+   "false_clears": 0,
+   "seen_in_any_run": [
+    "deviation.open"
+   ],
+   "missed_in_some_run": [],
+   "agreement": 1.0,
+   "investigator_paths": [
+    "list_supporting_records > open_record > submit_note"
+   ]
+  },
+  {
+   "lot": "LC-24034",
+   "expected": [
+    "batch.step_unverified"
+   ],
+   "expected_proposal": "hold",
+   "runs_correct": 2,
+   "runs": 2,
+   "all_correct": true,
+   "any_failure": false,
+   "false_clears": 0,
+   "seen_in_any_run": [
+    "batch.step_unverified"
+   ],
+   "missed_in_some_run": [],
+   "agreement": 1.0,
+   "investigator_paths": [
+    "read_document > submit_note"
+   ]
+  },
+  {
+   "lot": "LC-24035",
+   "expected": [
+    "identity.lot_mismatch",
+    "test.phenoxyethanol_pct.out_of_spec"
+   ],
+   "expected_proposal": "hold",
+   "runs_correct": 2,
+   "runs": 2,
+   "all_correct": true,
+   "any_failure": false,
+   "false_clears": 0,
+   "seen_in_any_run": [
+    "identity.lot_mismatch",
+    "test.phenoxyethanol_pct.out_of_spec"
+   ],
+   "missed_in_some_run": [],
+   "agreement": 1.0,
+   "investigator_paths": [
+    "list_corrected_documents > read_corrected_document > submit_note > list_supporting_records > open_record > submit_note"
+   ]
+  },
+  {
+   "lot": "LC-24036",
+   "expected": [
+    "dates.expiry",
+    "test.tymc_cfu_g.missing"
+   ],
+   "expected_proposal": "hold",
+   "runs_correct": 2,
+   "runs": 2,
+   "all_correct": true,
+   "any_failure": false,
+   "false_clears": 0,
+   "seen_in_any_run": [
+    "dates.expiry",
+    "test.tymc_cfu_g.missing"
+   ],
+   "missed_in_some_run": [],
+   "agreement": 1.0,
+   "investigator_paths": [
+    "list_corrected_documents > read_corrected_document > submit_note"
+   ]
+  },
+  {
+   "lot": "LC-24037",
+   "expected": [
+    "spec.wrong_revision",
+    "test.viscosity_cp.out_of_spec"
+   ],
+   "expected_proposal": "hold",
+   "runs_correct": 2,
+   "runs": 2,
+   "all_correct": true,
+   "any_failure": false,
+   "false_clears": 0,
+   "seen_in_any_run": [
+    "spec.wrong_revision",
+    "test.viscosity_cp.out_of_spec"
+   ],
+   "missed_in_some_run": [],
+   "agreement": 1.0,
+   "investigator_paths": [
+    "get_specification > get_specification > submit_note"
+   ]
+  }
+ ],
+ "runs": [
+  {
+   "lot": "LC-24031",
+   "run": 1,
+   "findings": [],
+   "missed": [],
+   "extra": [],
+   "proposal": "release",
+   "expected_proposal": "release",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [],
+   "notes": [],
+   "usage": {
+    "model_calls": 4,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 1.45
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "lot": "LC-24031",
+   "run": 2,
+   "findings": [],
+   "missed": [],
+   "extra": [],
+   "proposal": "release",
+   "expected_proposal": "release",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [],
+   "notes": [],
+   "usage": {
+    "model_calls": 4,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 1.98
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "lot": "LC-24032",
+   "run": 1,
+   "findings": [
+    "test.tymc_cfu_g.out_of_spec"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "submit_note"
+   ],
+   "notes": [
+    "confirm_with_laboratory"
+   ],
+   "usage": {
+    "model_calls": 7,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.1
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "lot": "LC-24032",
+   "run": 2,
+   "findings": [
+    "test.tymc_cfu_g.out_of_spec"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "submit_note"
+   ],
+   "notes": [
+    "confirm_with_laboratory"
+   ],
+   "usage": {
+    "model_calls": 7,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.1
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "lot": "LC-24033",
+   "run": 1,
+   "findings": [
+    "deviation.open"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "open_record",
+    "submit_note"
+   ],
+   "notes": [
+    "route_to_deviation_owner"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.43
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "lot": "LC-24033",
+   "run": 2,
+   "findings": [
+    "deviation.open"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "open_record",
+    "submit_note"
+   ],
+   "notes": [
+    "route_to_deviation_owner"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.45
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "lot": "LC-24034",
+   "run": 1,
+   "findings": [
+    "batch.step_unverified"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 1,
+   "investigator_calls": [
+    "read_document",
+    "submit_note"
+   ],
+   "notes": [
+    "request_missing_evidence"
+   ],
+   "usage": {
+    "model_calls": 7,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.13
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "lot": "LC-24034",
+   "run": 2,
+   "findings": [
+    "batch.step_unverified"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 1,
+   "investigator_calls": [
+    "read_document",
+    "submit_note"
+   ],
+   "notes": [
+    "request_missing_evidence"
+   ],
+   "usage": {
+    "model_calls": 7,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.12
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "lot": "LC-24035",
+   "run": 1,
+   "findings": [
+    "identity.lot_mismatch",
+    "test.phenoxyethanol_pct.out_of_spec"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_corrected_documents",
+    "read_corrected_document",
+    "submit_note",
+    "list_supporting_records",
+    "open_record",
+    "submit_note"
+   ],
+   "notes": [
+    "reassess_with_corrected_document",
+    "confirm_with_laboratory"
+   ],
+   "usage": {
+    "model_calls": 11,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 4.25
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "lot": "LC-24035",
+   "run": 2,
+   "findings": [
+    "identity.lot_mismatch",
+    "test.phenoxyethanol_pct.out_of_spec"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_corrected_documents",
+    "read_corrected_document",
+    "submit_note",
+    "list_supporting_records",
+    "open_record",
+    "submit_note"
+   ],
+   "notes": [
+    "reassess_with_corrected_document",
+    "confirm_with_laboratory"
+   ],
+   "usage": {
+    "model_calls": 11,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.43
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "lot": "LC-24036",
+   "run": 1,
+   "findings": [
+    "dates.expiry",
+    "test.tymc_cfu_g.missing"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_corrected_documents",
+    "read_corrected_document",
+    "submit_note"
+   ],
+   "notes": [
+    "reassess_with_corrected_document"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.36
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "lot": "LC-24036",
+   "run": 2,
+   "findings": [
+    "dates.expiry",
+    "test.tymc_cfu_g.missing"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_corrected_documents",
+    "read_corrected_document",
+    "submit_note"
+   ],
+   "notes": [
+    "reassess_with_corrected_document"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.38
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "lot": "LC-24037",
+   "run": 1,
+   "findings": [
+    "spec.wrong_revision",
+    "test.viscosity_cp.out_of_spec"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "get_specification",
+    "get_specification",
+    "submit_note"
+   ],
+   "notes": [
+    "request_corrected_document"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.38
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "lot": "LC-24037",
+   "run": 2,
+   "findings": [
+    "spec.wrong_revision",
+    "test.viscosity_cp.out_of_spec"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "get_specification",
+    "get_specification",
+    "submit_note"
+   ],
+   "notes": [
+    "request_corrected_document"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.36
+   },
+   "error": null,
+   "correct": true
+  }
+ ]
+}

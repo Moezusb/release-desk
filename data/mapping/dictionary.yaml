@@ -1,0 +1,36 @@
+# What each source column means, as documented by the systems' owners.
+# Synthetic: these systems and their quirks are invented for the demonstration.
+
+lims_results:
+  key: lot_ref
+  key_format: "LC-NNNNN; lots migrated before 2026-10-10 may appear as LCNNNNN"
+  status_column: result_status
+  status_values:
+    approved: "Result approved by the laboratory"
+    superseded: "Replaced by a retest; kept for audit"
+    pending: "Test started, no result yet"
+  test_codes:
+    MIC-TAMC: {meaning: "Total aerobic microbial count", unit: "CFU/g"}
+    MIC-TYMC: {meaning: "Total yeast and mould count", unit: "CFU/g"}
+    PHY-VIS: {meaning: "Viscosity, Brookfield, 25 C", unit: "mPa.s"}
+    ASY-PHX: {meaning: "Phenoxyethanol content", unit: "mass fraction, 0 to 1"}
+    PHY-PH: {meaning: "pH at 25 C", unit: ""}
+  columns:
+    tested_on: {meaning: "Date the sample was tested", event: test, date_convention: "not documented"}
+
+mes_batches:
+  key: batch_no
+  key_format: "LC-NNNNN"
+  columns:
+    mfg_date: {meaning: "Date the batch was manufactured", event: manufacture, date_convention: "YYYY-MM-DD"}
+    packed_on: {meaning: "Date the batch was packed", event: packing, date_convention: "DD/MM/YYYY"}
+    yield_pct: {meaning: "Actual over theoretical quantity", unit: "%"}
+
+qms_deviations:
+  key: batch_no
+  key_format: "LC-NNNNN"
+  status_column: status
+  status_values:
+    Open: "Investigation or approval outstanding"
+    Closed: "Closed with all actions complete"
+    "Closed - effectiveness check pending": "Closed; CAPA effectiveness review scheduled"

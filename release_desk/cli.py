@@ -2,7 +2,8 @@
 
     release-desk serve                 the reviewer's desk in your browser
     release-desk review LC-24031       review one lot in the terminal (or: all)
-    release-desk eval                  score every lot against data/golden.yaml
+    release-desk eval --repeat 3       score every lot against data/golden.yaml, 3 clean runs each
+    release-desk check-mapping         check the vendor data mappings in data/mapping
     release-desk export-replay         write docs/replay.json for the static demo
 
 Add --offline to any command to use the scripted stand-in model.
@@ -70,11 +71,14 @@ def main(argv: list[str] | None = None) -> None:
     s.add_argument("--host", default="127.0.0.1")
     r = sub.add_parser("review", parents=[common])
     r.add_argument("lot", help="a lot id, or 'all'")
-    sub.add_parser("eval", parents=[common])
+    e = sub.add_parser("eval", parents=[common])
+    e.add_argument("--repeat", type=int, default=1, help="runs per lot, each from a clean state")
+    mp = sub.add_parser("check-mapping", parents=[common])
+    mp.add_argument("mapping", nargs="?", default="all", help="a file in data/mapping, e.g. vendor-v1.yaml, or 'all'")
     sub.add_parser("export-replay", parents=[common])
     args = parser.parse_args(argv)
     settings = config.load(offline=True if args.offline else None)
-    if settings.offline:
+    if settings.offline and args.cmd != "check-mapping":
         print("Offline mode: a scripted stand-in model, not a real one. Set ANTHROPIC_API_KEY for live runs.", file=sys.stderr)
 
     if args.cmd == "serve":
@@ -88,7 +92,13 @@ def main(argv: list[str] | None = None) -> None:
     elif args.cmd == "eval":
         from .evaluate import main as run_eval
 
-        asyncio.run(run_eval(settings))
+        asyncio.run(run_eval(settings, args.repeat))
+    elif args.cmd == "check-mapping":
+        from .mapping import check, check_all, to_markdown
+
+        reports = check_all(settings.data_dir)["reports"] if args.mapping == "all" else [check(settings.data_dir, args.mapping)]
+        for rep in reports:
+            print(to_markdown(rep))
     elif args.cmd == "export-replay":
         from .replay import export
 

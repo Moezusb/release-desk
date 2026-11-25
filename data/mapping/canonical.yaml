@@ -1,0 +1,18 @@
+# The fields the release rules need, defined independently of any vendor's design.
+# `means` lists words that must appear in the source's documented meaning.
+
+fields:
+  lot_id:            {means: [], kind: key, format: "^LC-\\d{5}$", required: true}
+  manufacture_date:  {means: [manufactured], kind: date, event: manufacture, required: true}
+  tamc_cfu_g:        {means: [aerobic], kind: number, unit: "CFU/g", spec_key: tamc_cfu_g, required: true}
+  tymc_cfu_g:        {means: [yeast, mould], kind: number, unit: "CFU/g", spec_key: tymc_cfu_g, required: true}
+  viscosity_cp:      {means: [viscosity], kind: number, unit: "cP", spec_key: viscosity_cp, required: true}
+  phenoxyethanol_pct: {means: [phenoxyethanol], kind: number, unit: "% w/w", spec_key: phenoxyethanol_pct, required: true}
+  ph:                {means: [ph], kind: number, unit: "", spec_key: ph, required: true}
+  deviation_closed:  {means: [], kind: status, required: true, confirmed_closed_values: [Closed]}
+  spec_revision:     {means: [], kind: policy, required: true}
+
+# Unit conversions the business has approved. Anything else needs confirmation.
+approved_conversions:
+  - {from: "mass fraction, 0 to 1", to: "% w/w", multiply: 100}
+  - {from: "mPa.s", to: "cP", multiply: 1}

@@ -1,0 +1,15 @@
+# Proposed mapping, version 1, as submitted by the implementation vendor (fictional).
+name: Vendor mapping v1
+joins:
+  lims_to_mes: {left: lims_results.lot_ref, right: mes_batches.batch_no, normalise: none}
+results_filter: none
+fields:
+  lot_id:             {source: mes_batches.batch_no}
+  manufacture_date:   {source: lims_results.tested_on, date_format: "MM/DD/YYYY"}
+  tamc_cfu_g:         {source: lims_results, test_code: MIC-TAMC}
+  tymc_cfu_g:         {source: lims_results, test_code: MIC-TAMC}
+  viscosity_cp:       {source: lims_results, test_code: PHY-VIS, multiply: 1}
+  phenoxyethanol_pct: {source: lims_results, test_code: ASY-PHX}
+  ph:                 {source: lims_results, test_code: PHY-PH}
+  deviation_closed:   {source: qms_deviations.status, closed_values: [Closed, "Closed - effectiveness check pending"]}
+  spec_revision:      {policy: latest}
