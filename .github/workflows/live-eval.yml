@@ -15,7 +15,7 @@ on:
     inputs:
       repeat:
         description: Runs per lot
-        default: "5"
+        default: "3"
       model:
         description: Model
         default: claude-sonnet-5-5

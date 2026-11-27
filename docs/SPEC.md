@@ -43,6 +43,9 @@ Rules that apply to everything:
 - Limits are inclusive: a pH of exactly 6.0 meets "5.0 to 6.0".
 - A result reported as "<10" meets "not more than 10" but can never prove a minimum.
 - A deviation is open unless its status says closed.
+- A text result passes only when it states the accepted outcome without negating it: "Not absent" fails.
+- A placeholder is not a signature: "N/A", "pending" or a dash counts as unsigned.
+- A value copied with its label or a stray symbol ("Lot number: LC-24033", "98.4%") reads the same as the bare value.
 - The person who performs a step may not be the one who verifies it.
 - A lot is judged by the specification revision in force on its date of manufacture, whatever revision its certificate names.
 - A decision is valid only for the documents it was made on. When a document changes, the lot is reassessed.

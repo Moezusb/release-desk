@@ -217,6 +217,15 @@ pre{background:var(--well);border-radius:16px;padding:18px;overflow:auto;font-si
 .casesel{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:24px;align-items:end;padding-bottom:28px;border-bottom:1px solid var(--line)}
 
 /* how */
+.arch-list{display:none;list-style:none;padding:0;margin:32px 0 0}
+.arch-list li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;padding:18px 0;border-top:1px solid var(--line)}
+.arch-list li.lab{grid-template-columns:minmax(0,1fr);background:var(--sagebg);border-radius:18px;padding:18px 20px;border:0;margin-top:10px}
+.arch-list .n{font-size:20px;color:var(--mute)}.arch-list .t{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.arch-list b{font-weight:400;font-size:26px}.arch-list p{margin:6px 0 0;color:var(--mute);font-size:15px}
+.k-model{background:var(--sagebg);color:var(--sage)}.k-agent{background:var(--amberbg);color:var(--amber)}.k-you{background:light-dark(#f1e4da,#3b2c23);color:light-dark(#7a4a30,#e2b79c)}
+
+.arch{margin:48px 0 0;border-radius:28px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
+.arch svg{display:block;width:100%;height:auto}
 .big3{font-size:clamp(48px,5.6vw,82px);line-height:1.08;color:var(--sage)}
 .big3 em{font-style:italic;opacity:.85}
 .plain h3{font-size:28px;font-family:Inter,system-ui,sans-serif;font-weight:600;letter-spacing:-.015em;margin:16px 0}
@@ -229,7 +238,7 @@ code.blockcode{display:block;white-space:pre;background:var(--well);border-radiu
 .foot{color:var(--mute);font-size:14px;padding:40px 0 60px;border-top:1px solid var(--line);margin-top:40px}
 [hidden]{display:none!important}
 @media(max-width:1060px){.hero,.split,.calc,.mapgrid,.uat,.casesel{grid-template-columns:minmax(0,1fr)}.desk{grid-template-columns:minmax(0,1fr)}.queue{position:static;max-height:none}.hero{min-height:0}}
-@media(max-width:760px){.nav{position:static}.duo,.grid2,.eo,.decide .row{grid-template-columns:minmax(0,1fr)}.stats{grid-template-columns:minmax(0,1fr)}.stats>div{border-left:0;padding-left:0;border-top:1px solid var(--line)}.stats>div:first-child{border-top:0}
+@media(max-width:760px){.nav{position:static}.arch{display:none}.arch-list{display:block}.duo,.grid2,.eo,.decide .row{grid-template-columns:minmax(0,1fr)}.stats{grid-template-columns:minmax(0,1fr)}.stats>div{border-left:0;padding-left:0;border-top:1px solid var(--line)}.stats>div:first-child{border-top:0}
   .navr{display:none}.links a{padding:8px 12px}.brand{font-size:22px}.fhead{grid-template-columns:auto minmax(0,1fr)}.fhead .chip{grid-column:2;justify-self:start}.finding{padding:22px}
   .table th:nth-child(2),.table td:nth-child(2){display:none}.tabs button{padding:12px 14px}.lines .l{grid-template-columns:44px minmax(0,1fr);padding-right:14px}.lines .l i{padding-right:12px}.dochead{padding:18px}.scope,.result{padding:24px}}
 </style>
@@ -248,11 +257,11 @@ code.blockcode{display:block;white-space:pre;background:var(--well);border-radiu
 <section id="v-overview" class="wrap" hidden>
   <div class="hero">
     <div>
-      <div class="eyebrow">Evidence. Exceptions. A clear decision.</div>
+      <div class="eyebrow">Lot release, reconsidered</div>
       <h1>Clarity before every release.</h1>
-      <p class="lede">The model reads the lot. The rules check it. You decide, with every finding one step from the line it came from.</p>
-      <div class="acts"><a class="btn dark" href="#review">Open the review desk <svg class="arrow" viewBox="0 0 14 14"><path d="M3 11L11 3M5 3h6v6" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></a><a class="btn" href="#lab">Explore acceptance</a></div>
-      <div class="meta"><span class="dot"></span>Synthetic cases. Working checks. Human judgment.</div>
+      <p class="lede">A model reads every record. Code checks every claim. You make the call, with the proof one click away.</p>
+      <div class="acts"><a class="btn dark" href="#review">Open the review desk <svg class="arrow" viewBox="0 0 14 14"><path d="M3 11L11 3M5 3h6v6" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></a><a class="btn" href="#lab">See how it’s tested</a></div>
+      <div class="meta"><span class="dot"></span><span id="o-proof">Seven synthetic lots. Working checks. Your judgment.</span></div>
     </div>
     <div class="record" aria-hidden="true">
       <div class="sheet blob"></div><div class="sheet back"></div>
@@ -267,26 +276,27 @@ code.blockcode{display:block;white-space:pre;background:var(--well);border-radiu
       <div class="stamp"><div><div>HUMAN</div><i>judgment.</i><div>AT THE CENTRE</div></div></div>
     </div>
   </div>
-  <div class="stats">
-    <div><div class="num" id="s-lots">07</div><span>Synthetic lot cases</span></div>
-    <div><div class="num">03</div><span>Source records per lot</span></div>
-    <div><div class="num" id="s-ex">09</div><span>Labelled exceptions to find</span></div>
+  <div class="eyebrow" id="s-eyebrow">The test set</div>
+  <div class="stats" id="stats">
+    <div><div class="num" id="s-lots">07</div><span>Lots, each a different judgment</span></div>
+    <div><div class="num">03</div><span>Records in every lot</span></div>
+    <div><div class="num" id="s-ex">09</div><span>Exceptions hidden among them</span></div>
   </div>
   <div class="eyebrow">Two views. One standard of evidence.</div>
   <div class="duo">
-    <a class="card door" href="#review"><span class="eyebrow">Review desk</span><h3>A considered review.</h3><p>Seven lots, each a different kind of judgment. Findings sit beside the lines that prove them, an investigator explains what it found, and the decision stays with you.</p><div class="go"><span class="meta">Recorded run, working decisions</span><span class="circ"><svg class="arrow" viewBox="0 0 14 14"><path d="M3 11L11 3M5 3h6v6" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></div></a>
-    <a class="card door" href="#lab"><span class="eyebrow">Acceptance lab</span><h3>Know what you can accept.</h3><p>Score delivered output against labels written separately, challenge a vendor's data mapping, and see why each verdict was reached.</p><div class="go"><span class="meta">Independent checks</span><span class="circ"><svg class="arrow" viewBox="0 0 14 14"><path d="M3 11L11 3M5 3h6v6" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></div></a>
+    <a class="card door" href="#review"><span class="eyebrow">Review desk</span><h3>A considered review.</h3><p>Seven lots. Every finding beside the line that proves it. An investigator that explains what it found. A decision that stays yours.</p><div class="go"><span class="meta">Recorded live run · Working decisions</span><span class="circ"><svg class="arrow" viewBox="0 0 14 14"><path d="M3 11L11 3M5 3h6v6" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></div></a>
+    <a class="card door" href="#lab"><span class="eyebrow">Acceptance lab</span><h3>Know what you can accept.</h3><p>Every run scored against answers written in advance. Planted failures to prove the scoring works. A vendor’s data mapping, put to the test.</p><div class="go"><span class="meta">Independent of the desk</span><span class="circ"><svg class="arrow" viewBox="0 0 14 14"><path d="M3 11L11 3M5 3h6v6" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></span></div></a>
   </div>
 </section>
 
 <!-- ============ REVIEW ============ -->
 <section id="v-review" class="wrap" hidden>
-  <div class="head"><div><h1>A considered review.</h1><p class="sub">The finding, its source, and the person who decides.</p></div><button class="btn" id="export-notes">Export review notes</button></div>
-  <div class="headmeta"><span class="meta"><span class="dot"></span><span id="r-mode">Recorded run</span></span><a href="#how">How this works ↗</a></div>
+  <div class="head"><div><h1>A considered review.</h1><p class="sub">Every finding. Its source. Your decision.</p></div><button class="btn" id="export-notes">Export review notes</button></div>
+  <div class="headmeta"><span class="meta"><span class="dot"></span><span id="r-mode">Recorded run</span></span><a href="#how">How it works ↗</a></div>
   <div class="desk">
     <aside class="queue" aria-label="Review queue">
       <div class="qhead">Review queue <span class="count" id="qcount">7</span></div>
-      <select class="select" id="qfilter" aria-label="Filter cases"><option value="all">All cases</option><option value="attn">Needs attention</option><option value="ready">Ready for your decision</option><option value="done">Decided</option></select>
+      <select class="select" id="qfilter" aria-label="Filter cases"><option value="all">All cases</option><option value="attn">Needs attention</option><option value="ready">Ready for you</option><option value="done">Decided</option></select>
       <div id="queue"></div>
     </aside>
     <div id="case"><p class="meta">Loading.</p></div>
@@ -295,59 +305,159 @@ code.blockcode{display:block;white-space:pre;background:var(--well);border-radiu
 
 <!-- ============ LAB ============ -->
 <section id="v-lab" class="wrap" hidden>
-  <div class="eyebrow" style="padding-top:56px">Quality acceptance lab</div>
-  <div class="head" style="padding-top:18px"><div><h1>Know what you can accept.</h1><p class="sub">Inspect the requirements, challenge the mapping, and follow the evidence behind acceptance.</p></div><button class="btn" id="download-eval">Download evaluation data</button></div>
-  <div class="headmeta"><span class="meta"><span class="dot"></span>Independent checks · Synthetic cases · <span id="l-mode">Observed results</span></span></div>
+  <div class="eyebrow" style="padding-top:56px">Acceptance lab</div>
+  <div class="head" style="padding-top:18px"><div><h1>Know what you can accept.</h1><p class="sub">Scored from the outside. Shown in full.</p></div><button class="btn" id="download-eval">Download the data</button></div>
+  <div class="headmeta"><span class="meta"><span class="dot"></span>Independent of the desk · Synthetic lots · <span id="l-mode">Recorded results</span></span></div>
   <div class="tabs" role="tablist" id="labtabs"></div>
   <div id="lab"><p class="meta">The acceptance results have not been built yet. Run <span class="mono">python -m acceptance_lab build</span>.</p></div>
 </section>
 
 <!-- ============ HOW ============ -->
 <section id="v-how" class="wrap" hidden>
-  <div class="eyebrow" style="padding-top:56px">Evidence &amp; implementation</div>
-  <div class="head" style="padding-top:18px"><div><h1>Designed to be inspected.</h1><p class="sub">A working prototype, with its boundaries in view.</p></div></div>
+  <div class="eyebrow" style="padding-top:56px">How it works</div>
+  <div class="head" style="padding-top:18px"><div><h1>Designed to be inspected.</h1><p class="sub">A working prototype. Boundaries included.</p></div></div>
   <hr class="rule">
-  <div class="split" style="padding:40px 0">
-    <div class="big3 serif">The model reads.<br>Code checks.<br><em>A person decides.</em></div>
-    <div><h2 style="font-size:clamp(30px,3vw,44px);margin-top:10px">A clear division of responsibility.</h2>
-      <p>A model copies each value out of three synthetic records per lot, citing the line it came from. Plain code refuses any claim the line does not support, picks the specification revision that governed the lot, and applies the rules. Where a finding needs explaining, a read-only agent chooses what evidence to open next. The release itself waits for a named person, and is refused if anything changed after they approved.</p>
-      <p>The acceptance lab scores that output separately, against labels written by hand, without importing the desk's code.</p></div>
+  <figure class="arch"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 660" role="img" aria-labelledby="a-arch-title a-arch-desc" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="a-arch-title">How a lot moves through Release Desk</title>
+  <desc id="a-arch-desc">Six steps. A model reads and cites. Code verifies each citation and applies the rules. An agent investigates each problem, reading only. A model proposes, and a second reader checks it. A person decides; release waits for their name. An acceptance lab scores every run from the outside.</desc>
+  <style>
+    .a-bg{fill:#f5f4f0}.a-card{fill:#fdfdfb;stroke:#e3e1da}.a-ink{fill:#1f211d}.a-mute{fill:#6a6c64}.a-line{stroke:#c9c6bc}.a-num{fill:#b4b1a6}
+    .a-serif{font-family:Newsreader, 'Iowan Old Style', Georgia, serif}
+    .a-model{fill:#e6ebdf}.a-model-t{fill:#4b6444}.a-code{fill:#e8e7e3}.a-code-t{fill:#1f211d}.a-agent{fill:#f6ebdc}.a-agent-t{fill:#8a5a24}.a-you{fill:#f1e4da}.a-you-t{fill:#7a4a30}
+    .a-band{fill:#e6ebdf}.a-band-t{fill:#4b6444}.a-lock{stroke:#7a4a30}
+    @media (prefers-color-scheme: dark){
+      .a-bg{fill:#141613}.a-card{fill:#1c1f1b;stroke:#30352d}.a-ink{fill:#ecebe4}.a-mute{fill:#a3a79b}.a-line{stroke:#4a5045}.a-num{fill:#5c6156}
+      .a-model{fill:#2a3527}.a-model-t{fill:#a9c49c}.a-code{fill:#2a2d28}.a-code-t{fill:#ecebe4}.a-agent{fill:#3a3022}.a-agent-t{fill:#e6b679}.a-you{fill:#3b2c23}.a-you-t{fill:#e2b79c}
+      .a-band{fill:#22291f}.a-band-t{fill:#a9c49c}.a-lock{stroke:#e2b79c}
+    }
+  </style>
+  <defs>
+    <marker id="a-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1L8 5L1 9" fill="none" class="a-line" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect class="a-bg" rx="28"/>
+
+  <!-- header -->
+  <text x="40" y="54" class="a-mute" font-size="12" font-weight="600" letter-spacing="2.2">INSIDE RELEASE DESK</text>
+  <text x="40" y="92" class="a-ink a-serif" font-size="32" letter-spacing="-0.6">The model reads. Code checks. You decide.</text>
+  <g font-size="13" font-weight="500">
+    <rect x="652" y="38" width="268" height="30" rx="15" class="a-card"/>
+    <text x="786" y="58" text-anchor="middle" class="a-mute">In: one lot, three records</text>
+    <rect x="652" y="76" width="268" height="30" rx="15" class="a-card"/>
+    <text x="786" y="96" text-anchor="middle" class="a-mute">Out: a decision, and its reasons</text>
+  </g>
+
+  <!-- row 1 -->
+  <g>
+    <rect x="40" y="136" width="264" height="156" rx="22" class="a-card"/>
+    <text x="64" y="172" class="a-num a-serif" font-size="20">01</text>
+    <rect x="216" y="152" width="68" height="26" rx="13" class="a-model"/><text x="250" y="170" text-anchor="middle" class="a-model-t" font-size="12" font-weight="600">Model</text>
+    <text x="64" y="222" class="a-ink a-serif" font-size="30" letter-spacing="-0.5">Read</text>
+    <text x="64" y="252" class="a-mute" font-size="14.5">Copies every value, and cites</text>
+    <text x="64" y="273" class="a-mute" font-size="14.5">the line it came from.</text>
+  </g>
+  <g>
+    <rect x="348" y="136" width="264" height="156" rx="22" class="a-card"/>
+    <text x="372" y="172" class="a-num a-serif" font-size="20">02</text>
+    <rect x="532" y="152" width="60" height="26" rx="13" class="a-code"/><text x="562" y="170" text-anchor="middle" class="a-code-t" font-size="12" font-weight="600">Code</text>
+    <text x="372" y="222" class="a-ink a-serif" font-size="30" letter-spacing="-0.5">Verify</text>
+    <text x="372" y="252" class="a-mute" font-size="14.5">Opens each cited line. A value</text>
+    <text x="372" y="273" class="a-mute" font-size="14.5">that isn't there is refused.</text>
+  </g>
+  <g>
+    <rect x="656" y="136" width="264" height="156" rx="22" class="a-card"/>
+    <text x="680" y="172" class="a-num a-serif" font-size="20">03</text>
+    <rect x="840" y="152" width="60" height="26" rx="13" class="a-code"/><text x="870" y="170" text-anchor="middle" class="a-code-t" font-size="12" font-weight="600">Code</text>
+    <text x="680" y="222" class="a-ink a-serif" font-size="30" letter-spacing="-0.5">Judge</text>
+    <text x="680" y="252" class="a-mute" font-size="14.5">Uses the revision in force that</text>
+    <text x="680" y="273" class="a-mute" font-size="14.5">day. Unclear always means no.</text>
+  </g>
+  <path d="M308 214H342" class="a-line" stroke-width="1.6" fill="none" marker-end="url(#a-arrow)"/>
+  <path d="M616 214H650" class="a-line" stroke-width="1.6" fill="none" marker-end="url(#a-arrow)"/>
+
+  <!-- the turn from row 1 to row 2 -->
+  <path d="M788 296V318Q788 332 774 332H186Q172 332 172 346V368" class="a-line" stroke-width="1.6" fill="none" marker-end="url(#a-arrow)"/>
+
+  <!-- row 2 -->
+  <g>
+    <rect x="40" y="374" width="264" height="156" rx="22" class="a-card"/>
+    <text x="64" y="410" class="a-num a-serif" font-size="20">04</text>
+    <rect x="216" y="390" width="68" height="26" rx="13" class="a-agent"/><text x="250" y="408" text-anchor="middle" class="a-agent-t" font-size="12" font-weight="600">Agent</text>
+    <text x="64" y="460" class="a-ink a-serif" font-size="30" letter-spacing="-0.5">Investigate</text>
+    <text x="64" y="490" class="a-mute" font-size="14.5">Reads what each problem needs.</text>
+    <text x="64" y="511" class="a-mute" font-size="14.5">Explains. Changes nothing.</text>
+  </g>
+  <g>
+    <rect x="348" y="374" width="264" height="156" rx="22" class="a-card"/>
+    <text x="372" y="410" class="a-num a-serif" font-size="20">05</text>
+    <rect x="524" y="390" width="68" height="26" rx="13" class="a-model"/><text x="558" y="408" text-anchor="middle" class="a-model-t" font-size="12" font-weight="600">Model</text>
+    <text x="372" y="460" class="a-ink a-serif" font-size="30" letter-spacing="-0.5">Propose</text>
+    <text x="372" y="490" class="a-mute" font-size="14.5">Holds, or proposes release.</text>
+    <text x="372" y="511" class="a-mute" font-size="14.5">A second reader checks it.</text>
+  </g>
+  <g>
+    <rect x="656" y="374" width="264" height="156" rx="22" class="a-card"/>
+    <text x="680" y="410" class="a-num a-serif" font-size="20">06</text>
+    <rect x="852" y="390" width="48" height="26" rx="13" class="a-you"/><text x="876" y="408" text-anchor="middle" class="a-you-t" font-size="12" font-weight="600">You</text>
+    <g class="a-lock" fill="none" stroke-width="1.6" stroke-linecap="round" transform="translate(818 391)">
+      <rect x="2" y="10" width="16" height="13" rx="3.5"/><path d="M5.5 10V7a4.5 4.5 0 0 1 9 0v3"/>
+    </g>
+    <text x="680" y="460" class="a-ink a-serif" font-size="30" letter-spacing="-0.5">Decide</text>
+    <text x="680" y="490" class="a-mute" font-size="14.5">Release waits for your name,</text>
+    <text x="680" y="511" class="a-mute" font-size="14.5">then checks everything again.</text>
+  </g>
+  <path d="M308 452H342" class="a-line" stroke-width="1.6" fill="none" marker-end="url(#a-arrow)"/>
+  <path d="M616 452H650" class="a-line" stroke-width="1.6" fill="none" marker-end="url(#a-arrow)"/>
+
+  <!-- the outside view -->
+  <rect x="40" y="562" width="880" height="64" rx="20" class="a-band"/>
+  <text x="66" y="600" class="a-band-t a-serif" font-size="22" letter-spacing="-0.3">Acceptance lab</text>
+  <text x="222" y="599" class="a-mute" font-size="14.5">Scores every run against labels written before the first one. Never imports the desk.</text>
+</svg></figure>
+  <ol class="arch-list" aria-hidden="true"><li><span class="n serif">01</span><div><div class="t"><b class="serif">Read</b><span class="chip k-model">Model</span></div><p>Copies every value, and cites the line it came from.</p></div></li><li><span class="n serif">02</span><div><div class="t"><b class="serif">Verify</b><span class="chip k-code">Code</span></div><p>Opens each cited line. A value that isn’t there is refused.</p></div></li><li><span class="n serif">03</span><div><div class="t"><b class="serif">Judge</b><span class="chip k-code">Code</span></div><p>Uses the revision in force that day. Unclear always means no.</p></div></li><li><span class="n serif">04</span><div><div class="t"><b class="serif">Investigate</b><span class="chip k-agent">Agent</span></div><p>Reads what each problem needs. Explains. Changes nothing.</p></div></li><li><span class="n serif">05</span><div><div class="t"><b class="serif">Propose</b><span class="chip k-model">Model</span></div><p>Holds, or proposes release. A second reader checks it.</p></div></li><li><span class="n serif">06</span><div><div class="t"><b class="serif">Decide</b><span class="chip k-you">You</span></div><p>Release waits for your name, then checks everything again.</p></div></li><li class="lab"><div><div class="t"><b class="serif">Acceptance lab</b></div><p>Scores every run against labels written before the first one. Never imports the desk.</p></div></li></ol>
+  <div class="split" style="padding:56px 0 40px">
+    <div class="big3 serif">Six steps.<br>Four hands.<br><em>One signature.</em></div>
+    <div><h2 style="font-size:clamp(30px,3vw,44px);margin-top:10px">Each part does one thing well.</h2>
+      <p>The model reads, because reading is what it’s good at. Code checks, because arithmetic shouldn’t be a matter of opinion. The agent investigates, because every problem needs different evidence. And you decide, because a release can’t be called back.</p>
+      <p>When anything is unclear, the lot is held. Holding is cheap. Releasing waits for you.</p></div>
   </div>
   <div class="grid2" style="margin:20px 0 80px">
-    <div class="card plain"><div class="eyebrow">In this preview</div><h3>Recorded evidence. Working interactions.</h3><ul id="preview-list"></ul></div>
-    <div class="card plain"><div class="eyebrow">In the source project</div><h3>The runnable implementation.</h3>
-      <ul><li>Python review service and command line, built on the Continuum agent framework.</li>
-        <li>Evidence, revision, rule and approval-binding checks, in plain code.</li>
-        <li>A read-only investigator agent that chooses its own next read.</li>
-        <li>An acceptance package that scores result bundles without importing the desk.</li>
-        <li>Repeat evaluation, offline and live, with correctness before agreement.</li>
-        <li>Tests for the failure paths that matter.</li></ul>
+    <div class="card plain"><div class="eyebrow">In this preview</div><h3>Recorded, and still interactive.</h3><ul id="preview-list"></ul></div>
+    <div class="card plain"><div class="eyebrow">In the source project</div><h3>Everything, runnable.</h3>
+      <ul><li>A Python service and command line, built on Continuum.</li>
+        <li>Evidence, rules and approval checks, in plain code.</li>
+        <li>An investigator that reads, and only reads.</li>
+        <li>An acceptance lab that never imports the desk.</li>
+        <li>Evaluation offline and live. Correctness first.</li>
+        <li>35 tests, including a strict stand-in for the API.</li></ul>
       <a class="btn" style="margin-top:6px" href="https://github.com/Moezusb/release-desk">View the source <svg class="arrow" viewBox="0 0 14 14"><path d="M3 11L11 3M5 3h6v6" stroke="currentColor" stroke-width="1.6" fill="none"/></svg></a></div>
   </div>
-  <div class="eyebrow">Claims, kept precise</div>
-  <h2 class="h2big">What has been demonstrated.</h2>
+  <div class="eyebrow">What’s proven</div>
+  <h2 class="h2big">Exactly what’s been shown.</h2>
   <div class="table scroll"><table><thead><tr><th>Component</th><th>State</th><th>What that means</th></tr></thead><tbody id="claims"></tbody></table></div>
   <div class="eyebrow" style="margin-top:80px">Run it yourself</div>
-  <h2 class="h2big">From source to a review.</h2>
+  <h2 class="h2big">Yours to run.</h2>
   <div class="card"><code class="blockcode">git clone https://github.com/Moezusb/release-desk.git &amp;&amp; cd release-desk
 python3.13 -m venv .venv &amp;&amp; source .venv/bin/activate
 pip install -e ".[dev]"
-release-desk serve --offline                  # the desk at http://127.0.0.1:8930
+release-desk serve --offline                  # the workspace at http://127.0.0.1:8930
 
-release-desk eval --offline --repeat 5        # correctness first, then agreement
+release-desk eval --offline --repeat 3        # correctness first, then agreement
 python -m acceptance_lab evaluate eval/results-offline.json
 python -m acceptance_lab check-mapping
-pytest</code><p class="meta" style="margin:18px 0 0">Live runs need Anthropic credentials in your own environment, or the GitHub Actions workflow with workload identity federation. Credentials never go in the browser or the repository.</p></div>
-  <div class="eyebrow" style="margin-top:80px">Inspection paths</div>
-  <h2 class="h2big">Four questions made concrete.</h2>
+pytest                                        # 35 tests, all offline</code><p class="meta" style="margin:18px 0 0">Offline, it’s free. Live runs use your own Anthropic credentials, or the GitHub workflow with identity federation. No key ever touches the browser or the repository.</p></div>
+  <div class="eyebrow" style="margin-top:80px">Questions worth asking</div>
+  <h2 class="h2big">Four questions, answered in the open.</h2>
   <div class="grid2" style="margin-bottom:40px">
-    <a class="card qa" href="#lab" data-labtab="mapping"><div style="display:flex;justify-content:space-between;gap:12px"><h3>Can we trust the mapping?</h3><span>↗</span></div><p>Six vendor mappings checked against the source dictionary, the canonical fields and the documents: meaning, conversions, dates, joins and the whole population.</p></a>
-    <a class="card qa" href="#lab" data-labtab="cases"><div style="display:flex;justify-content:space-between;gap:12px"><h3>How do you accept output that varies?</h3><span>↗</span></div><p>Every run scored against labels written in advance, five runs per lot, correctness before agreement, and planted failures to prove the evaluator bites.</p></a>
-    <a class="card qa" href="#review" data-lotlink="LC-24034"><div style="display:flex;justify-content:space-between;gap:12px"><h3>What stops a confident wrong answer?</h3><span>↗</span></div><p>Each value must cite a line that says it, about the right attribute. Refused claims stay on the record and every rule fails closed. See LC-24034.</p></a>
-    <a class="card qa" href="#review" data-lotlink="LC-24033"><div style="display:flex;justify-content:space-between;gap:12px"><h3>Where is it an agent, and where a workflow?</h3><span>↗</span></div><p>Reading, checking and proposing follow a fixed path. Investigating does not: the agent picks its next read from what it finds. Compare LC-24033 with LC-24037.</p></a>
+    <a class="card qa" href="#lab" data-labtab="mapping"><div style="display:flex;justify-content:space-between;gap:12px"><h3>Can the mapping be trusted?</h3><span>↗</span></div><p>Six vendor mappings, checked against the source dictionary, the canonical fields and the documents themselves. Meaning, units, dates, joins, and every last lot.</p></a>
+    <a class="card qa" href="#lab" data-labtab="cases"><div style="display:flex;justify-content:space-between;gap:12px"><h3>How do you accept output that varies?</h3><span>↗</span></div><p>Score every run against answers written in advance. Correctness first, agreement second. Then plant failures, and make sure they’re caught.</p></a>
+    <a class="card qa" href="#review" data-lotlink="LC-24034"><div style="display:flex;justify-content:space-between;gap:12px"><h3>What stops a confident wrong answer?</h3><span>↗</span></div><p>Every value cites its line, and code checks it’s really there, on the right row. When anything is unclear, the lot is held. See LC-24034.</p></a>
+    <a class="card qa" href="#review" data-lotlink="LC-24033"><div style="display:flex;justify-content:space-between;gap:12px"><h3>Where is it an agent, and where a workflow?</h3><span>↗</span></div><p>Reading, checking and proposing run on rails. Investigating doesn’t: the agent decides what to read next. Compare LC-24033 with LC-24037.</p></a>
   </div>
 </section>
-<footer class="wrap"><p class="foot">All documents, people, products and companies here are invented. Built on Continuum, an open-source agent framework. Designed to be inspected, not trusted on sight.</p></footer>
+<footer class="wrap"><p class="foot">Every document, person, product and company here is invented. Built on Continuum, an open-source agent framework. Designed to be inspected, not taken on trust.</p></footer>
 </main>
 
 <script>
@@ -363,6 +473,9 @@ const STEP = {reassess_with_corrected_document: "Reassess with the corrected doc
   request_missing_evidence: "Request missing evidence", no_further_evidence_needed: "No further evidence needed"};
 const VERB = {approve_release: "Release approved", deny_release: "Release refused", confirm_hold: "Hold confirmed", reject: "Lot rejected"};
 const BUSY = ["reading", "checking", "investigating", "proposing"];
+// "live (claude-sonnet-5-5)" or "claude-sonnet-5-5" -> "Claude Sonnet 5.5"
+const modelName = t => { const m = /claude-([a-z]+)-(\d+)-(\d+)/.exec(t || ""); return m ? `Claude ${m[1][0].toUpperCase()}${m[1].slice(1)} ${m[2]}.${m[3]}` : (t || ""); };
+const liveRecorded = () => replay ? !!meta.recorded?.startsWith("live") : meta.mode === "live";
 const ARROW = '<svg class="arrow" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11L11 3M5 3h6v6" stroke="currentColor" stroke-width="1.6" fill="none"/></svg>';
 const store = {get(k, d) { try { return JSON.parse(localStorage.getItem("rd-" + k)) ?? d; } catch (e) { return d; } },
   set(k, v) { try { localStorage.setItem("rd-" + k, JSON.stringify(v)); } catch (e) {} }};
@@ -402,7 +515,7 @@ function status(l) {
   if (BUSY.includes(l.stage)) return ["Reviewing", "attn", "attn"];
   if (l.needs_reassessment || l.stage === "needs reassessment") return ["Reassess", "attn", "attn"];
   if (l.decision) return ["Held", "attn", "done"];
-  if (l.proposal === "release") return ["Ready for your decision", "ok", "ready"];
+  if (l.proposal === "release") return ["Ready for you", "ok", "ready"];
   if (l.status === "on hold") return ["Needs attention", "attn", "attn"];
   return ["Not reviewed", "", "attn"];
 }
@@ -441,7 +554,7 @@ function decisionHTML(r) {
     <div class="row"><div><label for="who">Your name</label><input type="text" id="who" value="${esc(reviewer)}" placeholder="Every decision is signed" autocomplete="name"></div>
     <div><label for="why">Reason</label><textarea id="why" rows="1" placeholder="${release ? "Needed to refuse" : "Needed to reject"}"></textarea></div></div>
     <div class="acts">${btns.map(b => `<button class="btn ${b[2]}" data-act="${b[0]}">${b[1]}</button>`).join("")}<span class="err" id="err" role="alert"></span></div>
-    <p class="meta" style="margin:14px 0 0">${release ? "Approval is bound to what you see here. The release tool checks the rules, the documents and this assessment once more before it acts." : "There is no release over a hold here. Resolve the exceptions, apply corrected evidence, and reassess."}${replay ? " On this page, decisions are practice and stay in your browser." : ""}</p></div>`;
+    <p class="meta" style="margin:14px 0 0">${release ? "Your approval covers exactly what you see here. Before anything ships, the rules and the documents are checked once more." : "There’s no releasing over a hold. Better evidence and a reassessment are the way through."}${replay ? " Decisions here are practice, and stay in your browser." : ""}</p></div>`;
 }
 function findingHTML(f, i) {
   const e = f.evidence?.[0] || {};
@@ -491,18 +604,18 @@ function sourceTab(r) {
 function investigationTab(r) {
   const notes = r.investigation?.notes || [], calls = (r.investigation?.calls || []).filter(x => x.tool !== "submit_note");
   if (!notes.length && !calls.length) return '<div class="card"><p class="serif" style="font-size:26px;margin:0">Nothing to investigate.</p><p class="meta" style="margin:10px 0 0">The investigator only runs when there is a blocking finding to explain.</p></div>';
-  return `<div class="assess"><div class="eyebrow">Investigator</div><h2>It reads. It cannot decide.</h2><p>For each blocking finding, a read-only agent chose what to open next: records, revisions, corrected documents, lines of the batch record. Its notes are advice; no finding changes because of them.</p></div>
+  return `<div class="assess"><div class="eyebrow">Investigator</div><h2>It reads. It never decides.</h2><p>For every blocking finding, an agent chose what to read next: records, revisions, corrected documents. Its notes advise. They never change a finding.</p></div>
     ${notes.map(n => `<div class="card" style="margin-bottom:16px"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center"><span class="eyebrow">On ${esc((n.finding_ids || []).join(", "))}</span><span class="chip attn">${esc(STEP[n.next_step] || n.next_step)}</span></div>
       <p style="font-size:18px;margin:14px 0">${esc(n.summary)}</p>${n.open_questions?.length ? `<p class="meta">Only a person can answer: ${esc(n.open_questions.join(" "))}</p>` : ""}</div>`).join("")}
     <div class="eyebrow" style="margin-top:28px">The path the agent chose</div><div class="trail">${calls.map((x, i) => `<span>${i + 1}. ${esc(x.tool.replace(/_/g, " "))}${Object.values(x.args || {}).length ? ": " + esc(Object.values(x.args).join(", ")) : ""}</span>`).join("")}</div>`;
 }
 function historyTab(r) {
   const mine = practice.filter(p => p.lot === r.lot_id), live = meta.recorded?.startsWith("live");
-  return `<div class="card"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center"><h3 style="font-size:30px">Recorded execution</h3><span class="chip">${replay ? (live ? "Live model run" : "Scripted model run") : esc(r.mode || "")}</span></div>
-      <p class="meta" style="margin-top:12px">${replay ? "This sequence was produced by the Python pipeline and recorded for this page." : "This sequence is the server's own record for this review."}</p>
+  return `<div class="card"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center"><h3 style="font-size:30px">What happened</h3><span class="chip">${replay ? (live ? "Live model run" : "Scripted model run") : esc(r.mode || "")}</span></div>
+      <p class="meta" style="margin-top:12px">${replay ? "Produced by the pipeline, and recorded for this page." : "The server’s own record of this review."}</p>
       <ul class="timeline">${r.timeline.map(t => `<li><div class="who">${esc(t.actor)}</div><div>${esc(t.text)}</div><div class="when">${new Date(t.at).toLocaleString([], {month: "short", day: "numeric", hour: "numeric", minute: "2-digit"})}</div></li>`).join("")}</ul></div>
     ${(r.history || []).length ? `<div class="card" style="margin-top:18px"><h3 style="font-size:30px">Earlier reviews, kept on record</h3>${r.history.map(h => `<div class="note" style="margin-top:14px"><strong>${esc(h.status)}</strong>${h.decision ? ` · ${esc(VERB[h.decision.action] || h.decision.action)} by ${esc(h.decision.reviewer)}` : ""}<p class="meta" style="margin:6px 0 0">${esc(h.reason)}. Findings then: ${esc((h.findings || []).join("; ") || "none")}</p></div>`).join("")}</div>` : ""}
-    ${replay ? `<div class="card" style="margin-top:18px"><h3 style="font-size:30px">Your practice history</h3>${mine.length ? `<ul class="timeline">${mine.map(p => `<li><div class="who">${esc(p.reviewer)}</div><div>${esc(VERB[p.action])}${p.reason ? ". " + esc(p.reason) : ""}</div><div class="when">${new Date(p.at).toLocaleString()}</div></li>`).join("")}</ul><button class="link" data-act="clearpractice">Clear practice history</button>` : '<p class="meta" style="margin-top:12px">Decisions you make on this page appear here, stored only in this browser.</p>'}</div>` : ""}`;
+    ${replay ? `<div class="card" style="margin-top:18px"><h3 style="font-size:30px">Your decisions</h3>${mine.length ? `<ul class="timeline">${mine.map(p => `<li><div class="who">${esc(p.reviewer)}</div><div>${esc(VERB[p.action])}${p.reason ? ". " + esc(p.reason) : ""}</div><div class="when">${new Date(p.at).toLocaleString()}</div></li>`).join("")}</ul><button class="link" data-act="clearpractice">Clear my decisions</button>` : '<p class="meta" style="margin-top:12px">Decisions you make here appear in this list, and nowhere else.</p>'}</div>` : ""}`;
 }
 
 function renderCase() {
@@ -567,11 +680,11 @@ function verdictBox(c) {
 }
 function labOverview() {
   const s = lab.summary, C = lab.candidates, exec = C.find(c => c.kind.startsWith("executed")) || C[0];
-  return `<div class="split" style="padding:30px 0 50px"><div><div class="eyebrow">An acceptance decision needs more than a score</div><h2>Check the delivery.<br>Keep the evidence.</h2>
-      <p>This workspace compares delivered output with labels written separately. Planted failures test the controls; they are not measured model failures.</p>
-      <div class="acts" style="margin-top:28px"><button class="btn dark" data-ltab="mapping">Challenge a mapping ${ARROW}</button><button class="btn" data-ltab="cases">Inspect case results</button></div></div>
-    <div class="scope"><div class="eyebrow">Current scope</div><h3>${s.live_run ? "Live model evidence" : "Fixture acceptance"}</h3><p class="meta" style="font-size:16px">One fictional product. ${s.lots} lots, three source records each. A separate mapping challenge suite.</p>
-      <div class="r"><span>Live model benchmark</span><span class="chip ${s.live_run ? "ok" : ""}">${s.live_run ? "Recorded" : "Not yet run"}</span></div>
+  return `<div class="split" style="padding:30px 0 50px"><div><div class="eyebrow">More than a score</div><h2>Check the delivery.<br>Keep the evidence.</h2>
+      <p>Every run is compared with answers written before the first one. Planted failures test the scoring itself. They aren’t model failures.</p>
+      <div class="acts" style="margin-top:28px"><button class="btn dark" data-ltab="mapping">Challenge a mapping ${ARROW}</button><button class="btn" data-ltab="cases">Inspect every run</button></div></div>
+    <div class="scope"><div class="eyebrow">Current scope</div><h3>${s.live_run ? "Live model evidence" : "Fixture acceptance"}</h3><p class="meta" style="font-size:16px">One invented product. ${s.lots} lots, three records each. And a suite of mapping challenges.</p>
+      <div class="r"><span>Live model run</span><span class="chip ${s.live_run ? "ok" : ""}">${s.live_run ? "Recorded" : "Not yet run"}</span></div>
       <div class="r"><span>Business validation</span><span class="chip attn">To be completed</span></div>
       <div class="r"><span>Production acceptance</span><span class="chip">Not established</span></div></div></div>
     <div class="stats" style="margin-top:0"><div><div class="num">${pad(s.mapping_scenarios)}</div><span>Mapping scenarios</span></div><div><div class="num">${exec.summary.runs_expected}</div><span>Runs in the ${esc(exec.label.toLowerCase())}</span></div><div><div class="num">${pad(s.candidates)}</div><span>Candidate bundles to inspect</span></div></div>
@@ -590,7 +703,7 @@ function labMapping() {
       ${r.self_check ? `<span class="chip ${r.self_check.passed ? "ok" : "crit"}">${r.self_check.passed ? "Planted flaw caught" : "Planted flaw missed"}</span>` : ""}</div>
       ${[...r.rows].sort((a, b) => ORD.indexOf(a.status) - ORD.indexOf(b.status)).map(x => { const k = x.status === "validated" ? ["pass", "✓"] : x.status === "failed" ? ["fail", "×"] : ["ask", "?"];
         return `<div class="mrow"><span class="ic ${k[0]}" aria-label="${esc(x.status)}">${k[1]}</span><div><div class="t">${esc(x.check)} <span class="meta">· ${esc(x.area)} · ${esc(x.field)}</span></div><div class="d">${esc(x.detail)}</div>${x.lots.length ? `<div class="tags">${x.lots.map(t => `<span class="mono">${esc(t)}</span>`).join("")}</div>` : ""}</div></div>`; }).join("")}</div>`
-    : `<div class="empty"><span class="circ" style="margin:0 auto">${ARROW}</span><h3>Put the mapping to the test.</h3><p>Inspect the submission and the contract, then show the validation to see which requirement passes or fails.</p></div>`;
+    : `<div class="empty"><span class="circ" style="margin:0 auto">${ARROW}</span><h3>Put the mapping to the test.</h3><p>Look through the submission and the contract. Then see what passes, and what doesn’t.</p></div>`;
   const sub = {joins: r.submitted.joins, results_filter: r.submitted.results_filter, fields: r.submitted.fields};
   return `<div class="mapgrid" style="padding-bottom:80px"><div class="scen"><div class="eyebrow" style="padding:14px 18px 6px">Select a scenario</div>
       ${reps.map((x, i) => `<button class="${i === scen ? "on" : ""}" data-scen="${i}"><b>${esc(x.title)}</b><small>${x.kind === "challenge" ? "Authored challenge" : "Vendor delivery"}</small></button>`).join("")}</div>
@@ -598,8 +711,8 @@ function labMapping() {
       <h2 style="font-size:clamp(34px,3.6vw,52px);margin:16px 0 16px">${esc(r.title)}</h2><p style="font-size:18px">${esc(r.description)}</p>
       <details><summary>Inspect the submitted configuration</summary><pre class="mono">${esc(JSON.stringify(sub, null, 2))}</pre></details>
       <details><summary>Inspect the independent mapping contract</summary><pre class="mono">${esc(JSON.stringify(lab.mapping.contract, null, 2))}</pre></details>
-      <div class="acts" style="margin-top:24px"><button class="btn dark" data-act="runmap" ${done ? "disabled" : ""}>${done ? "Validation shown below" : "Show mapping validation"} ${ARROW}</button></div>
-      <p class="meta" style="margin:12px 0 0">The checks ran in Python (<span class="mono">acceptance_lab.mapping</span>) against the source dictionary, the canonical fields and the lot documents. This page shows the recorded result.</p></div>
+      <div class="acts" style="margin-top:24px"><button class="btn dark" data-act="runmap" ${done ? "disabled" : ""}>${done ? "Shown below" : "Show the validation"} ${ARROW}</button></div>
+      <p class="meta" style="margin:12px 0 0">Checked in Python (<span class="mono">acceptance_lab.mapping</span>) against the source dictionary, the canonical fields and the lot documents. You’re seeing the recorded result.</p></div>
     ${result}</div></div>`;
 }
 function labCases() {
@@ -618,7 +731,7 @@ function labCases() {
       </tbody></table></div></div>`;
 }
 function labUAT() {
-  return `<div class="split" style="padding:20px 0 30px"><div><div class="eyebrow">Business UAT</div><h2>Can a person use it correctly?</h2><p>Labels test the output. These tasks test the reviewer's experience, observed in a session rather than assumed. None has been run with a Quality team, so every task starts as not yet run.</p></div>
+  return `<div class="split" style="padding:20px 0 30px"><div><div class="eyebrow">Business UAT</div><h2>Can a person use it correctly?</h2><p>Labels test the output. These tasks test the experience: watched in a session, not assumed. No quality team has run them yet, so each one starts there.</p></div>
     <div class="scope"><div class="eyebrow">How to use this</div><p class="meta" style="font-size:16px;margin-top:12px">Run a task with a colleague, then record what you saw. Notes stay in this browser and can be exported.</p><button class="btn" data-act="uatexport" style="margin-top:8px">Export UAT notes</button></div></div>
     <div style="padding-bottom:80px">${lab.uat.map(t => { const n = uatNotes[t.id] || {};
       return `<div class="uat"><div><div class="eyebrow">${t.id}</div><h3 style="font-size:30px;margin:10px 0">${esc(t.task)}</h3><p>${esc(t.scenario)}</p><p class="meta"><strong>Passes when:</strong> ${esc(t.pass_when)}</p></div>
@@ -629,7 +742,7 @@ const VFIELDS = [["lots_per_month", "Lots reviewed per month", "lots"], ["manual
 function valueCalc(a) { const gross = a.lots_per_month * (a.manual_minutes - a.assisted_minutes - a.rework_minutes) / 60; return {gross, net: gross - a.operating_hours}; }
 function labValue() {
   const a = {...lab.value.assumptions, ...store.get("value", {})}, m = lab.value.measured, r = valueCalc(a);
-  return `<div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-end"><div><div class="eyebrow">Value worksheet</div><h2 class="h2big" style="margin-bottom:16px">Make the assumptions visible.</h2><p class="meta" style="font-size:18px;max-width:44em">Explore review capacity with your own assumptions. These are scenario calculations, not measured savings.</p></div><span class="chip">Illustrative scenario</span></div>
+  return `<div style="display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-end"><div><div class="eyebrow">Value worksheet</div><h2 class="h2big" style="margin-bottom:16px">Make the assumptions visible.</h2><p class="meta" style="font-size:18px;max-width:44em">Try your own numbers. These are scenarios, not measured savings.</p></div><span class="chip">Illustrative scenario</span></div>
     <div class="calc" style="margin:30px 0 80px"><div class="card">${VFIELDS.map(([k, l, u]) => `<div class="field"><label for="v-${k}">${l}</label><input type="number" min="0" step="any" id="v-${k}" data-v="${k}" value="${a[k]}"><span class="u">${u}</span></div>`).join("")}
       <div class="note" style="margin:6px 0 0"><div class="eyebrow">Measured, not assumed</div><p style="margin:8px 0 0">${m && m.mean_seconds_per_lot ? `In the latest live run the desk took ${m.mean_seconds_per_lot} s of machine time per lot and about ${Math.round(m.mean_input_tokens_per_lot).toLocaleString()} input and ${Math.round(m.mean_output_tokens_per_lot).toLocaleString()} output tokens. Reviewer time can only come from a pilot.` : "Machine time and tokens per lot appear here once the live evaluation has run. Reviewer time can only come from a pilot."}</p></div>
       <button class="link" data-act="resetvalue" style="margin-top:10px">Reset to the defaults</button></div>
@@ -646,17 +759,18 @@ function renderLab() {
 /* ---------------- how ---------------- */
 function renderHow() {
   const live = !!lab?.summary?.live_run;
-  const claims = [["Documents and business rules", "Synthetic", "", "Fictional records and illustrative requirements, not any company's real process."],
-    ["Extraction on this page", replay ? (meta.recorded?.startsWith("live") ? "Live model" : "Scripted model") : (meta.mode === "live" ? "Live model" : "Scripted model"), "", "Where a scripted stand-in did the reading, the run tests the checks and controls, not a model's reading."],
-    ["Evidence, revision and rule checks", "Executed", "ok", "Plain code checked each cited line, chose the governing revision and applied every rule."],
-    ["Investigator agent", "Executed", "ok", "Offline, its reads are scripted but still branch on what each read returns. Live, the model chooses them."],
-    ["Repeat performance of a model", live ? "Measured" : "Not yet measured", live ? "ok" : "", live ? "See the live candidate in the acceptance lab." : "Needs a live run. The workflow is in the repository and waits for credentials."],
-    ["Reviewer identity", "Simulated", "", "Typed names and browser practice records are not authenticated signatures."],
-    ["OCR and client validation", "Outside this build", "", "The sources are text. Real layouts and real requirements need their own validation."]];
+  const lc = lab?.candidates?.find(c => c.kind === "executed_live"), name = modelName(meta.recorded || meta.model);
+  const claims = [["Documents and rules", "Synthetic", "", "Invented records and illustrative requirements. Not any company’s real process."],
+    ["Reading on this page", liveRecorded() ? "Live model" : "Scripted model", liveRecorded() ? "ok" : "", liveRecorded() ? `Recorded from ${name} in GitHub Actions.` : "A scripted stand-in did the reading. That tests the checks, not a model."],
+    ["Evidence, revision and rule checks", "Executed", "ok", "Plain code checked every cited line, chose the revision in force and applied every rule."],
+    ["Investigator agent", "Executed", "ok", liveRecorded() ? "The model chose every read. Each path is recorded on its case." : "Offline, its reads are scripted, but still follow what each read returns."],
+    ["Repeat performance", lc ? "Measured" : "Not yet measured", lc ? "ok" : "", lc ? `${lc.metrics.case_acceptance.display} runs correct, ${lc.origin.repeat} per lot. Details in the acceptance lab.` : "Needs a live run. The workflow is ready and waits for credentials."],
+    ["Reviewer identity", "Simulated", "", "Typed names and browser-only practice. Not authenticated signatures."],
+    ["Scanned documents, real validation", "Not in this build", "", "The sources are text. Real layouts and real requirements need validation of their own."]];
   $("#claims").innerHTML = claims.map(c => `<tr><td>${c[0]}</td><td><span class="chip ${c[2]}">${c[1]}</span></td><td>${c[3]}</td></tr>`).join("");
-  $("#preview-list").innerHTML = [replay ? `Seven lots from a recorded run of the pipeline (${meta.recorded || "recorded"}).` : "Seven lots, reviewed live by this server.",
-    "Source records, with every finding one step from its line.", "Investigator notes, and the path the agent chose.",
-    "Decisions, corrected evidence and reassessment.", "Acceptance results for executed and planted-failure candidates."].map(t => `<li>${esc(t)}</li>`).join("");
+  $("#preview-list").innerHTML = [replay ? (liveRecorded() ? `Seven lots, recorded from a live run on ${name}.` : "Seven lots, recorded from an offline run.") : "Seven lots, reviewed by this server.",
+    "Every finding, one click from its line.", "The investigator’s notes, and the path it chose.",
+    "Decisions, corrections and reassessment, all working.", "Acceptance results, including two planted failures."].map(t => `<li>${esc(t)}</li>`).join("");
 }
 
 /* ---------------- events ---------------- */
@@ -718,16 +832,25 @@ async function start() {
   try {
     meta = await api("/api/meta");
     $("#mode").textContent = meta.mode === "live" ? "Live workspace" : "Synthetic workspace";
-    $("#r-mode").textContent = meta.mode === "live" ? `Live model (${meta.model})` : "Offline server, scripted model";
+    $("#r-mode").textContent = meta.mode === "live" ? `Live · ${modelName(meta.model)}` : "Offline · scripted model";
     await refresh();
   } catch (err) {
     replay = await (await fetch("replay.json")).json();
     meta = replay.meta; lots = replay.queue;
-    $("#r-mode").textContent = (meta.recorded?.startsWith("live") ? "Recorded live-model run" : "Recorded run, scripted model") + " · your practice decisions stay in this browser";
+    $("#r-mode").textContent = (liveRecorded() ? `Recorded live run · ${modelName(meta.recorded)}` : "Recorded offline run · scripted model") + " · Your decisions stay in this browser";
   }
   try { const r = await fetch(replay ? "acceptance.json" : "/acceptance.json"); lab = r.ok ? await r.json() : null; } catch (err) { lab = null; }
-  if (lab) { $("#s-ex").textContent = pad(lab.summary.labelled_exceptions); $("#l-mode").textContent = lab.summary.live_run ? "Observed live results" : "Observed offline results"; }
-  $("#s-lots").textContent = $("#o-lots").textContent = pad(lots.length);
+  if (lab) { $("#s-ex").textContent = pad(lab.summary.labelled_exceptions); $("#l-mode").textContent = lab.summary.live_run ? "Live results" : "Offline results"; }
+  const lc = lab?.candidates?.find(c => c.kind === "executed_live");
+  if (lc) {   // lead with what the live run showed
+    const unsafe = lc.cases.filter(c => c.proposal === "release" && c.expected_proposal !== "release").length;
+    $("#s-eyebrow").textContent = `The live run · ${modelName(lc.origin.model)} · ${lc.origin.repeat} runs per lot`;
+    $("#stats").innerHTML = [[lc.metrics.case_acceptance.display, "Runs correct"], [lc.metrics.known_exception_recall.display, "Exceptions found, every critical one included"],
+      [String(unsafe), "Unsafe releases"]].map(([n, t]) => `<div><div class="num">${esc(n)}</div><span>${esc(t)}</span></div>`).join("");
+    $("#o-proof").textContent = `Recorded on ${modelName(lc.origin.model)}. Checked by code. Decided by you.`;
+  }
+  $("#o-lots").textContent = pad(lots.length);
+  if ($("#s-lots")) $("#s-lots").textContent = pad(lots.length);
   renderHow(); route();
 }
 start();

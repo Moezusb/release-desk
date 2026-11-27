@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 660" width="960" height="660" role="img" aria-labelledby="arch-title arch-desc" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="arch-title">How a lot moves through Release Desk</title>
+  <desc id="arch-desc">Six steps. A model reads and cites. Code verifies each citation and applies the rules. An agent investigates each problem, reading only. A model proposes, and a second reader checks it. A person decides; release waits for their name. An acceptance lab scores every run from the outside.</desc>
+  <style>
+    .bg{fill:#f5f4f0}.card{fill:#fdfdfb;stroke:#e3e1da}.ink{fill:#1f211d}.mute{fill:#6a6c64}.line{stroke:#c9c6bc}.num{fill:#b4b1a6}
+    .serif{font-family:Newsreader, 'Iowan Old Style', Georgia, serif}
+    .model{fill:#e6ebdf}.model-t{fill:#4b6444}.code{fill:#e8e7e3}.code-t{fill:#1f211d}.agent{fill:#f6ebdc}.agent-t{fill:#8a5a24}.you{fill:#f1e4da}.you-t{fill:#7a4a30}
+    .band{fill:#e6ebdf}.band-t{fill:#4b6444}.lock{stroke:#7a4a30}
+    @media (prefers-color-scheme: dark){
+      .bg{fill:#141613}.card{fill:#1c1f1b;stroke:#30352d}.ink{fill:#ecebe4}.mute{fill:#a3a79b}.line{stroke:#4a5045}.num{fill:#5c6156}
+      .model{fill:#2a3527}.model-t{fill:#a9c49c}.code{fill:#2a2d28}.code-t{fill:#ecebe4}.agent{fill:#3a3022}.agent-t{fill:#e6b679}.you{fill:#3b2c23}.you-t{fill:#e2b79c}
+      .band{fill:#22291f}.band-t{fill:#a9c49c}.lock{stroke:#e2b79c}
+    }
+  </style>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M1 1L8 5L1 9" fill="none" class="line" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="960" height="660" rx="28"/>
+
+  <!-- header -->
+  <text x="40" y="54" class="mute" font-size="12" font-weight="600" letter-spacing="2.2">INSIDE RELEASE DESK</text>
+  <text x="40" y="92" class="ink serif" font-size="32" letter-spacing="-0.6">The model reads. Code checks. You decide.</text>
+  <g font-size="13" font-weight="500">
+    <rect x="652" y="38" width="268" height="30" rx="15" class="card"/>
+    <text x="786" y="58" text-anchor="middle" class="mute">In: one lot, three records</text>
+    <rect x="652" y="76" width="268" height="30" rx="15" class="card"/>
+    <text x="786" y="96" text-anchor="middle" class="mute">Out: a decision, and its reasons</text>
+  </g>
+
+  <!-- row 1 -->
+  <g>
+    <rect x="40" y="136" width="264" height="156" rx="22" class="card"/>
+    <text x="64" y="172" class="num serif" font-size="20">01</text>
+    <rect x="216" y="152" width="68" height="26" rx="13" class="model"/><text x="250" y="170" text-anchor="middle" class="model-t" font-size="12" font-weight="600">Model</text>
+    <text x="64" y="222" class="ink serif" font-size="30" letter-spacing="-0.5">Read</text>
+    <text x="64" y="252" class="mute" font-size="14.5">Copies every value, and cites</text>
+    <text x="64" y="273" class="mute" font-size="14.5">the line it came from.</text>
+  </g>
+  <g>
+    <rect x="348" y="136" width="264" height="156" rx="22" class="card"/>
+    <text x="372" y="172" class="num serif" font-size="20">02</text>
+    <rect x="532" y="152" width="60" height="26" rx="13" class="code"/><text x="562" y="170" text-anchor="middle" class="code-t" font-size="12" font-weight="600">Code</text>
+    <text x="372" y="222" class="ink serif" font-size="30" letter-spacing="-0.5">Verify</text>
+    <text x="372" y="252" class="mute" font-size="14.5">Opens each cited line. A value</text>
+    <text x="372" y="273" class="mute" font-size="14.5">that isn't there is refused.</text>
+  </g>
+  <g>
+    <rect x="656" y="136" width="264" height="156" rx="22" class="card"/>
+    <text x="680" y="172" class="num serif" font-size="20">03</text>
+    <rect x="840" y="152" width="60" height="26" rx="13" class="code"/><text x="870" y="170" text-anchor="middle" class="code-t" font-size="12" font-weight="600">Code</text>
+    <text x="680" y="222" class="ink serif" font-size="30" letter-spacing="-0.5">Judge</text>
+    <text x="680" y="252" class="mute" font-size="14.5">Uses the revision in force that</text>
+    <text x="680" y="273" class="mute" font-size="14.5">day. Unclear always means no.</text>
+  </g>
+  <path d="M308 214H342" class="line" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+  <path d="M616 214H650" class="line" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- the turn from row 1 to row 2 -->
+  <path d="M788 296V318Q788 332 774 332H186Q172 332 172 346V368" class="line" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- row 2 -->
+  <g>
+    <rect x="40" y="374" width="264" height="156" rx="22" class="card"/>
+    <text x="64" y="410" class="num serif" font-size="20">04</text>
+    <rect x="216" y="390" width="68" height="26" rx="13" class="agent"/><text x="250" y="408" text-anchor="middle" class="agent-t" font-size="12" font-weight="600">Agent</text>
+    <text x="64" y="460" class="ink serif" font-size="30" letter-spacing="-0.5">Investigate</text>
+    <text x="64" y="490" class="mute" font-size="14.5">Reads what each problem needs.</text>
+    <text x="64" y="511" class="mute" font-size="14.5">Explains. Changes nothing.</text>
+  </g>
+  <g>
+    <rect x="348" y="374" width="264" height="156" rx="22" class="card"/>
+    <text x="372" y="410" class="num serif" font-size="20">05</text>
+    <rect x="524" y="390" width="68" height="26" rx="13" class="model"/><text x="558" y="408" text-anchor="middle" class="model-t" font-size="12" font-weight="600">Model</text>
+    <text x="372" y="460" class="ink serif" font-size="30" letter-spacing="-0.5">Propose</text>
+    <text x="372" y="490" class="mute" font-size="14.5">Holds, or proposes release.</text>
+    <text x="372" y="511" class="mute" font-size="14.5">A second reader checks it.</text>
+  </g>
+  <g>
+    <rect x="656" y="374" width="264" height="156" rx="22" class="card"/>
+    <text x="680" y="410" class="num serif" font-size="20">06</text>
+    <rect x="852" y="390" width="48" height="26" rx="13" class="you"/><text x="876" y="408" text-anchor="middle" class="you-t" font-size="12" font-weight="600">You</text>
+    <g class="lock" fill="none" stroke-width="1.6" stroke-linecap="round" transform="translate(818 391)">
+      <rect x="2" y="10" width="16" height="13" rx="3.5"/><path d="M5.5 10V7a4.5 4.5 0 0 1 9 0v3"/>
+    </g>
+    <text x="680" y="460" class="ink serif" font-size="30" letter-spacing="-0.5">Decide</text>
+    <text x="680" y="490" class="mute" font-size="14.5">Release waits for your name,</text>
+    <text x="680" y="511" class="mute" font-size="14.5">then checks everything again.</text>
+  </g>
+  <path d="M308 452H342" class="line" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+  <path d="M616 452H650" class="line" stroke-width="1.6" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- the outside view -->
+  <rect x="40" y="562" width="880" height="64" rx="20" class="band"/>
+  <text x="66" y="600" class="band-t serif" font-size="22" letter-spacing="-0.3">Acceptance lab</text>
+  <text x="222" y="599" class="mute" font-size="14.5">Scores every run against labels written before the first one. Never imports the desk.</text>
+</svg>
