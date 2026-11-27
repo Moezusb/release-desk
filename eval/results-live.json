@@ -2,48 +2,36 @@
  "bundle_version": 2,
  "mode": "live",
  "model": "claude-sonnet-5-5",
- "commit": "5d0b73e",
- "when": "2026-11-27 06:49 UTC",
+ "commit": "619dc5a",
+ "when": "2026-11-27 07:37 UTC",
  "repeat": 3,
  "lots": 7,
  "summary": {
   "false_clears": 0,
   "blocking_findings_found": "27/27",
-  "clean_case_completion": "0/3",
-  "all_runs_correct_lots": "0/7",
-  "lots_with_any_failure": [
-   "LC-24031",
-   "LC-24032",
-   "LC-24033",
-   "LC-24034",
-   "LC-24035",
-   "LC-24036",
-   "LC-24037"
-  ],
-  "unexpected_findings": 21,
-  "mean_seconds_per_lot": 35.2,
-  "mean_input_tokens_per_lot": 29244.2,
-  "mean_output_tokens_per_lot": 5189.3
+  "clean_case_completion": "3/3",
+  "all_runs_correct_lots": "7/7",
+  "lots_with_any_failure": [],
+  "unexpected_findings": 0,
+  "mean_seconds_per_lot": 26.7,
+  "mean_input_tokens_per_lot": 21383.8,
+  "mean_output_tokens_per_lot": 4114.4
  },
  "per_lot": [
   {
    "lot": "LC-24031",
    "expected": [],
    "expected_proposal": "release",
-   "runs_correct": 0,
+   "runs_correct": 3,
    "runs": 3,
-   "all_correct": false,
-   "any_failure": true,
+   "all_correct": true,
+   "any_failure": false,
    "false_clears": 0,
-   "seen_in_any_run": [
-    "batch.yield"
-   ],
+   "seen_in_any_run": [],
    "missed_in_some_run": [],
    "agreement": 1.0,
    "investigator_paths": [
-    "read_document > list_supporting_records > list_corrected_documents > get_specification > get_specification > read_document > get_specification > get_specification > submit_note",
-    "read_document > list_supporting_records > list_corrected_documents > get_specification > read_document > get_specification > get_specification > read_document > submit_note",
-    "read_document > list_supporting_records > list_corrected_documents > get_specification > read_document > read_document > get_specification > get_specification > submit_note"
+    ""
    ]
   },
   {
@@ -52,20 +40,19 @@
     "test.tymc_cfu_g.out_of_spec"
    ],
    "expected_proposal": "hold",
-   "runs_correct": 0,
+   "runs_correct": 3,
    "runs": 3,
-   "all_correct": false,
-   "any_failure": true,
+   "all_correct": true,
+   "any_failure": false,
    "false_clears": 0,
    "seen_in_any_run": [
-    "batch.yield",
     "test.tymc_cfu_g.out_of_spec"
    ],
    "missed_in_some_run": [],
    "agreement": 1.0,
    "investigator_paths": [
-    "list_supporting_records > list_corrected_documents > read_document > read_document > get_specification > get_specification > get_specification > read_document > submit_note > submit_note",
-    "list_supporting_records > list_corrected_documents > read_document > read_document > read_document > get_specification > get_specification > get_specification > submit_note > submit_note"
+    "list_supporting_records > list_corrected_documents > read_document > get_specification > get_specification > get_specification > read_document > get_specification > get_specification > read_document > submit_note",
+    "list_supporting_records > list_corrected_documents > read_document > get_specification > get_specification > get_specification > read_document > read_document > submit_note"
    ]
   },
   {
@@ -74,20 +61,18 @@
     "deviation.open"
    ],
    "expected_proposal": "hold",
-   "runs_correct": 0,
+   "runs_correct": 3,
    "runs": 3,
-   "all_correct": false,
-   "any_failure": true,
+   "all_correct": true,
+   "any_failure": false,
    "false_clears": 0,
    "seen_in_any_run": [
-    "batch.yield",
     "deviation.open"
    ],
    "missed_in_some_run": [],
    "agreement": 1.0,
    "investigator_paths": [
-    "read_document > read_document > list_supporting_records > list_corrected_documents > open_record > get_specification > read_document > get_specification > get_specification > submit_note > submit_note",
-    "read_document > read_document > list_supporting_records > list_corrected_documents > open_record > read_document > get_specification > get_specification > get_specification > get_specification > get_specification > submit_note > submit_note"
+    "list_supporting_records > read_document > list_corrected_documents > open_record > read_document > submit_note"
    ]
   },
   {
@@ -96,20 +81,18 @@
     "batch.step_unverified"
    ],
    "expected_proposal": "hold",
-   "runs_correct": 0,
+   "runs_correct": 3,
    "runs": 3,
-   "all_correct": false,
-   "any_failure": true,
+   "all_correct": true,
+   "any_failure": false,
    "false_clears": 0,
    "seen_in_any_run": [
-    "batch.step_unverified",
-    "batch.yield"
+    "batch.step_unverified"
    ],
    "missed_in_some_run": [],
    "agreement": 1.0,
    "investigator_paths": [
-    "read_document > list_supporting_records > list_corrected_documents > read_document > read_document > get_specification > get_specification > get_specification > get_specification > get_specification > submit_note > submit_note",
-    "read_document > list_supporting_records > list_corrected_documents > read_document > read_document > get_specification > get_specification > get_specification > submit_note > submit_note"
+    "list_supporting_records > list_corrected_documents > read_document > read_document > submit_note"
    ]
   },
   {
@@ -119,22 +102,20 @@
     "test.phenoxyethanol_pct.out_of_spec"
    ],
    "expected_proposal": "hold",
-   "runs_correct": 0,
+   "runs_correct": 3,
    "runs": 3,
-   "all_correct": false,
-   "any_failure": true,
+   "all_correct": true,
+   "any_failure": false,
    "false_clears": 0,
    "seen_in_any_run": [
-    "batch.yield",
     "identity.lot_mismatch",
     "test.phenoxyethanol_pct.out_of_spec"
    ],
    "missed_in_some_run": [],
    "agreement": 1.0,
    "investigator_paths": [
-    "list_supporting_records > list_corrected_documents > read_document > read_document > read_document > open_record > read_corrected_document > get_specification > get_specification > get_specification > submit_note > submit_note > submit_note",
-    "read_document > read_document > read_document > list_supporting_records > list_corrected_documents > open_record > read_corrected_document > get_specification > get_specification > get_specification > submit_note > submit_note > submit_note",
-    "read_document > read_document > read_document > list_supporting_records > list_corrected_documents > open_record > read_corrected_document > get_specification > submit_note > submit_note > submit_note"
+    "list_supporting_records > list_corrected_documents > read_document > open_record > read_corrected_document > get_specification > get_specification > get_specification > get_specification > submit_note > submit_note",
+    "list_supporting_records > list_corrected_documents > read_document > open_record > read_corrected_document > get_specification > submit_note > submit_note"
    ]
   },
   {
@@ -144,22 +125,19 @@
     "test.tymc_cfu_g.missing"
    ],
    "expected_proposal": "hold",
-   "runs_correct": 0,
+   "runs_correct": 3,
    "runs": 3,
-   "all_correct": false,
-   "any_failure": true,
+   "all_correct": true,
+   "any_failure": false,
    "false_clears": 0,
    "seen_in_any_run": [
-    "batch.yield",
     "dates.expiry",
     "test.tymc_cfu_g.missing"
    ],
    "missed_in_some_run": [],
    "agreement": 1.0,
    "investigator_paths": [
-    "list_supporting_records > list_corrected_documents > read_document > read_document > read_corrected_document > get_specification > read_document > get_specification > get_specification > submit_note > submit_note",
-    "list_supporting_records > list_corrected_documents > read_document > read_document > read_document > read_corrected_document > get_specification > get_specification > get_specification > get_specification > submit_note > submit_note",
-    "read_document > read_document > read_document > list_supporting_records > list_corrected_documents > read_corrected_document > get_specification > get_specification > get_specification > get_specification > get_specification > submit_note > submit_note"
+    "list_supporting_records > list_corrected_documents > read_document > read_corrected_document > get_specification > read_document > read_document > submit_note > submit_note"
    ]
   },
   {
@@ -169,213 +147,116 @@
     "test.viscosity_cp.out_of_spec"
    ],
    "expected_proposal": "hold",
-   "runs_correct": 0,
+   "runs_correct": 3,
    "runs": 3,
-   "all_correct": false,
-   "any_failure": true,
+   "all_correct": true,
+   "any_failure": false,
    "false_clears": 0,
    "seen_in_any_run": [
-    "batch.yield",
     "spec.wrong_revision",
     "test.viscosity_cp.out_of_spec"
    ],
    "missed_in_some_run": [],
    "agreement": 1.0,
    "investigator_paths": [
-    "list_supporting_records > list_corrected_documents > get_specification > get_specification > read_document > read_document > get_specification > get_specification > read_document > submit_note > submit_note"
+    "list_supporting_records > get_specification > get_specification > list_corrected_documents > read_document > read_document > read_document > submit_note"
    ]
   }
  ],
  "runs": [
   {
    "schema": "release-desk.run.v2",
-   "run_id": "423f21eb0b694d3896619228949b90e9",
+   "run_id": "fe3b77a95c884e4d95543713343300b0",
    "mode": "live",
    "model": "claude-sonnet-5-5",
    "document_fingerprint": "81c1508966ed0d14",
    "versions": {},
    "governing_revision": "03",
-   "findings_detail": [
-    {
-     "id": "F1",
-     "rule": "batch.yield",
-     "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-      }
-     ]
-    }
-   ],
-   "rationale": "Finding F1 is a major yield finding, and any major finding requires a hold pending reviewer disposition. The recorded yield is 98.4% (3,936 of 4,000 units), which appears to fall inside the stated expected range of 95.0 to 102.0%. The reviewer should check whether F1 was raised in error.",
+   "findings_detail": [],
+   "rationale": "The release rules returned no findings for lot LC-24031, so there are no critical or major findings. Release is proposed, subject to the named quality reviewer's approval.",
    "lot": "LC-24031",
    "run": 1,
-   "findings": [
-    "batch.yield"
-   ],
+   "findings": [],
    "missed": [],
-   "extra": [
-    "batch.yield"
-   ],
-   "proposal": "hold",
+   "extra": [],
+   "proposal": "release",
    "expected_proposal": "release",
    "false_clear": false,
    "refused_claims": 0,
-   "investigator_calls": [
-    "read_document",
-    "list_supporting_records",
-    "list_corrected_documents",
-    "get_specification",
-    "get_specification",
-    "read_document",
-    "get_specification",
-    "get_specification",
-    "submit_note"
-   ],
-   "notes": [
-    "route_to_deviation_owner"
-   ],
+   "investigator_calls": [],
+   "notes": [],
    "usage": {
-    "model_calls": 9,
-    "input_tokens": 23180,
-    "output_tokens": 4383,
-    "seconds": 29.37
+    "model_calls": 4,
+    "input_tokens": 6718,
+    "output_tokens": 2404,
+    "seconds": 18.45
    },
    "error": null,
-   "correct": false
+   "correct": true
   },
   {
    "schema": "release-desk.run.v2",
-   "run_id": "6fad306daef140a2a86eec15caf27264",
+   "run_id": "66925b13c0344edeb5be1a50ca0143bf",
    "mode": "live",
    "model": "claude-sonnet-5-5",
    "document_fingerprint": "81c1508966ed0d14",
    "versions": {},
    "governing_revision": "03",
-   "findings_detail": [
-    {
-     "id": "F1",
-     "rule": "batch.yield",
-     "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-      }
-     ]
-    }
-   ],
-   "rationale": "F1 is a major finding on batch yield, so the lot is placed on hold for reviewer disposition. The finding reports 98.4% (3,936 of 4,000 units, batch_record.md line 21) against an expected range of 95.0 to 102.0%. That value appears to fall inside the range, so the reviewer should check whether F1 was raised in error.",
+   "findings_detail": [],
+   "rationale": "The release rules returned no findings for lot LC-24031. There are no critical or major findings, so there is no basis to hold the lot. I propose release, subject to the quality reviewer's approval.",
    "lot": "LC-24031",
    "run": 2,
-   "findings": [
-    "batch.yield"
-   ],
+   "findings": [],
    "missed": [],
-   "extra": [
-    "batch.yield"
-   ],
-   "proposal": "hold",
+   "extra": [],
+   "proposal": "release",
    "expected_proposal": "release",
    "false_clear": false,
    "refused_claims": 0,
-   "investigator_calls": [
-    "read_document",
-    "list_supporting_records",
-    "list_corrected_documents",
-    "get_specification",
-    "read_document",
-    "get_specification",
-    "get_specification",
-    "read_document",
-    "submit_note"
-   ],
-   "notes": [
-    "route_to_deviation_owner"
-   ],
+   "investigator_calls": [],
+   "notes": [],
    "usage": {
-    "model_calls": 10,
-    "input_tokens": 28849,
-    "output_tokens": 4275,
-    "seconds": 29.41
+    "model_calls": 4,
+    "input_tokens": 6736,
+    "output_tokens": 2449,
+    "seconds": 14.99
    },
    "error": null,
-   "correct": false
+   "correct": true
   },
   {
    "schema": "release-desk.run.v2",
-   "run_id": "37da7f1ca1c542efbf0896bc20ba0a06",
+   "run_id": "28a23459f176449eb8a65693f11de3d4",
    "mode": "live",
    "model": "claude-sonnet-5-5",
    "document_fingerprint": "81c1508966ed0d14",
    "versions": {},
    "governing_revision": "03",
-   "findings_detail": [
-    {
-     "id": "F1",
-     "rule": "batch.yield",
-     "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-      }
-     ]
-    }
-   ],
-   "rationale": "F1 is a major finding (batch.yield), so the lot is placed on hold for reviewer disposition. The finding says yield is outside the expected 95.0 to 102.0%, but the cited batch record (line 21) shows 3,936 of 4,000 units, or 98.4%, which is inside that range. The reviewer should check whether F1 was raised in error.",
+   "findings_detail": [],
+   "rationale": "The release rules returned no findings for lot LC-24031, so there are no critical or major findings. Under the disposition rule, the lot can be proposed for release, pending the named quality reviewer's approval.",
    "lot": "LC-24031",
    "run": 3,
-   "findings": [
-    "batch.yield"
-   ],
+   "findings": [],
    "missed": [],
-   "extra": [
-    "batch.yield"
-   ],
-   "proposal": "hold",
+   "extra": [],
+   "proposal": "release",
    "expected_proposal": "release",
    "false_clear": false,
    "refused_claims": 0,
-   "investigator_calls": [
-    "read_document",
-    "list_supporting_records",
-    "list_corrected_documents",
-    "get_specification",
-    "read_document",
-    "read_document",
-    "get_specification",
-    "get_specification",
-    "submit_note"
-   ],
-   "notes": [
-    "request_missing_evidence"
-   ],
+   "investigator_calls": [],
+   "notes": [],
    "usage": {
-    "model_calls": 9,
-    "input_tokens": 25058,
-    "output_tokens": 4477,
-    "seconds": 28.9
+    "model_calls": 4,
+    "input_tokens": 6742,
+    "output_tokens": 2473,
+    "seconds": 20.1
    },
    "error": null,
-   "correct": false
+   "correct": true
   },
   {
    "schema": "release-desk.run.v2",
-   "run_id": "eecd8fce0241450cb8b5bb16ccf00738",
+   "run_id": "28b7ebf1a7be47498917e065a06988d4",
    "mode": "live",
    "model": "claude-sonnet-5-5",
    "document_fingerprint": "46299652c3fe6e0d",
@@ -396,34 +277,369 @@
        "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | 40 |"
       }
      ]
-    },
+    }
+   ],
+   "rationale": "Finding F1 is critical: the total yeast and mould count is 40 CFU/g against a specification of not more than 10 CFU/g (certificate_of_analysis.md, line 22). Because a critical finding is present, the lot should be held pending a quality reviewer's disposition.",
+   "lot": "LC-24032",
+   "run": 1,
+   "findings": [
+    "test.tymc_cfu_g.out_of_spec"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "list_corrected_documents",
+    "read_document",
+    "get_specification",
+    "get_specification",
+    "get_specification",
+    "read_document",
+    "read_document",
+    "submit_note"
+   ],
+   "notes": [
+    "route_to_deviation_owner"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 21334,
+    "output_tokens": 3853,
+    "seconds": 25.45
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "703f7aca28a24deeb0a01cedc8ab8069",
+   "mode": "live",
+   "model": "claude-sonnet-5-5",
+   "document_fingerprint": "46299652c3fe6e0d",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
     {
-     "id": "F2",
-     "rule": "batch.yield",
-     "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
+     "id": "F1",
+     "rule": "test.tymc_cfu_g.out_of_spec",
+     "severity": "critical",
+     "title": "Total yeast and mould count out of specification",
+     "expected": "not more than 10 CFU/g",
+     "observed": "40",
      "evidence": [
       {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
+       "document": "certificate_of_analysis.md",
+       "line": 22,
+       "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | 40 |"
       }
      ]
     }
    ],
-   "rationale": "F1 (critical): the total yeast and mould count is 40 CFU/g against a limit of not more than 10 CFU/g, per the certificate of analysis. F2 is flagged as major for yield, but the recorded 98.4% (3,936 of 4,000 units) is inside the stated 95.0 to 102.0% range, so the reviewer should check whether F2 was raised correctly. The hold rests on F1 alone, and F2 does not change that.",
+   "rationale": "Finding F1 is critical: the total yeast and mould count is 40 CFU/g, against a specification of not more than 10 CFU/g (certificate_of_analysis.md, line 22). Because of this critical out-of-specification result, the lot should be held for a quality reviewer's disposition.",
    "lot": "LC-24032",
-   "run": 1,
+   "run": 2,
    "findings": [
-    "batch.yield",
     "test.tymc_cfu_g.out_of_spec"
    ],
    "missed": [],
-   "extra": [
-    "batch.yield"
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "list_corrected_documents",
+    "read_document",
+    "get_specification",
+    "get_specification",
+    "get_specification",
+    "read_document",
+    "read_document",
+    "submit_note"
    ],
+   "notes": [
+    "route_to_deviation_owner"
+   ],
+   "usage": {
+    "model_calls": 9,
+    "input_tokens": 24892,
+    "output_tokens": 3859,
+    "seconds": 27.14
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "d70ddc3644c64691b456a0793b332351",
+   "mode": "live",
+   "model": "claude-sonnet-5-5",
+   "document_fingerprint": "46299652c3fe6e0d",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "test.tymc_cfu_g.out_of_spec",
+     "severity": "critical",
+     "title": "Total yeast and mould count out of specification",
+     "expected": "not more than 10 CFU/g",
+     "observed": "40",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 22,
+       "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | 40 |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Finding F1 is critical: the total yeast and mould count is 40 CFU/g against a specification of not more than 10 CFU/g (certificate_of_analysis.md, line 22). Because a critical finding is present, the lot should be held pending a quality reviewer's disposition.",
+   "lot": "LC-24032",
+   "run": 3,
+   "findings": [
+    "test.tymc_cfu_g.out_of_spec"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "list_corrected_documents",
+    "read_document",
+    "get_specification",
+    "get_specification",
+    "get_specification",
+    "read_document",
+    "get_specification",
+    "get_specification",
+    "read_document",
+    "submit_note"
+   ],
+   "notes": [
+    "route_to_deviation_owner"
+   ],
+   "usage": {
+    "model_calls": 10,
+    "input_tokens": 33911,
+    "output_tokens": 6458,
+    "seconds": 40.85
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "302a9037d1a54747854a5126228f60e6",
+   "mode": "live",
+   "model": "claude-sonnet-5-5",
+   "document_fingerprint": "0e9b4203f32b99eb",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "deviation.open",
+     "severity": "major",
+     "title": "DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification",
+     "expected": "Closed",
+     "observed": "Open, investigation pending",
+     "evidence": [
+      {
+       "document": "deviation_log.md",
+       "line": 10,
+       "text": "| DEV-0417 | Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification | Open, investigation pending | Not yet assigned |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Finding F1 is a major finding: deviation DEV-0417 (mixer temperature reached 81 \u00b0C for 6 minutes during emulsification) is still open, with the investigation pending and no owner assigned. The release rules require an open major finding to be resolved before release, so I propose a quality hold until a reviewer decides the disposition.",
+   "lot": "LC-24033",
+   "run": 1,
+   "findings": [
+    "deviation.open"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "read_document",
+    "list_corrected_documents",
+    "open_record",
+    "read_document",
+    "submit_note"
+   ],
+   "notes": [
+    "route_to_deviation_owner"
+   ],
+   "usage": {
+    "model_calls": 9,
+    "input_tokens": 22008,
+    "output_tokens": 4109,
+    "seconds": 27.67
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "077845ee165843b697bbc124111af18c",
+   "mode": "live",
+   "model": "claude-sonnet-5-5",
+   "document_fingerprint": "0e9b4203f32b99eb",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "deviation.open",
+     "severity": "major",
+     "title": "DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification",
+     "expected": "Closed",
+     "observed": "Open, investigation pending",
+     "evidence": [
+      {
+       "document": "deviation_log.md",
+       "line": 10,
+       "text": "| DEV-0417 | Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification | Open, investigation pending | Not yet assigned |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Finding F1 is a major finding: deviation DEV-0417 (mixer temperature reached 81 \u00b0C for 6 minutes during emulsification) is still open, with the investigation pending and no owner assigned. Because a major finding is present, the lot should be held until a quality reviewer decides on it.",
+   "lot": "LC-24033",
+   "run": 2,
+   "findings": [
+    "deviation.open"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "read_document",
+    "list_corrected_documents",
+    "open_record",
+    "read_document",
+    "submit_note"
+   ],
+   "notes": [
+    "route_to_deviation_owner"
+   ],
+   "usage": {
+    "model_calls": 9,
+    "input_tokens": 22003,
+    "output_tokens": 4042,
+    "seconds": 25.37
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "d1a40309142140ba8acf314d1728e80e",
+   "mode": "live",
+   "model": "claude-sonnet-5-5",
+   "document_fingerprint": "0e9b4203f32b99eb",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "deviation.open",
+     "severity": "major",
+     "title": "DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification",
+     "expected": "Closed",
+     "observed": "Open, investigation pending",
+     "evidence": [
+      {
+       "document": "deviation_log.md",
+       "line": 10,
+       "text": "| DEV-0417 | Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification | Open, investigation pending | Not yet assigned |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Finding F1 is a major finding: deviation DEV-0417 (mixer temperature reached 81 \u00b0C for 6 minutes during emulsification) is still open, with the investigation pending and no owner assigned. Because there is a major finding, the lot should be held until a quality reviewer decides what to do with it.",
+   "lot": "LC-24033",
+   "run": 3,
+   "findings": [
+    "deviation.open"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "read_document",
+    "list_corrected_documents",
+    "open_record",
+    "read_document",
+    "submit_note"
+   ],
+   "notes": [
+    "route_to_deviation_owner"
+   ],
+   "usage": {
+    "model_calls": 9,
+    "input_tokens": 21985,
+    "output_tokens": 4038,
+    "seconds": 25.84
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "7f52028742854ae19a9ec2156598af7a",
+   "mode": "live",
+   "model": "claude-sonnet-5-5",
+   "document_fingerprint": "1fca282f4b4aaa27",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "batch.step_unverified",
+     "severity": "major",
+     "title": "Step 7 (Fill into 50 g tubes and crimp) not verified by a second person",
+     "expected": "a second person's name",
+     "observed": "blank or unverified",
+     "evidence": [
+      {
+       "document": "batch_record.md",
+       "line": 18,
+       "text": "| 7 | Fill into 50 g tubes and crimp | A. Moreau |  |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Finding F1 is a major finding: step 7 (Fill into 50 g tubes and crimp) was performed by A. Moreau but has no second-person verification in batch_record.md line 18. Because a major finding is open, the lot should be held until a quality reviewer decides on its disposition.",
+   "lot": "LC-24034",
+   "run": 1,
+   "findings": [
+    "batch.step_unverified"
+   ],
+   "missed": [],
+   "extra": [],
    "proposal": "hold",
    "expected_proposal": "hold",
    "false_clear": false,
@@ -433,77 +649,489 @@
     "list_corrected_documents",
     "read_document",
     "read_document",
+    "submit_note"
+   ],
+   "notes": [
+    "route_to_deviation_owner"
+   ],
+   "usage": {
+    "model_calls": 7,
+    "input_tokens": 15471,
+    "output_tokens": 3373,
+    "seconds": 24.41
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "e82f72e6fb534b55a2b6d3ebac6ddee1",
+   "mode": "live",
+   "model": "claude-sonnet-5-5",
+   "document_fingerprint": "1fca282f4b4aaa27",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "batch.step_unverified",
+     "severity": "major",
+     "title": "Step 7 (Fill into 50 g tubes and crimp) not verified by a second person",
+     "expected": "a second person's name",
+     "observed": "blank or unverified",
+     "evidence": [
+      {
+       "document": "batch_record.md",
+       "line": 18,
+       "text": "| 7 | Fill into 50 g tubes and crimp | A. Moreau |  |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Finding F1 is a major finding: step 7 (Fill into 50 g tubes and crimp) was performed by A. Moreau but has no second-person verification in the batch record (line 18). Because a major finding is open, the lot should be held until a quality reviewer decides on its disposition.",
+   "lot": "LC-24034",
+   "run": 2,
+   "findings": [
+    "batch.step_unverified"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "list_corrected_documents",
+    "read_document",
+    "read_document",
+    "submit_note"
+   ],
+   "notes": [
+    "route_to_deviation_owner"
+   ],
+   "usage": {
+    "model_calls": 7,
+    "input_tokens": 15463,
+    "output_tokens": 3389,
+    "seconds": 21.04
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "88373f055cbb461eb9d3c3486c986a51",
+   "mode": "live",
+   "model": "claude-sonnet-5-5",
+   "document_fingerprint": "1fca282f4b4aaa27",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "batch.step_unverified",
+     "severity": "major",
+     "title": "Step 7 (Fill into 50 g tubes and crimp) not verified by a second person",
+     "expected": "a second person's name",
+     "observed": "blank or unverified",
+     "evidence": [
+      {
+       "document": "batch_record.md",
+       "line": 18,
+       "text": "| 7 | Fill into 50 g tubes and crimp | A. Moreau |  |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Finding F1 is a major finding: step 7 (Fill into 50 g tubes and crimp) was performed by A. Moreau but has no second-person verification in batch_record.md line 18. Because a major finding is open, the lot should be held until a quality reviewer decides on its disposition.",
+   "lot": "LC-24034",
+   "run": 3,
+   "findings": [
+    "batch.step_unverified"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "list_corrected_documents",
+    "read_document",
+    "read_document",
+    "submit_note"
+   ],
+   "notes": [
+    "route_to_deviation_owner"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 18274,
+    "output_tokens": 3435,
+    "seconds": 20.77
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "07a053397ef94f29aa123b710d95b1bd",
+   "mode": "live",
+   "model": "claude-sonnet-5-5",
+   "document_fingerprint": "7b1b4982663e55dc",
+   "versions": {},
+   "governing_revision": "04",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "identity.lot_mismatch",
+     "severity": "critical",
+     "title": "Lot number on the certificate of analysis does not match",
+     "expected": "LC-24035",
+     "observed": "LC-24053",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 7,
+       "text": "Lot number: LC-24053"
+      }
+     ]
+    },
+    {
+     "id": "F2",
+     "rule": "test.phenoxyethanol_pct.out_of_spec",
+     "severity": "major",
+     "title": "Phenoxyethanol assay out of specification",
+     "expected": "0.80 to 1.00 % w/w",
+     "observed": "0.78",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 19,
+       "text": "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.78 |"
+      }
+     ]
+    }
+   ],
+   "rationale": "The certificate of analysis lists lot number LC-24053, but the lot under review is LC-24035 (F1, critical). The phenoxyethanol assay result of 0.78 % w/w is below the specification of 0.80 to 1.00 % w/w (F2, major). Because of these critical and major findings, the lot needs a quality reviewer's disposition.",
+   "lot": "LC-24035",
+   "run": 1,
+   "findings": [
+    "identity.lot_mismatch",
+    "test.phenoxyethanol_pct.out_of_spec"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "list_corrected_documents",
+    "read_document",
+    "open_record",
+    "read_corrected_document",
+    "get_specification",
+    "submit_note",
+    "submit_note"
+   ],
+   "notes": [
+    "reassess_with_corrected_document",
+    "route_to_deviation_owner"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 22675,
+    "output_tokens": 4185,
+    "seconds": 28.43
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "51c5c63dbdb346189890888f6e19b41c",
+   "mode": "live",
+   "model": "claude-sonnet-5-5",
+   "document_fingerprint": "7b1b4982663e55dc",
+   "versions": {},
+   "governing_revision": "04",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "identity.lot_mismatch",
+     "severity": "critical",
+     "title": "Lot number on the certificate of analysis does not match",
+     "expected": "LC-24035",
+     "observed": "LC-24053",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 7,
+       "text": "Lot number: LC-24053"
+      }
+     ]
+    },
+    {
+     "id": "F2",
+     "rule": "test.phenoxyethanol_pct.out_of_spec",
+     "severity": "major",
+     "title": "Phenoxyethanol assay out of specification",
+     "expected": "0.80 to 1.00 % w/w",
+     "observed": "0.78",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 19,
+       "text": "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.78 |"
+      }
+     ]
+    }
+   ],
+   "rationale": "The certificate of analysis lists lot number LC-24053, but the lot under review is LC-24035 (F1, critical). The phenoxyethanol assay result is 0.78 % w/w, below the specification of 0.80 to 1.00 % w/w (F2, major). Because of these critical and major findings, the lot should be held pending a reviewer's disposition.",
+   "lot": "LC-24035",
+   "run": 2,
+   "findings": [
+    "identity.lot_mismatch",
+    "test.phenoxyethanol_pct.out_of_spec"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "list_corrected_documents",
+    "read_document",
+    "open_record",
+    "read_corrected_document",
+    "get_specification",
+    "submit_note",
+    "submit_note"
+   ],
+   "notes": [
+    "reassess_with_corrected_document",
+    "route_to_deviation_owner"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 22775,
+    "output_tokens": 4438,
+    "seconds": 29.17
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "db2cd8dd65a844ac9b473511cb9fe917",
+   "mode": "live",
+   "model": "claude-sonnet-5-5",
+   "document_fingerprint": "7b1b4982663e55dc",
+   "versions": {},
+   "governing_revision": "04",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "identity.lot_mismatch",
+     "severity": "critical",
+     "title": "Lot number on the certificate of analysis does not match",
+     "expected": "LC-24035",
+     "observed": "LC-24053",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 7,
+       "text": "Lot number: LC-24053"
+      }
+     ]
+    },
+    {
+     "id": "F2",
+     "rule": "test.phenoxyethanol_pct.out_of_spec",
+     "severity": "major",
+     "title": "Phenoxyethanol assay out of specification",
+     "expected": "0.80 to 1.00 % w/w",
+     "observed": "0.78",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 19,
+       "text": "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.78 |"
+      }
+     ]
+    }
+   ],
+   "rationale": "The certificate of analysis lists lot number LC-24053, but the lot being dispositioned is LC-24035 (F1, critical). The phenoxyethanol assay result is 0.78 % w/w, below the specification of 0.80 to 1.00 % w/w (F2, major). Because of these critical and major findings, the lot should be held for a quality reviewer's disposition.",
+   "lot": "LC-24035",
+   "run": 3,
+   "findings": [
+    "identity.lot_mismatch",
+    "test.phenoxyethanol_pct.out_of_spec"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "list_corrected_documents",
+    "read_document",
+    "open_record",
+    "read_corrected_document",
     "get_specification",
     "get_specification",
     "get_specification",
+    "get_specification",
+    "submit_note",
+    "submit_note"
+   ],
+   "notes": [
+    "reassess_with_corrected_document",
+    "route_to_deviation_owner"
+   ],
+   "usage": {
+    "model_calls": 9,
+    "input_tokens": 28193,
+    "output_tokens": 4562,
+    "seconds": 30.39
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "18144bb3935a4adeab4ad13b21a78c01",
+   "mode": "live",
+   "model": "claude-sonnet-5-5",
+   "document_fingerprint": "2ba3981481ebebba",
+   "versions": {},
+   "governing_revision": "04",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "test.tymc_cfu_g.missing",
+     "severity": "critical",
+     "title": "Total yeast and mould count: no usable result",
+     "expected": "not more than 10 CFU/g",
+     "observed": "Pending",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 22,
+       "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | Pending |"
+      }
+     ]
+    },
+    {
+     "id": "F2",
+     "rule": "dates.expiry",
+     "severity": "major",
+     "title": "Expiry date does not match the approved shelf life",
+     "expected": "2029-04 (30 months from manufacture)",
+     "observed": "2029-10",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 9,
+       "text": "Expiry: 2029-10"
+      }
+     ]
+    }
+   ],
+   "rationale": "Lot LC-24036 has a critical finding (F1): the total yeast and mould count has no usable result (Pending) against a limit of not more than 10 CFU/g. It also has a major finding (F2): the expiry date on the certificate is 2029-10, but the approved 30-month shelf life gives 2029-04. A quality reviewer should decide the disposition once these are resolved.",
+   "lot": "LC-24036",
+   "run": 1,
+   "findings": [
+    "dates.expiry",
+    "test.tymc_cfu_g.missing"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "list_corrected_documents",
+    "read_document",
+    "read_corrected_document",
+    "get_specification",
+    "read_document",
     "read_document",
     "submit_note",
     "submit_note"
    ],
    "notes": [
     "confirm_with_laboratory",
-    "route_to_deviation_owner"
+    "reassess_with_corrected_document"
    ],
    "usage": {
-    "model_calls": 8,
-    "input_tokens": 23589,
-    "output_tokens": 4744,
-    "seconds": 32.06
+    "model_calls": 9,
+    "input_tokens": 32369,
+    "output_tokens": 6530,
+    "seconds": 37.27
    },
    "error": null,
-   "correct": false
+   "correct": true
   },
   {
    "schema": "release-desk.run.v2",
-   "run_id": "6ea5a2eb55974317b2a211e60f4e4bdb",
+   "run_id": "49835525919f4b049dc743f1fa8bec56",
    "mode": "live",
    "model": "claude-sonnet-5-5",
-   "document_fingerprint": "46299652c3fe6e0d",
+   "document_fingerprint": "2ba3981481ebebba",
    "versions": {},
-   "governing_revision": "03",
+   "governing_revision": "04",
    "findings_detail": [
     {
      "id": "F1",
-     "rule": "test.tymc_cfu_g.out_of_spec",
+     "rule": "test.tymc_cfu_g.missing",
      "severity": "critical",
-     "title": "Total yeast and mould count out of specification",
+     "title": "Total yeast and mould count: no usable result",
      "expected": "not more than 10 CFU/g",
-     "observed": "40",
+     "observed": "Pending",
      "evidence": [
       {
        "document": "certificate_of_analysis.md",
        "line": 22,
-       "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | 40 |"
+       "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | Pending |"
       }
      ]
     },
     {
      "id": "F2",
-     "rule": "batch.yield",
+     "rule": "dates.expiry",
      "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
+     "title": "Expiry date does not match the approved shelf life",
+     "expected": "2029-04 (30 months from manufacture)",
+     "observed": "2029-10",
      "evidence": [
       {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
+       "document": "certificate_of_analysis.md",
+       "line": 9,
+       "text": "Expiry: 2029-10"
       }
      ]
     }
    ],
-   "rationale": "F1 (critical): the total yeast and mould count is 40 CFU/g against a limit of not more than 10 CFU/g, so the lot is out of specification. F2 (major) is also flagged for yield, but the observed 98.4% appears to be inside the stated 95.0 to 102.0% range, so the reviewer should check that finding. The critical finding F1 is enough to require a hold pending reviewer disposition.",
-   "lot": "LC-24032",
+   "rationale": "Lot LC-24036 has a critical finding (F1): the total yeast and mould count has no usable result (Pending), against a limit of not more than 10 CFU/g. It also has a major finding (F2): the expiry date on the certificate of analysis is 2029-10, but the approved 30-month shelf life gives 2029-04. A quality reviewer should decide the disposition.",
+   "lot": "LC-24036",
    "run": 2,
    "findings": [
-    "batch.yield",
-    "test.tymc_cfu_g.out_of_spec"
+    "dates.expiry",
+    "test.tymc_cfu_g.missing"
    ],
    "missed": [],
-   "extra": [
-    "batch.yield"
-   ],
+   "extra": [],
    "proposal": "hold",
    "expected_proposal": "hold",
    "false_clear": false,
@@ -512,899 +1140,29 @@
     "list_supporting_records",
     "list_corrected_documents",
     "read_document",
+    "read_corrected_document",
+    "get_specification",
     "read_document",
-    "get_specification",
-    "get_specification",
-    "get_specification",
     "read_document",
     "submit_note",
     "submit_note"
    ],
    "notes": [
     "confirm_with_laboratory",
-    "route_to_deviation_owner"
-   ],
-   "usage": {
-    "model_calls": 8,
-    "input_tokens": 23482,
-    "output_tokens": 4771,
-    "seconds": 30.48
-   },
-   "error": null,
-   "correct": false
-  },
-  {
-   "schema": "release-desk.run.v2",
-   "run_id": "539e056c626d4b97a479b3dad5065597",
-   "mode": "live",
-   "model": "claude-sonnet-5-5",
-   "document_fingerprint": "46299652c3fe6e0d",
-   "versions": {},
-   "governing_revision": "03",
-   "findings_detail": [
-    {
-     "id": "F1",
-     "rule": "test.tymc_cfu_g.out_of_spec",
-     "severity": "critical",
-     "title": "Total yeast and mould count out of specification",
-     "expected": "not more than 10 CFU/g",
-     "observed": "40",
-     "evidence": [
-      {
-       "document": "certificate_of_analysis.md",
-       "line": 22,
-       "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | 40 |"
-      }
-     ]
-    },
-    {
-     "id": "F2",
-     "rule": "batch.yield",
-     "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-      }
-     ]
-    }
-   ],
-   "rationale": "F1 is critical: the total yeast and mould count is 40 CFU/g against a limit of not more than 10 CFU/g, so the lot is out of specification. F2 is listed as a major yield finding, but the observed yield of 98.4% is inside the stated 95.0 to 102.0% range, so the reviewer should check that finding. The critical F1 finding alone requires a hold pending a reviewer's disposition.",
-   "lot": "LC-24032",
-   "run": 3,
-   "findings": [
-    "batch.yield",
-    "test.tymc_cfu_g.out_of_spec"
-   ],
-   "missed": [],
-   "extra": [
-    "batch.yield"
-   ],
-   "proposal": "hold",
-   "expected_proposal": "hold",
-   "false_clear": false,
-   "refused_claims": 0,
-   "investigator_calls": [
-    "list_supporting_records",
-    "list_corrected_documents",
-    "read_document",
-    "read_document",
-    "read_document",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "submit_note",
-    "submit_note"
-   ],
-   "notes": [
-    "route_to_deviation_owner",
-    "request_missing_evidence"
-   ],
-   "usage": {
-    "model_calls": 8,
-    "input_tokens": 23769,
-    "output_tokens": 4811,
-    "seconds": 31.43
-   },
-   "error": null,
-   "correct": false
-  },
-  {
-   "schema": "release-desk.run.v2",
-   "run_id": "874e8fc7a8af4f51a39019e78cf982d7",
-   "mode": "live",
-   "model": "claude-sonnet-5-5",
-   "document_fingerprint": "0e9b4203f32b99eb",
-   "versions": {},
-   "governing_revision": "03",
-   "findings_detail": [
-    {
-     "id": "F1",
-     "rule": "batch.yield",
-     "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-      }
-     ]
-    },
-    {
-     "id": "F2",
-     "rule": "deviation.open",
-     "severity": "major",
-     "title": "DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification",
-     "expected": "Closed",
-     "observed": "Open, investigation pending",
-     "evidence": [
-      {
-       "document": "deviation_log.md",
-       "line": 10,
-       "text": "| DEV-0417 | Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification | Open, investigation pending | Not yet assigned |"
-      }
-     ]
-    }
-   ],
-   "rationale": "DEV-0417 (mixer temperature reached 81 \u00b0C for 6 minutes during emulsification) is still open with the investigation pending and no owner assigned (F2), so the lot cannot be released. F1 is also flagged as a major yield finding, but its observed yield of 98.4% is inside the stated 95.0 to 102.0% range, so the reviewer should check whether that finding is correct. The hold rests on F2 alone, and F1 is listed because the rules flagged it.",
-   "lot": "LC-24033",
-   "run": 1,
-   "findings": [
-    "batch.yield",
-    "deviation.open"
-   ],
-   "missed": [],
-   "extra": [
-    "batch.yield"
-   ],
-   "proposal": "hold",
-   "expected_proposal": "hold",
-   "false_clear": false,
-   "refused_claims": 0,
-   "investigator_calls": [
-    "read_document",
-    "read_document",
-    "list_supporting_records",
-    "list_corrected_documents",
-    "open_record",
-    "get_specification",
-    "read_document",
-    "get_specification",
-    "get_specification",
-    "submit_note",
-    "submit_note"
-   ],
-   "notes": [
-    "request_missing_evidence",
-    "route_to_deviation_owner"
+    "reassess_with_corrected_document"
    ],
    "usage": {
     "model_calls": 9,
-    "input_tokens": 29144,
-    "output_tokens": 5496,
-    "seconds": 38.27
+    "input_tokens": 32363,
+    "output_tokens": 6554,
+    "seconds": 36.89
    },
    "error": null,
-   "correct": false
+   "correct": true
   },
   {
    "schema": "release-desk.run.v2",
-   "run_id": "ae9ffb4fa42449249897026797234e7d",
-   "mode": "live",
-   "model": "claude-sonnet-5-5",
-   "document_fingerprint": "0e9b4203f32b99eb",
-   "versions": {},
-   "governing_revision": "03",
-   "findings_detail": [
-    {
-     "id": "F1",
-     "rule": "batch.yield",
-     "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-      }
-     ]
-    },
-    {
-     "id": "F2",
-     "rule": "deviation.open",
-     "severity": "major",
-     "title": "DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification",
-     "expected": "Closed",
-     "observed": "Open, investigation pending",
-     "evidence": [
-      {
-       "document": "deviation_log.md",
-       "line": 10,
-       "text": "| DEV-0417 | Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification | Open, investigation pending | Not yet assigned |"
-      }
-     ]
-    }
-   ],
-   "rationale": "F2 is a major finding: deviation DEV-0417 (mixer temperature reached 81 \u00b0C for 6 minutes during emulsification) is still open with the investigation pending and no owner assigned. F1 is also flagged as major for yield, but the observed 98.4% (3,936 of 4,000 units) falls inside the stated 95.0 to 102.0% range, so the reviewer should check whether F1 was raised in error. The lot should stay on hold because of F2 until a reviewer decides.",
-   "lot": "LC-24033",
-   "run": 2,
-   "findings": [
-    "batch.yield",
-    "deviation.open"
-   ],
-   "missed": [],
-   "extra": [
-    "batch.yield"
-   ],
-   "proposal": "hold",
-   "expected_proposal": "hold",
-   "false_clear": false,
-   "refused_claims": 0,
-   "investigator_calls": [
-    "read_document",
-    "read_document",
-    "list_supporting_records",
-    "list_corrected_documents",
-    "open_record",
-    "read_document",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "submit_note",
-    "submit_note"
-   ],
-   "notes": [
-    "request_missing_evidence",
-    "route_to_deviation_owner"
-   ],
-   "usage": {
-    "model_calls": 10,
-    "input_tokens": 34180,
-    "output_tokens": 6004,
-    "seconds": 42.29
-   },
-   "error": null,
-   "correct": false
-  },
-  {
-   "schema": "release-desk.run.v2",
-   "run_id": "2328159ed81c41d382435fc46100031e",
-   "mode": "live",
-   "model": "claude-sonnet-5-5",
-   "document_fingerprint": "0e9b4203f32b99eb",
-   "versions": {},
-   "governing_revision": "03",
-   "findings_detail": [
-    {
-     "id": "F1",
-     "rule": "batch.yield",
-     "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-      }
-     ]
-    },
-    {
-     "id": "F2",
-     "rule": "deviation.open",
-     "severity": "major",
-     "title": "DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification",
-     "expected": "Closed",
-     "observed": "Open, investigation pending",
-     "evidence": [
-      {
-       "document": "deviation_log.md",
-       "line": 10,
-       "text": "| DEV-0417 | Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification | Open, investigation pending | Not yet assigned |"
-      }
-     ]
-    }
-   ],
-   "rationale": "Placing on hold because there are two major findings. F2: deviation DEV-0417 (mixer temperature reached 81 \u00b0C for 6 minutes during emulsification) is still open, with the investigation pending and no owner assigned. F1 is flagged as a yield problem, but the observed 98.4% is inside the stated 95.0 to 102.0% range, so the reviewer should check whether F1 was raised in error.",
-   "lot": "LC-24033",
-   "run": 3,
-   "findings": [
-    "batch.yield",
-    "deviation.open"
-   ],
-   "missed": [],
-   "extra": [
-    "batch.yield"
-   ],
-   "proposal": "hold",
-   "expected_proposal": "hold",
-   "false_clear": false,
-   "refused_claims": 0,
-   "investigator_calls": [
-    "read_document",
-    "read_document",
-    "list_supporting_records",
-    "list_corrected_documents",
-    "open_record",
-    "read_document",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "submit_note",
-    "submit_note"
-   ],
-   "notes": [
-    "request_missing_evidence",
-    "route_to_deviation_owner"
-   ],
-   "usage": {
-    "model_calls": 10,
-    "input_tokens": 34146,
-    "output_tokens": 5527,
-    "seconds": 39.96
-   },
-   "error": null,
-   "correct": false
-  },
-  {
-   "schema": "release-desk.run.v2",
-   "run_id": "0beaa935c5404592acc91d1e309a5d61",
-   "mode": "live",
-   "model": "claude-sonnet-5-5",
-   "document_fingerprint": "1fca282f4b4aaa27",
-   "versions": {},
-   "governing_revision": "03",
-   "findings_detail": [
-    {
-     "id": "F1",
-     "rule": "batch.yield",
-     "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-      }
-     ]
-    },
-    {
-     "id": "F2",
-     "rule": "batch.step_unverified",
-     "severity": "major",
-     "title": "Step 7 (Fill into 50 g tubes and crimp) not verified by a second person",
-     "expected": "a second person's name",
-     "observed": "blank or unverified",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 18,
-       "text": "| 7 | Fill into 50 g tubes and crimp | A. Moreau |  |"
-      }
-     ]
-    }
-   ],
-   "rationale": "F2 is a major finding. Step 7 (fill into 50 g tubes and crimp) has no second-person verification, since the verifier field is blank in batch_record.md line 18. F1 is also flagged as major for yield, but the observed 98.4% is inside the stated 95.0 to 102.0% range, so the reviewer should check whether that finding is valid. The hold rests on F2 either way.",
-   "lot": "LC-24034",
-   "run": 1,
-   "findings": [
-    "batch.step_unverified",
-    "batch.yield"
-   ],
-   "missed": [],
-   "extra": [
-    "batch.yield"
-   ],
-   "proposal": "hold",
-   "expected_proposal": "hold",
-   "false_clear": false,
-   "refused_claims": 0,
-   "investigator_calls": [
-    "read_document",
-    "list_supporting_records",
-    "list_corrected_documents",
-    "read_document",
-    "read_document",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "submit_note",
-    "submit_note"
-   ],
-   "notes": [
-    "route_to_deviation_owner",
-    "request_missing_evidence"
-   ],
-   "usage": {
-    "model_calls": 10,
-    "input_tokens": 31312,
-    "output_tokens": 4944,
-    "seconds": 35.03
-   },
-   "error": null,
-   "correct": false
-  },
-  {
-   "schema": "release-desk.run.v2",
-   "run_id": "7068782ddf1e49e0bb98dd3126c262d5",
-   "mode": "live",
-   "model": "claude-sonnet-5-5",
-   "document_fingerprint": "1fca282f4b4aaa27",
-   "versions": {},
-   "governing_revision": "03",
-   "findings_detail": [
-    {
-     "id": "F1",
-     "rule": "batch.yield",
-     "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-      }
-     ]
-    },
-    {
-     "id": "F2",
-     "rule": "batch.step_unverified",
-     "severity": "major",
-     "title": "Step 7 (Fill into 50 g tubes and crimp) not verified by a second person",
-     "expected": "a second person's name",
-     "observed": "blank or unverified",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 18,
-       "text": "| 7 | Fill into 50 g tubes and crimp | A. Moreau |  |"
-      }
-     ]
-    }
-   ],
-   "rationale": "F2 is a major finding: step 7 (fill into 50 g tubes and crimp, A. Moreau) has no second-person verification in the batch record. F1 is also flagged as major for yield, but the observed 98.4% is inside the stated 95.0 to 102.0% range, so the reviewer should check whether that finding is correct. The F2 finding alone requires a hold pending a reviewer's disposition.",
-   "lot": "LC-24034",
-   "run": 2,
-   "findings": [
-    "batch.step_unverified",
-    "batch.yield"
-   ],
-   "missed": [],
-   "extra": [
-    "batch.yield"
-   ],
-   "proposal": "hold",
-   "expected_proposal": "hold",
-   "false_clear": false,
-   "refused_claims": 0,
-   "investigator_calls": [
-    "read_document",
-    "list_supporting_records",
-    "list_corrected_documents",
-    "read_document",
-    "read_document",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "submit_note",
-    "submit_note"
-   ],
-   "notes": [
-    "route_to_deviation_owner",
-    "request_missing_evidence"
-   ],
-   "usage": {
-    "model_calls": 10,
-    "input_tokens": 31183,
-    "output_tokens": 4893,
-    "seconds": 33.69
-   },
-   "error": null,
-   "correct": false
-  },
-  {
-   "schema": "release-desk.run.v2",
-   "run_id": "43b5385f79a747adad683e7b23cfc9f8",
-   "mode": "live",
-   "model": "claude-sonnet-5-5",
-   "document_fingerprint": "1fca282f4b4aaa27",
-   "versions": {},
-   "governing_revision": "03",
-   "findings_detail": [
-    {
-     "id": "F1",
-     "rule": "batch.yield",
-     "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-      }
-     ]
-    },
-    {
-     "id": "F2",
-     "rule": "batch.step_unverified",
-     "severity": "major",
-     "title": "Step 7 (Fill into 50 g tubes and crimp) not verified by a second person",
-     "expected": "a second person's name",
-     "observed": "blank or unverified",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 18,
-       "text": "| 7 | Fill into 50 g tubes and crimp | A. Moreau |  |"
-      }
-     ]
-    }
-   ],
-   "rationale": "The lot has two major findings, so it goes on hold for a reviewer's disposition. F2: step 7 (fill into 50 g tubes and crimp) was done by A. Moreau but has no second-person verification (batch_record.md line 18). F1: the yield is flagged as outside range, but the recorded 98.4% (3,936 of 4,000 units, line 21) is inside the stated 95.0 to 102.0%, so the reviewer should check whether this finding is correct.",
-   "lot": "LC-24034",
-   "run": 3,
-   "findings": [
-    "batch.step_unverified",
-    "batch.yield"
-   ],
-   "missed": [],
-   "extra": [
-    "batch.yield"
-   ],
-   "proposal": "hold",
-   "expected_proposal": "hold",
-   "false_clear": false,
-   "refused_claims": 0,
-   "investigator_calls": [
-    "read_document",
-    "list_supporting_records",
-    "list_corrected_documents",
-    "read_document",
-    "read_document",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "submit_note",
-    "submit_note"
-   ],
-   "notes": [
-    "route_to_deviation_owner",
-    "request_corrected_document"
-   ],
-   "usage": {
-    "model_calls": 9,
-    "input_tokens": 26627,
-    "output_tokens": 4683,
-    "seconds": 32.32
-   },
-   "error": null,
-   "correct": false
-  },
-  {
-   "schema": "release-desk.run.v2",
-   "run_id": "a86c0767ed2c4b6f8de9af25b934f644",
-   "mode": "live",
-   "model": "claude-sonnet-5-5",
-   "document_fingerprint": "7b1b4982663e55dc",
-   "versions": {},
-   "governing_revision": "04",
-   "findings_detail": [
-    {
-     "id": "F1",
-     "rule": "identity.lot_mismatch",
-     "severity": "critical",
-     "title": "Lot number on the certificate of analysis does not match",
-     "expected": "LC-24035",
-     "observed": "LC-24053",
-     "evidence": [
-      {
-       "document": "certificate_of_analysis.md",
-       "line": 7,
-       "text": "Lot number: LC-24053"
-      }
-     ]
-    },
-    {
-     "id": "F2",
-     "rule": "test.phenoxyethanol_pct.out_of_spec",
-     "severity": "major",
-     "title": "Phenoxyethanol assay out of specification",
-     "expected": "0.80 to 1.00 % w/w",
-     "observed": "0.78",
-     "evidence": [
-      {
-       "document": "certificate_of_analysis.md",
-       "line": 19,
-       "text": "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.78 |"
-      }
-     ]
-    },
-    {
-     "id": "F3",
-     "rule": "batch.yield",
-     "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-      }
-     ]
-    }
-   ],
-   "rationale": "The certificate of analysis lists lot LC-24053, not LC-24035 (F1, critical). Phenoxyethanol assay is 0.78 % w/w against a 0.80 to 1.00 limit (F2, major). I did not rely on F3, because its observed yield of 98.4% is inside its stated 95.0 to 102.0% range, so the reviewer should check that finding.",
-   "lot": "LC-24035",
-   "run": 1,
-   "findings": [
-    "batch.yield",
-    "identity.lot_mismatch",
-    "test.phenoxyethanol_pct.out_of_spec"
-   ],
-   "missed": [],
-   "extra": [
-    "batch.yield"
-   ],
-   "proposal": "hold",
-   "expected_proposal": "hold",
-   "false_clear": false,
-   "refused_claims": 0,
-   "investigator_calls": [
-    "read_document",
-    "read_document",
-    "read_document",
-    "list_supporting_records",
-    "list_corrected_documents",
-    "open_record",
-    "read_corrected_document",
-    "get_specification",
-    "submit_note",
-    "submit_note",
-    "submit_note"
-   ],
-   "notes": [
-    "reassess_with_corrected_document",
-    "route_to_deviation_owner",
-    "request_missing_evidence"
-   ],
-   "usage": {
-    "model_calls": 8,
-    "input_tokens": 26852,
-    "output_tokens": 5024,
-    "seconds": 33.28
-   },
-   "error": null,
-   "correct": false
-  },
-  {
-   "schema": "release-desk.run.v2",
-   "run_id": "ee60dfb3602d450aaacf1352536e3981",
-   "mode": "live",
-   "model": "claude-sonnet-5-5",
-   "document_fingerprint": "7b1b4982663e55dc",
-   "versions": {},
-   "governing_revision": "04",
-   "findings_detail": [
-    {
-     "id": "F1",
-     "rule": "identity.lot_mismatch",
-     "severity": "critical",
-     "title": "Lot number on the certificate of analysis does not match",
-     "expected": "LC-24035",
-     "observed": "LC-24053",
-     "evidence": [
-      {
-       "document": "certificate_of_analysis.md",
-       "line": 7,
-       "text": "Lot number: LC-24053"
-      }
-     ]
-    },
-    {
-     "id": "F2",
-     "rule": "test.phenoxyethanol_pct.out_of_spec",
-     "severity": "major",
-     "title": "Phenoxyethanol assay out of specification",
-     "expected": "0.80 to 1.00 % w/w",
-     "observed": "0.78",
-     "evidence": [
-      {
-       "document": "certificate_of_analysis.md",
-       "line": 19,
-       "text": "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.78 |"
-      }
-     ]
-    },
-    {
-     "id": "F3",
-     "rule": "batch.yield",
-     "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-      }
-     ]
-    }
-   ],
-   "rationale": "The certificate of analysis lists lot LC-24053, not LC-24035 (F1, critical). Phenoxyethanol assay is 0.78 % w/w against a spec of 0.80 to 1.00 (F2, major). F3 reports a yield of 98.4% as outside 95.0 to 102.0%, but that value is inside the range, so the reviewer should check that finding. F1 and F2 are enough to hold the lot.",
-   "lot": "LC-24035",
-   "run": 2,
-   "findings": [
-    "batch.yield",
-    "identity.lot_mismatch",
-    "test.phenoxyethanol_pct.out_of_spec"
-   ],
-   "missed": [],
-   "extra": [
-    "batch.yield"
-   ],
-   "proposal": "hold",
-   "expected_proposal": "hold",
-   "false_clear": false,
-   "refused_claims": 0,
-   "investigator_calls": [
-    "read_document",
-    "read_document",
-    "read_document",
-    "list_supporting_records",
-    "list_corrected_documents",
-    "open_record",
-    "read_corrected_document",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "submit_note",
-    "submit_note",
-    "submit_note"
-   ],
-   "notes": [
-    "reassess_with_corrected_document",
-    "route_to_deviation_owner",
-    "request_missing_evidence"
-   ],
-   "usage": {
-    "model_calls": 9,
-    "input_tokens": 32815,
-    "output_tokens": 5428,
-    "seconds": 35.75
-   },
-   "error": null,
-   "correct": false
-  },
-  {
-   "schema": "release-desk.run.v2",
-   "run_id": "742e0c9bcd3248f891a10c70be09f187",
-   "mode": "live",
-   "model": "claude-sonnet-5-5",
-   "document_fingerprint": "7b1b4982663e55dc",
-   "versions": {},
-   "governing_revision": "04",
-   "findings_detail": [
-    {
-     "id": "F1",
-     "rule": "identity.lot_mismatch",
-     "severity": "critical",
-     "title": "Lot number on the certificate of analysis does not match",
-     "expected": "LC-24035",
-     "observed": "LC-24053",
-     "evidence": [
-      {
-       "document": "certificate_of_analysis.md",
-       "line": 7,
-       "text": "Lot number: LC-24053"
-      }
-     ]
-    },
-    {
-     "id": "F2",
-     "rule": "test.phenoxyethanol_pct.out_of_spec",
-     "severity": "major",
-     "title": "Phenoxyethanol assay out of specification",
-     "expected": "0.80 to 1.00 % w/w",
-     "observed": "0.78",
-     "evidence": [
-      {
-       "document": "certificate_of_analysis.md",
-       "line": 19,
-       "text": "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.78 |"
-      }
-     ]
-    },
-    {
-     "id": "F3",
-     "rule": "batch.yield",
-     "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-      }
-     ]
-    }
-   ],
-   "rationale": "The certificate of analysis lists lot LC-24053, not LC-24035 (F1, critical), so the test results may not belong to this lot. Phenoxyethanol assay is 0.78 % w/w against a spec of 0.80 to 1.00 (F2, major). F3 (yield) is flagged as major, but its observed 98.4% is inside the stated 95.0 to 102.0% range, so I did not rely on it and the reviewer should check that finding.",
-   "lot": "LC-24035",
-   "run": 3,
-   "findings": [
-    "batch.yield",
-    "identity.lot_mismatch",
-    "test.phenoxyethanol_pct.out_of_spec"
-   ],
-   "missed": [],
-   "extra": [
-    "batch.yield"
-   ],
-   "proposal": "hold",
-   "expected_proposal": "hold",
-   "false_clear": false,
-   "refused_claims": 0,
-   "investigator_calls": [
-    "list_supporting_records",
-    "list_corrected_documents",
-    "read_document",
-    "read_document",
-    "read_document",
-    "open_record",
-    "read_corrected_document",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "submit_note",
-    "submit_note",
-    "submit_note"
-   ],
-   "notes": [
-    "reassess_with_corrected_document",
-    "route_to_deviation_owner",
-    "request_missing_evidence"
-   ],
-   "usage": {
-    "model_calls": 9,
-    "input_tokens": 32835,
-    "output_tokens": 5587,
-    "seconds": 36.16
-   },
-   "error": null,
-   "correct": false
-  },
-  {
-   "schema": "release-desk.run.v2",
-   "run_id": "cf302cc7bef9406588bce500761dd8ce",
+   "run_id": "a312bcebd6534204b26dd595a54901d6",
    "mode": "live",
    "model": "claude-sonnet-5-5",
    "document_fingerprint": "2ba3981481ebebba",
@@ -1440,232 +1198,17 @@
        "text": "Expiry: 2029-10"
       }
      ]
-    },
-    {
-     "id": "F3",
-     "rule": "batch.yield",
-     "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-      }
-     ]
     }
    ],
-   "rationale": "F1 (critical): the total yeast and mould count is still \"Pending\", so there is no usable result against the limit of not more than 10 CFU/g. F2 (major): the CoA gives expiry as 2029-10, but 30 months from manufacture is 2029-04. F3 is flagged as a yield finding, but its observed 98.4% falls inside the stated 95.0 to 102.0% range, so I did not rely on it and the reviewer should check it.",
-   "lot": "LC-24036",
-   "run": 1,
-   "findings": [
-    "batch.yield",
-    "dates.expiry",
-    "test.tymc_cfu_g.missing"
-   ],
-   "missed": [],
-   "extra": [
-    "batch.yield"
-   ],
-   "proposal": "hold",
-   "expected_proposal": "hold",
-   "false_clear": false,
-   "refused_claims": 0,
-   "investigator_calls": [
-    "read_document",
-    "read_document",
-    "read_document",
-    "list_supporting_records",
-    "list_corrected_documents",
-    "read_corrected_document",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "submit_note",
-    "submit_note"
-   ],
-   "notes": [
-    "reassess_with_corrected_document",
-    "route_to_deviation_owner"
-   ],
-   "usage": {
-    "model_calls": 9,
-    "input_tokens": 32122,
-    "output_tokens": 5300,
-    "seconds": 36.34
-   },
-   "error": null,
-   "correct": false
-  },
-  {
-   "schema": "release-desk.run.v2",
-   "run_id": "5aafec8ec3aa4c2bac5d362d39c290a5",
-   "mode": "live",
-   "model": "claude-sonnet-5-5",
-   "document_fingerprint": "2ba3981481ebebba",
-   "versions": {},
-   "governing_revision": "04",
-   "findings_detail": [
-    {
-     "id": "F1",
-     "rule": "test.tymc_cfu_g.missing",
-     "severity": "critical",
-     "title": "Total yeast and mould count: no usable result",
-     "expected": "not more than 10 CFU/g",
-     "observed": "Pending",
-     "evidence": [
-      {
-       "document": "certificate_of_analysis.md",
-       "line": 22,
-       "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | Pending |"
-      }
-     ]
-    },
-    {
-     "id": "F2",
-     "rule": "dates.expiry",
-     "severity": "major",
-     "title": "Expiry date does not match the approved shelf life",
-     "expected": "2029-04 (30 months from manufacture)",
-     "observed": "2029-10",
-     "evidence": [
-      {
-       "document": "certificate_of_analysis.md",
-       "line": 9,
-       "text": "Expiry: 2029-10"
-      }
-     ]
-    },
-    {
-     "id": "F3",
-     "rule": "batch.yield",
-     "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-      }
-     ]
-    }
-   ],
-   "rationale": "The total yeast and mould count is still pending, so there is no usable result against the limit of not more than 10 CFU/g (F1, critical). The CoA expiry is 2029-10, but 30 months from manufacture gives 2029-04 (F2, major). F3 reports yield as out of range, but its evidence shows 98.4%, which is inside the 95.0 to 102.0% range, so I did not rely on it and the reviewer should check that finding.",
-   "lot": "LC-24036",
-   "run": 2,
-   "findings": [
-    "batch.yield",
-    "dates.expiry",
-    "test.tymc_cfu_g.missing"
-   ],
-   "missed": [],
-   "extra": [
-    "batch.yield"
-   ],
-   "proposal": "hold",
-   "expected_proposal": "hold",
-   "false_clear": false,
-   "refused_claims": 0,
-   "investigator_calls": [
-    "list_supporting_records",
-    "list_corrected_documents",
-    "read_document",
-    "read_document",
-    "read_document",
-    "read_corrected_document",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "get_specification",
-    "submit_note",
-    "submit_note"
-   ],
-   "notes": [
-    "reassess_with_corrected_document",
-    "route_to_deviation_owner"
-   ],
-   "usage": {
-    "model_calls": 9,
-    "input_tokens": 31864,
-    "output_tokens": 5309,
-    "seconds": 36.29
-   },
-   "error": null,
-   "correct": false
-  },
-  {
-   "schema": "release-desk.run.v2",
-   "run_id": "1827192f1aa8439e984011eb1a5d62ae",
-   "mode": "live",
-   "model": "claude-sonnet-5-5",
-   "document_fingerprint": "2ba3981481ebebba",
-   "versions": {},
-   "governing_revision": "04",
-   "findings_detail": [
-    {
-     "id": "F1",
-     "rule": "test.tymc_cfu_g.missing",
-     "severity": "critical",
-     "title": "Total yeast and mould count: no usable result",
-     "expected": "not more than 10 CFU/g",
-     "observed": "Pending",
-     "evidence": [
-      {
-       "document": "certificate_of_analysis.md",
-       "line": 22,
-       "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | Pending |"
-      }
-     ]
-    },
-    {
-     "id": "F2",
-     "rule": "dates.expiry",
-     "severity": "major",
-     "title": "Expiry date does not match the approved shelf life",
-     "expected": "2029-04 (30 months from manufacture)",
-     "observed": "2029-10",
-     "evidence": [
-      {
-       "document": "certificate_of_analysis.md",
-       "line": 9,
-       "text": "Expiry: 2029-10"
-      }
-     ]
-    },
-    {
-     "id": "F3",
-     "rule": "batch.yield",
-     "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-      }
-     ]
-    }
-   ],
-   "rationale": "The total yeast and mould count is still \"Pending\", so there is no usable result against the limit of not more than 10 CFU/g (F1, critical). The CoA gives expiry as 2029-10, but 30 months from manufacture is 2029-04 (F2, major). F3 reports a yield problem, but its recorded yield of 98.4% is inside the stated 95.0 to 102.0% range, so I did not rely on it and the reviewer should check that finding.",
+   "rationale": "Lot LC-24036 has a critical finding (F1): the total yeast and mould count has no usable result (Pending), so the limit of not more than 10 CFU/g cannot be confirmed. It also has a major finding (F2): the certificate of analysis gives an expiry of 2029-10, but the approved 30-month shelf life gives 2029-04. A quality reviewer should decide the disposition.",
    "lot": "LC-24036",
    "run": 3,
    "findings": [
-    "batch.yield",
     "dates.expiry",
     "test.tymc_cfu_g.missing"
    ],
    "missed": [],
-   "extra": [
-    "batch.yield"
-   ],
+   "extra": [],
    "proposal": "hold",
    "expected_proposal": "hold",
    "false_clear": false,
@@ -1674,31 +1217,29 @@
     "list_supporting_records",
     "list_corrected_documents",
     "read_document",
-    "read_document",
     "read_corrected_document",
     "get_specification",
     "read_document",
-    "get_specification",
-    "get_specification",
+    "read_document",
     "submit_note",
     "submit_note"
    ],
    "notes": [
-    "reassess_with_corrected_document",
-    "route_to_deviation_owner"
+    "confirm_with_laboratory",
+    "reassess_with_corrected_document"
    ],
    "usage": {
-    "model_calls": 10,
-    "input_tokens": 40041,
-    "output_tokens": 7491,
-    "seconds": 50.36
+    "model_calls": 8,
+    "input_tokens": 23791,
+    "output_tokens": 4612,
+    "seconds": 28.63
    },
    "error": null,
-   "correct": false
+   "correct": true
   },
   {
    "schema": "release-desk.run.v2",
-   "run_id": "ba1c9127ad074565b099945d2557071e",
+   "run_id": "e3250134a398495bb3c88d215b302211",
    "mode": "live",
    "model": "claude-sonnet-5-5",
    "document_fingerprint": "a2acb520c2b6c498",
@@ -1739,68 +1280,46 @@
        "text": "| Viscosity, Brookfield RVT sp. 6, 10 rpm, 25 \u00b0C (cP) | 30,000 to 45,000 | 31,400 |"
       }
      ]
-    },
-    {
-     "id": "F3",
-     "rule": "batch.yield",
-     "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-      }
-     ]
     }
    ],
-   "rationale": "The certificate of analysis was tested against spec FH-DBC-050 rev 03, but the lot was made on 2026-10-15 and rev 04 has been in force since 2026-10-01 (F1). Against rev 04, viscosity is 31,400 cP, below the 32,000 to 45,000 cP range. It only passes the older rev 03 limit of 30,000 cP (F2). F3 reports a yield problem, but its observed 98.4% is inside the stated 95.0 to 102.0% range, so I did not rely on it and the reviewer should check that finding.",
+   "rationale": "F1 (major): the certificate of analysis tested lot LC-24037 against FH-DBC-050 rev 03, but rev 04 was in force from 2026-10-01 and the lot was manufactured on 2026-10-15. F2 (major): viscosity measured 31,400 cP, below the rev 04 range of 32,000 to 45,000 cP. The CoA listed a 30,000 lower limit, which is the older revision's limit. Because of these two major findings, I propose a hold pending reviewer disposition.",
    "lot": "LC-24037",
    "run": 1,
    "findings": [
-    "batch.yield",
     "spec.wrong_revision",
     "test.viscosity_cp.out_of_spec"
    ],
    "missed": [],
-   "extra": [
-    "batch.yield"
-   ],
+   "extra": [],
    "proposal": "hold",
    "expected_proposal": "hold",
    "false_clear": false,
    "refused_claims": 0,
    "investigator_calls": [
     "list_supporting_records",
+    "get_specification",
+    "get_specification",
     "list_corrected_documents",
-    "get_specification",
-    "get_specification",
     "read_document",
     "read_document",
-    "get_specification",
-    "get_specification",
     "read_document",
-    "submit_note",
     "submit_note"
    ],
    "notes": [
-    "route_to_deviation_owner",
-    "request_missing_evidence"
+    "route_to_deviation_owner"
    ],
    "usage": {
-    "model_calls": 9,
-    "input_tokens": 30821,
-    "output_tokens": 5322,
-    "seconds": 36.69
+    "model_calls": 8,
+    "input_tokens": 23754,
+    "output_tokens": 3818,
+    "seconds": 24.31
    },
    "error": null,
-   "correct": false
+   "correct": true
   },
   {
    "schema": "release-desk.run.v2",
-   "run_id": "2dc2e3eedfac4147903948b682c2a03b",
+   "run_id": "9e69e8ab935047a49ec316119b605e61",
    "mode": "live",
    "model": "claude-sonnet-5-5",
    "document_fingerprint": "a2acb520c2b6c498",
@@ -1841,68 +1360,46 @@
        "text": "| Viscosity, Brookfield RVT sp. 6, 10 rpm, 25 \u00b0C (cP) | 30,000 to 45,000 | 31,400 |"
       }
      ]
-    },
-    {
-     "id": "F3",
-     "rule": "batch.yield",
-     "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-      }
-     ]
     }
    ],
-   "rationale": "F1: The certificate shows testing against FH-DBC-050 rev 03, but the lot was made on 2026-10-15 and rev 04 has been in force since 2026-10-01. F2: Viscosity is 31,400 cP, below the rev 04 range of 32,000 to 45,000 cP. The certificate lists 30,000 as the lower limit, which is the old revision's limit, so the result only passed against the wrong spec. F3 reports yield as out of range, but 98.4% is inside the stated 95.0 to 102.0%, so I did not rely on it and the reviewer should check it.",
+   "rationale": "F1: The certificate of analysis tested lot LC-24037 against FH-DBC-050 rev 03, but the lot was made on 2026-10-15 and rev 04 has been in force since 2026-10-01. F2: Viscosity is 31,400 cP, below the rev 04 range of 32,000 to 45,000 cP. The CoA shows the older 30,000 to 45,000 limit, which is probably why this passed on the certificate. Both findings are major, so I propose a hold pending a reviewer's disposition.",
    "lot": "LC-24037",
    "run": 2,
    "findings": [
-    "batch.yield",
     "spec.wrong_revision",
     "test.viscosity_cp.out_of_spec"
    ],
    "missed": [],
-   "extra": [
-    "batch.yield"
-   ],
+   "extra": [],
    "proposal": "hold",
    "expected_proposal": "hold",
    "false_clear": false,
    "refused_claims": 0,
    "investigator_calls": [
     "list_supporting_records",
+    "get_specification",
+    "get_specification",
     "list_corrected_documents",
-    "get_specification",
-    "get_specification",
     "read_document",
     "read_document",
-    "get_specification",
-    "get_specification",
     "read_document",
-    "submit_note",
     "submit_note"
    ],
    "notes": [
-    "route_to_deviation_owner",
-    "request_missing_evidence"
+    "route_to_deviation_owner"
    ],
    "usage": {
     "model_calls": 8,
-    "input_tokens": 26114,
-    "output_tokens": 5243,
-    "seconds": 34.55
+    "input_tokens": 23855,
+    "output_tokens": 3945,
+    "seconds": 25.4
    },
    "error": null,
-   "correct": false
+   "correct": true
   },
   {
    "schema": "release-desk.run.v2",
-   "run_id": "53f17d3a6f264a818fc3e6eca3d62fb8",
+   "run_id": "8ed33c3f463c43b0a522343189e7afbe",
    "mode": "live",
    "model": "claude-sonnet-5-5",
    "document_fingerprint": "a2acb520c2b6c498",
@@ -1943,64 +1440,42 @@
        "text": "| Viscosity, Brookfield RVT sp. 6, 10 rpm, 25 \u00b0C (cP) | 30,000 to 45,000 | 31,400 |"
       }
      ]
-    },
-    {
-     "id": "F3",
-     "rule": "batch.yield",
-     "severity": "major",
-     "title": "Yield outside the expected range",
-     "expected": "95.0 to 102.0%",
-     "observed": "98.4%",
-     "evidence": [
-      {
-       "document": "batch_record.md",
-       "line": 21,
-       "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-      }
-     ]
     }
    ],
-   "rationale": "F1: The certificate of analysis was tested against spec FH-DBC-050 rev 03, but the lot was made on 2026-10-15 and rev 04 has been in force since 2026-10-01. F2: Viscosity is 31,400 cP, below the rev 04 range of 32,000 to 45,000 cP. The certificate lists 30,000 as the lower limit, which is the old revision's limit. F3 is flagged as a major yield finding, but the recorded yield of 98.4% is inside the stated 95.0 to 102.0% range, so please check that finding. F1 and F2 are enough on their own to hold the lot.",
+   "rationale": "F1 (major): The certificate of analysis was tested against FH-DBC-050 rev 03, but rev 04 was in force from 2026-10-01 and the lot was manufactured on 2026-10-15. F2 (major): Viscosity is 31,400 cP, below the rev 04 range of 32,000 to 45,000 cP. The certificate shows the old 30,000 lower limit, which is why it appeared to pass. A reviewer should determine the disposition.",
    "lot": "LC-24037",
    "run": 3,
    "findings": [
-    "batch.yield",
     "spec.wrong_revision",
     "test.viscosity_cp.out_of_spec"
    ],
    "missed": [],
-   "extra": [
-    "batch.yield"
-   ],
+   "extra": [],
    "proposal": "hold",
    "expected_proposal": "hold",
    "false_clear": false,
    "refused_claims": 0,
    "investigator_calls": [
     "list_supporting_records",
+    "get_specification",
+    "get_specification",
     "list_corrected_documents",
-    "get_specification",
-    "get_specification",
     "read_document",
     "read_document",
-    "get_specification",
-    "get_specification",
     "read_document",
-    "submit_note",
     "submit_note"
    ],
    "notes": [
-    "route_to_deviation_owner",
-    "request_missing_evidence"
+    "route_to_deviation_owner"
    ],
    "usage": {
     "model_calls": 8,
-    "input_tokens": 26146,
-    "output_tokens": 5264,
-    "seconds": 35.81
+    "input_tokens": 23748,
+    "output_tokens": 3876,
+    "seconds": 27.98
    },
    "error": null,
-   "correct": false
+   "correct": true
   }
  ]
 }

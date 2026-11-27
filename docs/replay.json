@@ -5,255 +5,65 @@
     "lot_id": "LC-24031",
     "stage": "awaiting reviewer",
     "status": "on hold",
-    "findings": [
-     {
-      "id": "F1",
-      "rule": "batch.yield",
-      "severity": "major",
-      "title": "Yield outside the expected range",
-      "expected": "95.0 to 102.0%",
-      "observed": "98.4%",
-      "evidence": [
-       {
-        "document": "batch_record.md",
-        "line": 21,
-        "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-       }
-      ]
-     }
-    ],
+    "findings": [],
     "evidence_notes": [],
     "proposal": {
-     "decision": "hold",
-     "rationale": "Finding F1 is a major severity finding for batch yield, so the lot goes on hold pending reviewer disposition. The finding lists the observed yield as 98.4% (3,936 of 4,000 units) against an expected 95.0 to 102.0%, which appears to be within range. The reviewer should check whether F1 was raised in error.",
-     "finding_ids": [
-      "F1"
-     ],
-     "at": "2026-11-27T06:50:13+00:00"
+     "decision": "release",
+     "rationale": "The release rules returned no findings for lot LC-24031, so there are no critical or major findings. Under the disposition rules, release is proposed, pending a named quality reviewer's approval.",
+     "finding_ids": [],
+     "at": "2026-11-27T07:37:22+00:00"
     },
     "second_reading": {
      "agrees": true,
-     "concerns": [
-      "Minor: F1 is internally inconsistent. Its observed 98.4% (3,936/4,000) is inside the stated 95.0\u2013102.0% range, yet it is rated major. The rationale says so and refers it to the reviewer. This doesn't affect the hold, which is correct while a major finding is open."
-     ]
+     "concerns": []
     },
     "decision": null,
     "timeline": [
      {
-      "at": "2026-11-27T06:49:48+00:00",
+      "at": "2026-11-27T07:37:10+00:00",
       "actor": "desk",
       "text": "Reading the certificate, batch record and deviation log (originals)."
      },
      {
-      "at": "2026-11-27T06:49:57+00:00",
+      "at": "2026-11-27T07:37:20+00:00",
       "actor": "rules",
-      "text": "Checked against rev 03: 1 finding(s), 1 blocking."
+      "text": "Checked against rev 03: 0 finding(s), 0 blocking."
      },
      {
-      "at": "2026-11-27T06:49:57+00:00",
-      "actor": "investigator",
-      "text": "Looking for evidence that explains the blocking findings."
-     },
-     {
-      "at": "2026-11-27T06:49:59+00:00",
-      "actor": "investigator",
-      "text": "read document(batch_record.md, 1, 60)"
-     },
-     {
-      "at": "2026-11-27T06:49:59+00:00",
-      "actor": "investigator",
-      "text": "list supporting records()"
-     },
-     {
-      "at": "2026-11-27T06:49:59+00:00",
-      "actor": "investigator",
-      "text": "list corrected documents()"
-     },
-     {
-      "at": "2026-11-27T06:50:01+00:00",
-      "actor": "investigator",
-      "text": "read document(certificate_of_analysis.md, 1, 60)"
-     },
-     {
-      "at": "2026-11-27T06:50:01+00:00",
-      "actor": "investigator",
-      "text": "read document(deviation_log.md, 1, 60)"
-     },
-     {
-      "at": "2026-11-27T06:50:03+00:00",
-      "actor": "investigator",
-      "text": "get specification(03)"
-     },
-     {
-      "at": "2026-11-27T06:50:03+00:00",
-      "actor": "investigator",
-      "text": "get specification(04)"
-     },
-     {
-      "at": "2026-11-27T06:50:03+00:00",
-      "actor": "investigator",
-      "text": "get specification(02)"
-     },
-     {
-      "at": "2026-11-27T06:50:10+00:00",
-      "actor": "investigator",
-      "text": "Note on F1: request missing evidence."
-     },
-     {
-      "at": "2026-11-27T06:50:13+00:00",
+      "at": "2026-11-27T07:37:22+00:00",
       "actor": "proposer",
-      "text": "Placed on hold. Finding F1 is a major severity finding for batch yield, so the lot goes on hold pending reviewer disposition. The finding lists the observed yield as 98.4% (3,936 of 4,000 units) against an expected 95.0 to 102.0%, which appears to be within range. The reviewer should check whether F1 was raised in error."
+      "text": "Proposed release. The release rules returned no findings for lot LC-24031, so there are no critical or major findings. Under the disposition rules, release is proposed, pending a named quality reviewer's approval."
      },
      {
-      "at": "2026-11-27T06:50:17+00:00",
+      "at": "2026-11-27T07:37:23+00:00",
       "actor": "second reader",
       "text": "Agrees."
+     },
+     {
+      "at": "2026-11-27T07:37:23+00:00",
+      "actor": "desk",
+      "text": "Waiting for a named reviewer to approve or refuse the release."
      }
     ],
     "mode": "live",
     "model": "claude-sonnet-5-5",
     "error": null,
-    "deferred": false,
+    "deferred": true,
     "versions": {},
     "fingerprint": "81c1508966ed0d14",
     "governing_revision": "03",
     "investigation": {
-     "calls": [
-      {
-       "at": "2026-11-27T06:49:59+00:00",
-       "tool": "read_document",
-       "args": {
-        "document": "batch_record.md",
-        "from_line": 1,
-        "to_line": 60
-       },
-       "result": "L01: # Batch Manufacturing Record (excerpt)\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL06: Lot number: LC-24031\nL07: Manufacture date: 2026-09-03\nL08: Line clearance verified by: J. Okafor, 2026-09-03\nL09: \nL10: | Step | Operation | Performed by | Verified by |\nL11: |---|---|---|---|\nL12: | 1 | Dispense and weigh raw materials | P. Lindqvist | R. Haddad |\nL13: | 2 | Heat water phase to 75 \u00b0C | R. Haddad | A. Moreau |\nL14: | 3 | Heat oil phase to 75 \u00b0C | A. Moreau | J. Okafor |\nL1"
-      },
-      {
-       "at": "2026-11-27T06:49:59+00:00",
-       "tool": "list_supporting_records",
-       "args": {},
-       "result": "No supporting records are on file for this lot."
-      },
-      {
-       "at": "2026-11-27T06:49:59+00:00",
-       "tool": "list_corrected_documents",
-       "args": {},
-       "result": "No corrected document versions are on file for this lot."
-      },
-      {
-       "at": "2026-11-27T06:50:01+00:00",
-       "tool": "read_document",
-       "args": {
-        "document": "certificate_of_analysis.md",
-        "from_line": 1,
-        "to_line": 60
-       },
-       "result": "L01: # Certificate of Analysis\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Fernhollow Skincare Ltd., Quality Control Laboratory\nL06: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL07: Lot number: LC-24031\nL08: Date of manufacture: 2026-09-03\nL09: Expiry: 2029-03\nL10: Tested against specification: FH-DBC-050 rev 03\nL11: \nL12: | Test | Specification | Result |\nL13: |---|---|---|\nL14: | Appearance | White to off-white smooth cream | White smooth cream |\nL15: | Odour | Characteristic | Characteristic |\nL16: | pH (25 \u00b0C) | 5.0 to 6"
-      },
-      {
-       "at": "2026-11-27T06:50:01+00:00",
-       "tool": "read_document",
-       "args": {
-        "document": "deviation_log.md",
-        "from_line": 1,
-        "to_line": 60
-       },
-       "result": "L01: # Deviation Log\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Lot number: LC-24031\nL06: \nL07: No deviations were recorded for this lot."
-      },
-      {
-       "at": "2026-11-27T06:50:03+00:00",
-       "tool": "get_specification",
-       "args": {
-        "revision": "03"
-       },
-       "result": "Revision 03, in force 2026-01-05 to 2026-09-30.  Limits: Appearance: white smooth cream, off-white smooth cream; Odour: characteristic; pH (25 \u00b0C): min 5.0, max 6.0; Viscosity (Brookfield, 25 \u00b0C): min 30000, max 45000; Specific gravity: min 0.98, max 1.02; Phenoxyethanol assay: min 0.80, max 1.00; Fill weight (mean of 10): min 50.0, max none; Total aerobic microbial count: min none, max 100; Total yeast and mould count: min none, max 10; Specified pathogens: absent"
-      },
-      {
-       "at": "2026-11-27T06:50:03+00:00",
-       "tool": "get_specification",
-       "args": {
-        "revision": "04"
-       },
-       "result": "Revision 04, in force 2026-10-01 to now. Viscosity lower limit raised from 30,000 to 32,000 cP after a stability study. Limits: Appearance: white smooth cream, off-white smooth cream; Odour: characteristic; pH (25 \u00b0C): min 5.0, max 6.0; Viscosity (Brookfield, 25 \u00b0C): min 32000, max 45000; Specific gravity: min 0.98, max 1.02; Phenoxyethanol assay: min 0.80, max 1.00; Fill weight (mean of 10): min 50.0, max none; Total aerobic microbial count: min none, max 100; Total yeast and mould count: min none, max 10; Specified pathogens: absent"
-      },
-      {
-       "at": "2026-11-27T06:50:03+00:00",
-       "tool": "get_specification",
-       "args": {
-        "revision": "02"
-       },
-       "result": "No revision 02. On file: 03, 04"
-      },
-      {
-       "at": "2026-11-27T06:50:07+00:00",
-       "tool": "submit_note",
-       "args": {
-        "finding_ids": [
-         "F1"
-        ],
-        "summary": "The batch record states 3,936 actual units against 4,000 theoretical, which is 98.4% (batch_record.md line 21). That is inside the 95.0 to 102.0% range given in the finding, so the finding does not show an out-of-range yield as written. Spec FH-DBC-050 rev 03 (in force 2026-01-05 to 2026-09-30, covering the 2026-09-03 manufacture date) and rev 04 list no yield limit. The source of the 95.0 to 102.0% limit is therefore not on file. There are no deviations, supporting records or corrected documents for this lot.",
-        "evidence": [
-         {
-          "document": "batch_record.md",
-          "line": 21
-         },
-         {
-          "document": "certificate_of_analysis.md",
-          "line": 10
-         },
-         {
-          "document": "deviation_log.md",
-          "line": 7
-         }
-        ],
-        "next_step": "request_missing_evidence",
-        "open_questions": [
-         "Where does the 95.0 to 102.0% yield limit come from (master batch record or another controlled document)? It is not in spec rev 03 or rev 04.",
-         "Was the rule evaluated against a different value or limit than the ones shown, for example a different observed yield or an inverted comparison?",
-         "Should the finding be re-run or withdrawn once the yield limit source is confirmed? Only a person can decide this."
-        ]
-       },
-       "result": "Note recorded."
-      }
-     ],
-     "notes": [
-      {
-       "finding_ids": [
-        "F1"
-       ],
-       "summary": "The batch record states 3,936 actual units against 4,000 theoretical, which is 98.4% (batch_record.md line 21). That is inside the 95.0 to 102.0% range given in the finding, so the finding does not show an out-of-range yield as written. Spec FH-DBC-050 rev 03 (in force 2026-01-05 to 2026-09-30, covering the 2026-09-03 manufacture date) and rev 04 list no yield limit. The source of the 95.0 to 102.0% limit is therefore not on file. There are no deviations, supporting records or corrected documents for this lot.",
-       "evidence": [
-        {
-         "document": "batch_record.md",
-         "line": 21
-        },
-        {
-         "document": "certificate_of_analysis.md",
-         "line": 10
-        },
-        {
-         "document": "deviation_log.md",
-         "line": 7
-        }
-       ],
-       "next_step": "request_missing_evidence",
-       "open_questions": [
-        "Where does the 95.0 to 102.0% yield limit come from (master batch record or another controlled document)? It is not in spec rev 03 or rev 04.",
-        "Was the rule evaluated against a different value or limit than the ones shown, for example a different observed yield or an inverted comparison?",
-        "Should the finding be re-run or withdrawn once the yield limit source is confirmed? Only a person can decide this."
-       ]
-      }
-     ]
+     "calls": [],
+     "notes": []
     },
     "history": [],
     "usage": {
-     "model_calls": 9,
-     "input_tokens": 25236,
-     "output_tokens": 4565,
-     "seconds": 29.27
+     "model_calls": 4,
+     "input_tokens": 6727,
+     "output_tokens": 2432,
+     "seconds": 15.95
     },
-    "approval_snapshot": "",
+    "approval_snapshot": "56cad23fce896c54",
     "title": "A complete review packet",
     "summary": "Every result within its limits, every step signed twice, nothing left open.",
     "awaiting_release_approval": false
@@ -530,32 +340,16 @@
         "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | 40 |"
        }
       ]
-     },
-     {
-      "id": "F2",
-      "rule": "batch.yield",
-      "severity": "major",
-      "title": "Yield outside the expected range",
-      "expected": "95.0 to 102.0%",
-      "observed": "98.4%",
-      "evidence": [
-       {
-        "document": "batch_record.md",
-        "line": 21,
-        "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-       }
-      ]
      }
     ],
     "evidence_notes": [],
     "proposal": {
      "decision": "hold",
-     "rationale": "F1 (critical): the total yeast and mould count is 40 CFU/g against a limit of not more than 10 CFU/g, per the certificate of analysis. F2 (major) is flagged as a yield outside the expected range, but its observed yield of 98.4% (3,936 of 4,000 units) is inside the stated 95.0 to 102.0% range, so the reviewer should check whether F2 was raised correctly. The critical F1 finding alone requires a hold pending reviewer disposition.",
+     "rationale": "Finding F1 is critical: the total yeast and mould count was 40 CFU/g against a specification of not more than 10 CFU/g (certificate_of_analysis.md, line 22). Because of this critical out-of-specification result, the lot should be held pending a quality reviewer's disposition.",
      "finding_ids": [
-      "F1",
-      "F2"
+      "F1"
      ],
-     "at": "2026-11-27T06:50:55+00:00"
+     "at": "2026-11-27T07:38:05+00:00"
     },
     "second_reading": {
      "agrees": true,
@@ -565,89 +359,84 @@
      "action": "reject",
      "reviewer": "Demo reviewer",
      "reason": "Yeast and mould count four times the limit. OOS investigation opened; lot to be destroyed.",
-     "at": "2026-11-27T06:50:59+00:00",
+     "at": "2026-11-27T07:38:07+00:00",
      "override": false,
      "fingerprint": "46299652c3fe6e0d",
-     "snapshot": "80ead123196c050d"
+     "snapshot": "da25ef2c9b0e6c9b"
     },
     "timeline": [
      {
-      "at": "2026-11-27T06:50:17+00:00",
+      "at": "2026-11-27T07:37:26+00:00",
       "actor": "desk",
       "text": "Reading the certificate, batch record and deviation log (originals)."
      },
      {
-      "at": "2026-11-27T06:50:37+00:00",
+      "at": "2026-11-27T07:37:48+00:00",
       "actor": "rules",
-      "text": "Checked against rev 03: 2 finding(s), 2 blocking."
+      "text": "Checked against rev 03: 1 finding(s), 1 blocking."
      },
      {
-      "at": "2026-11-27T06:50:37+00:00",
+      "at": "2026-11-27T07:37:48+00:00",
       "actor": "investigator",
       "text": "Looking for evidence that explains the blocking findings."
      },
      {
-      "at": "2026-11-27T06:50:39+00:00",
+      "at": "2026-11-27T07:37:51+00:00",
       "actor": "investigator",
       "text": "list supporting records()"
      },
      {
-      "at": "2026-11-27T06:50:39+00:00",
+      "at": "2026-11-27T07:37:51+00:00",
       "actor": "investigator",
       "text": "list corrected documents()"
      },
      {
-      "at": "2026-11-27T06:50:39+00:00",
+      "at": "2026-11-27T07:37:51+00:00",
       "actor": "investigator",
       "text": "read document(certificate_of_analysis.md)"
      },
      {
-      "at": "2026-11-27T06:50:39+00:00",
-      "actor": "investigator",
-      "text": "read document(batch_record.md)"
-     },
-     {
-      "at": "2026-11-27T06:50:41+00:00",
+      "at": "2026-11-27T07:37:53+00:00",
       "actor": "investigator",
       "text": "get specification(03)"
      },
      {
-      "at": "2026-11-27T06:50:41+00:00",
+      "at": "2026-11-27T07:37:53+00:00",
       "actor": "investigator",
       "text": "get specification(02)"
      },
      {
-      "at": "2026-11-27T06:50:41+00:00",
+      "at": "2026-11-27T07:37:53+00:00",
       "actor": "investigator",
       "text": "get specification(04)"
      },
      {
-      "at": "2026-11-27T06:50:41+00:00",
+      "at": "2026-11-27T07:37:53+00:00",
       "actor": "investigator",
       "text": "read document(deviation_log.md)"
      },
      {
-      "at": "2026-11-27T06:50:51+00:00",
+      "at": "2026-11-27T07:37:55+00:00",
       "actor": "investigator",
-      "text": "Note on F1: confirm with laboratory."
+      "text": "read document(batch_record.md)"
      },
      {
-      "at": "2026-11-27T06:50:51+00:00",
+      "at": "2026-11-27T07:38:03+00:00",
       "actor": "investigator",
-      "text": "Note on F2: route to deviation owner."
+      "text": "Note on F1: route to deviation owner."
      },
      {
-      "at": "2026-11-27T06:50:55+00:00",
+      "at": "2026-11-27T07:38:05+00:00",
       "actor": "proposer",
-      "text": "Placed on hold. F1 (critical): the total yeast and mould count is 40 CFU/g against a limit of not more than 10 CFU/g, per the certificate of analysis. F2 (major) is flagged as a yield outside the expected range, but its observed yield of 98.4% (3,936 of 4,000 units) is inside the stated 95.0 to 102.0% range, so the reviewer should check whether F2 was raised correctly. The critical F1 finding alone requires a hold pending reviewer disposition."
+      "text": "Placed on hold. Finding F1 is critical: the total yeast and mould count was 40 CFU/g against a specification of not more than 10 CFU/g (certificate_of_analysis.md, line 22). Because of this critical out-of-specification result, the lot should be held pending a quality reviewer's disposition."
      },
      {
-      "at": "2026-11-27T06:50:59+00:00",
+      "at": "2026-11-27T07:38:07+00:00",
       "actor": "second reader",
       "text": "Agrees."
      },
      {
-      "at": "2026-11-27T06:50:59+00:00",
+      "at": "2026-11-27T07:38:07+00:00",
       "actor": "reviewer: Demo reviewer",
       "text": "Rejected the lot. Reason: Yeast and mould count four times the limit. OOS investigation opened; lot to be destroyed."
      }
@@ -662,19 +451,19 @@
     "investigation": {
      "calls": [
       {
-       "at": "2026-11-27T06:50:39+00:00",
+       "at": "2026-11-27T07:37:51+00:00",
        "tool": "list_supporting_records",
        "args": {},
        "result": "No supporting records are on file for this lot."
       },
       {
-       "at": "2026-11-27T06:50:39+00:00",
+       "at": "2026-11-27T07:37:51+00:00",
        "tool": "list_corrected_documents",
        "args": {},
        "result": "No corrected document versions are on file for this lot."
       },
       {
-       "at": "2026-11-27T06:50:39+00:00",
+       "at": "2026-11-27T07:37:51+00:00",
        "tool": "read_document",
        "args": {
         "document": "certificate_of_analysis.md"
@@ -682,15 +471,7 @@
        "result": "L01: # Certificate of Analysis\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Fernhollow Skincare Ltd., Quality Control Laboratory\nL06: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL07: Lot number: LC-24032\nL08: Date of manufacture: 2026-09-10\nL09: Expiry: 2029-03\nL10: Tested against specification: FH-DBC-050 rev 03\nL11: \nL12: | Test | Specification | Result |\nL13: |---|---|---|\nL14: | Appearance | White to off-white smooth cream | White smooth cream |\nL15: | Odour | Characteristic | Characteristic |\nL16: | pH (25 \u00b0C) | 5.0 to 6"
       },
       {
-       "at": "2026-11-27T06:50:39+00:00",
-       "tool": "read_document",
-       "args": {
-        "document": "batch_record.md"
-       },
-       "result": "L01: # Batch Manufacturing Record (excerpt)\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL06: Lot number: LC-24032\nL07: Manufacture date: 2026-09-10\nL08: Line clearance verified by: J. Okafor, 2026-09-10\nL09: \nL10: | Step | Operation | Performed by | Verified by |\nL11: |---|---|---|---|\nL12: | 1 | Dispense and weigh raw materials | P. Lindqvist | R. Haddad |\nL13: | 2 | Heat water phase to 75 \u00b0C | R. Haddad | A. Moreau |\nL14: | 3 | Heat oil phase to 75 \u00b0C | A. Moreau | J. Okafor |\nL1"
-      },
-      {
-       "at": "2026-11-27T06:50:41+00:00",
+       "at": "2026-11-27T07:37:53+00:00",
        "tool": "get_specification",
        "args": {
         "revision": "03"
@@ -698,7 +479,7 @@
        "result": "Revision 03, in force 2026-01-05 to 2026-09-30.  Limits: Appearance: white smooth cream, off-white smooth cream; Odour: characteristic; pH (25 \u00b0C): min 5.0, max 6.0; Viscosity (Brookfield, 25 \u00b0C): min 30000, max 45000; Specific gravity: min 0.98, max 1.02; Phenoxyethanol assay: min 0.80, max 1.00; Fill weight (mean of 10): min 50.0, max none; Total aerobic microbial count: min none, max 100; Total yeast and mould count: min none, max 10; Specified pathogens: absent"
       },
       {
-       "at": "2026-11-27T06:50:41+00:00",
+       "at": "2026-11-27T07:37:53+00:00",
        "tool": "get_specification",
        "args": {
         "revision": "02"
@@ -706,7 +487,7 @@
        "result": "No revision 02. On file: 03, 04"
       },
       {
-       "at": "2026-11-27T06:50:41+00:00",
+       "at": "2026-11-27T07:37:53+00:00",
        "tool": "get_specification",
        "args": {
         "revision": "04"
@@ -714,7 +495,7 @@
        "result": "Revision 04, in force 2026-10-01 to now. Viscosity lower limit raised from 30,000 to 32,000 cP after a stability study. Limits: Appearance: white smooth cream, off-white smooth cream; Odour: characteristic; pH (25 \u00b0C): min 5.0, max 6.0; Viscosity (Brookfield, 25 \u00b0C): min 32000, max 45000; Specific gravity: min 0.98, max 1.02; Phenoxyethanol assay: min 0.80, max 1.00; Fill weight (mean of 10): min 50.0, max none; Total aerobic microbial count: min none, max 100; Total yeast and mould count: min none, max 10; Specified pathogens: absent"
       },
       {
-       "at": "2026-11-27T06:50:41+00:00",
+       "at": "2026-11-27T07:37:53+00:00",
        "tool": "read_document",
        "args": {
         "document": "deviation_log.md"
@@ -722,13 +503,21 @@
        "result": "L01: # Deviation Log\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Lot number: LC-24032\nL06: \nL07: No deviations were recorded for this lot."
       },
       {
-       "at": "2026-11-27T06:50:48+00:00",
+       "at": "2026-11-27T07:37:55+00:00",
+       "tool": "read_document",
+       "args": {
+        "document": "batch_record.md"
+       },
+       "result": "L01: # Batch Manufacturing Record (excerpt)\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL06: Lot number: LC-24032\nL07: Manufacture date: 2026-09-10\nL08: Line clearance verified by: J. Okafor, 2026-09-10\nL09: \nL10: | Step | Operation | Performed by | Verified by |\nL11: |---|---|---|---|\nL12: | 1 | Dispense and weigh raw materials | P. Lindqvist | R. Haddad |\nL13: | 2 | Heat water phase to 75 \u00b0C | R. Haddad | A. Moreau |\nL14: | 3 | Heat oil phase to 75 \u00b0C | A. Moreau | J. Okafor |\nL1"
+      },
+      {
+       "at": "2026-11-27T07:38:00+00:00",
        "tool": "submit_note",
        "args": {
         "finding_ids": [
          "F1"
         ],
-        "summary": "The CoA reports a yeast and mould count of 40 CFU/g against a limit of not more than 10 (CoA L22). The CoA was tested against rev 03 (L10), which was in force for the 2026-09-10 manufacture date and has the same limit of max 10. Rev 04 has the same limit, so the specification revision does not explain the result. The deviation log records no deviations (L07), and there are no supporting records, laboratory notes or corrected documents on file, so nothing on file explains or retests the result.",
+        "summary": "The CoA reports a total yeast and mould count of 40 CFU/g against a limit of not more than 10 (CoA line 22). The lot was tested against FH-DBC-050 rev 03, which was in force from 2026-01-05 to 2026-09-30 and covers the 2026-09-10 manufacture date. Rev 03 and rev 04 both set the limit at 10 CFU/g, so a specification change does not explain the result. No deviation, laboratory note, retest or corrected document is on file, and the batch record shows nothing that explains the count.",
         "evidence": [
          {
           "document": "certificate_of_analysis.md",
@@ -739,34 +528,24 @@
           "line": 22
          },
          {
+          "document": "certificate_of_analysis.md",
+          "line": 21
+         },
+         {
           "document": "deviation_log.md",
+          "line": 7
+         },
+         {
+          "document": "batch_record.md",
           "line": 7
          }
         ],
-        "next_step": "confirm_with_laboratory",
+        "next_step": "route_to_deviation_owner",
         "open_questions": [
-         "Was an OOS laboratory investigation opened for the 40 CFU/g result, and was a retest or sample-handling error identified?",
-         "Is the result a true count or a transcription or reporting error? The total aerobic count is <10, which is lower than the yeast and mould count; this is possible but worth the laboratory confirming.",
-         "Should a deviation be raised, since the deviation log is empty?"
+         "Is this a confirmed out-of-specification result? Was a laboratory OOS investigation opened, and was there a sample or test error, or a retest?",
+         "Why does the deviation log say no deviations were recorded when the CoA shows a critical microbial failure?",
+         "What is the disposition of the lot, and does the elevated yeast and mould count point to a raw material, equipment or environmental cause?"
         ]
-       },
-       "result": "Note recorded."
-      },
-      {
-       "at": "2026-11-27T06:50:48+00:00",
-       "tool": "submit_note",
-       "args": {
-        "finding_ids": [
-         "F2"
-        ],
-        "summary": "The batch record gives 3,936 actual units out of 4,000 theoretical, which is 98.4% (batch_record L21). That arithmetic is correct and the figure is inside the stated expected range of 95.0 to 102.0%, so the finding looks inconsistent with its own values. The yield range is not in specification revisions 03 or 04, and I found no other source for it, so I can't confirm which limit the rule used or why it fired.",
-        "evidence": [
-         {
-          "document": "batch_record.md",
-          "line": 21
-         }
-        ],
-        "next_step": "route_to_deviation_owner"
        },
        "result": "Note recorded."
       }
@@ -776,7 +555,7 @@
        "finding_ids": [
         "F1"
        ],
-       "summary": "The CoA reports a yeast and mould count of 40 CFU/g against a limit of not more than 10 (CoA L22). The CoA was tested against rev 03 (L10), which was in force for the 2026-09-10 manufacture date and has the same limit of max 10. Rev 04 has the same limit, so the specification revision does not explain the result. The deviation log records no deviations (L07), and there are no supporting records, laboratory notes or corrected documents on file, so nothing on file explains or retests the result.",
+       "summary": "The CoA reports a total yeast and mould count of 40 CFU/g against a limit of not more than 10 (CoA line 22). The lot was tested against FH-DBC-050 rev 03, which was in force from 2026-01-05 to 2026-09-30 and covers the 2026-09-10 manufacture date. Rev 03 and rev 04 both set the limit at 10 CFU/g, so a specification change does not explain the result. No deviation, laboratory note, retest or corrected document is on file, and the batch record shows nothing that explains the count.",
        "evidence": [
         {
          "document": "certificate_of_analysis.md",
@@ -787,39 +566,33 @@
          "line": 22
         },
         {
+         "document": "certificate_of_analysis.md",
+         "line": 21
+        },
+        {
          "document": "deviation_log.md",
+         "line": 7
+        },
+        {
+         "document": "batch_record.md",
          "line": 7
         }
        ],
-       "next_step": "confirm_with_laboratory",
-       "open_questions": [
-        "Was an OOS laboratory investigation opened for the 40 CFU/g result, and was a retest or sample-handling error identified?",
-        "Is the result a true count or a transcription or reporting error? The total aerobic count is <10, which is lower than the yeast and mould count; this is possible but worth the laboratory confirming.",
-        "Should a deviation be raised, since the deviation log is empty?"
-       ]
-      },
-      {
-       "finding_ids": [
-        "F2"
-       ],
-       "summary": "The batch record gives 3,936 actual units out of 4,000 theoretical, which is 98.4% (batch_record L21). That arithmetic is correct and the figure is inside the stated expected range of 95.0 to 102.0%, so the finding looks inconsistent with its own values. The yield range is not in specification revisions 03 or 04, and I found no other source for it, so I can't confirm which limit the rule used or why it fired.",
-       "evidence": [
-        {
-         "document": "batch_record.md",
-         "line": 21
-        }
-       ],
        "next_step": "route_to_deviation_owner",
-       "open_questions": []
+       "open_questions": [
+        "Is this a confirmed out-of-specification result? Was a laboratory OOS investigation opened, and was there a sample or test error, or a retest?",
+        "Why does the deviation log say no deviations were recorded when the CoA shows a critical microbial failure?",
+        "What is the disposition of the lot, and does the elevated yeast and mould count point to a raw material, equipment or environmental cause?"
+       ]
       }
      ]
     },
     "history": [],
     "usage": {
-     "model_calls": 9,
-     "input_tokens": 32297,
-     "output_tokens": 7106,
-     "seconds": 42.21
+     "model_calls": 10,
+     "input_tokens": 33729,
+     "output_tokens": 6239,
+     "seconds": 40.83
     },
     "approval_snapshot": "",
     "title": "A result above its limit",
@@ -1086,21 +859,6 @@
     "findings": [
      {
       "id": "F1",
-      "rule": "batch.yield",
-      "severity": "major",
-      "title": "Yield outside the expected range",
-      "expected": "95.0 to 102.0%",
-      "observed": "98.4%",
-      "evidence": [
-       {
-        "document": "batch_record.md",
-        "line": 21,
-        "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-       }
-      ]
-     },
-     {
-      "id": "F2",
       "rule": "deviation.open",
       "severity": "major",
       "title": "DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification",
@@ -1118,12 +876,11 @@
     "evidence_notes": [],
     "proposal": {
      "decision": "hold",
-     "rationale": "DEV-0417 (mixer temperature reached 81 \u00b0C for 6 minutes during emulsification) is still open with the investigation pending and no owner assigned (F2). This is a major finding, so the lot needs a reviewer's disposition. F1 is also flagged as major for yield, but the observed 98.4% falls inside the stated 95.0 to 102.0% range, so the reviewer should check that finding. The hold does not depend on F1.",
+     "rationale": "Finding F1 is a major finding: deviation DEV-0417 (mixer temperature reached 81 \u00b0C for 6 minutes during emulsification) is still open, with the investigation pending and no owner assigned. Because the release rules require a closed deviation, I propose placing the lot on hold until a quality reviewer dispositions it.",
      "finding_ids": [
-      "F1",
-      "F2"
+      "F1"
      ],
-     "at": "2026-11-27T06:51:32+00:00"
+     "at": "2026-11-27T07:38:30+00:00"
     },
     "second_reading": {
      "agrees": true,
@@ -1132,82 +889,57 @@
     "decision": null,
     "timeline": [
      {
-      "at": "2026-11-27T06:50:59+00:00",
+      "at": "2026-11-27T07:38:07+00:00",
       "actor": "desk",
       "text": "Reading the certificate, batch record and deviation log (originals)."
      },
      {
-      "at": "2026-11-27T06:51:10+00:00",
+      "at": "2026-11-27T07:38:17+00:00",
       "actor": "rules",
-      "text": "Checked against rev 03: 2 finding(s), 2 blocking."
+      "text": "Checked against rev 03: 1 finding(s), 1 blocking."
      },
      {
-      "at": "2026-11-27T06:51:10+00:00",
+      "at": "2026-11-27T07:38:17+00:00",
       "actor": "investigator",
       "text": "Looking for evidence that explains the blocking findings."
      },
      {
-      "at": "2026-11-27T06:51:12+00:00",
-      "actor": "investigator",
-      "text": "read document(batch_record.md)"
-     },
-     {
-      "at": "2026-11-27T06:51:12+00:00",
-      "actor": "investigator",
-      "text": "read document(deviation_log.md)"
-     },
-     {
-      "at": "2026-11-27T06:51:12+00:00",
+      "at": "2026-11-27T07:38:18+00:00",
       "actor": "investigator",
       "text": "list supporting records()"
      },
      {
-      "at": "2026-11-27T06:51:12+00:00",
+      "at": "2026-11-27T07:38:18+00:00",
+      "actor": "investigator",
+      "text": "read document(deviation_log.md)"
+     },
+     {
+      "at": "2026-11-27T07:38:18+00:00",
       "actor": "investigator",
       "text": "list corrected documents()"
      },
      {
-      "at": "2026-11-27T06:51:14+00:00",
+      "at": "2026-11-27T07:38:19+00:00",
       "actor": "investigator",
       "text": "open record(DEV-0417.md)"
      },
      {
-      "at": "2026-11-27T06:51:14+00:00",
+      "at": "2026-11-27T07:38:20+00:00",
       "actor": "investigator",
-      "text": "read document(certificate_of_analysis.md)"
+      "text": "read document(batch_record.md)"
      },
      {
-      "at": "2026-11-27T06:51:16+00:00",
+      "at": "2026-11-27T07:38:29+00:00",
       "actor": "investigator",
-      "text": "get specification(03)"
+      "text": "Note on F1: route to deviation owner."
      },
      {
-      "at": "2026-11-27T06:51:16+00:00",
-      "actor": "investigator",
-      "text": "get specification(02)"
-     },
-     {
-      "at": "2026-11-27T06:51:16+00:00",
-      "actor": "investigator",
-      "text": "get specification(04)"
-     },
-     {
-      "at": "2026-11-27T06:51:29+00:00",
-      "actor": "investigator",
-      "text": "Note on F1: request missing evidence."
-     },
-     {
-      "at": "2026-11-27T06:51:29+00:00",
-      "actor": "investigator",
-      "text": "Note on F2: route to deviation owner."
-     },
-     {
-      "at": "2026-11-27T06:51:32+00:00",
+      "at": "2026-11-27T07:38:30+00:00",
       "actor": "proposer",
-      "text": "Placed on hold. DEV-0417 (mixer temperature reached 81 \u00b0C for 6 minutes during emulsification) is still open with the investigation pending and no owner assigned (F2). This is a major finding, so the lot needs a reviewer's disposition. F1 is also flagged as major for yield, but the observed 98.4% falls inside the stated 95.0 to 102.0% range, so the reviewer should check that finding. The hold does not depend on F1."
+      "text": "Placed on hold. Finding F1 is a major finding: deviation DEV-0417 (mixer temperature reached 81 \u00b0C for 6 minutes during emulsification) is still open, with the investigation pending and no owner assigned. Because the release rules require a closed deviation, I propose placing the lot on hold until a quality reviewer dispositions it."
      },
      {
-      "at": "2026-11-27T06:51:37+00:00",
+      "at": "2026-11-27T07:38:33+00:00",
       "actor": "second reader",
       "text": "Agrees."
      }
@@ -1222,15 +954,13 @@
     "investigation": {
      "calls": [
       {
-       "at": "2026-11-27T06:51:12+00:00",
-       "tool": "read_document",
-       "args": {
-        "document": "batch_record.md"
-       },
-       "result": "L01: # Batch Manufacturing Record (excerpt)\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL06: Lot number: LC-24033\nL07: Manufacture date: 2026-09-17\nL08: Line clearance verified by: J. Okafor, 2026-09-17\nL09: \nL10: | Step | Operation | Performed by | Verified by |\nL11: |---|---|---|---|\nL12: | 1 | Dispense and weigh raw materials | P. Lindqvist | R. Haddad |\nL13: | 2 | Heat water phase to 75 \u00b0C | R. Haddad | A. Moreau |\nL14: | 3 | Heat oil phase to 75 \u00b0C | A. Moreau | J. Okafor |\nL1"
+       "at": "2026-11-27T07:38:18+00:00",
+       "tool": "list_supporting_records",
+       "args": {},
+       "result": "Records on file: DEV-0417.md"
       },
       {
-       "at": "2026-11-27T06:51:12+00:00",
+       "at": "2026-11-27T07:38:18+00:00",
        "tool": "read_document",
        "args": {
         "document": "deviation_log.md"
@@ -1238,19 +968,13 @@
        "result": "L01: # Deviation Log\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Lot number: LC-24033\nL06: \nL07: | ID | Description | Status | CAPA |\nL08: |---|---|---|---|\nL09: | DEV-0412 | Label roll changed mid-run; reconciliation completed | Closed | None required |\nL10: | DEV-0417 | Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification | Open, investigation pending | Not yet assigned |"
       },
       {
-       "at": "2026-11-27T06:51:12+00:00",
-       "tool": "list_supporting_records",
-       "args": {},
-       "result": "Records on file: DEV-0417.md"
-      },
-      {
-       "at": "2026-11-27T06:51:12+00:00",
+       "at": "2026-11-27T07:38:18+00:00",
        "tool": "list_corrected_documents",
        "args": {},
        "result": "No corrected document versions are on file for this lot."
       },
       {
-       "at": "2026-11-27T06:51:14+00:00",
+       "at": "2026-11-27T07:38:19+00:00",
        "tool": "open_record",
        "args": {
         "name": "DEV-0417.md"
@@ -1258,67 +982,21 @@
        "result": "L01: # Deviation record DEV-0417\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Lot: LC-24033\nL06: Raised: 2026-09-17 by P. Lindqvist\nL07: Event: Mixer jacket temperature reached 81 \u00b0C for 6 minutes during emulsification (limit 78 \u00b0C).\nL08: Root cause: Thermocouple TC-2 reading 4 \u00b0C low; replaced 2026-09-19.\nL09: Product impact assessment: Drafted by R. Haddad. Concludes no impact, citing viscosity and pH within specification.\nL10: Impact assessment approval: Awaiting QA approval.\nL11: Status: Open"
       },
       {
-       "at": "2026-11-27T06:51:14+00:00",
+       "at": "2026-11-27T07:38:20+00:00",
        "tool": "read_document",
        "args": {
-        "document": "certificate_of_analysis.md"
+        "document": "batch_record.md"
        },
-       "result": "L01: # Certificate of Analysis\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Fernhollow Skincare Ltd., Quality Control Laboratory\nL06: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL07: Lot number: LC-24033\nL08: Date of manufacture: 2026-09-17\nL09: Expiry: 2029-03\nL10: Tested against specification: FH-DBC-050 rev 03\nL11: \nL12: | Test | Specification | Result |\nL13: |---|---|---|\nL14: | Appearance | White to off-white smooth cream | White smooth cream |\nL15: | Odour | Characteristic | Characteristic |\nL16: | pH (25 \u00b0C) | 5.0 to 6"
+       "result": "L01: # Batch Manufacturing Record (excerpt)\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL06: Lot number: LC-24033\nL07: Manufacture date: 2026-09-17\nL08: Line clearance verified by: J. Okafor, 2026-09-17\nL09: \nL10: | Step | Operation | Performed by | Verified by |\nL11: |---|---|---|---|\nL12: | 1 | Dispense and weigh raw materials | P. Lindqvist | R. Haddad |\nL13: | 2 | Heat water phase to 75 \u00b0C | R. Haddad | A. Moreau |\nL14: | 3 | Heat oil phase to 75 \u00b0C | A. Moreau | J. Okafor |\nL1"
       },
       {
-       "at": "2026-11-27T06:51:16+00:00",
-       "tool": "get_specification",
-       "args": {
-        "revision": "03"
-       },
-       "result": "Revision 03, in force 2026-01-05 to 2026-09-30.  Limits: Appearance: white smooth cream, off-white smooth cream; Odour: characteristic; pH (25 \u00b0C): min 5.0, max 6.0; Viscosity (Brookfield, 25 \u00b0C): min 30000, max 45000; Specific gravity: min 0.98, max 1.02; Phenoxyethanol assay: min 0.80, max 1.00; Fill weight (mean of 10): min 50.0, max none; Total aerobic microbial count: min none, max 100; Total yeast and mould count: min none, max 10; Specified pathogens: absent"
-      },
-      {
-       "at": "2026-11-27T06:51:16+00:00",
-       "tool": "get_specification",
-       "args": {
-        "revision": "02"
-       },
-       "result": "No revision 02. On file: 03, 04"
-      },
-      {
-       "at": "2026-11-27T06:51:16+00:00",
-       "tool": "get_specification",
-       "args": {
-        "revision": "04"
-       },
-       "result": "Revision 04, in force 2026-10-01 to now. Viscosity lower limit raised from 30,000 to 32,000 cP after a stability study. Limits: Appearance: white smooth cream, off-white smooth cream; Odour: characteristic; pH (25 \u00b0C): min 5.0, max 6.0; Viscosity (Brookfield, 25 \u00b0C): min 32000, max 45000; Specific gravity: min 0.98, max 1.02; Phenoxyethanol assay: min 0.80, max 1.00; Fill weight (mean of 10): min 50.0, max none; Total aerobic microbial count: min none, max 100; Total yeast and mould count: min none, max 10; Specified pathogens: absent"
-      },
-      {
-       "at": "2026-11-27T06:51:24+00:00",
+       "at": "2026-11-27T07:38:25+00:00",
        "tool": "submit_note",
        "args": {
         "finding_ids": [
          "F1"
         ],
-        "summary": "The batch record gives 3,936 actual units against 4,000 theoretical, which is 98.4% (3,936/4,000). That is inside the 95.0 to 102.0% range stated in the finding, so the finding's own numbers don't show an excursion. The 95.0 to 102.0% limit is not in specification rev 03 or rev 04, so I could not confirm where it comes from.",
-        "evidence": [
-         {
-          "document": "batch_record.md",
-          "line": 21
-         }
-        ],
-        "next_step": "request_missing_evidence",
-        "open_questions": [
-         "Which document defines the 95.0 to 102.0% yield limit, and is it the right limit for FH-DBC-050?",
-         "Did the rule evaluate the yield correctly? The observed value appears to be within the stated range."
-        ]
-       },
-       "result": "Note recorded."
-      },
-      {
-       "at": "2026-11-27T06:51:24+00:00",
-       "tool": "submit_note",
-       "args": {
-        "finding_ids": [
-         "F2"
-        ],
-        "summary": "DEV-0417 is still open. The mixer jacket reached 81 \u00b0C for 6 minutes against a 78 \u00b0C limit. The record gives the root cause as thermocouple TC-2 reading 4 \u00b0C low, and the thermocouple was replaced on 2026-09-19. R. Haddad's draft impact assessment concludes no product impact, based on viscosity and pH within specification, but QA has not approved it. The deviation log shows no CAPA assigned and no owner. The CoA results (pH 5.6, viscosity 38,200 cP) are within rev 03 limits, which was the revision in force at manufacture on 2026-09-17. Those results don't close the deviation.",
+        "summary": "DEV-0417 is still open. The mixer jacket reached 81 \u00b0C for 6 minutes against a 78 \u00b0C limit (DEV-0417.md L07). The recorded root cause is thermocouple TC-2 reading 4 \u00b0C low, and it was replaced 2026-09-19 (L08). R. Haddad drafted a no-impact assessment citing viscosity and pH within specification, but it is awaiting QA approval (L09-L10). The deviation log shows no CAPA assigned (deviation_log.md L10). R. Haddad also performed and verified steps in the batch record (batch_record.md L12-L17), which a person may want to consider when approving the assessment.",
         "evidence": [
          {
           "document": "deviation_log.md",
@@ -1341,24 +1019,17 @@
           "line": 10
          },
          {
-          "document": "DEV-0417.md",
-          "line": 11
-         },
-         {
-          "document": "certificate_of_analysis.md",
-          "line": 16
-         },
-         {
-          "document": "certificate_of_analysis.md",
-          "line": 17
+          "document": "batch_record.md",
+          "line": 13
          }
         ],
         "next_step": "route_to_deviation_owner",
         "open_questions": [
-         "Who in QA will review and approve the impact assessment, and who owns DEV-0417 (the log says not yet assigned)?",
-         "Is a CAPA needed for the thermocouple calibration failure? Should other lots run with TC-2 be checked?",
-         "The thermocouple read 4 \u00b0C low, so the true temperature may have been higher than 81 \u00b0C. Does the impact assessment account for that?",
-         "Does the assessment need more than viscosity and pH, for example phenoxyethanol assay or stability?"
+         "Who in QA will review and approve the impact assessment, and when?",
+         "Is a CAPA needed for the thermocouple fault, for example a check of TC-2 calibration and of other lots run on it? The log says 'Not yet assigned'.",
+         "Are the viscosity and pH results cited in the assessment on file? None of the documents I read include them.",
+         "Is a 4 \u00b0C low reading consistent with the 81 \u00b0C recorded, i.e. was the true temperature about 85 \u00b0C? The record does not say whether the 81 \u00b0C is the corrected or the displayed value.",
+         "Does the product's stability or heat tolerance data support a conclusion of no impact?"
         ]
        },
        "result": "Note recorded."
@@ -1369,24 +1040,7 @@
        "finding_ids": [
         "F1"
        ],
-       "summary": "The batch record gives 3,936 actual units against 4,000 theoretical, which is 98.4% (3,936/4,000). That is inside the 95.0 to 102.0% range stated in the finding, so the finding's own numbers don't show an excursion. The 95.0 to 102.0% limit is not in specification rev 03 or rev 04, so I could not confirm where it comes from.",
-       "evidence": [
-        {
-         "document": "batch_record.md",
-         "line": 21
-        }
-       ],
-       "next_step": "request_missing_evidence",
-       "open_questions": [
-        "Which document defines the 95.0 to 102.0% yield limit, and is it the right limit for FH-DBC-050?",
-        "Did the rule evaluate the yield correctly? The observed value appears to be within the stated range."
-       ]
-      },
-      {
-       "finding_ids": [
-        "F2"
-       ],
-       "summary": "DEV-0417 is still open. The mixer jacket reached 81 \u00b0C for 6 minutes against a 78 \u00b0C limit. The record gives the root cause as thermocouple TC-2 reading 4 \u00b0C low, and the thermocouple was replaced on 2026-09-19. R. Haddad's draft impact assessment concludes no product impact, based on viscosity and pH within specification, but QA has not approved it. The deviation log shows no CAPA assigned and no owner. The CoA results (pH 5.6, viscosity 38,200 cP) are within rev 03 limits, which was the revision in force at manufacture on 2026-09-17. Those results don't close the deviation.",
+       "summary": "DEV-0417 is still open. The mixer jacket reached 81 \u00b0C for 6 minutes against a 78 \u00b0C limit (DEV-0417.md L07). The recorded root cause is thermocouple TC-2 reading 4 \u00b0C low, and it was replaced 2026-09-19 (L08). R. Haddad drafted a no-impact assessment citing viscosity and pH within specification, but it is awaiting QA approval (L09-L10). The deviation log shows no CAPA assigned (deviation_log.md L10). R. Haddad also performed and verified steps in the batch record (batch_record.md L12-L17), which a person may want to consider when approving the assessment.",
        "evidence": [
         {
          "document": "deviation_log.md",
@@ -1409,24 +1063,17 @@
          "line": 10
         },
         {
-         "document": "DEV-0417.md",
-         "line": 11
-        },
-        {
-         "document": "certificate_of_analysis.md",
-         "line": 16
-        },
-        {
-         "document": "certificate_of_analysis.md",
-         "line": 17
+         "document": "batch_record.md",
+         "line": 13
         }
        ],
        "next_step": "route_to_deviation_owner",
        "open_questions": [
-        "Who in QA will review and approve the impact assessment, and who owns DEV-0417 (the log says not yet assigned)?",
-        "Is a CAPA needed for the thermocouple calibration failure? Should other lots run with TC-2 be checked?",
-        "The thermocouple read 4 \u00b0C low, so the true temperature may have been higher than 81 \u00b0C. Does the impact assessment account for that?",
-        "Does the assessment need more than viscosity and pH, for example phenoxyethanol assay or stability?"
+        "Who in QA will review and approve the impact assessment, and when?",
+        "Is a CAPA needed for the thermocouple fault, for example a check of TC-2 calibration and of other lots run on it? The log says 'Not yet assigned'.",
+        "Are the viscosity and pH results cited in the assessment on file? None of the documents I read include them.",
+        "Is a 4 \u00b0C low reading consistent with the 81 \u00b0C recorded, i.e. was the true temperature about 85 \u00b0C? The record does not say whether the 81 \u00b0C is the corrected or the displayed value.",
+        "Does the product's stability or heat tolerance data support a conclusion of no impact?"
        ]
       }
      ]
@@ -1434,9 +1081,9 @@
     "history": [],
     "usage": {
      "model_calls": 9,
-     "input_tokens": 29020,
-     "output_tokens": 5325,
-     "seconds": 37.75
+     "input_tokens": 22007,
+     "output_tokens": 4093,
+     "seconds": 25.83
     },
     "approval_snapshot": "",
     "title": "An unresolved deviation",
@@ -1720,21 +1367,6 @@
     "findings": [
      {
       "id": "F1",
-      "rule": "batch.yield",
-      "severity": "major",
-      "title": "Yield outside the expected range",
-      "expected": "95.0 to 102.0%",
-      "observed": "98.4%",
-      "evidence": [
-       {
-        "document": "batch_record.md",
-        "line": 21,
-        "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-       }
-      ]
-     },
-     {
-      "id": "F2",
       "rule": "batch.step_unverified",
       "severity": "major",
       "title": "Step 7 (Fill into 50 g tubes and crimp) not verified by a second person",
@@ -1752,94 +1384,65 @@
     "evidence_notes": [],
     "proposal": {
      "decision": "hold",
-     "rationale": "F2 is a major finding: step 7 (fill into 50 g tubes and crimp) has no second-person verification in the batch record, so the lot should be held for a reviewer's disposition. F1 is also flagged as major for yield, but the observed 98.4% appears to fall inside the stated 95.0 to 102.0% range, so the reviewer should check whether that finding is correct. I did not rely on F1 for this proposal.",
+     "rationale": "Finding F1 is a major finding: step 7 (Fill into 50 g tubes and crimp) was performed by A. Moreau but has no second-person verification in the batch record (line 18). Because a major finding is open, the lot should be held until a quality reviewer decides on its disposition.",
      "finding_ids": [
-      "F1",
-      "F2"
+      "F1"
      ],
-     "at": "2026-11-27T06:52:07+00:00"
+     "at": "2026-11-27T07:38:51+00:00"
     },
     "second_reading": {
      "agrees": true,
-     "concerns": [
-      "The proposal lists F1 in finding_ids but says it did not rely on F1. This is a minor inconsistency, and the hold stands on F2 alone.",
-      "F1 is labelled major, but its own evidence (3,936 of 4,000 units, 98.4%) falls inside the expected 95.0 to 102.0% range. The proposal is right to send this to the reviewer as a possible rule error."
-     ]
+     "concerns": []
     },
     "decision": null,
     "timeline": [
      {
-      "at": "2026-11-27T06:51:37+00:00",
+      "at": "2026-11-27T07:38:33+00:00",
       "actor": "desk",
       "text": "Reading the certificate, batch record and deviation log (originals)."
      },
      {
-      "at": "2026-11-27T06:51:47+00:00",
+      "at": "2026-11-27T07:38:42+00:00",
       "actor": "rules",
-      "text": "Checked against rev 03: 2 finding(s), 2 blocking."
+      "text": "Checked against rev 03: 1 finding(s), 1 blocking."
      },
      {
-      "at": "2026-11-27T06:51:47+00:00",
+      "at": "2026-11-27T07:38:42+00:00",
       "actor": "investigator",
       "text": "Looking for evidence that explains the blocking findings."
      },
      {
-      "at": "2026-11-27T06:51:48+00:00",
-      "actor": "investigator",
-      "text": "read document(batch_record.md)"
-     },
-     {
-      "at": "2026-11-27T06:51:48+00:00",
+      "at": "2026-11-27T07:38:43+00:00",
       "actor": "investigator",
       "text": "list supporting records()"
      },
      {
-      "at": "2026-11-27T06:51:48+00:00",
+      "at": "2026-11-27T07:38:43+00:00",
       "actor": "investigator",
       "text": "list corrected documents()"
      },
      {
-      "at": "2026-11-27T06:51:48+00:00",
+      "at": "2026-11-27T07:38:43+00:00",
       "actor": "investigator",
-      "text": "read document(deviation_log.md)"
+      "text": "read document(batch_record.md, 1, 40)"
      },
      {
-      "at": "2026-11-27T06:51:50+00:00",
+      "at": "2026-11-27T07:38:44+00:00",
       "actor": "investigator",
-      "text": "read document(certificate_of_analysis.md)"
+      "text": "read document(deviation_log.md, 1, 60)"
      },
      {
-      "at": "2026-11-27T06:51:52+00:00",
-      "actor": "investigator",
-      "text": "get specification(03)"
-     },
-     {
-      "at": "2026-11-27T06:51:52+00:00",
-      "actor": "investigator",
-      "text": "get specification(04)"
-     },
-     {
-      "at": "2026-11-27T06:51:52+00:00",
-      "actor": "investigator",
-      "text": "get specification(02)"
-     },
-     {
-      "at": "2026-11-27T06:52:04+00:00",
+      "at": "2026-11-27T07:38:50+00:00",
       "actor": "investigator",
       "text": "Note on F1: route to deviation owner."
      },
      {
-      "at": "2026-11-27T06:52:04+00:00",
-      "actor": "investigator",
-      "text": "Note on F2: request missing evidence."
-     },
-     {
-      "at": "2026-11-27T06:52:07+00:00",
+      "at": "2026-11-27T07:38:51+00:00",
       "actor": "proposer",
-      "text": "Placed on hold. F2 is a major finding: step 7 (fill into 50 g tubes and crimp) has no second-person verification in the batch record, so the lot should be held for a reviewer's disposition. F1 is also flagged as major for yield, but the observed 98.4% appears to fall inside the stated 95.0 to 102.0% range, so the reviewer should check whether that finding is correct. I did not rely on F1 for this proposal."
+      "text": "Placed on hold. Finding F1 is a major finding: step 7 (Fill into 50 g tubes and crimp) was performed by A. Moreau but has no second-person verification in the batch record (line 18). Because a major finding is open, the lot should be held until a quality reviewer decides on its disposition."
      },
      {
-      "at": "2026-11-27T06:52:12+00:00",
+      "at": "2026-11-27T07:38:57+00:00",
       "actor": "second reader",
       "text": "Agrees."
      }
@@ -1854,104 +1457,49 @@
     "investigation": {
      "calls": [
       {
-       "at": "2026-11-27T06:51:48+00:00",
-       "tool": "read_document",
-       "args": {
-        "document": "batch_record.md"
-       },
-       "result": "L01: # Batch Manufacturing Record (excerpt)\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL06: Lot number: LC-24034\nL07: Manufacture date: 2026-09-24\nL08: Line clearance verified by: J. Okafor, 2026-09-24\nL09: \nL10: | Step | Operation | Performed by | Verified by |\nL11: |---|---|---|---|\nL12: | 1 | Dispense and weigh raw materials | P. Lindqvist | R. Haddad |\nL13: | 2 | Heat water phase to 75 \u00b0C | R. Haddad | A. Moreau |\nL14: | 3 | Heat oil phase to 75 \u00b0C | A. Moreau | J. Okafor |\nL1"
-      },
-      {
-       "at": "2026-11-27T06:51:48+00:00",
+       "at": "2026-11-27T07:38:43+00:00",
        "tool": "list_supporting_records",
        "args": {},
        "result": "No supporting records are on file for this lot."
       },
       {
-       "at": "2026-11-27T06:51:48+00:00",
+       "at": "2026-11-27T07:38:43+00:00",
        "tool": "list_corrected_documents",
        "args": {},
        "result": "No corrected document versions are on file for this lot."
       },
       {
-       "at": "2026-11-27T06:51:48+00:00",
+       "at": "2026-11-27T07:38:43+00:00",
        "tool": "read_document",
        "args": {
-        "document": "deviation_log.md"
+        "document": "batch_record.md",
+        "from_line": 1,
+        "to_line": 40
+       },
+       "result": "L01: # Batch Manufacturing Record (excerpt)\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL06: Lot number: LC-24034\nL07: Manufacture date: 2026-09-24\nL08: Line clearance verified by: J. Okafor, 2026-09-24\nL09: \nL10: | Step | Operation | Performed by | Verified by |\nL11: |---|---|---|---|\nL12: | 1 | Dispense and weigh raw materials | P. Lindqvist | R. Haddad |\nL13: | 2 | Heat water phase to 75 \u00b0C | R. Haddad | A. Moreau |\nL14: | 3 | Heat oil phase to 75 \u00b0C | A. Moreau | J. Okafor |\nL1"
+      },
+      {
+       "at": "2026-11-27T07:38:44+00:00",
+       "tool": "read_document",
+       "args": {
+        "document": "deviation_log.md",
+        "from_line": 1,
+        "to_line": 60
        },
        "result": "L01: # Deviation Log\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Lot number: LC-24034\nL06: \nL07: No deviations were recorded for this lot."
       },
       {
-       "at": "2026-11-27T06:51:50+00:00",
-       "tool": "read_document",
-       "args": {
-        "document": "certificate_of_analysis.md"
-       },
-       "result": "L01: # Certificate of Analysis\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Fernhollow Skincare Ltd., Quality Control Laboratory\nL06: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL07: Lot number: LC-24034\nL08: Date of manufacture: 2026-09-24\nL09: Expiry: 2029-03\nL10: Tested against specification: FH-DBC-050 rev 03\nL11: \nL12: | Test | Specification | Result |\nL13: |---|---|---|\nL14: | Appearance | White to off-white smooth cream | White smooth cream |\nL15: | Odour | Characteristic | Characteristic |\nL16: | pH (25 \u00b0C) | 5.0 to 6"
-      },
-      {
-       "at": "2026-11-27T06:51:52+00:00",
-       "tool": "get_specification",
-       "args": {
-        "revision": "03"
-       },
-       "result": "Revision 03, in force 2026-01-05 to 2026-09-30.  Limits: Appearance: white smooth cream, off-white smooth cream; Odour: characteristic; pH (25 \u00b0C): min 5.0, max 6.0; Viscosity (Brookfield, 25 \u00b0C): min 30000, max 45000; Specific gravity: min 0.98, max 1.02; Phenoxyethanol assay: min 0.80, max 1.00; Fill weight (mean of 10): min 50.0, max none; Total aerobic microbial count: min none, max 100; Total yeast and mould count: min none, max 10; Specified pathogens: absent"
-      },
-      {
-       "at": "2026-11-27T06:51:52+00:00",
-       "tool": "get_specification",
-       "args": {
-        "revision": "04"
-       },
-       "result": "Revision 04, in force 2026-10-01 to now. Viscosity lower limit raised from 30,000 to 32,000 cP after a stability study. Limits: Appearance: white smooth cream, off-white smooth cream; Odour: characteristic; pH (25 \u00b0C): min 5.0, max 6.0; Viscosity (Brookfield, 25 \u00b0C): min 32000, max 45000; Specific gravity: min 0.98, max 1.02; Phenoxyethanol assay: min 0.80, max 1.00; Fill weight (mean of 10): min 50.0, max none; Total aerobic microbial count: min none, max 100; Total yeast and mould count: min none, max 10; Specified pathogens: absent"
-      },
-      {
-       "at": "2026-11-27T06:51:52+00:00",
-       "tool": "get_specification",
-       "args": {
-        "revision": "02"
-       },
-       "result": "No revision 02. On file: 03, 04"
-      },
-      {
-       "at": "2026-11-27T06:51:59+00:00",
+       "at": "2026-11-27T07:38:48+00:00",
        "tool": "submit_note",
        "args": {
         "finding_ids": [
          "F1"
         ],
-        "summary": "The finding's own numbers don't show a breach. The batch record gives 3,936 of 4,000 units, which is 98.4% (line 21), and that is inside the stated 95.0 to 102.0% range. No source for the yield range is on file: neither specification revision (03 or 04) lists a yield limit. No deviation, supporting record or corrected document is on file either. The rule may have misfired or may be using a different limit or calculation than the one stated.",
-        "evidence": [
-         {
-          "document": "batch_record.md",
-          "line": 21
-         }
-        ],
-        "next_step": "route_to_deviation_owner",
-        "open_questions": [
-         "Which document defines the 95.0 to 102.0% yield range, and does it apply to this product?",
-         "Why was the rule triggered when 98.4% is within that range? Is the check logic or the extracted value wrong?",
-         "A person must decide whether this finding can be dismissed as a rule error."
-        ]
-       },
-       "result": "Note recorded."
-      },
-      {
-       "at": "2026-11-27T06:51:59+00:00",
-       "tool": "submit_note",
-       "args": {
-        "finding_ids": [
-         "F2"
-        ],
-        "summary": "In the batch record, the Verified by cell for step 7 (fill into 50 g tubes and crimp, performed by A. Moreau) is empty (line 18). Every other step, 1 to 6 and 8, has a verifier named. The deviation log says no deviations were recorded (line 7). No supporting record or corrected batch record is on file to show that the verification was done or why it was left blank.",
+        "summary": "The batch record shows step 7 (fill into 50 g tubes and crimp) performed by A. Moreau, with the \"Verified by\" cell empty (batch_record.md L18). Every other step, 1\u20136 and 8, has a different verifier named. The deviation log says no deviations were recorded (deviation_log.md L07). No supporting records or corrected documents are on file to explain the gap.",
         "evidence": [
          {
           "document": "batch_record.md",
           "line": 18
-         },
-         {
-          "document": "batch_record.md",
-          "line": 12
          },
          {
           "document": "batch_record.md",
@@ -1962,7 +1510,11 @@
           "line": 7
          }
         ],
-        "next_step": "request_missing_evidence"
+        "next_step": "route_to_deviation_owner",
+        "open_questions": [
+         "Was step 7 actually verified by a second person but not signed? If so, who, and can that be documented through the site's late-entry procedure?",
+         "If it was not verified, should a deviation be raised, and how does the reviewer want to assess the filled and crimped units (the 3,936 units reported at L21)?"
+        ]
        },
        "result": "Note recorded."
       }
@@ -1972,33 +1524,11 @@
        "finding_ids": [
         "F1"
        ],
-       "summary": "The finding's own numbers don't show a breach. The batch record gives 3,936 of 4,000 units, which is 98.4% (line 21), and that is inside the stated 95.0 to 102.0% range. No source for the yield range is on file: neither specification revision (03 or 04) lists a yield limit. No deviation, supporting record or corrected document is on file either. The rule may have misfired or may be using a different limit or calculation than the one stated.",
-       "evidence": [
-        {
-         "document": "batch_record.md",
-         "line": 21
-        }
-       ],
-       "next_step": "route_to_deviation_owner",
-       "open_questions": [
-        "Which document defines the 95.0 to 102.0% yield range, and does it apply to this product?",
-        "Why was the rule triggered when 98.4% is within that range? Is the check logic or the extracted value wrong?",
-        "A person must decide whether this finding can be dismissed as a rule error."
-       ]
-      },
-      {
-       "finding_ids": [
-        "F2"
-       ],
-       "summary": "In the batch record, the Verified by cell for step 7 (fill into 50 g tubes and crimp, performed by A. Moreau) is empty (line 18). Every other step, 1 to 6 and 8, has a verifier named. The deviation log says no deviations were recorded (line 7). No supporting record or corrected batch record is on file to show that the verification was done or why it was left blank.",
+       "summary": "The batch record shows step 7 (fill into 50 g tubes and crimp) performed by A. Moreau, with the \"Verified by\" cell empty (batch_record.md L18). Every other step, 1\u20136 and 8, has a different verifier named. The deviation log says no deviations were recorded (deviation_log.md L07). No supporting records or corrected documents are on file to explain the gap.",
        "evidence": [
         {
          "document": "batch_record.md",
          "line": 18
-        },
-        {
-         "document": "batch_record.md",
-         "line": 12
         },
         {
          "document": "batch_record.md",
@@ -2009,17 +1539,20 @@
          "line": 7
         }
        ],
-       "next_step": "request_missing_evidence",
-       "open_questions": []
+       "next_step": "route_to_deviation_owner",
+       "open_questions": [
+        "Was step 7 actually verified by a second person but not signed? If so, who, and can that be documented through the site's late-entry procedure?",
+        "If it was not verified, should a deviation be raised, and how does the reviewer want to assess the filled and crimped units (the 3,936 units reported at L21)?"
+       ]
       }
      ]
     },
     "history": [],
     "usage": {
-     "model_calls": 9,
-     "input_tokens": 26630,
-     "output_tokens": 4977,
-     "seconds": 35.16
+     "model_calls": 8,
+     "input_tokens": 18264,
+     "output_tokens": 3409,
+     "seconds": 24.11
     },
     "approval_snapshot": "",
     "title": "A missing second signature",
@@ -2313,129 +1846,101 @@
         "text": "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.78 |"
        }
       ]
-     },
-     {
-      "id": "F3",
-      "rule": "batch.yield",
-      "severity": "major",
-      "title": "Yield outside the expected range",
-      "expected": "95.0 to 102.0%",
-      "observed": "98.4%",
-      "evidence": [
-       {
-        "document": "batch_record.md",
-        "line": 21,
-        "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-       }
-      ]
      }
     ],
     "evidence_notes": [],
     "proposal": {
      "decision": "hold",
-     "rationale": "The certificate of analysis lists lot LC-24053, not LC-24035 (F1, critical). Phenoxyethanol assay is 0.78% w/w against a spec of 0.80 to 1.00 (F2, major). F3 flags yield as out of range, but the recorded 98.4% falls inside the stated 95.0 to 102.0%, so the reviewer should check that finding. It is not relied on here.",
+     "rationale": "The certificate of analysis lists lot number LC-24053, but the lot under review is LC-24035 (F1, critical). The phenoxyethanol assay result is 0.78 % w/w, below the 0.80 to 1.00 % w/w specification (F2, major). Because of these critical and major findings, the lot should be held pending a quality reviewer's disposition.",
      "finding_ids": [
       "F1",
-      "F2",
-      "F3"
+      "F2"
      ],
-     "at": "2026-11-27T06:52:44+00:00"
+     "at": "2026-11-27T07:39:24+00:00"
     },
     "second_reading": {
      "agrees": true,
-     "concerns": [
-      "F3 is listed in finding_ids although the rationale says it is not relied on. Its own evidence (98.4% against 95.0 to 102.0%) shows the yield is in range, so the finding looks spurious. The proposal rightly flags it for the reviewer. This does not affect the hold decision."
-     ]
+     "concerns": []
     },
     "decision": null,
     "timeline": [
      {
-      "at": "2026-11-27T06:52:12+00:00",
+      "at": "2026-11-27T07:38:57+00:00",
       "actor": "desk",
       "text": "Reading the certificate, batch record and deviation log (originals)."
      },
      {
-      "at": "2026-11-27T06:52:22+00:00",
+      "at": "2026-11-27T07:39:07+00:00",
       "actor": "rules",
-      "text": "Checked against rev 04: 3 finding(s), 3 blocking."
+      "text": "Checked against rev 04: 2 finding(s), 2 blocking."
      },
      {
-      "at": "2026-11-27T06:52:22+00:00",
+      "at": "2026-11-27T07:39:07+00:00",
       "actor": "investigator",
       "text": "Looking for evidence that explains the blocking findings."
      },
      {
-      "at": "2026-11-27T06:52:24+00:00",
+      "at": "2026-11-27T07:39:09+00:00",
       "actor": "investigator",
       "text": "list supporting records()"
      },
      {
-      "at": "2026-11-27T06:52:24+00:00",
+      "at": "2026-11-27T07:39:09+00:00",
       "actor": "investigator",
       "text": "list corrected documents()"
      },
      {
-      "at": "2026-11-27T06:52:24+00:00",
+      "at": "2026-11-27T07:39:09+00:00",
       "actor": "investigator",
       "text": "read document(certificate_of_analysis.md)"
      },
      {
-      "at": "2026-11-27T06:52:24+00:00",
-      "actor": "investigator",
-      "text": "read document(batch_record.md)"
-     },
-     {
-      "at": "2026-11-27T06:52:24+00:00",
-      "actor": "investigator",
-      "text": "read document(deviation_log.md)"
-     },
-     {
-      "at": "2026-11-27T06:52:26+00:00",
+      "at": "2026-11-27T07:39:11+00:00",
       "actor": "investigator",
       "text": "open record(LAB-NOTE-1102.md)"
      },
      {
-      "at": "2026-11-27T06:52:26+00:00",
+      "at": "2026-11-27T07:39:11+00:00",
       "actor": "investigator",
       "text": "read corrected document(certificate_of_analysis.md, v2)"
      },
      {
-      "at": "2026-11-27T06:52:26+00:00",
+      "at": "2026-11-27T07:39:11+00:00",
       "actor": "investigator",
       "text": "get specification(rev 04)"
      },
      {
-      "at": "2026-11-27T06:52:27+00:00",
+      "at": "2026-11-27T07:39:11+00:00",
+      "actor": "investigator",
+      "text": "get specification(rev 03)"
+     },
+     {
+      "at": "2026-11-27T07:39:12+00:00",
       "actor": "investigator",
       "text": "get specification(04)"
      },
      {
-      "at": "2026-11-27T06:52:27+00:00",
+      "at": "2026-11-27T07:39:12+00:00",
       "actor": "investigator",
       "text": "get specification(03)"
      },
      {
-      "at": "2026-11-27T06:52:41+00:00",
+      "at": "2026-11-27T07:39:22+00:00",
       "actor": "investigator",
       "text": "Note on F1: reassess with corrected document."
      },
      {
-      "at": "2026-11-27T06:52:41+00:00",
+      "at": "2026-11-27T07:39:22+00:00",
       "actor": "investigator",
       "text": "Note on F2: route to deviation owner."
      },
      {
-      "at": "2026-11-27T06:52:41+00:00",
-      "actor": "investigator",
-      "text": "Note on F3: request missing evidence."
-     },
-     {
-      "at": "2026-11-27T06:52:44+00:00",
+      "at": "2026-11-27T07:39:24+00:00",
       "actor": "proposer",
-      "text": "Placed on hold. The certificate of analysis lists lot LC-24053, not LC-24035 (F1, critical). Phenoxyethanol assay is 0.78% w/w against a spec of 0.80 to 1.00 (F2, major). F3 flags yield as out of range, but the recorded 98.4% falls inside the stated 95.0 to 102.0%, so the reviewer should check that finding. It is not relied on here."
+      "text": "Placed on hold. The certificate of analysis lists lot number LC-24053, but the lot under review is LC-24035 (F1, critical). The phenoxyethanol assay result is 0.78 % w/w, below the 0.80 to 1.00 % w/w specification (F2, major). Because of these critical and major findings, the lot should be held pending a quality reviewer's disposition."
      },
      {
-      "at": "2026-11-27T06:52:48+00:00",
+      "at": "2026-11-27T07:39:27+00:00",
       "actor": "second reader",
       "text": "Agrees."
      }
@@ -2450,19 +1955,19 @@
     "investigation": {
      "calls": [
       {
-       "at": "2026-11-27T06:52:24+00:00",
+       "at": "2026-11-27T07:39:09+00:00",
        "tool": "list_supporting_records",
        "args": {},
        "result": "Records on file: LAB-NOTE-1102.md"
       },
       {
-       "at": "2026-11-27T06:52:24+00:00",
+       "at": "2026-11-27T07:39:09+00:00",
        "tool": "list_corrected_documents",
        "args": {},
        "result": "Corrected versions on file (not applied): certificate_of_analysis.md v2"
       },
       {
-       "at": "2026-11-27T06:52:24+00:00",
+       "at": "2026-11-27T07:39:09+00:00",
        "tool": "read_document",
        "args": {
         "document": "certificate_of_analysis.md"
@@ -2470,23 +1975,7 @@
        "result": "L01: # Certificate of Analysis\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Fernhollow Skincare Ltd., Quality Control Laboratory\nL06: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL07: Lot number: LC-24053\nL08: Date of manufacture: 2026-10-01\nL09: Expiry: 2029-04\nL10: Tested against specification: FH-DBC-050 rev 04\nL11: \nL12: | Test | Specification | Result |\nL13: |---|---|---|\nL14: | Appearance | White to off-white smooth cream | White smooth cream |\nL15: | Odour | Characteristic | Characteristic |\nL16: | pH (25 \u00b0C) | 5.0 to 6"
       },
       {
-       "at": "2026-11-27T06:52:24+00:00",
-       "tool": "read_document",
-       "args": {
-        "document": "batch_record.md"
-       },
-       "result": "L01: # Batch Manufacturing Record (excerpt)\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL06: Lot number: LC-24035\nL07: Manufacture date: 2026-10-01\nL08: Line clearance verified by: J. Okafor, 2026-10-01\nL09: \nL10: | Step | Operation | Performed by | Verified by |\nL11: |---|---|---|---|\nL12: | 1 | Dispense and weigh raw materials | P. Lindqvist | R. Haddad |\nL13: | 2 | Heat water phase to 75 \u00b0C | R. Haddad | A. Moreau |\nL14: | 3 | Heat oil phase to 75 \u00b0C | A. Moreau | J. Okafor |\nL1"
-      },
-      {
-       "at": "2026-11-27T06:52:24+00:00",
-       "tool": "read_document",
-       "args": {
-        "document": "deviation_log.md"
-       },
-       "result": "L01: # Deviation Log\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Lot number: LC-24035\nL06: \nL07: No deviations were recorded for this lot."
-      },
-      {
-       "at": "2026-11-27T06:52:26+00:00",
+       "at": "2026-11-27T07:39:11+00:00",
        "tool": "open_record",
        "args": {
         "name": "LAB-NOTE-1102.md"
@@ -2494,7 +1983,7 @@
        "result": "L01: # Laboratory note LAB-NOTE-1102\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Lot: LC-24035\nL06: Subject: Phenoxyethanol assay 0.78 % w/w\nL07: The assay was repeated in duplicate on 2026-10-06: 0.78 and 0.79 % w/w.\nL08: No laboratory error identified. Result confirmed.\nL09: Out-of-specification investigation OOS-0233 opened."
       },
       {
-       "at": "2026-11-27T06:52:26+00:00",
+       "at": "2026-11-27T07:39:11+00:00",
        "tool": "read_corrected_document",
        "args": {
         "document": "certificate_of_analysis.md",
@@ -2503,7 +1992,7 @@
        "result": "L01: # Certificate of Analysis\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Fernhollow Skincare Ltd., Quality Control Laboratory\nL06: Document version: v2, supersedes v1\nL07: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL08: Lot number: LC-24035\nL09: Date of manufacture: 2026-10-01\nL10: Expiry: 2029-04\nL11: Tested against specification: FH-DBC-050 rev 04\nL12: \nL13: | Test | Specification | Result |\nL14: |---|---|---|\nL15: | Appearance | White to off-white smooth cream | White smooth cream |\nL16: | Odour | Characteristic | Char"
       },
       {
-       "at": "2026-11-27T06:52:26+00:00",
+       "at": "2026-11-27T07:39:11+00:00",
        "tool": "get_specification",
        "args": {
         "revision": "rev 04"
@@ -2511,7 +2000,15 @@
        "result": "No revision rev 04. On file: 03, 04"
       },
       {
-       "at": "2026-11-27T06:52:27+00:00",
+       "at": "2026-11-27T07:39:11+00:00",
+       "tool": "get_specification",
+       "args": {
+        "revision": "rev 03"
+       },
+       "result": "No revision rev 03. On file: 03, 04"
+      },
+      {
+       "at": "2026-11-27T07:39:12+00:00",
        "tool": "get_specification",
        "args": {
         "revision": "04"
@@ -2519,7 +2016,7 @@
        "result": "Revision 04, in force 2026-10-01 to now. Viscosity lower limit raised from 30,000 to 32,000 cP after a stability study. Limits: Appearance: white smooth cream, off-white smooth cream; Odour: characteristic; pH (25 \u00b0C): min 5.0, max 6.0; Viscosity (Brookfield, 25 \u00b0C): min 32000, max 45000; Specific gravity: min 0.98, max 1.02; Phenoxyethanol assay: min 0.80, max 1.00; Fill weight (mean of 10): min 50.0, max none; Total aerobic microbial count: min none, max 100; Total yeast and mould count: min none, max 10; Specified pathogens: absent"
       },
       {
-       "at": "2026-11-27T06:52:27+00:00",
+       "at": "2026-11-27T07:39:12+00:00",
        "tool": "get_specification",
        "args": {
         "revision": "03"
@@ -2527,51 +2024,51 @@
        "result": "Revision 03, in force 2026-01-05 to 2026-09-30.  Limits: Appearance: white smooth cream, off-white smooth cream; Odour: characteristic; pH (25 \u00b0C): min 5.0, max 6.0; Viscosity (Brookfield, 25 \u00b0C): min 30000, max 45000; Specific gravity: min 0.98, max 1.02; Phenoxyethanol assay: min 0.80, max 1.00; Fill weight (mean of 10): min 50.0, max none; Total aerobic microbial count: min none, max 100; Total yeast and mould count: min none, max 10; Specified pathogens: absent"
       },
       {
-       "at": "2026-11-27T06:52:37+00:00",
+       "at": "2026-11-27T07:39:18+00:00",
        "tool": "submit_note",
        "args": {
         "finding_ids": [
          "F1"
         ],
-        "summary": "The original CoA gives the lot as LC-24053 (line 7). The batch record and deviation log both give LC-24035, which looks like transposed digits. A corrected CoA v2 is on file with LC-24035 (line 8). Every other value I compared is identical to v1. v2 is not applied, and I did not treat F1 as resolved.",
+        "summary": "The original CoA shows lot LC-24053 on line 7, but the lot under review is LC-24035. This looks like a transposed-digit error. A corrected CoA v2 is on file and shows LC-24035 on its line 8, with the other content unchanged. It is not applied. Lab note LAB-NOTE-1102 refers to LC-24035, which is consistent with the lot being reviewed.",
         "evidence": [
          {
           "document": "certificate_of_analysis.md",
           "line": 7
          },
          {
-          "document": "batch_record.md",
-          "line": 6
-         },
-         {
-          "document": "deviation_log.md",
-          "line": 5
-         },
-         {
           "document": "certificate_of_analysis.md v2 (corrected, not applied)",
           "line": 8
+         },
+         {
+          "document": "LAB-NOTE-1102.md",
+          "line": 5
          }
         ],
         "next_step": "reassess_with_corrected_document",
         "open_questions": [
-         "Who approved v2, and when? v2 still shows the original approval line (M. Chen, 2026-10-07).",
-         "Was the lot number typo only on the document, or could the results belong to LC-24053? A person should confirm the results are traceable to LC-24035."
+         "Will a person apply CoA v2, and is the reason for the lot number change documented (who corrected it and why)?",
+         "Was the CoA v1 with the wrong lot number issued outside the company?"
         ]
        },
        "result": "Note recorded."
       },
       {
-       "at": "2026-11-27T06:52:37+00:00",
+       "at": "2026-11-27T07:39:18+00:00",
        "tool": "submit_note",
        "args": {
         "finding_ids": [
          "F2"
         ],
-        "summary": "The 0.78 % w/w result is below the 0.80 minimum. Spec rev 04 was in force from 2026-10-01 and the lot was made on 2026-10-01. Rev 03 has the same phenoxyethanol limits, so the spec revision does not explain the result. LAB-NOTE-1102 says a duplicate repeat gave 0.78 and 0.79, no lab error was found, and the result was confirmed. It also says OOS-0233 was opened. Corrected CoA v2 still reports 0.78. The deviation log says no deviations were recorded, and it does not mention OOS-0233.",
+        "summary": "The phenoxyethanol result of 0.78 % w/w is below the 0.80 to 1.00 limit. Spec rev 04, which was in force from 2026-10-01 and is the revision the CoA cites, has the same limit, so a spec change does not explain the result. LAB-NOTE-1102 says the repeat duplicate tests gave 0.78 and 0.79, no lab error was found, and the result was confirmed. It also says OOS-0233 was opened. The corrected CoA v2 still reports 0.78, so it does not resolve this finding.",
         "evidence": [
          {
           "document": "certificate_of_analysis.md",
           "line": 19
+         },
+         {
+          "document": "certificate_of_analysis.md v2 (corrected, not applied)",
+          "line": 20
          },
          {
           "document": "LAB-NOTE-1102.md",
@@ -2584,48 +2081,13 @@
          {
           "document": "LAB-NOTE-1102.md",
           "line": 9
-         },
-         {
-          "document": "deviation_log.md",
-          "line": 7
-         },
-         {
-          "document": "certificate_of_analysis.md v2 (corrected, not applied)",
-          "line": 20
          }
         ],
         "next_step": "route_to_deviation_owner",
         "open_questions": [
          "What is the status and outcome of OOS-0233? The record is not on file.",
-         "Why is OOS-0233 not in the deviation log?",
-         "Was phenoxyethanol dosing at batch step 5 a possible cause? The excerpt has no weights.",
-         "What is the disposition decision for the lot?"
-        ]
-       },
-       "result": "Note recorded."
-      },
-      {
-       "at": "2026-11-27T06:52:37+00:00",
-       "tool": "submit_note",
-       "args": {
-        "finding_ids": [
-         "F3"
-        ],
-        "summary": "The batch record shows 3,936 of 4,000 units, which is 98.4% (line 21). That is inside the 95.0\u2013102.0% range quoted in the finding, so the finding's own numbers do not show an out-of-range yield. The specification revisions on file (03 and 04) contain no yield limits, so I could not confirm where the 95.0\u2013102.0% range comes from. This may be a false flag or a rule misconfiguration.",
-        "evidence": [
-         {
-          "document": "batch_record.md",
-          "line": 21
-         },
-         {
-          "document": "deviation_log.md",
-          "line": 7
-         }
-        ],
-        "next_step": "request_missing_evidence",
-        "open_questions": [
-         "What is the source document for the yield acceptance range, such as the master batch record?",
-         "Was the finding raised against a different range or a different value than the one shown?"
+         "Who decides disposition of the lot, given a confirmed OOS result?",
+         "Is there any impact assessment on preservative efficacy?"
         ]
        },
        "result": "Note recorded."
@@ -2636,40 +2098,40 @@
        "finding_ids": [
         "F1"
        ],
-       "summary": "The original CoA gives the lot as LC-24053 (line 7). The batch record and deviation log both give LC-24035, which looks like transposed digits. A corrected CoA v2 is on file with LC-24035 (line 8). Every other value I compared is identical to v1. v2 is not applied, and I did not treat F1 as resolved.",
+       "summary": "The original CoA shows lot LC-24053 on line 7, but the lot under review is LC-24035. This looks like a transposed-digit error. A corrected CoA v2 is on file and shows LC-24035 on its line 8, with the other content unchanged. It is not applied. Lab note LAB-NOTE-1102 refers to LC-24035, which is consistent with the lot being reviewed.",
        "evidence": [
         {
          "document": "certificate_of_analysis.md",
          "line": 7
         },
         {
-         "document": "batch_record.md",
-         "line": 6
-        },
-        {
-         "document": "deviation_log.md",
-         "line": 5
-        },
-        {
          "document": "certificate_of_analysis.md v2 (corrected, not applied)",
          "line": 8
+        },
+        {
+         "document": "LAB-NOTE-1102.md",
+         "line": 5
         }
        ],
        "next_step": "reassess_with_corrected_document",
        "open_questions": [
-        "Who approved v2, and when? v2 still shows the original approval line (M. Chen, 2026-10-07).",
-        "Was the lot number typo only on the document, or could the results belong to LC-24053? A person should confirm the results are traceable to LC-24035."
+        "Will a person apply CoA v2, and is the reason for the lot number change documented (who corrected it and why)?",
+        "Was the CoA v1 with the wrong lot number issued outside the company?"
        ]
       },
       {
        "finding_ids": [
         "F2"
        ],
-       "summary": "The 0.78 % w/w result is below the 0.80 minimum. Spec rev 04 was in force from 2026-10-01 and the lot was made on 2026-10-01. Rev 03 has the same phenoxyethanol limits, so the spec revision does not explain the result. LAB-NOTE-1102 says a duplicate repeat gave 0.78 and 0.79, no lab error was found, and the result was confirmed. It also says OOS-0233 was opened. Corrected CoA v2 still reports 0.78. The deviation log says no deviations were recorded, and it does not mention OOS-0233.",
+       "summary": "The phenoxyethanol result of 0.78 % w/w is below the 0.80 to 1.00 limit. Spec rev 04, which was in force from 2026-10-01 and is the revision the CoA cites, has the same limit, so a spec change does not explain the result. LAB-NOTE-1102 says the repeat duplicate tests gave 0.78 and 0.79, no lab error was found, and the result was confirmed. It also says OOS-0233 was opened. The corrected CoA v2 still reports 0.78, so it does not resolve this finding.",
        "evidence": [
         {
          "document": "certificate_of_analysis.md",
          "line": 19
+        },
+        {
+         "document": "certificate_of_analysis.md v2 (corrected, not applied)",
+         "line": 20
         },
         {
          "document": "LAB-NOTE-1102.md",
@@ -2682,43 +2144,13 @@
         {
          "document": "LAB-NOTE-1102.md",
          "line": 9
-        },
-        {
-         "document": "deviation_log.md",
-         "line": 7
-        },
-        {
-         "document": "certificate_of_analysis.md v2 (corrected, not applied)",
-         "line": 20
         }
        ],
        "next_step": "route_to_deviation_owner",
        "open_questions": [
         "What is the status and outcome of OOS-0233? The record is not on file.",
-        "Why is OOS-0233 not in the deviation log?",
-        "Was phenoxyethanol dosing at batch step 5 a possible cause? The excerpt has no weights.",
-        "What is the disposition decision for the lot?"
-       ]
-      },
-      {
-       "finding_ids": [
-        "F3"
-       ],
-       "summary": "The batch record shows 3,936 of 4,000 units, which is 98.4% (line 21). That is inside the 95.0\u2013102.0% range quoted in the finding, so the finding's own numbers do not show an out-of-range yield. The specification revisions on file (03 and 04) contain no yield limits, so I could not confirm where the 95.0\u2013102.0% range comes from. This may be a false flag or a rule misconfiguration.",
-       "evidence": [
-        {
-         "document": "batch_record.md",
-         "line": 21
-        },
-        {
-         "document": "deviation_log.md",
-         "line": 7
-        }
-       ],
-       "next_step": "request_missing_evidence",
-       "open_questions": [
-        "What is the source document for the yield acceptance range, such as the master batch record?",
-        "Was the finding raised against a different range or a different value than the one shown?"
+        "Who decides disposition of the lot, given a confirmed OOS result?",
+        "Is there any impact assessment on preservative efficacy?"
        ]
       }
      ]
@@ -2726,9 +2158,9 @@
     "history": [],
     "usage": {
      "model_calls": 9,
-     "input_tokens": 32989,
-     "output_tokens": 5539,
-     "seconds": 35.67
+     "input_tokens": 28086,
+     "output_tokens": 4381,
+     "seconds": 30.0
     },
     "approval_snapshot": "",
     "title": "Two records that disagree",
@@ -3037,116 +2469,64 @@
   "LC-24036": {
    "review": {
     "lot_id": "LC-24036",
-    "stage": "awaiting reviewer",
-    "status": "on hold",
-    "findings": [
-     {
-      "id": "F1",
-      "rule": "batch.yield",
-      "severity": "major",
-      "title": "Yield outside the expected range",
-      "expected": "95.0 to 102.0%",
-      "observed": "98.4%",
-      "evidence": [
-       {
-        "document": "batch_record.md",
-        "line": 21,
-        "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-       }
-      ]
-     }
-    ],
+    "stage": "decided",
+    "status": "released",
+    "findings": [],
     "evidence_notes": [],
     "proposal": {
-     "decision": "hold",
-     "rationale": "Finding F1 is a major finding on batch yield, so the lot goes on hold for reviewer disposition. The finding says yield is outside the expected 95.0 to 102.0% range, but the observed 98.4% (3,936 of 4,000 units, batch_record.md line 21) is inside that range. The reviewer should check whether the rule fired in error or whether something else is wrong.",
-     "finding_ids": [
-      "F1"
-     ],
-     "at": "2026-11-27T06:54:06+00:00"
+     "decision": "release",
+     "rationale": "The release rules returned no findings for lot LC-24036, so there are no critical or major findings. With nothing open, the lot meets the criteria for release, subject to the named quality reviewer's approval.",
+     "finding_ids": [],
+     "at": "2026-11-27T07:40:15+00:00"
     },
     "second_reading": {
      "agrees": true,
-     "concerns": [
-      "Not a flaw in the proposal: F1 is internally inconsistent. It reports 98.4% as outside the 95.0 to 102.0% range, though 98.4% is inside it. The arithmetic checks out (3,936 / 4,000 = 98.4%). The proposal flags this itself and sends it to a reviewer, which is the right handling. The rule may have fired in error."
-     ]
+     "concerns": []
     },
-    "decision": null,
+    "decision": {
+     "action": "approve_release",
+     "reviewer": "Demo reviewer",
+     "reason": "",
+     "at": "2026-11-27T07:40:15+00:00",
+     "override": false,
+     "fingerprint": "a9c1ce071eb4ff35",
+     "snapshot": "5e9f4258f5d4cec4"
+    },
     "timeline": [
      {
-      "at": "2026-11-27T06:53:35+00:00",
+      "at": "2026-11-27T07:40:02+00:00",
       "actor": "desk",
       "text": "Reading the certificate, batch record and deviation log (certificate_of_analysis.md v2)."
      },
      {
-      "at": "2026-11-27T06:53:46+00:00",
+      "at": "2026-11-27T07:40:12+00:00",
       "actor": "rules",
-      "text": "Checked against rev 04: 1 finding(s), 1 blocking."
+      "text": "Checked against rev 04: 0 finding(s), 0 blocking."
      },
      {
-      "at": "2026-11-27T06:53:46+00:00",
-      "actor": "investigator",
-      "text": "Looking for evidence that explains the blocking findings."
-     },
-     {
-      "at": "2026-11-27T06:53:48+00:00",
-      "actor": "investigator",
-      "text": "read document(batch_record.md, 1, 60)"
-     },
-     {
-      "at": "2026-11-27T06:53:48+00:00",
-      "actor": "investigator",
-      "text": "list supporting records()"
-     },
-     {
-      "at": "2026-11-27T06:53:48+00:00",
-      "actor": "investigator",
-      "text": "list corrected documents()"
-     },
-     {
-      "at": "2026-11-27T06:53:51+00:00",
-      "actor": "investigator",
-      "text": "read document(certificate_of_analysis.md)"
-     },
-     {
-      "at": "2026-11-27T06:53:51+00:00",
-      "actor": "investigator",
-      "text": "read corrected document(certificate_of_analysis.md, v2)"
-     },
-     {
-      "at": "2026-11-27T06:53:51+00:00",
-      "actor": "investigator",
-      "text": "get specification(current)"
-     },
-     {
-      "at": "2026-11-27T06:53:54+00:00",
-      "actor": "investigator",
-      "text": "get specification(04)"
-     },
-     {
-      "at": "2026-11-27T06:53:54+00:00",
-      "actor": "investigator",
-      "text": "get specification(03)"
-     },
-     {
-      "at": "2026-11-27T06:53:54+00:00",
-      "actor": "investigator",
-      "text": "read document(deviation_log.md)"
-     },
-     {
-      "at": "2026-11-27T06:54:03+00:00",
-      "actor": "investigator",
-      "text": "Note on F1: route to deviation owner."
-     },
-     {
-      "at": "2026-11-27T06:54:06+00:00",
+      "at": "2026-11-27T07:40:15+00:00",
       "actor": "proposer",
-      "text": "Placed on hold. Finding F1 is a major finding on batch yield, so the lot goes on hold for reviewer disposition. The finding says yield is outside the expected 95.0 to 102.0% range, but the observed 98.4% (3,936 of 4,000 units, batch_record.md line 21) is inside that range. The reviewer should check whether the rule fired in error or whether something else is wrong."
+      "text": "Proposed release. The release rules returned no findings for lot LC-24036, so there are no critical or major findings. With nothing open, the lot meets the criteria for release, subject to the named quality reviewer's approval."
      },
      {
-      "at": "2026-11-27T06:54:11+00:00",
+      "at": "2026-11-27T07:40:16+00:00",
       "actor": "second reader",
       "text": "Agrees."
+     },
+     {
+      "at": "2026-11-27T07:40:16+00:00",
+      "actor": "desk",
+      "text": "Waiting for a named reviewer to approve or refuse the release."
+     },
+     {
+      "at": "2026-11-27T07:40:16+00:00",
+      "actor": "reviewer: Demo reviewer",
+      "text": "Approved the proposed release."
+     },
+     {
+      "at": "2026-11-27T07:40:16+00:00",
+      "actor": "release tool",
+      "text": "Released, approved by Demo reviewer."
      }
     ],
     "mode": "live",
@@ -3159,138 +2539,8 @@
     "fingerprint": "a9c1ce071eb4ff35",
     "governing_revision": "04",
     "investigation": {
-     "calls": [
-      {
-       "at": "2026-11-27T06:53:48+00:00",
-       "tool": "read_document",
-       "args": {
-        "document": "batch_record.md",
-        "from_line": 1,
-        "to_line": 60
-       },
-       "result": "L01: # Batch Manufacturing Record (excerpt)\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL06: Lot number: LC-24036\nL07: Manufacture date: 2026-10-08\nL08: Line clearance verified by: J. Okafor, 2026-10-08\nL09: \nL10: | Step | Operation | Performed by | Verified by |\nL11: |---|---|---|---|\nL12: | 1 | Dispense and weigh raw materials | P. Lindqvist | R. Haddad |\nL13: | 2 | Heat water phase to 75 \u00b0C | R. Haddad | A. Moreau |\nL14: | 3 | Heat oil phase to 75 \u00b0C | A. Moreau | J. Okafor |\nL1"
-      },
-      {
-       "at": "2026-11-27T06:53:48+00:00",
-       "tool": "list_supporting_records",
-       "args": {},
-       "result": "No supporting records are on file for this lot."
-      },
-      {
-       "at": "2026-11-27T06:53:48+00:00",
-       "tool": "list_corrected_documents",
-       "args": {},
-       "result": "Corrected versions on file (not applied): certificate_of_analysis.md v2"
-      },
-      {
-       "at": "2026-11-27T06:53:51+00:00",
-       "tool": "read_document",
-       "args": {
-        "document": "certificate_of_analysis.md"
-       },
-       "result": "L01: # Certificate of Analysis\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Fernhollow Skincare Ltd., Quality Control Laboratory\nL06: Document version: v2, supersedes v1\nL07: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL08: Lot number: LC-24036\nL09: Date of manufacture: 2026-10-08\nL10: Expiry: 2029-04\nL11: Tested against specification: FH-DBC-050 rev 04\nL12: \nL13: | Test | Specification | Result |\nL14: |---|---|---|\nL15: | Appearance | White to off-white smooth cream | White smooth cream |\nL16: | Odour | Characteristic | Char"
-      },
-      {
-       "at": "2026-11-27T06:53:51+00:00",
-       "tool": "read_corrected_document",
-       "args": {
-        "document": "certificate_of_analysis.md",
-        "version": "v2"
-       },
-       "result": "L01: # Certificate of Analysis\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Fernhollow Skincare Ltd., Quality Control Laboratory\nL06: Document version: v2, supersedes v1\nL07: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL08: Lot number: LC-24036\nL09: Date of manufacture: 2026-10-08\nL10: Expiry: 2029-04\nL11: Tested against specification: FH-DBC-050 rev 04\nL12: \nL13: | Test | Specification | Result |\nL14: |---|---|---|\nL15: | Appearance | White to off-white smooth cream | White smooth cream |\nL16: | Odour | Characteristic | Char"
-      },
-      {
-       "at": "2026-11-27T06:53:51+00:00",
-       "tool": "get_specification",
-       "args": {
-        "revision": "current"
-       },
-       "result": "No revision current. On file: 03, 04"
-      },
-      {
-       "at": "2026-11-27T06:53:54+00:00",
-       "tool": "get_specification",
-       "args": {
-        "revision": "04"
-       },
-       "result": "Revision 04, in force 2026-10-01 to now. Viscosity lower limit raised from 30,000 to 32,000 cP after a stability study. Limits: Appearance: white smooth cream, off-white smooth cream; Odour: characteristic; pH (25 \u00b0C): min 5.0, max 6.0; Viscosity (Brookfield, 25 \u00b0C): min 32000, max 45000; Specific gravity: min 0.98, max 1.02; Phenoxyethanol assay: min 0.80, max 1.00; Fill weight (mean of 10): min 50.0, max none; Total aerobic microbial count: min none, max 100; Total yeast and mould count: min none, max 10; Specified pathogens: absent"
-      },
-      {
-       "at": "2026-11-27T06:53:54+00:00",
-       "tool": "get_specification",
-       "args": {
-        "revision": "03"
-       },
-       "result": "Revision 03, in force 2026-01-05 to 2026-09-30.  Limits: Appearance: white smooth cream, off-white smooth cream; Odour: characteristic; pH (25 \u00b0C): min 5.0, max 6.0; Viscosity (Brookfield, 25 \u00b0C): min 30000, max 45000; Specific gravity: min 0.98, max 1.02; Phenoxyethanol assay: min 0.80, max 1.00; Fill weight (mean of 10): min 50.0, max none; Total aerobic microbial count: min none, max 100; Total yeast and mould count: min none, max 10; Specified pathogens: absent"
-      },
-      {
-       "at": "2026-11-27T06:53:54+00:00",
-       "tool": "read_document",
-       "args": {
-        "document": "deviation_log.md"
-       },
-       "result": "L01: # Deviation Log\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Lot number: LC-24036\nL06: \nL07: No deviations were recorded for this lot."
-      },
-      {
-       "at": "2026-11-27T06:53:59+00:00",
-       "tool": "submit_note",
-       "args": {
-        "finding_ids": [
-         "F1"
-        ],
-        "summary": "The finding does not match the record. Batch record line 21 gives 3,936 of 4,000 units, which is 98.4%. That is inside the 95.0 to 102.0% range the finding quotes, so I can't see why it was flagged as outside the range. Spec revisions 03 and 04 list no yield limit, so I couldn't confirm where the 95.0 to 102.0% range comes from.",
-        "evidence": [
-         {
-          "document": "batch_record.md",
-          "line": 21
-         },
-         {
-          "document": "deviation_log.md",
-          "line": 7
-         },
-         {
-          "document": "certificate_of_analysis.md",
-          "line": 11
-         }
-        ],
-        "next_step": "route_to_deviation_owner",
-        "open_questions": [
-         "Which controlled document sets the 95.0 to 102.0% yield range, and is it the correct range for FH-DBC-050?",
-         "Did the rule evaluate a different figure or a different range from the one shown (for example a mis-parsed value or a wrong limit)?",
-         "Does anything else on file, such as a rework, a sample or reject count, or an alternative theoretical quantity, change the 3,936 / 4,000 figures?"
-        ]
-       },
-       "result": "Note recorded."
-      }
-     ],
-     "notes": [
-      {
-       "finding_ids": [
-        "F1"
-       ],
-       "summary": "The finding does not match the record. Batch record line 21 gives 3,936 of 4,000 units, which is 98.4%. That is inside the 95.0 to 102.0% range the finding quotes, so I can't see why it was flagged as outside the range. Spec revisions 03 and 04 list no yield limit, so I couldn't confirm where the 95.0 to 102.0% range comes from.",
-       "evidence": [
-        {
-         "document": "batch_record.md",
-         "line": 21
-        },
-        {
-         "document": "deviation_log.md",
-         "line": 7
-        },
-        {
-         "document": "certificate_of_analysis.md",
-         "line": 11
-        }
-       ],
-       "next_step": "route_to_deviation_owner",
-       "open_questions": [
-        "Which controlled document sets the 95.0 to 102.0% yield range, and is it the correct range for FH-DBC-050?",
-        "Did the rule evaluate a different figure or a different range from the one shown (for example a mis-parsed value or a wrong limit)?",
-        "Does anything else on file, such as a rework, a sample or reject count, or an alternative theoretical quantity, change the 3,936 / 4,000 figures?"
-       ]
-      }
-     ]
+     "calls": [],
+     "notes": []
     },
     "history": [
      {
@@ -3301,39 +2551,37 @@
       "status": "on hold",
       "proposal": {
        "decision": "hold",
-       "rationale": "F1 (critical): the total yeast and mould count is still \"Pending\" on the certificate of analysis, so there is no result against the limit of not more than 10 CFU/g. F2 (major): the certificate gives expiry 2029-10, but 30 months from manufacture is 2029-04. F3 (major) reports yield as outside 95.0 to 102.0%, but the observed 98.4% is inside that range, so the reviewer should check whether F3 is valid. The hold stands on F1 and F2 either way.",
+       "rationale": "Lot LC-24036 has a critical finding (F1): the total yeast and mould count has no usable result, because the CoA shows \"Pending\" against a limit of not more than 10 CFU/g. It also has a major finding (F2): the CoA expiry is 2029-10, but the approved 30-month shelf life gives 2029-04. A quality reviewer should decide the disposition once the result is available and the expiry date is corrected.",
        "finding_ids": [
         "F1",
-        "F2",
-        "F3"
+        "F2"
        ],
-       "at": "2026-11-27T06:53:32+00:00"
+       "at": "2026-11-27T07:40:00+00:00"
       },
       "decision": {
        "action": "confirm_hold",
        "reviewer": "Demo reviewer",
        "reason": "",
-       "at": "2026-11-27T06:53:35+00:00",
+       "at": "2026-11-27T07:40:02+00:00",
        "override": false,
        "fingerprint": "2ba3981481ebebba",
-       "snapshot": "0307a7df587620a0"
+       "snapshot": "0e7b3473391f9bfe"
       },
       "findings": [
        "F1 Total yeast and mould count: no usable result",
-       "F2 Expiry date does not match the approved shelf life",
-       "F3 Yield outside the expected range"
+       "F2 Expiry date does not match the approved shelf life"
       ],
-      "superseded_at": "2026-11-27T06:53:35+00:00",
+      "superseded_at": "2026-11-27T07:40:02+00:00",
       "reason": "certificate_of_analysis.md replaced by corrected version v2. Earlier findings and decisions were made on different evidence and need reassessment."
      }
     ],
     "usage": {
-     "model_calls": 9,
-     "input_tokens": 27350,
-     "output_tokens": 4494,
-     "seconds": 35.26
+     "model_calls": 4,
+     "input_tokens": 6694,
+     "output_tokens": 2439,
+     "seconds": 18.25
     },
-    "approval_snapshot": "",
+    "approval_snapshot": "5e9f4258f5d4cec4",
     "title": "A result still pending",
     "summary": "A microbiology result not yet reported, and an expiry set on the wrong shelf life.",
     "awaiting_release_approval": false
@@ -3668,119 +2916,86 @@
         "text": "| Viscosity, Brookfield RVT sp. 6, 10 rpm, 25 \u00b0C (cP) | 30,000 to 45,000 | 31,400 |"
        }
       ]
-     },
-     {
-      "id": "F3",
-      "rule": "batch.yield",
-      "severity": "major",
-      "title": "Yield outside the expected range",
-      "expected": "95.0 to 102.0%",
-      "observed": "98.4%",
-      "evidence": [
-       {
-        "document": "batch_record.md",
-        "line": 21,
-        "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-       }
-      ]
      }
     ],
     "evidence_notes": [],
     "proposal": {
      "decision": "hold",
-     "rationale": "F1: The certificate was tested against FH-DBC-050 rev 03, but the lot was made on 2026-10-15, when rev 04 was in force. F2: Viscosity of 31,400 cP is below the rev 04 range of 32,000 to 45,000 cP. It only passed on the certificate because that used the older 30,000 lower limit. F3 is also listed as major, but its observed yield of 98.4% is inside the stated 95.0 to 102.0% range, so the reviewer should check that finding. I am not relying on it.",
+     "rationale": "F1: The certificate of analysis was tested against FH-DBC-050 rev 03, but rev 04 has been in force since 2026-10-01 and the lot was manufactured on 2026-10-15. F2: Viscosity is 31,400 cP, below the rev 04 range of 32,000 to 45,000 cP. The certificate shows the old 30,000 lower limit, so it passed only against the superseded revision. Both findings are major, so I propose a hold pending reviewer disposition.",
      "finding_ids": [
       "F1",
-      "F2",
-      "F3"
+      "F2"
      ],
-     "at": "2026-11-27T06:54:40+00:00"
+     "at": "2026-11-27T07:40:43+00:00"
     },
     "second_reading": {
      "agrees": true,
-     "concerns": [
-      "Minor: F3 is listed in finding_ids even though the rationale says it is not relied on. The rationale correctly notes that F3's observed yield (98.4%) is inside its stated range (95.0 to 102.0%), so F3 looks like a spurious finding. A reviewer should check it, but it doesn't change the hold."
-     ]
+     "concerns": []
     },
     "decision": null,
     "timeline": [
      {
-      "at": "2026-11-27T06:54:11+00:00",
+      "at": "2026-11-27T07:40:20+00:00",
       "actor": "desk",
       "text": "Reading the certificate, batch record and deviation log (originals)."
      },
      {
-      "at": "2026-11-27T06:54:20+00:00",
+      "at": "2026-11-27T07:40:30+00:00",
       "actor": "rules",
-      "text": "Checked against rev 04: 3 finding(s), 3 blocking."
+      "text": "Checked against rev 04: 2 finding(s), 2 blocking."
      },
      {
-      "at": "2026-11-27T06:54:20+00:00",
+      "at": "2026-11-27T07:40:30+00:00",
       "actor": "investigator",
       "text": "Looking for evidence that explains the blocking findings."
      },
      {
-      "at": "2026-11-27T06:54:23+00:00",
+      "at": "2026-11-27T07:40:32+00:00",
       "actor": "investigator",
       "text": "list supporting records()"
      },
      {
-      "at": "2026-11-27T06:54:23+00:00",
-      "actor": "investigator",
-      "text": "list corrected documents()"
-     },
-     {
-      "at": "2026-11-27T06:54:23+00:00",
-      "actor": "investigator",
-      "text": "get specification(rev 04)"
-     },
-     {
-      "at": "2026-11-27T06:54:23+00:00",
-      "actor": "investigator",
-      "text": "get specification(rev 03)"
-     },
-     {
-      "at": "2026-11-27T06:54:23+00:00",
-      "actor": "investigator",
-      "text": "read document(batch_record.md)"
-     },
-     {
-      "at": "2026-11-27T06:54:23+00:00",
-      "actor": "investigator",
-      "text": "read document(certificate_of_analysis.md)"
-     },
-     {
-      "at": "2026-11-27T06:54:24+00:00",
+      "at": "2026-11-27T07:40:32+00:00",
       "actor": "investigator",
       "text": "get specification(04)"
      },
      {
-      "at": "2026-11-27T06:54:24+00:00",
+      "at": "2026-11-27T07:40:32+00:00",
       "actor": "investigator",
       "text": "get specification(03)"
      },
      {
-      "at": "2026-11-27T06:54:24+00:00",
+      "at": "2026-11-27T07:40:32+00:00",
+      "actor": "investigator",
+      "text": "list corrected documents()"
+     },
+     {
+      "at": "2026-11-27T07:40:32+00:00",
+      "actor": "investigator",
+      "text": "read document(certificate_of_analysis.md)"
+     },
+     {
+      "at": "2026-11-27T07:40:33+00:00",
+      "actor": "investigator",
+      "text": "read document(batch_record.md)"
+     },
+     {
+      "at": "2026-11-27T07:40:33+00:00",
       "actor": "investigator",
       "text": "read document(deviation_log.md)"
      },
      {
-      "at": "2026-11-27T06:54:36+00:00",
+      "at": "2026-11-27T07:40:41+00:00",
       "actor": "investigator",
-      "text": "Note on F1, F2: request corrected document."
+      "text": "Note on F1, F2: route to deviation owner."
      },
      {
-      "at": "2026-11-27T06:54:36+00:00",
-      "actor": "investigator",
-      "text": "Note on F3: request missing evidence."
-     },
-     {
-      "at": "2026-11-27T06:54:40+00:00",
+      "at": "2026-11-27T07:40:43+00:00",
       "actor": "proposer",
-      "text": "Placed on hold. F1: The certificate was tested against FH-DBC-050 rev 03, but the lot was made on 2026-10-15, when rev 04 was in force. F2: Viscosity of 31,400 cP is below the rev 04 range of 32,000 to 45,000 cP. It only passed on the certificate because that used the older 30,000 lower limit. F3 is also listed as major, but its observed yield of 98.4% is inside the stated 95.0 to 102.0% range, so the reviewer should check that finding. I am not relying on it."
+      "text": "Placed on hold. F1: The certificate of analysis was tested against FH-DBC-050 rev 03, but rev 04 has been in force since 2026-10-01 and the lot was manufactured on 2026-10-15. F2: Viscosity is 31,400 cP, below the rev 04 range of 32,000 to 45,000 cP. The certificate shows the old 30,000 lower limit, so it passed only against the superseded revision. Both findings are major, so I propose a hold pending reviewer disposition."
      },
      {
-      "at": "2026-11-27T06:54:45+00:00",
+      "at": "2026-11-27T07:40:45+00:00",
       "actor": "second reader",
       "text": "Agrees."
      }
@@ -3795,51 +3010,13 @@
     "investigation": {
      "calls": [
       {
-       "at": "2026-11-27T06:54:23+00:00",
+       "at": "2026-11-27T07:40:32+00:00",
        "tool": "list_supporting_records",
        "args": {},
        "result": "No supporting records are on file for this lot."
       },
       {
-       "at": "2026-11-27T06:54:23+00:00",
-       "tool": "list_corrected_documents",
-       "args": {},
-       "result": "No corrected document versions are on file for this lot."
-      },
-      {
-       "at": "2026-11-27T06:54:23+00:00",
-       "tool": "get_specification",
-       "args": {
-        "revision": "rev 04"
-       },
-       "result": "No revision rev 04. On file: 03, 04"
-      },
-      {
-       "at": "2026-11-27T06:54:23+00:00",
-       "tool": "get_specification",
-       "args": {
-        "revision": "rev 03"
-       },
-       "result": "No revision rev 03. On file: 03, 04"
-      },
-      {
-       "at": "2026-11-27T06:54:23+00:00",
-       "tool": "read_document",
-       "args": {
-        "document": "batch_record.md"
-       },
-       "result": "L01: # Batch Manufacturing Record (excerpt)\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL06: Lot number: LC-24037\nL07: Manufacture date: 2026-10-15\nL08: Line clearance verified by: J. Okafor, 2026-10-15\nL09: \nL10: | Step | Operation | Performed by | Verified by |\nL11: |---|---|---|---|\nL12: | 1 | Dispense and weigh raw materials | P. Lindqvist | R. Haddad |\nL13: | 2 | Heat water phase to 75 \u00b0C | R. Haddad | A. Moreau |\nL14: | 3 | Heat oil phase to 75 \u00b0C | A. Moreau | J. Okafor |\nL1"
-      },
-      {
-       "at": "2026-11-27T06:54:23+00:00",
-       "tool": "read_document",
-       "args": {
-        "document": "certificate_of_analysis.md"
-       },
-       "result": "L01: # Certificate of Analysis\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Fernhollow Skincare Ltd., Quality Control Laboratory\nL06: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL07: Lot number: LC-24037\nL08: Date of manufacture: 2026-10-15\nL09: Expiry: 2029-04\nL10: Tested against specification: FH-DBC-050 rev 03\nL11: \nL12: | Test | Specification | Result |\nL13: |---|---|---|\nL14: | Appearance | White to off-white smooth cream | White smooth cream |\nL15: | Odour | Characteristic | Characteristic |\nL16: | pH (25 \u00b0C) | 5.0 to 6"
-      },
-      {
-       "at": "2026-11-27T06:54:24+00:00",
+       "at": "2026-11-27T07:40:32+00:00",
        "tool": "get_specification",
        "args": {
         "revision": "04"
@@ -3847,7 +3024,7 @@
        "result": "Revision 04, in force 2026-10-01 to now. Viscosity lower limit raised from 30,000 to 32,000 cP after a stability study. Limits: Appearance: white smooth cream, off-white smooth cream; Odour: characteristic; pH (25 \u00b0C): min 5.0, max 6.0; Viscosity (Brookfield, 25 \u00b0C): min 32000, max 45000; Specific gravity: min 0.98, max 1.02; Phenoxyethanol assay: min 0.80, max 1.00; Fill weight (mean of 10): min 50.0, max none; Total aerobic microbial count: min none, max 100; Total yeast and mould count: min none, max 10; Specified pathogens: absent"
       },
       {
-       "at": "2026-11-27T06:54:24+00:00",
+       "at": "2026-11-27T07:40:32+00:00",
        "tool": "get_specification",
        "args": {
         "revision": "03"
@@ -3855,7 +3032,29 @@
        "result": "Revision 03, in force 2026-01-05 to 2026-09-30.  Limits: Appearance: white smooth cream, off-white smooth cream; Odour: characteristic; pH (25 \u00b0C): min 5.0, max 6.0; Viscosity (Brookfield, 25 \u00b0C): min 30000, max 45000; Specific gravity: min 0.98, max 1.02; Phenoxyethanol assay: min 0.80, max 1.00; Fill weight (mean of 10): min 50.0, max none; Total aerobic microbial count: min none, max 100; Total yeast and mould count: min none, max 10; Specified pathogens: absent"
       },
       {
-       "at": "2026-11-27T06:54:24+00:00",
+       "at": "2026-11-27T07:40:32+00:00",
+       "tool": "list_corrected_documents",
+       "args": {},
+       "result": "No corrected document versions are on file for this lot."
+      },
+      {
+       "at": "2026-11-27T07:40:32+00:00",
+       "tool": "read_document",
+       "args": {
+        "document": "certificate_of_analysis.md"
+       },
+       "result": "L01: # Certificate of Analysis\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Fernhollow Skincare Ltd., Quality Control Laboratory\nL06: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL07: Lot number: LC-24037\nL08: Date of manufacture: 2026-10-15\nL09: Expiry: 2029-04\nL10: Tested against specification: FH-DBC-050 rev 03\nL11: \nL12: | Test | Specification | Result |\nL13: |---|---|---|\nL14: | Appearance | White to off-white smooth cream | White smooth cream |\nL15: | Odour | Characteristic | Characteristic |\nL16: | pH (25 \u00b0C) | 5.0 to 6"
+      },
+      {
+       "at": "2026-11-27T07:40:33+00:00",
+       "tool": "read_document",
+       "args": {
+        "document": "batch_record.md"
+       },
+       "result": "L01: # Batch Manufacturing Record (excerpt)\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL06: Lot number: LC-24037\nL07: Manufacture date: 2026-10-15\nL08: Line clearance verified by: J. Okafor, 2026-10-15\nL09: \nL10: | Step | Operation | Performed by | Verified by |\nL11: |---|---|---|---|\nL12: | 1 | Dispense and weigh raw materials | P. Lindqvist | R. Haddad |\nL13: | 2 | Heat water phase to 75 \u00b0C | R. Haddad | A. Moreau |\nL14: | 3 | Heat oil phase to 75 \u00b0C | A. Moreau | J. Okafor |\nL1"
+      },
+      {
+       "at": "2026-11-27T07:40:33+00:00",
        "tool": "read_document",
        "args": {
         "document": "deviation_log.md"
@@ -3863,14 +3062,14 @@
        "result": "L01: # Deviation Log\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Lot number: LC-24037\nL06: \nL07: No deviations were recorded for this lot."
       },
       {
-       "at": "2026-11-27T06:54:32+00:00",
+       "at": "2026-11-27T07:40:38+00:00",
        "tool": "submit_note",
        "args": {
         "finding_ids": [
          "F1",
          "F2"
         ],
-        "summary": "The CoA says it was tested against FH-DBC-050 rev 03 (line 10). The batch was made on 2026-10-15 (batch_record line 7), and rev 03 was only in force until 2026-09-30. Rev 04 has been in force since 2026-10-01 and raised the viscosity lower limit from 30,000 to 32,000 cP. The CoA viscosity limit (line 17) is the old 30,000 to 45,000, and the result of 31,400 cP passes that but falls below the rev 04 minimum of 32,000. So F2 follows from F1. The deviation log records no deviations, and no supporting records or corrected documents are on file.",
+        "summary": "The CoA (line 10) says the lot was tested against spec rev 03. The batch record (line 7) and the CoA (line 8) give a manufacture date of 2026-10-15. Rev 04 has been in force since 2026-10-01, and rev 03 ended 2026-09-30. Rev 04 raised the minimum viscosity from 30,000 to 32,000 cP. The CoA (line 17) lists the old 30,000 to 45,000 range, and the reported 31,400 cP passes that range but falls below the rev 04 minimum. F2 therefore follows from F1. The CoA was approved on 2026-10-21 with the superseded limit. All other CoA results are within the limits shown, and rev 03 and rev 04 limits are the same for them.",
         "evidence": [
          {
           "document": "certificate_of_analysis.md",
@@ -3881,6 +3080,10 @@
           "line": 17
          },
          {
+          "document": "certificate_of_analysis.md",
+          "line": 25
+         },
+         {
           "document": "batch_record.md",
           "line": 7
          },
@@ -3889,37 +3092,12 @@
           "line": 7
          }
         ],
-        "next_step": "request_corrected_document",
+        "next_step": "route_to_deviation_owner",
         "open_questions": [
-         "Was a different specification revision intentionally applied to this lot, for example under a documented change-control transition? Nothing on file shows one.",
-         "Was viscosity retested or the result confirmed against rev 04? The 31,400 cP result is below the rev 04 minimum.",
-         "How should the lot be dispositioned, given the result fails rev 04? Only a person can decide this."
-        ]
-       },
-       "result": "Note recorded."
-      },
-      {
-       "at": "2026-11-27T06:54:32+00:00",
-       "tool": "submit_note",
-       "args": {
-        "finding_ids": [
-         "F3"
-        ],
-        "summary": "The batch record shows 3,936 actual units against 4,000 theoretical, which is 98.4% (line 21). That is inside the 95.0 to 102.0% range stated in the finding, so the recorded figures do not show a yield problem. Neither specification revision on file contains a yield limit, so I could not confirm where the 95.0 to 102.0% range comes from. No deviation, supporting record or corrected document is on file.",
-        "evidence": [
-         {
-          "document": "batch_record.md",
-          "line": 21
-         },
-         {
-          "document": "deviation_log.md",
-          "line": 7
-         }
-        ],
-        "next_step": "request_missing_evidence",
-        "open_questions": [
-         "What is the source of the 95.0 to 102.0% yield range (master batch record or another controlled document), and is it the correct range for this product?",
-         "Was this finding raised in error, given that 98.4% falls inside the stated range?"
+         "Why was rev 03 used for a lot made after rev 04 took effect (2026-10-01)? Was the lab told about the change?",
+         "Is 31,400 cP the true measured value? If so, how should the lot be dispositioned against rev 04 (the 32,000 cP minimum), for example with a deviation or OOS investigation?",
+         "Could a different specification revision apply to this lot, for example a documented transition or approved concession? Nothing on file shows one.",
+         "Should the CoA be reissued against rev 04? No corrected CoA is on file, no deviation is recorded, and no supporting records exist."
         ]
        },
        "result": "Note recorded."
@@ -3931,7 +3109,7 @@
         "F1",
         "F2"
        ],
-       "summary": "The CoA says it was tested against FH-DBC-050 rev 03 (line 10). The batch was made on 2026-10-15 (batch_record line 7), and rev 03 was only in force until 2026-09-30. Rev 04 has been in force since 2026-10-01 and raised the viscosity lower limit from 30,000 to 32,000 cP. The CoA viscosity limit (line 17) is the old 30,000 to 45,000, and the result of 31,400 cP passes that but falls below the rev 04 minimum of 32,000. So F2 follows from F1. The deviation log records no deviations, and no supporting records or corrected documents are on file.",
+       "summary": "The CoA (line 10) says the lot was tested against spec rev 03. The batch record (line 7) and the CoA (line 8) give a manufacture date of 2026-10-15. Rev 04 has been in force since 2026-10-01, and rev 03 ended 2026-09-30. Rev 04 raised the minimum viscosity from 30,000 to 32,000 cP. The CoA (line 17) lists the old 30,000 to 45,000 range, and the reported 31,400 cP passes that range but falls below the rev 04 minimum. F2 therefore follows from F1. The CoA was approved on 2026-10-21 with the superseded limit. All other CoA results are within the limits shown, and rev 03 and rev 04 limits are the same for them.",
        "evidence": [
         {
          "document": "certificate_of_analysis.md",
@@ -3942,6 +3120,10 @@
          "line": 17
         },
         {
+         "document": "certificate_of_analysis.md",
+         "line": 25
+        },
+        {
          "document": "batch_record.md",
          "line": 7
         },
@@ -3950,32 +3132,12 @@
          "line": 7
         }
        ],
-       "next_step": "request_corrected_document",
+       "next_step": "route_to_deviation_owner",
        "open_questions": [
-        "Was a different specification revision intentionally applied to this lot, for example under a documented change-control transition? Nothing on file shows one.",
-        "Was viscosity retested or the result confirmed against rev 04? The 31,400 cP result is below the rev 04 minimum.",
-        "How should the lot be dispositioned, given the result fails rev 04? Only a person can decide this."
-       ]
-      },
-      {
-       "finding_ids": [
-        "F3"
-       ],
-       "summary": "The batch record shows 3,936 actual units against 4,000 theoretical, which is 98.4% (line 21). That is inside the 95.0 to 102.0% range stated in the finding, so the recorded figures do not show a yield problem. Neither specification revision on file contains a yield limit, so I could not confirm where the 95.0 to 102.0% range comes from. No deviation, supporting record or corrected document is on file.",
-       "evidence": [
-        {
-         "document": "batch_record.md",
-         "line": 21
-        },
-        {
-         "document": "deviation_log.md",
-         "line": 7
-        }
-       ],
-       "next_step": "request_missing_evidence",
-       "open_questions": [
-        "What is the source of the 95.0 to 102.0% yield range (master batch record or another controlled document), and is it the correct range for this product?",
-        "Was this finding raised in error, given that 98.4% falls inside the stated range?"
+        "Why was rev 03 used for a lot made after rev 04 took effect (2026-10-01)? Was the lab told about the change?",
+        "Is 31,400 cP the true measured value? If so, how should the lot be dispositioned against rev 04 (the 32,000 cP minimum), for example with a deviation or OOS investigation?",
+        "Could a different specification revision apply to this lot, for example a documented transition or approved concession? Nothing on file shows one.",
+        "Should the CoA be reissued against rev 04? No corrected CoA is on file, no deviation is recorded, and no supporting records exist."
        ]
       }
      ]
@@ -3983,9 +3145,9 @@
     "history": [],
     "usage": {
      "model_calls": 8,
-     "input_tokens": 26121,
-     "output_tokens": 5137,
-     "seconds": 34.26
+     "input_tokens": 23835,
+     "output_tokens": 3986,
+     "seconds": 24.42
     },
     "approval_snapshot": "",
     "title": "The wrong revision",
@@ -4266,123 +3428,90 @@
         "text": "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.78 |"
        }
       ]
-     },
-     {
-      "id": "F2",
-      "rule": "batch.yield",
-      "severity": "major",
-      "title": "Yield outside the expected range",
-      "expected": "95.0 to 102.0%",
-      "observed": "98.4%",
-      "evidence": [
-       {
-        "document": "batch_record.md",
-        "line": 21,
-        "text": "Theoretical quantity: 4,000 units. Actual quantity: 3,936 units. Yield: 98.4%"
-       }
-      ]
      }
     ],
     "evidence_notes": [],
     "proposal": {
      "decision": "hold",
-     "rationale": "F1 is a major finding: phenoxyethanol assay is 0.78 % w/w against a specification of 0.80 to 1.00 % w/w, so the result is below the limit. F2 is also raised as major for yield, but its observed value of 98.4% lies inside the stated 95.0 to 102.0% range, so the reviewer should check whether that finding is correct. The hold rests on F1 alone, pending the reviewer's disposition.",
+     "rationale": "Finding F1 is a major finding: the phenoxyethanol assay by HPLC was 0.78 % w/w, below the specification of 0.80 to 1.00 % w/w (certificate_of_analysis.md, line 20). Because a major finding is present, the lot should be held for a quality reviewer's disposition.",
      "finding_ids": [
-      "F1",
-      "F2"
+      "F1"
      ],
-     "at": "2026-11-27T06:55:52+00:00"
+     "at": "2026-11-27T07:41:40+00:00"
     },
     "second_reading": {
      "agrees": true,
-     "concerns": [
-      "F2 is listed as major, but its observed yield (98.4%) is inside the expected 95.0 to 102.0% range. The proposal correctly flags this for the reviewer. It does not change the hold, because F1 alone blocks release."
-     ]
+     "concerns": []
     },
     "decision": null,
     "timeline": [
      {
-      "at": "2026-11-27T06:55:23+00:00",
+      "at": "2026-11-27T07:41:14+00:00",
       "actor": "desk",
       "text": "Reading the certificate, batch record and deviation log (certificate_of_analysis.md v2)."
      },
      {
-      "at": "2026-11-27T06:55:33+00:00",
+      "at": "2026-11-27T07:41:24+00:00",
       "actor": "rules",
-      "text": "Checked against rev 04: 2 finding(s), 2 blocking."
+      "text": "Checked against rev 04: 1 finding(s), 1 blocking."
      },
      {
-      "at": "2026-11-27T06:55:33+00:00",
+      "at": "2026-11-27T07:41:24+00:00",
       "actor": "investigator",
       "text": "Looking for evidence that explains the blocking findings."
      },
      {
-      "at": "2026-11-27T06:55:34+00:00",
+      "at": "2026-11-27T07:41:25+00:00",
       "actor": "investigator",
       "text": "read document(certificate_of_analysis.md)"
      },
      {
-      "at": "2026-11-27T06:55:34+00:00",
-      "actor": "investigator",
-      "text": "read document(batch_record.md)"
-     },
-     {
-      "at": "2026-11-27T06:55:34+00:00",
+      "at": "2026-11-27T07:41:25+00:00",
       "actor": "investigator",
       "text": "list supporting records()"
      },
      {
-      "at": "2026-11-27T06:55:34+00:00",
+      "at": "2026-11-27T07:41:25+00:00",
       "actor": "investigator",
       "text": "list corrected documents()"
      },
      {
-      "at": "2026-11-27T06:55:37+00:00",
+      "at": "2026-11-27T07:41:27+00:00",
       "actor": "investigator",
       "text": "open record(LAB-NOTE-1102.md)"
      },
      {
-      "at": "2026-11-27T06:55:37+00:00",
-      "actor": "investigator",
-      "text": "get specification(rev 04)"
-     },
-     {
-      "at": "2026-11-27T06:55:37+00:00",
+      "at": "2026-11-27T07:41:27+00:00",
       "actor": "investigator",
       "text": "read corrected document(certificate_of_analysis.md, v2)"
      },
      {
-      "at": "2026-11-27T06:55:37+00:00",
+      "at": "2026-11-27T07:41:27+00:00",
       "actor": "investigator",
-      "text": "read document(deviation_log.md)"
+      "text": "get specification(rev 04)"
      },
      {
-      "at": "2026-11-27T06:55:38+00:00",
+      "at": "2026-11-27T07:41:28+00:00",
       "actor": "investigator",
       "text": "get specification(04)"
      },
      {
-      "at": "2026-11-27T06:55:38+00:00",
+      "at": "2026-11-27T07:41:28+00:00",
       "actor": "investigator",
       "text": "get specification(03)"
      },
      {
-      "at": "2026-11-27T06:55:48+00:00",
+      "at": "2026-11-27T07:41:34+00:00",
       "actor": "investigator",
       "text": "Note on F1: route to deviation owner."
      },
      {
-      "at": "2026-11-27T06:55:48+00:00",
-      "actor": "investigator",
-      "text": "Note on F2: request missing evidence."
-     },
-     {
-      "at": "2026-11-27T06:55:52+00:00",
+      "at": "2026-11-27T07:41:40+00:00",
       "actor": "proposer",
-      "text": "Placed on hold. F1 is a major finding: phenoxyethanol assay is 0.78 % w/w against a specification of 0.80 to 1.00 % w/w, so the result is below the limit. F2 is also raised as major for yield, but its observed value of 98.4% lies inside the stated 95.0 to 102.0% range, so the reviewer should check whether that finding is correct. The hold rests on F1 alone, pending the reviewer's disposition."
+      "text": "Placed on hold. Finding F1 is a major finding: the phenoxyethanol assay by HPLC was 0.78 % w/w, below the specification of 0.80 to 1.00 % w/w (certificate_of_analysis.md, line 20). Because a major finding is present, the lot should be held for a quality reviewer's disposition."
      },
      {
-      "at": "2026-11-27T06:55:56+00:00",
+      "at": "2026-11-27T07:41:42+00:00",
       "actor": "second reader",
       "text": "Agrees."
      }
@@ -4399,7 +3528,7 @@
     "investigation": {
      "calls": [
       {
-       "at": "2026-11-27T06:55:34+00:00",
+       "at": "2026-11-27T07:41:25+00:00",
        "tool": "read_document",
        "args": {
         "document": "certificate_of_analysis.md"
@@ -4407,27 +3536,19 @@
        "result": "L01: # Certificate of Analysis\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Fernhollow Skincare Ltd., Quality Control Laboratory\nL06: Document version: v2, supersedes v1\nL07: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL08: Lot number: LC-24035\nL09: Date of manufacture: 2026-10-01\nL10: Expiry: 2029-04\nL11: Tested against specification: FH-DBC-050 rev 04\nL12: \nL13: | Test | Specification | Result |\nL14: |---|---|---|\nL15: | Appearance | White to off-white smooth cream | White smooth cream |\nL16: | Odour | Characteristic | Char"
       },
       {
-       "at": "2026-11-27T06:55:34+00:00",
-       "tool": "read_document",
-       "args": {
-        "document": "batch_record.md"
-       },
-       "result": "L01: # Batch Manufacturing Record (excerpt)\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL06: Lot number: LC-24035\nL07: Manufacture date: 2026-10-01\nL08: Line clearance verified by: J. Okafor, 2026-10-01\nL09: \nL10: | Step | Operation | Performed by | Verified by |\nL11: |---|---|---|---|\nL12: | 1 | Dispense and weigh raw materials | P. Lindqvist | R. Haddad |\nL13: | 2 | Heat water phase to 75 \u00b0C | R. Haddad | A. Moreau |\nL14: | 3 | Heat oil phase to 75 \u00b0C | A. Moreau | J. Okafor |\nL1"
-      },
-      {
-       "at": "2026-11-27T06:55:34+00:00",
+       "at": "2026-11-27T07:41:25+00:00",
        "tool": "list_supporting_records",
        "args": {},
        "result": "Records on file: LAB-NOTE-1102.md"
       },
       {
-       "at": "2026-11-27T06:55:34+00:00",
+       "at": "2026-11-27T07:41:25+00:00",
        "tool": "list_corrected_documents",
        "args": {},
        "result": "Corrected versions on file (not applied): certificate_of_analysis.md v2"
       },
       {
-       "at": "2026-11-27T06:55:37+00:00",
+       "at": "2026-11-27T07:41:27+00:00",
        "tool": "open_record",
        "args": {
         "name": "LAB-NOTE-1102.md"
@@ -4435,15 +3556,7 @@
        "result": "L01: # Laboratory note LAB-NOTE-1102\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Lot: LC-24035\nL06: Subject: Phenoxyethanol assay 0.78 % w/w\nL07: The assay was repeated in duplicate on 2026-10-06: 0.78 and 0.79 % w/w.\nL08: No laboratory error identified. Result confirmed.\nL09: Out-of-specification investigation OOS-0233 opened."
       },
       {
-       "at": "2026-11-27T06:55:37+00:00",
-       "tool": "get_specification",
-       "args": {
-        "revision": "rev 04"
-       },
-       "result": "No revision rev 04. On file: 03, 04"
-      },
-      {
-       "at": "2026-11-27T06:55:37+00:00",
+       "at": "2026-11-27T07:41:27+00:00",
        "tool": "read_corrected_document",
        "args": {
         "document": "certificate_of_analysis.md",
@@ -4452,15 +3565,15 @@
        "result": "L01: # Certificate of Analysis\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Fernhollow Skincare Ltd., Quality Control Laboratory\nL06: Document version: v2, supersedes v1\nL07: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL08: Lot number: LC-24035\nL09: Date of manufacture: 2026-10-01\nL10: Expiry: 2029-04\nL11: Tested against specification: FH-DBC-050 rev 04\nL12: \nL13: | Test | Specification | Result |\nL14: |---|---|---|\nL15: | Appearance | White to off-white smooth cream | White smooth cream |\nL16: | Odour | Characteristic | Char"
       },
       {
-       "at": "2026-11-27T06:55:37+00:00",
-       "tool": "read_document",
+       "at": "2026-11-27T07:41:27+00:00",
+       "tool": "get_specification",
        "args": {
-        "document": "deviation_log.md"
+        "revision": "rev 04"
        },
-       "result": "L01: # Deviation Log\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Lot number: LC-24035\nL06: \nL07: No deviations were recorded for this lot."
+       "result": "No revision rev 04. On file: 03, 04"
       },
       {
-       "at": "2026-11-27T06:55:38+00:00",
+       "at": "2026-11-27T07:41:28+00:00",
        "tool": "get_specification",
        "args": {
         "revision": "04"
@@ -4468,7 +3581,7 @@
        "result": "Revision 04, in force 2026-10-01 to now. Viscosity lower limit raised from 30,000 to 32,000 cP after a stability study. Limits: Appearance: white smooth cream, off-white smooth cream; Odour: characteristic; pH (25 \u00b0C): min 5.0, max 6.0; Viscosity (Brookfield, 25 \u00b0C): min 32000, max 45000; Specific gravity: min 0.98, max 1.02; Phenoxyethanol assay: min 0.80, max 1.00; Fill weight (mean of 10): min 50.0, max none; Total aerobic microbial count: min none, max 100; Total yeast and mould count: min none, max 10; Specified pathogens: absent"
       },
       {
-       "at": "2026-11-27T06:55:38+00:00",
+       "at": "2026-11-27T07:41:28+00:00",
        "tool": "get_specification",
        "args": {
         "revision": "03"
@@ -4476,13 +3589,13 @@
        "result": "Revision 03, in force 2026-01-05 to 2026-09-30.  Limits: Appearance: white smooth cream, off-white smooth cream; Odour: characteristic; pH (25 \u00b0C): min 5.0, max 6.0; Viscosity (Brookfield, 25 \u00b0C): min 30000, max 45000; Specific gravity: min 0.98, max 1.02; Phenoxyethanol assay: min 0.80, max 1.00; Fill weight (mean of 10): min 50.0, max none; Total aerobic microbial count: min none, max 100; Total yeast and mould count: min none, max 10; Specified pathogens: absent"
       },
       {
-       "at": "2026-11-27T06:55:45+00:00",
+       "at": "2026-11-27T07:41:31+00:00",
        "tool": "submit_note",
        "args": {
         "finding_ids": [
          "F1"
         ],
-        "summary": "The phenoxyethanol result of 0.78 % w/w is below the 0.80 to 1.00 limit in spec rev 04, which was in force from 2026-10-01 and is the revision the CoA cites (CoA L11, L20). LAB-NOTE-1102 says a duplicate repeat on 2026-10-06 gave 0.78 and 0.79 %, no laboratory error was found, and OOS-0233 was opened. Rev 03 has the same phenoxyethanol limits, so the spec revision change does not explain the result. The corrected CoA v2 on file has the same value and limits as the current document, so it changes nothing. The deviation log says no deviations were recorded, even though OOS-0233 is open.",
+        "summary": "The phenoxyethanol result of 0.78 % w/w is below the 0.80 to 1.00 % limit on CoA line 20. That limit is the same in spec rev 03 and rev 04, so the spec revision does not explain it. LAB-NOTE-1102 says the assay was repeated on 2026-10-06 (0.78 and 0.79 % w/w), no lab error was found, the result was confirmed, and OOS-0233 was opened. The corrected CoA v2 on file is identical to the current v2 on line 20, so it changes nothing.",
         "evidence": [
          {
           "document": "certificate_of_analysis.md",
@@ -4498,41 +3611,18 @@
          },
          {
           "document": "LAB-NOTE-1102.md",
-          "line": 9
+          "line": 8
          },
          {
-          "document": "deviation_log.md",
-          "line": 7
+          "document": "LAB-NOTE-1102.md",
+          "line": 9
          }
         ],
         "next_step": "route_to_deviation_owner",
         "open_questions": [
-         "What is the status and outcome of OOS-0233? The record is not on file.",
-         "Why does the deviation log not reference OOS-0233 or the low phenoxyethanol result?",
-         "Was the phenoxyethanol addition at step 5 (batch record L16) dispensed and weighed correctly? Batch record quantities are not in the excerpt.",
-         "Does a person need to decide on disposition of the lot?"
-        ]
-       },
-       "result": "Note recorded."
-      },
-      {
-       "at": "2026-11-27T06:55:45+00:00",
-       "tool": "submit_note",
-       "args": {
-        "finding_ids": [
-         "F2"
-        ],
-        "summary": "The batch record states 3,936 actual units of 4,000 theoretical, a yield of 98.4% (L21). That arithmetic is correct and the figure is inside the stated 95.0 to 102.0% range, so the finding does not appear to match the evidence. No yield limit appears in spec rev 03 or 04, so I cannot confirm where the 95.0 to 102.0% range comes from. No deviation or corrected batch record is on file for yield.",
-        "evidence": [
-         {
-          "document": "batch_record.md",
-          "line": 21
-         }
-        ],
-        "next_step": "request_missing_evidence",
-        "open_questions": [
-         "Which document defines the 95.0 to 102.0% yield range (master batch record?), and was the rule evaluated with the correct values?",
-         "Can a person confirm whether this finding is a false positive and should be reviewed by the rule owner?"
+         "What is the status and outcome of OOS-0233? It is not in the files I can read, and there is no deviation record on file for this lot.",
+         "What root cause and product impact assessment (e.g. preservative efficacy) apply to a phenoxyethanol level of 0.78 to 0.79 %?",
+         "Who decides on lot disposition?"
         ]
        },
        "result": "Note recorded."
@@ -4543,7 +3633,7 @@
        "finding_ids": [
         "F1"
        ],
-       "summary": "The phenoxyethanol result of 0.78 % w/w is below the 0.80 to 1.00 limit in spec rev 04, which was in force from 2026-10-01 and is the revision the CoA cites (CoA L11, L20). LAB-NOTE-1102 says a duplicate repeat on 2026-10-06 gave 0.78 and 0.79 %, no laboratory error was found, and OOS-0233 was opened. Rev 03 has the same phenoxyethanol limits, so the spec revision change does not explain the result. The corrected CoA v2 on file has the same value and limits as the current document, so it changes nothing. The deviation log says no deviations were recorded, even though OOS-0233 is open.",
+       "summary": "The phenoxyethanol result of 0.78 % w/w is below the 0.80 to 1.00 % limit on CoA line 20. That limit is the same in spec rev 03 and rev 04, so the spec revision does not explain it. LAB-NOTE-1102 says the assay was repeated on 2026-10-06 (0.78 and 0.79 % w/w), no lab error was found, the result was confirmed, and OOS-0233 was opened. The corrected CoA v2 on file is identical to the current v2 on line 20, so it changes nothing.",
        "evidence": [
         {
          "document": "certificate_of_analysis.md",
@@ -4559,36 +3649,18 @@
         },
         {
          "document": "LAB-NOTE-1102.md",
-         "line": 9
+         "line": 8
         },
         {
-         "document": "deviation_log.md",
-         "line": 7
+         "document": "LAB-NOTE-1102.md",
+         "line": 9
         }
        ],
        "next_step": "route_to_deviation_owner",
        "open_questions": [
-        "What is the status and outcome of OOS-0233? The record is not on file.",
-        "Why does the deviation log not reference OOS-0233 or the low phenoxyethanol result?",
-        "Was the phenoxyethanol addition at step 5 (batch record L16) dispensed and weighed correctly? Batch record quantities are not in the excerpt.",
-        "Does a person need to decide on disposition of the lot?"
-       ]
-      },
-      {
-       "finding_ids": [
-        "F2"
-       ],
-       "summary": "The batch record states 3,936 actual units of 4,000 theoretical, a yield of 98.4% (L21). That arithmetic is correct and the figure is inside the stated 95.0 to 102.0% range, so the finding does not appear to match the evidence. No yield limit appears in spec rev 03 or 04, so I cannot confirm where the 95.0 to 102.0% range comes from. No deviation or corrected batch record is on file for yield.",
-       "evidence": [
-        {
-         "document": "batch_record.md",
-         "line": 21
-        }
-       ],
-       "next_step": "request_missing_evidence",
-       "open_questions": [
-        "Which document defines the 95.0 to 102.0% yield range (master batch record?), and was the rule evaluated with the correct values?",
-        "Can a person confirm whether this finding is a false positive and should be reviewed by the rule owner?"
+        "What is the status and outcome of OOS-0233? It is not in the files I can read, and there is no deviation record on file for this lot.",
+        "What root cause and product impact assessment (e.g. preservative efficacy) apply to a phenoxyethanol level of 0.78 to 0.79 %?",
+        "Who decides on lot disposition?"
        ]
       }
      ]
@@ -4602,28 +3674,27 @@
       "status": "on hold",
       "proposal": {
        "decision": "hold",
-       "rationale": "The certificate of analysis shows lot LC-24053, not LC-24035 (F1, critical), so the test results may not belong to this lot. Phenoxyethanol assay is 0.78% w/w against a spec of 0.80 to 1.00 (F2, major). F3 reports yield as a major finding, but the observed 98.4% is inside the stated 95.0 to 102.0% range, so I did not rely on it and the reviewer should check it.",
+       "rationale": "The certificate of analysis lists lot number LC-24053, but the lot under review is LC-24035 (F1, critical). The phenoxyethanol assay is 0.78 % w/w, below the 0.80 to 1.00 % w/w specification (F2, major). Because of these findings, I propose a quality hold pending a reviewer's disposition.",
        "finding_ids": [
         "F1",
         "F2"
        ],
-       "at": "2026-11-27T06:55:18+00:00"
+       "at": "2026-11-27T07:41:11+00:00"
       },
       "decision": null,
       "findings": [
        "F1 Lot number on the certificate of analysis does not match",
-       "F2 Phenoxyethanol assay out of specification",
-       "F3 Yield outside the expected range"
+       "F2 Phenoxyethanol assay out of specification"
       ],
-      "superseded_at": "2026-11-27T06:55:23+00:00",
+      "superseded_at": "2026-11-27T07:41:14+00:00",
       "reason": "certificate_of_analysis.md replaced by corrected version v2. Earlier findings and decisions were made on different evidence and need reassessment."
      }
     ],
     "usage": {
      "model_calls": 9,
-     "input_tokens": 31288,
-     "output_tokens": 5146,
-     "seconds": 33.26
+     "input_tokens": 26143,
+     "output_tokens": 3908,
+     "seconds": 28.47
     },
     "approval_snapshot": "",
     "title": "Two records that disagree",
@@ -4941,8 +4012,8 @@
    "stage": "awaiting reviewer",
    "status": "on hold",
    "running": false,
-   "proposal": "hold",
-   "blocking": 1,
+   "proposal": "release",
+   "blocking": 0,
    "awaiting_release_approval": false,
    "decision": null,
    "needs_reassessment": false
@@ -4955,7 +4026,7 @@
    "status": "rejected",
    "running": false,
    "proposal": "hold",
-   "blocking": 2,
+   "blocking": 1,
    "awaiting_release_approval": false,
    "decision": "reject",
    "needs_reassessment": false
@@ -4968,7 +4039,7 @@
    "status": "on hold",
    "running": false,
    "proposal": "hold",
-   "blocking": 2,
+   "blocking": 1,
    "awaiting_release_approval": false,
    "decision": null,
    "needs_reassessment": false
@@ -4981,7 +4052,7 @@
    "status": "on hold",
    "running": false,
    "proposal": "hold",
-   "blocking": 2,
+   "blocking": 1,
    "awaiting_release_approval": false,
    "decision": null,
    "needs_reassessment": false
@@ -4994,7 +4065,7 @@
    "status": "on hold",
    "running": false,
    "proposal": "hold",
-   "blocking": 3,
+   "blocking": 2,
    "awaiting_release_approval": false,
    "decision": null,
    "needs_reassessment": false
@@ -5003,13 +4074,13 @@
    "lot_id": "LC-24036",
    "title": "A result still pending",
    "summary": "A microbiology result not yet reported, and an expiry set on the wrong shelf life.",
-   "stage": "awaiting reviewer",
-   "status": "on hold",
+   "stage": "decided",
+   "status": "released",
    "running": false,
-   "proposal": "hold",
-   "blocking": 1,
+   "proposal": "release",
+   "blocking": 0,
    "awaiting_release_approval": false,
-   "decision": null,
+   "decision": "approve_release",
    "needs_reassessment": false
   },
   {
@@ -5020,7 +4091,7 @@
    "status": "on hold",
    "running": false,
    "proposal": "hold",
-   "blocking": 3,
+   "blocking": 2,
    "awaiting_release_approval": false,
    "decision": null,
    "needs_reassessment": false
@@ -5028,12 +4099,12 @@
  ],
  "metrics": {
   "lots_reviewed": 7,
-  "blocking_findings": 14,
+  "blocking_findings": 7,
   "evidence_rejected": 0,
-  "decided": 1,
-  "agreed": 1,
+  "decided": 2,
+  "agreed": 2,
   "overridden": 0,
-  "median_minutes_to_decision": 0.1
+  "median_minutes_to_decision": 0.0
  },
  "mapping": {
   "contract": {
@@ -6742,48 +5813,36 @@
   "bundle_version": 2,
   "mode": "live",
   "model": "claude-sonnet-5-5",
-  "commit": "5d0b73e",
-  "when": "2026-11-27 06:49 UTC",
+  "commit": "619dc5a",
+  "when": "2026-11-27 07:37 UTC",
   "repeat": 3,
   "lots": 7,
   "summary": {
    "false_clears": 0,
    "blocking_findings_found": "27/27",
-   "clean_case_completion": "0/3",
-   "all_runs_correct_lots": "0/7",
-   "lots_with_any_failure": [
-    "LC-24031",
-    "LC-24032",
-    "LC-24033",
-    "LC-24034",
-    "LC-24035",
-    "LC-24036",
-    "LC-24037"
-   ],
-   "unexpected_findings": 21,
-   "mean_seconds_per_lot": 35.2,
-   "mean_input_tokens_per_lot": 29244.2,
-   "mean_output_tokens_per_lot": 5189.3
+   "clean_case_completion": "3/3",
+   "all_runs_correct_lots": "7/7",
+   "lots_with_any_failure": [],
+   "unexpected_findings": 0,
+   "mean_seconds_per_lot": 26.7,
+   "mean_input_tokens_per_lot": 21383.8,
+   "mean_output_tokens_per_lot": 4114.4
   },
   "per_lot": [
    {
     "lot": "LC-24031",
     "expected": [],
     "expected_proposal": "release",
-    "runs_correct": 0,
+    "runs_correct": 3,
     "runs": 3,
-    "all_correct": false,
-    "any_failure": true,
+    "all_correct": true,
+    "any_failure": false,
     "false_clears": 0,
-    "seen_in_any_run": [
-     "batch.yield"
-    ],
+    "seen_in_any_run": [],
     "missed_in_some_run": [],
     "agreement": 1.0,
     "investigator_paths": [
-     "read_document > list_supporting_records > list_corrected_documents > get_specification > get_specification > read_document > get_specification > get_specification > submit_note",
-     "read_document > list_supporting_records > list_corrected_documents > get_specification > read_document > get_specification > get_specification > read_document > submit_note",
-     "read_document > list_supporting_records > list_corrected_documents > get_specification > read_document > read_document > get_specification > get_specification > submit_note"
+     ""
     ]
    },
    {
@@ -6792,20 +5851,19 @@
      "test.tymc_cfu_g.out_of_spec"
     ],
     "expected_proposal": "hold",
-    "runs_correct": 0,
+    "runs_correct": 3,
     "runs": 3,
-    "all_correct": false,
-    "any_failure": true,
+    "all_correct": true,
+    "any_failure": false,
     "false_clears": 0,
     "seen_in_any_run": [
-     "batch.yield",
      "test.tymc_cfu_g.out_of_spec"
     ],
     "missed_in_some_run": [],
     "agreement": 1.0,
     "investigator_paths": [
-     "list_supporting_records > list_corrected_documents > read_document > read_document > get_specification > get_specification > get_specification > read_document > submit_note > submit_note",
-     "list_supporting_records > list_corrected_documents > read_document > read_document > read_document > get_specification > get_specification > get_specification > submit_note > submit_note"
+     "list_supporting_records > list_corrected_documents > read_document > get_specification > get_specification > get_specification > read_document > get_specification > get_specification > read_document > submit_note",
+     "list_supporting_records > list_corrected_documents > read_document > get_specification > get_specification > get_specification > read_document > read_document > submit_note"
     ]
    },
    {
@@ -6814,20 +5872,18 @@
      "deviation.open"
     ],
     "expected_proposal": "hold",
-    "runs_correct": 0,
+    "runs_correct": 3,
     "runs": 3,
-    "all_correct": false,
-    "any_failure": true,
+    "all_correct": true,
+    "any_failure": false,
     "false_clears": 0,
     "seen_in_any_run": [
-     "batch.yield",
      "deviation.open"
     ],
     "missed_in_some_run": [],
     "agreement": 1.0,
     "investigator_paths": [
-     "read_document > read_document > list_supporting_records > list_corrected_documents > open_record > get_specification > read_document > get_specification > get_specification > submit_note > submit_note",
-     "read_document > read_document > list_supporting_records > list_corrected_documents > open_record > read_document > get_specification > get_specification > get_specification > get_specification > get_specification > submit_note > submit_note"
+     "list_supporting_records > read_document > list_corrected_documents > open_record > read_document > submit_note"
     ]
    },
    {
@@ -6836,20 +5892,18 @@
      "batch.step_unverified"
     ],
     "expected_proposal": "hold",
-    "runs_correct": 0,
+    "runs_correct": 3,
     "runs": 3,
-    "all_correct": false,
-    "any_failure": true,
+    "all_correct": true,
+    "any_failure": false,
     "false_clears": 0,
     "seen_in_any_run": [
-     "batch.step_unverified",
-     "batch.yield"
+     "batch.step_unverified"
     ],
     "missed_in_some_run": [],
     "agreement": 1.0,
     "investigator_paths": [
-     "read_document > list_supporting_records > list_corrected_documents > read_document > read_document > get_specification > get_specification > get_specification > get_specification > get_specification > submit_note > submit_note",
-     "read_document > list_supporting_records > list_corrected_documents > read_document > read_document > get_specification > get_specification > get_specification > submit_note > submit_note"
+     "list_supporting_records > list_corrected_documents > read_document > read_document > submit_note"
     ]
    },
    {
@@ -6859,22 +5913,20 @@
      "test.phenoxyethanol_pct.out_of_spec"
     ],
     "expected_proposal": "hold",
-    "runs_correct": 0,
+    "runs_correct": 3,
     "runs": 3,
-    "all_correct": false,
-    "any_failure": true,
+    "all_correct": true,
+    "any_failure": false,
     "false_clears": 0,
     "seen_in_any_run": [
-     "batch.yield",
      "identity.lot_mismatch",
      "test.phenoxyethanol_pct.out_of_spec"
     ],
     "missed_in_some_run": [],
     "agreement": 1.0,
     "investigator_paths": [
-     "list_supporting_records > list_corrected_documents > read_document > read_document > read_document > open_record > read_corrected_document > get_specification > get_specification > get_specification > submit_note > submit_note > submit_note",
-     "read_document > read_document > read_document > list_supporting_records > list_corrected_documents > open_record > read_corrected_document > get_specification > get_specification > get_specification > submit_note > submit_note > submit_note",
-     "read_document > read_document > read_document > list_supporting_records > list_corrected_documents > open_record > read_corrected_document > get_specification > submit_note > submit_note > submit_note"
+     "list_supporting_records > list_corrected_documents > read_document > open_record > read_corrected_document > get_specification > get_specification > get_specification > get_specification > submit_note > submit_note",
+     "list_supporting_records > list_corrected_documents > read_document > open_record > read_corrected_document > get_specification > submit_note > submit_note"
     ]
    },
    {
@@ -6884,22 +5936,19 @@
      "test.tymc_cfu_g.missing"
     ],
     "expected_proposal": "hold",
-    "runs_correct": 0,
+    "runs_correct": 3,
     "runs": 3,
-    "all_correct": false,
-    "any_failure": true,
+    "all_correct": true,
+    "any_failure": false,
     "false_clears": 0,
     "seen_in_any_run": [
-     "batch.yield",
      "dates.expiry",
      "test.tymc_cfu_g.missing"
     ],
     "missed_in_some_run": [],
     "agreement": 1.0,
     "investigator_paths": [
-     "list_supporting_records > list_corrected_documents > read_document > read_document > read_corrected_document > get_specification > read_document > get_specification > get_specification > submit_note > submit_note",
-     "list_supporting_records > list_corrected_documents > read_document > read_document > read_document > read_corrected_document > get_specification > get_specification > get_specification > get_specification > submit_note > submit_note",
-     "read_document > read_document > read_document > list_supporting_records > list_corrected_documents > read_corrected_document > get_specification > get_specification > get_specification > get_specification > get_specification > submit_note > submit_note"
+     "list_supporting_records > list_corrected_documents > read_document > read_corrected_document > get_specification > read_document > read_document > submit_note > submit_note"
     ]
    },
    {
@@ -6909,20 +5958,19 @@
      "test.viscosity_cp.out_of_spec"
     ],
     "expected_proposal": "hold",
-    "runs_correct": 0,
+    "runs_correct": 3,
     "runs": 3,
-    "all_correct": false,
-    "any_failure": true,
+    "all_correct": true,
+    "any_failure": false,
     "false_clears": 0,
     "seen_in_any_run": [
-     "batch.yield",
      "spec.wrong_revision",
      "test.viscosity_cp.out_of_spec"
     ],
     "missed_in_some_run": [],
     "agreement": 1.0,
     "investigator_paths": [
-     "list_supporting_records > list_corrected_documents > get_specification > get_specification > read_document > read_document > get_specification > get_specification > read_document > submit_note > submit_note"
+     "list_supporting_records > get_specification > get_specification > list_corrected_documents > read_document > read_document > read_document > submit_note"
     ]
    }
   ]
