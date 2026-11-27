@@ -221,6 +221,8 @@ pre{background:var(--well);border-radius:16px;padding:18px;overflow:auto;font-si
 .arch-list li{display:grid;grid-template-columns:40px minmax(0,1fr);gap:12px;padding:18px 0;border-top:1px solid var(--line)}
 .arch-list li.lab{grid-template-columns:minmax(0,1fr);background:var(--sagebg);border-radius:18px;padding:18px 20px;border:0;margin-top:10px}
 .arch-list .n{font-size:20px;color:var(--mute)}.arch-list .t{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.arch-list .runs{display:block;margin-top:8px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.arch-note{display:none;color:var(--mute);font-size:14px;margin:16px 0 0}
 .arch-list b{font-weight:400;font-size:26px}.arch-list p{margin:6px 0 0;color:var(--mute);font-size:15px}
 .k-model{background:var(--sagebg);color:var(--sage)}.k-agent{background:var(--amberbg);color:var(--amber)}.k-you{background:light-dark(#f1e4da,#3b2c23);color:light-dark(#7a4a30,#e2b79c)}
 
@@ -238,7 +240,7 @@ code.blockcode{display:block;white-space:pre;background:var(--well);border-radiu
 .foot{color:var(--mute);font-size:14px;padding:40px 0 60px;border-top:1px solid var(--line);margin-top:40px}
 [hidden]{display:none!important}
 @media(max-width:1060px){.hero,.split,.calc,.mapgrid,.uat,.casesel{grid-template-columns:minmax(0,1fr)}.desk{grid-template-columns:minmax(0,1fr)}.queue{position:static;max-height:none}.hero{min-height:0}}
-@media(max-width:760px){.nav{position:static}.arch{display:none}.arch-list{display:block}.duo,.grid2,.eo,.decide .row{grid-template-columns:minmax(0,1fr)}.stats{grid-template-columns:minmax(0,1fr)}.stats>div{border-left:0;padding-left:0;border-top:1px solid var(--line)}.stats>div:first-child{border-top:0}
+@media(max-width:760px){.nav{position:static}.arch{display:none}.arch-list{display:block}.arch-note{display:block}.duo,.grid2,.eo,.decide .row{grid-template-columns:minmax(0,1fr)}.stats{grid-template-columns:minmax(0,1fr)}.stats>div{border-left:0;padding-left:0;border-top:1px solid var(--line)}.stats>div:first-child{border-top:0}
   .navr{display:none}.links a{padding:8px 12px}.brand{font-size:22px}.fhead{grid-template-columns:auto minmax(0,1fr)}.fhead .chip{grid-column:2;justify-self:start}.finding{padding:22px}
   .table th:nth-child(2),.table td:nth-child(2){display:none}.tabs button{padding:12px 14px}.lines .l{grid-template-columns:44px minmax(0,1fr);padding-right:14px}.lines .l i{padding-right:12px}.dochead{padding:18px}.scope,.result{padding:24px}}
 </style>
@@ -317,16 +319,16 @@ code.blockcode{display:block;white-space:pre;background:var(--well);border-radiu
   <div class="eyebrow" style="padding-top:56px">How it works</div>
   <div class="head" style="padding-top:18px"><div><h1>Designed to be inspected.</h1><p class="sub">A working prototype. Boundaries included.</p></div></div>
   <hr class="rule">
-  <figure class="arch"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 660" role="img" aria-labelledby="a-arch-title a-arch-desc" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
-  <title id="a-arch-title">How a lot moves through Release Desk</title>
-  <desc id="a-arch-desc">Six steps. A model reads and cites. Code verifies each citation and applies the rules. An agent investigates each problem, reading only. A model proposes, and a second reader checks it. A person decides; release waits for their name. An acceptance lab scores every run from the outside.</desc>
+  <figure class="arch"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 790" role="img" aria-labelledby="a-arch-title a-arch-desc" font-family="Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <title id="a-arch-title">How a lot moves through Release Desk, and where each step ran</title>
+  <desc id="a-arch-desc">Six steps. Read: a Continuum agent, with Claude Sonnet 5.5 reading. Verify and Judge: plain Python. Investigate: a Continuum agent, with Sonnet 5.5 choosing each read. Propose: Continuum agents, Sonnet 5.5 proposing and a second reader checking. Decide: release waits behind Continuum's approval gate, then Python checks everything again. An acceptance lab in plain Python scores every run. Everything ran on GitHub Actions; the model was reached through the Anthropic API. In the recording a scripted reviewer answered the release gate; on the page, the visitor does.</desc>
   <style>
-    .a-bg{fill:#f5f4f0}.a-card{fill:#fdfdfb;stroke:#e3e1da}.a-ink{fill:#1f211d}.a-mute{fill:#6a6c64}.a-line{stroke:#c9c6bc}.a-num{fill:#b4b1a6}
+    .a-bg{fill:#f5f4f0}.a-card{fill:#fdfdfb;stroke:#e3e1da}.a-ink{fill:#1f211d}.a-mute{fill:#6a6c64}.a-line{stroke:#c9c6bc}.a-rule{stroke:#ebe9e2}.a-num{fill:#b4b1a6}.a-runs{fill:#7d7f76}
     .a-serif{font-family:Newsreader, 'Iowan Old Style', Georgia, serif}
     .a-model{fill:#e6ebdf}.a-model-t{fill:#4b6444}.a-code{fill:#e8e7e3}.a-code-t{fill:#1f211d}.a-agent{fill:#f6ebdc}.a-agent-t{fill:#8a5a24}.a-you{fill:#f1e4da}.a-you-t{fill:#7a4a30}
     .a-band{fill:#e6ebdf}.a-band-t{fill:#4b6444}.a-lock{stroke:#7a4a30}
     @media (prefers-color-scheme: dark){
-      .a-bg{fill:#141613}.a-card{fill:#1c1f1b;stroke:#30352d}.a-ink{fill:#ecebe4}.a-mute{fill:#a3a79b}.a-line{stroke:#4a5045}.a-num{fill:#5c6156}
+      .a-bg{fill:#141613}.a-card{fill:#1c1f1b;stroke:#30352d}.a-ink{fill:#ecebe4}.a-mute{fill:#a3a79b}.a-line{stroke:#4a5045}.a-rule{stroke:#2a2e27}.a-num{fill:#5c6156}.a-runs{fill:#8d9185}
       .a-model{fill:#2a3527}.a-model-t{fill:#a9c49c}.a-code{fill:#2a2d28}.a-code-t{fill:#ecebe4}.a-agent{fill:#3a3022}.a-agent-t{fill:#e6b679}.a-you{fill:#3b2c23}.a-you-t{fill:#e2b79c}
       .a-band{fill:#22291f}.a-band-t{fill:#a9c49c}.a-lock{stroke:#e2b79c}
     }
@@ -351,72 +353,95 @@ code.blockcode{display:block;white-space:pre;background:var(--well);border-radiu
 
   <!-- row 1 -->
   <g>
-    <rect x="40" y="136" width="264" height="156" rx="22" class="a-card"/>
+    <rect x="40" y="136" width="264" height="182" rx="22" class="a-card"/>
     <text x="64" y="172" class="a-num a-serif" font-size="20">01</text>
     <rect x="216" y="152" width="68" height="26" rx="13" class="a-model"/><text x="250" y="170" text-anchor="middle" class="a-model-t" font-size="12" font-weight="600">Model</text>
     <text x="64" y="222" class="a-ink a-serif" font-size="30" letter-spacing="-0.5">Read</text>
     <text x="64" y="252" class="a-mute" font-size="14.5">Copies every value, and cites</text>
     <text x="64" y="273" class="a-mute" font-size="14.5">the line it came from.</text>
+    <path d="M64 287H280" class="a-rule"/>
+    <text x="64" y="305" class="a-runs" font-size="10.5" font-weight="600" letter-spacing="1.1">CONTINUUM AGENT · SONNET 5.5</text>
   </g>
   <g>
-    <rect x="348" y="136" width="264" height="156" rx="22" class="a-card"/>
+    <rect x="348" y="136" width="264" height="182" rx="22" class="a-card"/>
     <text x="372" y="172" class="a-num a-serif" font-size="20">02</text>
     <rect x="532" y="152" width="60" height="26" rx="13" class="a-code"/><text x="562" y="170" text-anchor="middle" class="a-code-t" font-size="12" font-weight="600">Code</text>
     <text x="372" y="222" class="a-ink a-serif" font-size="30" letter-spacing="-0.5">Verify</text>
     <text x="372" y="252" class="a-mute" font-size="14.5">Opens each cited line. A value</text>
     <text x="372" y="273" class="a-mute" font-size="14.5">that isn't there is refused.</text>
+    <path d="M372 287H588" class="a-rule"/>
+    <text x="372" y="305" class="a-runs" font-size="10.5" font-weight="600" letter-spacing="1.1">PYTHON</text>
   </g>
   <g>
-    <rect x="656" y="136" width="264" height="156" rx="22" class="a-card"/>
+    <rect x="656" y="136" width="264" height="182" rx="22" class="a-card"/>
     <text x="680" y="172" class="a-num a-serif" font-size="20">03</text>
     <rect x="840" y="152" width="60" height="26" rx="13" class="a-code"/><text x="870" y="170" text-anchor="middle" class="a-code-t" font-size="12" font-weight="600">Code</text>
     <text x="680" y="222" class="a-ink a-serif" font-size="30" letter-spacing="-0.5">Judge</text>
     <text x="680" y="252" class="a-mute" font-size="14.5">Uses the revision in force that</text>
     <text x="680" y="273" class="a-mute" font-size="14.5">day. Unclear always means no.</text>
+    <path d="M680 287H896" class="a-rule"/>
+    <text x="680" y="305" class="a-runs" font-size="10.5" font-weight="600" letter-spacing="1.1">PYTHON</text>
   </g>
-  <path d="M308 214H342" class="a-line" stroke-width="1.6" fill="none" marker-end="url(#a-arrow)"/>
-  <path d="M616 214H650" class="a-line" stroke-width="1.6" fill="none" marker-end="url(#a-arrow)"/>
+  <path d="M308 227H342" class="a-line" stroke-width="1.6" fill="none" marker-end="url(#a-arrow)"/>
+  <path d="M616 227H650" class="a-line" stroke-width="1.6" fill="none" marker-end="url(#a-arrow)"/>
 
   <!-- the turn from row 1 to row 2 -->
-  <path d="M788 296V318Q788 332 774 332H186Q172 332 172 346V368" class="a-line" stroke-width="1.6" fill="none" marker-end="url(#a-arrow)"/>
+  <path d="M788 322V344Q788 358 774 358H186Q172 358 172 372V394" class="a-line" stroke-width="1.6" fill="none" marker-end="url(#a-arrow)"/>
 
   <!-- row 2 -->
   <g>
-    <rect x="40" y="374" width="264" height="156" rx="22" class="a-card"/>
-    <text x="64" y="410" class="a-num a-serif" font-size="20">04</text>
-    <rect x="216" y="390" width="68" height="26" rx="13" class="a-agent"/><text x="250" y="408" text-anchor="middle" class="a-agent-t" font-size="12" font-weight="600">Agent</text>
-    <text x="64" y="460" class="a-ink a-serif" font-size="30" letter-spacing="-0.5">Investigate</text>
-    <text x="64" y="490" class="a-mute" font-size="14.5">Reads what each problem needs.</text>
-    <text x="64" y="511" class="a-mute" font-size="14.5">Explains. Changes nothing.</text>
+    <rect x="40" y="400" width="264" height="182" rx="22" class="a-card"/>
+    <text x="64" y="436" class="a-num a-serif" font-size="20">04</text>
+    <rect x="216" y="416" width="68" height="26" rx="13" class="a-agent"/><text x="250" y="434" text-anchor="middle" class="a-agent-t" font-size="12" font-weight="600">Agent</text>
+    <text x="64" y="486" class="a-ink a-serif" font-size="30" letter-spacing="-0.5">Investigate</text>
+    <text x="64" y="516" class="a-mute" font-size="14.5">Reads what each problem needs.</text>
+    <text x="64" y="537" class="a-mute" font-size="14.5">Explains. Changes nothing.</text>
+    <path d="M64 551H280" class="a-rule"/>
+    <text x="64" y="569" class="a-runs" font-size="10.5" font-weight="600" letter-spacing="1.1">CONTINUUM AGENT · SONNET 5.5</text>
   </g>
   <g>
-    <rect x="348" y="374" width="264" height="156" rx="22" class="a-card"/>
-    <text x="372" y="410" class="a-num a-serif" font-size="20">05</text>
-    <rect x="524" y="390" width="68" height="26" rx="13" class="a-model"/><text x="558" y="408" text-anchor="middle" class="a-model-t" font-size="12" font-weight="600">Model</text>
-    <text x="372" y="460" class="a-ink a-serif" font-size="30" letter-spacing="-0.5">Propose</text>
-    <text x="372" y="490" class="a-mute" font-size="14.5">Holds, or proposes release.</text>
-    <text x="372" y="511" class="a-mute" font-size="14.5">A second reader checks it.</text>
+    <rect x="348" y="400" width="264" height="182" rx="22" class="a-card"/>
+    <text x="372" y="436" class="a-num a-serif" font-size="20">05</text>
+    <rect x="524" y="416" width="68" height="26" rx="13" class="a-model"/><text x="558" y="434" text-anchor="middle" class="a-model-t" font-size="12" font-weight="600">Model</text>
+    <text x="372" y="486" class="a-ink a-serif" font-size="30" letter-spacing="-0.5">Propose</text>
+    <text x="372" y="516" class="a-mute" font-size="14.5">Holds, or proposes release.</text>
+    <text x="372" y="537" class="a-mute" font-size="14.5">A second reader checks it.</text>
+    <path d="M372 551H588" class="a-rule"/>
+    <text x="372" y="569" class="a-runs" font-size="10.5" font-weight="600" letter-spacing="1.1">CONTINUUM AGENTS · SONNET 5.5</text>
   </g>
   <g>
-    <rect x="656" y="374" width="264" height="156" rx="22" class="a-card"/>
-    <text x="680" y="410" class="a-num a-serif" font-size="20">06</text>
-    <rect x="852" y="390" width="48" height="26" rx="13" class="a-you"/><text x="876" y="408" text-anchor="middle" class="a-you-t" font-size="12" font-weight="600">You</text>
-    <g class="a-lock" fill="none" stroke-width="1.6" stroke-linecap="round" transform="translate(818 391)">
+    <rect x="656" y="400" width="264" height="182" rx="22" class="a-card"/>
+    <text x="680" y="436" class="a-num a-serif" font-size="20">06</text>
+    <rect x="852" y="416" width="48" height="26" rx="13" class="a-you"/><text x="876" y="434" text-anchor="middle" class="a-you-t" font-size="12" font-weight="600">You</text>
+    <g class="a-lock" fill="none" stroke-width="1.6" stroke-linecap="round" transform="translate(818 417)">
       <rect x="2" y="10" width="16" height="13" rx="3.5"/><path d="M5.5 10V7a4.5 4.5 0 0 1 9 0v3"/>
     </g>
-    <text x="680" y="460" class="a-ink a-serif" font-size="30" letter-spacing="-0.5">Decide</text>
-    <text x="680" y="490" class="a-mute" font-size="14.5">Release waits for your name,</text>
-    <text x="680" y="511" class="a-mute" font-size="14.5">then checks everything again.</text>
+    <text x="680" y="486" class="a-ink a-serif" font-size="30" letter-spacing="-0.5">Decide</text>
+    <text x="680" y="516" class="a-mute" font-size="14.5">Release waits behind a gate,</text>
+    <text x="680" y="537" class="a-mute" font-size="14.5">then checks everything again.</text>
+    <path d="M680 551H896" class="a-rule"/>
+    <text x="680" y="569" class="a-runs" font-size="10.5" font-weight="600" letter-spacing="1.1">CONTINUUM GATE · PYTHON</text>
   </g>
-  <path d="M308 452H342" class="a-line" stroke-width="1.6" fill="none" marker-end="url(#a-arrow)"/>
-  <path d="M616 452H650" class="a-line" stroke-width="1.6" fill="none" marker-end="url(#a-arrow)"/>
+  <path d="M308 491H342" class="a-line" stroke-width="1.6" fill="none" marker-end="url(#a-arrow)"/>
+  <path d="M616 491H650" class="a-line" stroke-width="1.6" fill="none" marker-end="url(#a-arrow)"/>
 
   <!-- the outside view -->
-  <rect x="40" y="562" width="880" height="64" rx="20" class="a-band"/>
-  <text x="66" y="600" class="a-band-t a-serif" font-size="22" letter-spacing="-0.3">Acceptance lab</text>
-  <text x="222" y="599" class="a-mute" font-size="14.5">Scores every run against labels written before the first one. Never imports the desk.</text>
+  <rect x="40" y="610" width="880" height="64" rx="20" class="a-band"/>
+  <text x="66" y="648" class="a-band-t a-serif" font-size="22" letter-spacing="-0.3">Acceptance lab</text>
+  <text x="222" y="647" class="a-mute" font-size="14.5">Scores every run against labels written before the first one.</text>
+  <text x="894" y="646" text-anchor="end" class="a-runs" font-size="10.5" font-weight="600" letter-spacing="1.1">PYTHON</text>
+
+  <!-- legend -->
+  <path d="M40 700H920" class="a-rule"/>
+  <g font-size="13">
+    <text x="40" y="728"><tspan class="a-ink" font-weight="600">Continuum</tspan><tspan class="a-mute" dx="8">the agent framework, inside the desk</tspan></text>
+    <text x="378" y="728"><tspan class="a-ink" font-weight="600">Sonnet 5.5</tspan><tspan class="a-mute" dx="8">the model, through the Anthropic API</tspan></text>
+    <text x="724" y="728"><tspan class="a-ink" font-weight="600">Python</tspan><tspan class="a-mute" dx="8">plain code, no model</tspan></text>
+    <text x="40" y="756" class="a-mute">Everything ran on GitHub Actions. In the recording, a scripted reviewer answered the gate. On the page, you do.</text>
+  </g>
 </svg></figure>
-  <ol class="arch-list" aria-hidden="true"><li><span class="n serif">01</span><div><div class="t"><b class="serif">Read</b><span class="chip k-model">Model</span></div><p>Copies every value, and cites the line it came from.</p></div></li><li><span class="n serif">02</span><div><div class="t"><b class="serif">Verify</b><span class="chip k-code">Code</span></div><p>Opens each cited line. A value that isn’t there is refused.</p></div></li><li><span class="n serif">03</span><div><div class="t"><b class="serif">Judge</b><span class="chip k-code">Code</span></div><p>Uses the revision in force that day. Unclear always means no.</p></div></li><li><span class="n serif">04</span><div><div class="t"><b class="serif">Investigate</b><span class="chip k-agent">Agent</span></div><p>Reads what each problem needs. Explains. Changes nothing.</p></div></li><li><span class="n serif">05</span><div><div class="t"><b class="serif">Propose</b><span class="chip k-model">Model</span></div><p>Holds, or proposes release. A second reader checks it.</p></div></li><li><span class="n serif">06</span><div><div class="t"><b class="serif">Decide</b><span class="chip k-you">You</span></div><p>Release waits for your name, then checks everything again.</p></div></li><li class="lab"><div><div class="t"><b class="serif">Acceptance lab</b></div><p>Scores every run against labels written before the first one. Never imports the desk.</p></div></li></ol>
+  <ol class="arch-list" aria-hidden="true"><li><span class="n serif">01</span><div><div class="t"><b class="serif">Read</b><span class="chip k-model">Model</span></div><p>Copies every value, and cites the line it came from.</p><small class="runs">Continuum agent · Sonnet 5.5</small></div></li><li><span class="n serif">02</span><div><div class="t"><b class="serif">Verify</b><span class="chip k-code">Code</span></div><p>Opens each cited line. A value that isn’t there is refused.</p><small class="runs">Python</small></div></li><li><span class="n serif">03</span><div><div class="t"><b class="serif">Judge</b><span class="chip k-code">Code</span></div><p>Uses the revision in force that day. Unclear always means no.</p><small class="runs">Python</small></div></li><li><span class="n serif">04</span><div><div class="t"><b class="serif">Investigate</b><span class="chip k-agent">Agent</span></div><p>Reads what each problem needs. Explains. Changes nothing.</p><small class="runs">Continuum agent · Sonnet 5.5</small></div></li><li><span class="n serif">05</span><div><div class="t"><b class="serif">Propose</b><span class="chip k-model">Model</span></div><p>Holds, or proposes release. A second reader checks it.</p><small class="runs">Continuum agents · Sonnet 5.5</small></div></li><li><span class="n serif">06</span><div><div class="t"><b class="serif">Decide</b><span class="chip k-you">You</span></div><p>Release waits behind a gate, then checks everything again.</p><small class="runs">Continuum gate · Python</small></div></li><li class="lab"><div><div class="t"><b class="serif">Acceptance lab</b></div><p>Scores every run against labels written before the first one. Never imports the desk.</p><small class="runs">Python</small></div></li></ol>
+  <p class="arch-note">Continuum is the agent framework, running inside the desk. Sonnet 5.5 is the model, reached through the Anthropic API. Python is plain code. Everything ran on GitHub Actions. In the recording, a scripted reviewer answered the release gate. On this page, you do.</p>
   <div class="split" style="padding:56px 0 40px">
     <div class="big3 serif">Six steps.<br>Four hands.<br><em>One signature.</em></div>
     <div><h2 style="font-size:clamp(30px,3vw,44px);margin-top:10px">Each part does one thing well.</h2>

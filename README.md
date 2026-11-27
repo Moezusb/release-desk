@@ -12,7 +12,7 @@ It runs on [Continuum](https://github.com/shyftlabs/continuum), an open-source a
 
 **[Open the workspace](https://moezusb.github.io/release-desk/docs/)**. A recorded live run, with working decisions, corrections and the acceptance lab. Nothing to install, and nothing you decide leaves your browser.
 
-<p align="center"><img src="docs/architecture.svg" width="880" alt="How a lot moves through Release Desk: the model reads and cites, code verifies and judges, an agent investigates, the model proposes, you decide, and an acceptance lab scores every run from the outside."></p>
+<p align="center"><img src="docs/architecture.svg" width="880" alt="How a lot moves through Release Desk, and where each step ran: Continuum agents with Claude Sonnet 5.5 read, investigate and propose; plain Python verifies, judges and scores; release waits behind Continuum's approval gate."></p>
 
 ---
 
