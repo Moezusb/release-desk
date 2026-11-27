@@ -1,6 +1,6 @@
 {
  "schema_version": "acceptance-lab.report.v2",
- "generated_at": "2026-11-27T05:16:34+00:00",
+ "generated_at": "2026-11-27T06:27:42+00:00",
  "title": "Acceptance lab",
  "labels": {
   "dataset": "fernhollow-seven-lots-v2",
@@ -144,7 +144,7 @@
     "produced": "2026-11-27 01:37 UTC",
     "repeat": 5
    },
-   "evaluated_at": "2026-11-27T05:16:34+00:00",
+   "evaluated_at": "2026-11-27T06:27:41+00:00",
    "summary": {
     "runs_submitted": 35,
     "runs_expected": 35,
@@ -3663,7 +3663,7 @@
     "produced": "2026-11-27 01:37 UTC",
     "repeat": 1
    },
-   "evaluated_at": "2026-11-27T05:16:34+00:00",
+   "evaluated_at": "2026-11-27T06:27:41+00:00",
    "summary": {
     "runs_submitted": 7,
     "runs_expected": 7,
@@ -4504,7 +4504,7 @@
     "produced": "2026-11-27 01:37 UTC",
     "repeat": 1
    },
-   "evaluated_at": "2026-11-27T05:16:34+00:00",
+   "evaluated_at": "2026-11-27T06:27:41+00:00",
    "summary": {
     "runs_submitted": 7,
     "runs_expected": 7,

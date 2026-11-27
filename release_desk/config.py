@@ -27,6 +27,12 @@ for key, value in {
     "SESSION_ENABLED": "false",
     "LANGFUSE_ENABLED": "false",
     "LOG_LEVEL": "ERROR",
+    # Reading a lot can take a model well over Continuum's 60-second default;
+    # a timeout there means a retry that pays for the same work again.
+    "LLM_REQUEST_TIMEOUT": "300",
+    # New Anthropic accounts have low rate limits. More retries, with the SDK's
+    # own backoff, turn a 429 into a short wait instead of a failed review.
+    "LLM_MAX_RETRIES": "6",
 }.items():
     os.environ.setdefault(key, value)
 

@@ -147,9 +147,10 @@ async def investigate(
         instructions=INSTRUCTIONS,
         model=settings.model,
         temperature=None,  # current Claude models reject sampling parameters
+        max_tokens=3000,  # set on the agent: AgentConfig.max_tokens does not reach the request
         tool_executor=executor,
         tools=executor.get_tool_definitions(),
-        config=AgentConfig(temperature=None, max_tokens=2000, max_turns=12),
+        config=AgentConfig(temperature=None, max_tokens=3000, max_turns=12),
     )
     message = (f"Lot: {lot_id}\nDocument versions: {pkg.version_label()}\n\n"
                f"FINDINGS_JSON:\n{json.dumps(findings, indent=1)}\nEND_FINDINGS\n")

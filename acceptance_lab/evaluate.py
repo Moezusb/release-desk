@@ -198,8 +198,9 @@ def evaluate(bundle: dict, data_dir: Path, labels: dict | None = None, candidate
         why = ("Every gate passes, but these runs used a scripted model. They prove the checks and controls, "
                "not a model's reading. A live run on this set is the next piece of evidence.")
     else:
-        verdict = "Ready for a limited, supervised pilot"
-        why = "Every gate passes on a live model. Conditions apply; see below."
+        verdict = "Ready for business validation"
+        why = ("Every gate passes on a live model, on seven synthetic lots. That is as far as fixtures can go. "
+               "A pilot needs labels, thresholds and lots from the people who own the process.")
     return {
         "schema_version": "acceptance-lab.candidate-report.v2",
         "id": (candidate or {}).get("id", "candidate"), "label": (candidate or {}).get("label", "Candidate"),

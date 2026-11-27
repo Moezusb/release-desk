@@ -97,6 +97,11 @@ async def export(settings: Settings) -> Path:
     out["meta"] = {"mode": "replay", "recorded": "offline (scripted stand-in model)" if settings.offline else f"live ({settings.model})",
                    "model": settings.model, "actions": HUMAN_ACTIONS, "replay": True}
 
+    stopped = [f"{lot}: {snap['review']['error']}" for group in (out["lots"], out["previews"])
+               for lot, snap in group.items() if snap["review"].get("error")]
+    if stopped:
+        raise SystemExit("Not publishing a replay with errored reviews:\n" + "\n".join(s[:300] for s in stopped))
+
     docs = ROOT / "docs"
     docs.mkdir(exist_ok=True)
     path = docs / "replay.json"

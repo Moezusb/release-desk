@@ -30,6 +30,9 @@ async def terminal_approver(review: LotReview, request) -> ToolApprovalDecision:
     if review.second_reading:
         r = review.second_reading
         print("  Second reader:", "agrees." if r["agrees"] else "disagrees. " + " ".join(r["concerns"]))
+    if not sys.stdin.isatty():
+        review.log("reviewer", "No terminal to ask. Release refused.")
+        return ToolApprovalDecision(approved=False, reason="no reviewer at a terminal")
     answer = (await asyncio.to_thread(input, "  Approve release? Type your name to approve, or press Enter to refuse: ")).strip()
     if answer:
         review.decision = {"action": "approve_release", "reviewer": answer, "reason": "", "at": review.proposal["at"],
@@ -99,6 +102,9 @@ def main(argv: list[str] | None = None) -> None:
         errored = [r for r in result["runs"] if r.get("error")]
         if errored:
             print(f"{len(errored)} of {len(result['runs'])} runs stopped with an error. First: {errored[0]['error'][:400]}", file=sys.stderr)
+        # A run that errors is scored as a failure by the acceptance lab, so a few are
+        # honest results. More than one in five means something systemic: stop.
+        if len(errored) * 5 > len(result["runs"]):
             raise SystemExit(1)
     elif args.cmd == "check-mapping":
         from acceptance_lab.mapping import check, check_all, to_markdown

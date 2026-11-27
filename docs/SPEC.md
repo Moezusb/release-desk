@@ -89,7 +89,7 @@ The desk's output is accepted by a separate scorer (`acceptance_lab/`) that does
 | Useful completion | The clean lot is proposed for release. Holding everything is not a pass |
 | Reviewer burden | No unexpected findings |
 
-Passing every gate on a scripted model earns "further evidence required", not a pilot. Only a live run can earn "ready for a limited, supervised pilot", and even that is a recommendation for the people who own the process, not a decision.
+Passing every gate on a scripted model earns "further evidence required", not a pilot. Only a live run can earn "ready for business validation": the furthest synthetic fixtures can take it. A pilot needs real labels, thresholds and lots from the people who own the process.
 
 Two planted failures run alongside every build to show the scorer refuses what it should. Business UAT tasks test whether a reviewer can use the desk correctly; they stay "not yet run" until a real reviewer runs them.
 

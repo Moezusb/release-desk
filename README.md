@@ -120,7 +120,7 @@ release-desk eval --repeat 5         # the evaluation
 python -m acceptance_lab evaluate eval/results-offline.json
 python -m acceptance_lab check-mapping
 python -m acceptance_lab build       # the lab's page data, docs/acceptance.json
-pytest                               # 25 offline tests
+pytest                               # 28 offline tests, including the live path against a simulated API
 ```
 
 **Live runs** use a real model through Continuum's Anthropic provider. Locally, set `ANTHROPIC_API_KEY` in `.env`. In GitHub Actions, the **Live evaluation** workflow (Actions, then Run workflow) accepts either an `ANTHROPIC_API_KEY` repository secret or workload identity federation, where GitHub's short-lived identity token is exchanged for a short-lived Anthropic token and no key is stored at all. It runs the evaluation, re-records the public page from the live run, rebuilds the acceptance results, and commits all three.
