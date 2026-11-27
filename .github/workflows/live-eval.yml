@@ -73,7 +73,17 @@ jobs:
           }
           fetch
           ( while sleep 240; do fetch; done ) > /dev/null 2>&1 &
-          echo "Token written."
+          # Print the claims a federation rule matches on (never the token itself).
+          python - <<'PY'
+          import base64, json, os
+          body = open(os.environ["ANTHROPIC_IDENTITY_TOKEN_FILE"]).read().split(".")[1]
+          c = json.loads(base64.urlsafe_b64decode(body + "=" * (-len(body) % 4)))
+          print("iss:", c.get("iss")); print("sub:", c.get("sub")); print("aud:", c.get("aud"))
+          print("lifetime (s):", c.get("exp", 0) - c.get("iat", 0), "| has jti:", "jti" in c)
+          PY
+          for v in ANTHROPIC_FEDERATION_RULE_ID ANTHROPIC_ORGANIZATION_ID ANTHROPIC_SERVICE_ACCOUNT_ID ANTHROPIC_WORKSPACE_ID; do
+            val="${!v}"; echo "$v starts with: ${val:0:6}... (${#val} characters)"
+          done
 
       - name: Evaluate
         run: release-desk eval --repeat "${{ inputs.repeat }}"
