@@ -59,6 +59,8 @@ async def _review(settings: config.Settings, target: str) -> None:
         if review.decision:
             store.record_decision(review, {**review.decision, "proposal": review.proposal["decision"]})
         _print(review)
+        if review.error:
+            raise SystemExit(f"{lot}: the review stopped with an error.")
 
 
 def main(argv: list[str] | None = None) -> None:

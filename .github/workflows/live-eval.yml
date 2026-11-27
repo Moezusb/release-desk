@@ -85,6 +85,11 @@ jobs:
             val="${!v}"; echo "$v starts with: ${val:0:6}... (${#val} characters)"
           done
 
+      - name: Smoke test, one lot
+        # One hold lot exercises every model step (reading, second reader,
+        # investigator, proposer) for a few cents, before 35 full reviews.
+        run: release-desk review LC-24033
+
       - name: Evaluate
         run: release-desk eval --repeat "${{ inputs.repeat }}"
 
