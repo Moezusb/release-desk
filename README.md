@@ -51,6 +51,7 @@ A desk that grades its own homework proves little. `acceptance_lab/` is a separa
 
 | Candidate | Runs passing | Verdict |
 |---|---|---|
+| Executed live workflow (Claude Sonnet 5.5, 3 runs per lot) | 21/21 | Ready for business validation: as far as seven synthetic lots can take it |
 | Executed offline workflow (scripted model, 5 runs per lot) | 35/35 | Further evidence required: the checks hold, but a scripted model proves nothing about a real one |
 | Missed critical exception (planted) | 6/7 | Not ready for a pilot: fails no unsafe clearance and detection |
 | Real quote, wrong attribute (planted) | 6/7 | Not ready for a pilot: fails detection |
@@ -89,7 +90,7 @@ release-desk eval --repeat 5
 | Agreement between runs | Secondary. Useful only once the runs are right. |
 | Time and tokens per lot | Measured, so the cost of the workflow is a number, not a guess. |
 
-Results go to `eval/report-*.md` and a result bundle, `eval/results-*.json`, which the acceptance lab scores independently. Offline runs use a scripted model, so they prove the checks and controls, not a model. The live run in GitHub Actions is the one to read. The first one found all 27 labelled exceptions across 21 runs, every critical one, with every citation valid and no unsafe release. It also failed every lot, on a bug of ours: the model copied a yield as "98.4%", the number parser expected "98.4", and an unreadable value fails closed. The parser now reads units, a simulated-API test copies values verbatim the same way, and the result on the page stands until the next live run replaces it.
+Results go to `eval/report-*.md` and a result bundle, `eval/results-*.json`, which the acceptance lab scores independently. Offline runs use a scripted model, so they prove the checks and controls, not a model. The live run in GitHub Actions is the one to read. On Claude Sonnet 5.5, three runs per lot: all 21 runs correct, all 27 labelled exceptions found (all 9 critical), every citation valid, no unsafe release, the clean lot proposed for release every time, and the same answer in every repeat. About 27 seconds and 21,000 input tokens per lot. The first live run failed every lot on a parsing bug of ours, not the model's: it copied a yield as "98.4%" and the parser expected "98.4". Fixing it, and the similar cases a strict simulated API then found, is in the history.
 
 ## The lots
 
