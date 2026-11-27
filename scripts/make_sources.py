@@ -5,7 +5,8 @@ three systems: a laboratory system (LIMS), a manufacturing execution system
 (MES) and a quality management system (QMS). These extracts imitate them,
 including the quirks a data mapping has to survive:
 
-* LIMS writes some older lot numbers without the hyphen (LC24036).
+* LIMS writes one migrated lot number without the hyphen (LC24037).
+* MES keeps a second, operator-keyed manufacture date in slash form.
 * LIMS stores the preservative assay as a mass fraction, not a percentage.
 * LIMS keeps a superseded result next to its retest.
 * LIMS dates are written day first, and the convention is not documented.
@@ -25,7 +26,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from make_lots import BASE, LOTS  # noqa: E402
 
 OUT = ROOT / "data" / "mapping" / "sources"
-LEGACY_LOT_FORMAT = {"LC-24036", "LC-24037"}  # migrated late; LIMS still writes them without the hyphen
+LEGACY_LOT_FORMAT = {"LC-24037"}  # migrated late; LIMS still writes them without the hyphen
 
 
 def dmy(iso: str, plus_days: int = 0) -> str:
@@ -60,7 +61,7 @@ def main() -> None:
                 lims.append([f"S{sample}", lims_lot, code, value, unit, "approved", dmy(p["mfg"], 5)])
                 continue
             lims.append([f"S{sample}", lims_lot, code, value, unit, "approved", tested])
-        mes.append([lot, p["product_code"], p["mfg"], dmy(p["mfg"], 1), p["yield"][2]])
+        mes.append([lot, p["product_code"], p["mfg"], dmy(p["mfg"]), dmy(p["mfg"], 1), p["yield"][2]])
         for dev_id, _desc, status, _capa in p["deviations"]:
             qms_status = "Open" if status.startswith("Open") else "Closed"
             if dev_id == "DEV-0412":
@@ -74,7 +75,7 @@ def main() -> None:
             w.writerows(rows)
 
     write("lims_results.csv", ["sample_id", "lot_ref", "test_code", "result_value", "result_unit", "result_status", "tested_on"], lims)
-    write("mes_batches.csv", ["batch_no", "product_code", "mfg_date", "packed_on", "yield_pct"], mes)
+    write("mes_batches.csv", ["batch_no", "product_code", "mfg_date", "mfg_date_text", "packed_on", "yield_pct"], mes)
     write("qms_deviations.csv", ["dev_id", "batch_no", "status"], qms)
     print(f"wrote {len(lims)} LIMS rows, {len(mes)} MES rows, {len(qms)} QMS rows")
 

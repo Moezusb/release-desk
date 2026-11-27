@@ -8,7 +8,7 @@ Release Desk is a working prototype of a better division of labour. A model does
 
 It is built on [Continuum](https://github.com/shyftlabs/continuum), an open-source agent framework by ShyftLabs. All documents, people, products, systems and companies in this repository are invented.
 
-**[Open the recorded demo](https://moezusb.github.io/release-desk/)**: no install, decisions stay in your browser.
+**[Open the live page](https://moezusb.github.io/release-desk/)**: a recorded run of the pipeline, with working decisions, corrections and an acceptance lab. No install; anything you decide stays in your browser.
 
 ![The reviewer's screen](docs/screenshot.png)
 
@@ -23,7 +23,7 @@ It is built on [Continuum](https://github.com/shyftlabs/continuum), an open-sour
 | **Apply the rules** | Code | Picks the specification revision in force on the date of manufacture, then checks results, identity, dates, signatures and deviations. Every rule fails closed. |
 | **Investigate** | Agent | For each blocking finding, chooses what to read next: a deviation record, another revision, a corrected document, a range of lines. It writes a note with a next step. It cannot change anything. |
 | **Propose** | Model | Holds the lot at once, or proposes release. A second reader checks the proposal against the findings. |
-| **Decide** | You | Approve or refuse a release; confirm, reject or overrule a hold. Signed, with a reason for every override. |
+| **Decide** | You | Approve or refuse a proposed release; confirm a hold or reject the lot. Signed, with a reason for every refusal or rejection. There is no button for releasing over a hold: the way out of a hold is better evidence and a reassessment. |
 
 If a corrected document arrives after a decision, the decision is kept but voided: the lot must be reassessed, and the release tool refuses anything decided on old evidence.
 
@@ -39,25 +39,45 @@ If a corrected document arrives after a decision, the decision is kept but voide
 
 **Silence is a no.** If nobody answers in time, or the approval step fails, the call is denied and the lot stays on hold. The desk never mistakes a quiet room for consent.
 
-**Even a yes is checked.** After approval, the release tool still refuses while a blocking finding is open, or if the documents changed since the review. An approval is a judgment about a proposal, not a licence to skip the rules. Optimism is a fine quality in a person and a poor one in a release process.
+**Even a yes is checked.** An approval is bound to a fingerprint of the assessment the reviewer saw: the documents, the findings, the proposal and the second reading. After approval, the release tool refuses if a blocking finding is open, if the documents changed, if the assessment no longer matches that fingerprint, or if the call it is about to make differs from the proposal that was approved. An approval is a judgment about a proposal, not a licence to skip the rules. Optimism is a fine quality in a person and a poor one in a release process.
 
-## The data mapping check
+## The acceptance lab
 
-Before an implementation vendor builds on a client's systems, someone has to check that the data means what the mapping says. `release-desk check-mapping` compares a proposed mapping with three things the vendor did not write: the source systems' own data dictionary, the canonical fields the rules depend on, and the documents themselves, lot by lot.
+A desk that grades its own homework proves little. `acceptance_lab/` is a separate package that scores what the desk delivers, and the page gives it its own workspace.
 
-The synthetic source extracts in `data/mapping/sources/` carry the quirks real systems have: lot numbers written two ways, a percentage stored as a fraction, a superseded result kept beside its retest, an undocumented date convention, a status whose meaning for release nobody has written down. Two vendor proposals are included:
+**Case results.** The scorer reads a result bundle, labels written by hand in advance (`acceptance_lab/labels.yaml`), and the source documents. It does not import the desk. Each run must cover its lot once, read the original documents, raise every labelled exception at the right severity, and cite a line that actually shows the value, on the row for the right attribute. Five gates follow, all of them required: coverage, no unsafe clearance, exception detection with evidence, useful completion, and reviewer burden. Every metric is shown as a fraction, so a reader can see the denominator.
 
-| | Vendor mapping v1 | Vendor mapping v2 |
+**Planted failures.** Two candidates are copies of real output with one flaw put in on purpose: a critical exception removed and its hold turned into a release, and a finding that quotes a real line from the wrong row. Both are refused. They prove the scorer bites; they are not measured model failures.
+
+| Candidate | Runs passing | Verdict |
 |---|---|---|
-| Verdict | Not acceptable | Acceptable once one question is confirmed |
-| Caught | Yeast and mould mapped to the aerobic count (same type, same unit); two lots lost in the join; duplicate results; test date used as manufacture date; month-first dates in day-first data; preservative 100 times too small; every lot judged by the latest revision | One status, "Closed - effectiveness check pending", treated as closed. That is a Quality decision, so it is marked for business confirmation rather than passed or failed |
+| Executed offline workflow (scripted model, 5 runs per lot) | 35/35 | Further evidence required: the checks hold, but a scripted model proves nothing about a real one |
+| Missed critical exception (planted) | 6/7 | Not ready for a pilot: fails no unsafe clearance and detection |
+| Real quote, wrong attribute (planted) | 6/7 | Not ready for a pilot: fails detection |
+
+**Mapping checks.** Before an implementation vendor builds on a client's systems, someone has to check that the data means what the mapping says. The checker compares a proposed mapping with three things the vendor did not write: the source systems' own data dictionary, the canonical fields the rules depend on, and the documents themselves, lot by lot. Each check ends in one of three states: validated, failed, or needs business confirmation, for questions only the client's Quality team can answer.
+
+The synthetic source extracts in `data/mapping/sources/` carry the quirks real systems have: lot numbers written two ways, a percentage stored as a fraction, a superseded result kept beside its retest, an undocumented date convention, a status whose meaning for release nobody has written down. Six scenarios are included:
+
+| Scenario | Verdict |
+|---|---|
+| First delivery | Not acceptable. Yeast and mould mapped to the aerobic count, lots lost in the join, duplicate results, test date used as manufacture date, month-first dates in day-first data, preservative 100 times too small, every lot judged by the latest revision |
+| Revised delivery | Acceptable once one question is confirmed: whether "Closed - effectiveness check pending" counts as closed for release |
+| Same unit, wrong meaning | Caught: both fields are CFU/g; they count different organisms |
+| Fraction treated as percent | Caught: the conversion is missing |
+| Ambiguous date convention | Caught: the declared convention does not fit the data |
+| Equal row count hides a lost lot | Caught: seven packets for seven batches, but one batch twice and one not at all |
+
+Each authored challenge declares the flaw it carries, and the checker reports whether it caught it.
+
+**Business UAT and value.** Labels test the output; they do not test whether a reviewer can use it. Six UAT tasks (find the evidence, recognise missing information, spot the wrong revision, know what an approval authorises, resume after a correction, name the next owner) are written down and marked not yet run, because nobody from a real Quality team has run them. The value worksheet is an illustrative calculator with its formula on the page; machine time and tokens per lot are filled in only from a live run.
 
 ## Evaluation
 
 Correctness comes first and consistency second. Five runs that agree on a wrong answer are worse than one run that is right, so every run is scored on its own against answers written before any run (`data/golden.yaml`), each from a clean state.
 
 ```bash
-release-desk eval --repeat 3
+release-desk eval --repeat 5
 ```
 
 | Measure | Why it matters |
@@ -69,7 +89,7 @@ release-desk eval --repeat 3
 | Agreement between runs | Secondary. Useful only once the runs are right. |
 | Time and tokens per lot | Measured, so the cost of the workflow is a number, not a guess. |
 
-Results go to `eval/report-*.md` and a result bundle, `eval/results-*.json`, that another tool can score independently. Offline runs use a scripted model, so they prove the checks and controls, not a model; the live run in GitHub Actions is the one to read.
+Results go to `eval/report-*.md` and a result bundle, `eval/results-*.json`, which the acceptance lab scores independently. Offline runs use a scripted model, so they prove the checks and controls, not a model. The live run in GitHub Actions is the one to read, and it has not been run yet.
 
 ## The lots
 
@@ -96,12 +116,14 @@ pip install -e ".[dev]"
 
 release-desk serve --offline         # http://127.0.0.1:8930
 release-desk review LC-24037         # one lot in the terminal
-release-desk check-mapping           # both vendor mappings
-release-desk eval --repeat 3         # the evaluation
-pytest                               # 19 offline tests
+release-desk eval --repeat 5         # the evaluation
+python -m acceptance_lab evaluate eval/results-offline.json
+python -m acceptance_lab check-mapping
+python -m acceptance_lab build       # the lab's page data, docs/acceptance.json
+pytest                               # 25 offline tests
 ```
 
-**Live runs** use a real model through Continuum's Anthropic provider. Locally, set `ANTHROPIC_API_KEY` in `.env`. In GitHub Actions, the **Live evaluation** workflow uses workload identity federation instead: GitHub's short-lived identity token is exchanged for a short-lived Anthropic token, so no key is stored in the repository. It runs the evaluation, re-records the public demo from the live run, and commits both.
+**Live runs** use a real model through Continuum's Anthropic provider. Locally, set `ANTHROPIC_API_KEY` in `.env`. In GitHub Actions, the **Live evaluation** workflow (Actions, then Run workflow) accepts either an `ANTHROPIC_API_KEY` repository secret or workload identity federation, where GitHub's short-lived identity token is exchanged for a short-lived Anthropic token and no key is stored at all. It runs the evaluation, re-records the public page from the live run, rebuilds the acceptance results, and commits all three.
 
 ## Where Continuum does the work
 
@@ -115,6 +137,7 @@ pytest                               # 19 offline tests
 ## Known limits
 
 - **No OCR.** The documents are text. Real batch records are scanned, handwritten and stamped, and reading them well is the hardest part of the problem. This prototype starts after that step.
+- **No business validation.** The labels, gates and UAT tasks are a reasoned starting point. Real thresholds, criticality and pilot exit criteria belong to the people who own the process.
 - **Small, synthetic, one product.** Seven lots and one specification with two revisions make a smoke test, not a validation. A pilot would use a frozen set built from real history.
 - **The scripted investigator is a script.** Offline, it branches on what its tools return, but its paths were written by hand. The live model chooses for itself, and its paths are recorded in the evaluation.
 - **Names are typed, not authenticated.** A real system needs proper electronic signatures and access control under whatever regulation applies.
@@ -127,9 +150,10 @@ data/spec/          specification revisions with dates in force
 data/lots/          documents per lot, plus corrections/ and records/ where they exist
 data/mapping/       source extracts, their dictionary, canonical fields, vendor mappings
 data/golden.yaml    the answers a careful reviewer would give
-release_desk/       reader, evidence check, rules, investigator, proposer, mapping, evaluation
+release_desk/       reader, evidence check, rules, investigator, proposer, evaluation
+acceptance_lab/     independent labels, scorer, planted failures, mapping checks, UAT tasks
 web/                the reviewer's screen (FastAPI and one HTML file)
-docs/               the recorded demo for GitHub Pages, and the product spec
+docs/               the page for GitHub Pages (index, replay.json, acceptance.json) and the product spec
 eval/               evaluation reports and result bundles
 scripts/            generators for the synthetic lots and source extracts
 ```
@@ -140,4 +164,4 @@ The product decisions behind all this are in [docs/SPEC.md](docs/SPEC.md).
 
 A release decision is small on any one day: a name, a date, a lot number. Over years it becomes the reputation of everything a company makes. The desk is here to give the person who signs more time to look, and better things to look at. The signature stays theirs.
 
-Built by Mohamed Bah, with Claude as a collaborator on the code. MIT licensed. Continuum is Apache 2.0, by ShyftLabs.
+Built by Mohamed Bah. Claude collaborated on the code; an earlier prototype made with ChatGPT shaped the interface and the idea of a separate acceptance lab. MIT licensed. Continuum is Apache 2.0, by ShyftLabs.

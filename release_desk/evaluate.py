@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import json
 import subprocess
+import uuid
 import tempfile
 from collections import Counter
 from datetime import datetime, timezone
@@ -54,6 +55,12 @@ async def score(settings: Settings, repeat: int = 1) -> dict:
             got = {f["rule"] for f in review.findings}
             proposal = (review.proposal or {}).get("decision", "none")
             run = {
+                "schema": "release-desk.run.v2", "run_id": uuid.uuid4().hex, "mode": "offline" if settings.offline else "live",
+                "model": settings.model, "document_fingerprint": review.fingerprint, "versions": review.versions,
+                "governing_revision": review.governing_revision,
+                "findings_detail": [{k: f[k] for k in ("id", "rule", "severity", "title", "expected", "observed", "evidence")}
+                                    for f in review.findings],
+                "rationale": (review.proposal or {}).get("rationale", ""),
                 "lot": lot, "run": i + 1, "findings": sorted(got), "missed": sorted(want - got), "extra": sorted(got - want),
                 "proposal": proposal, "expected_proposal": answer["expected_proposal"],
                 "false_clear": proposal == "release" and answer["expected_proposal"] == "hold",
@@ -84,7 +91,7 @@ async def score(settings: Settings, repeat: int = 1) -> dict:
     usage = [r["usage"] for r in runs_out if r.get("usage")]
     mean = lambda k: round(sum(u.get(k, 0) for u in usage) / len(usage), 1) if usage else None  # noqa: E731
     return {
-        "bundle_version": 1,
+        "bundle_version": 2,
         "mode": "offline (scripted stand-in model)" if settings.offline else "live",
         "model": settings.model, "commit": _commit(),
         "when": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),

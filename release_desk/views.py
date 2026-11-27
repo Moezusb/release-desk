@@ -3,12 +3,13 @@
 from __future__ import annotations
 
 from .config import Settings
-from .documents import DOCUMENTS, LotPackage, corrections, list_records, load_lot, load_specs, read_record
+from .documents import DOCUMENTS, LotPackage, case_info, corrections, list_records, load_lot, load_specs, read_record
 
 
 def lot_context(settings: Settings, lot_id: str, pkg: LotPackage) -> dict:
     """Documents, records, corrections on file, and every specification revision."""
     return {
+        "case": case_info(settings.data_dir, lot_id),
         "documents": {k: {"filename": DOCUMENTS[k], "lines": pkg.docs[k]} for k in DOCUMENTS},
         "versions": pkg.versions,
         "corrections": [{"section": s, "version": v, "filename": DOCUMENTS[s], "applied": pkg.versions.get(s) == v,

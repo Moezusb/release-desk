@@ -1,0 +1,22 @@
+# Authored challenge: the revised mapping with one deliberate flaw (fictional).
+name: Equal row count hides a lost lot
+title: Equal row count hides a lost lot
+kind: challenge
+description: One legacy lot number is not normalised and deviations are joined row by row. The packet count still equals the batch count.
+joins:
+  lims_to_mes: {left: lims_results.lot_ref, right: mes_batches.batch_no, normalise: none}
+  deviations: {left: mes_batches.batch_no, right: qms_deviations.batch_no, rows: one_per_deviation}
+results_filter: {result_status: approved}
+fields:
+  lot_id:             {source: mes_batches.batch_no}
+  manufacture_date:   {source: mes_batches.mfg_date, date_format: "YYYY-MM-DD"}
+  tamc_cfu_g:         {source: lims_results, test_code: MIC-TAMC}
+  tymc_cfu_g:         {source: lims_results, test_code: MIC-TYMC}
+  viscosity_cp:       {source: lims_results, test_code: PHY-VIS, multiply: 1}
+  phenoxyethanol_pct: {source: lims_results, test_code: ASY-PHX, multiply: 100}
+  ph:                 {source: lims_results, test_code: PHY-PH}
+  deviation_closed:   {source: qms_deviations.status, closed_values: [Closed, "Closed - effectiveness check pending"]}
+  spec_revision:      {policy: effective_at_manufacture}
+expected_failures:
+  - "lot_id | Exactly one review packet per batch"
+  - "lot_id | Every batch finds its laboratory results"

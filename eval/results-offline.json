@@ -1,19 +1,19 @@
 {
- "bundle_version": 1,
+ "bundle_version": 2,
  "mode": "offline (scripted stand-in model)",
  "model": "scripted/offline",
- "commit": "f7656cf",
- "when": "2026-11-25 05:39 UTC",
- "repeat": 2,
+ "commit": "d12e5dd",
+ "when": "2026-11-27 01:37 UTC",
+ "repeat": 5,
  "lots": 7,
  "summary": {
   "false_clears": 0,
-  "blocking_findings_found": "18/18",
-  "clean_case_completion": "2/2",
+  "blocking_findings_found": "45/45",
+  "clean_case_completion": "5/5",
   "all_runs_correct_lots": "7/7",
   "lots_with_any_failure": [],
   "unexpected_findings": 0,
-  "mean_seconds_per_lot": 3.1,
+  "mean_seconds_per_lot": 3.2,
   "mean_input_tokens_per_lot": 0.0,
   "mean_output_tokens_per_lot": 0.0
  },
@@ -22,8 +22,8 @@
    "lot": "LC-24031",
    "expected": [],
    "expected_proposal": "release",
-   "runs_correct": 2,
-   "runs": 2,
+   "runs_correct": 5,
+   "runs": 5,
    "all_correct": true,
    "any_failure": false,
    "false_clears": 0,
@@ -40,8 +40,8 @@
     "test.tymc_cfu_g.out_of_spec"
    ],
    "expected_proposal": "hold",
-   "runs_correct": 2,
-   "runs": 2,
+   "runs_correct": 5,
+   "runs": 5,
    "all_correct": true,
    "any_failure": false,
    "false_clears": 0,
@@ -60,8 +60,8 @@
     "deviation.open"
    ],
    "expected_proposal": "hold",
-   "runs_correct": 2,
-   "runs": 2,
+   "runs_correct": 5,
+   "runs": 5,
    "all_correct": true,
    "any_failure": false,
    "false_clears": 0,
@@ -80,8 +80,8 @@
     "batch.step_unverified"
    ],
    "expected_proposal": "hold",
-   "runs_correct": 2,
-   "runs": 2,
+   "runs_correct": 5,
+   "runs": 5,
    "all_correct": true,
    "any_failure": false,
    "false_clears": 0,
@@ -101,8 +101,8 @@
     "test.phenoxyethanol_pct.out_of_spec"
    ],
    "expected_proposal": "hold",
-   "runs_correct": 2,
-   "runs": 2,
+   "runs_correct": 5,
+   "runs": 5,
    "all_correct": true,
    "any_failure": false,
    "false_clears": 0,
@@ -123,8 +123,8 @@
     "test.tymc_cfu_g.missing"
    ],
    "expected_proposal": "hold",
-   "runs_correct": 2,
-   "runs": 2,
+   "runs_correct": 5,
+   "runs": 5,
    "all_correct": true,
    "any_failure": false,
    "false_clears": 0,
@@ -145,8 +145,8 @@
     "test.viscosity_cp.out_of_spec"
    ],
    "expected_proposal": "hold",
-   "runs_correct": 2,
-   "runs": 2,
+   "runs_correct": 5,
+   "runs": 5,
    "all_correct": true,
    "any_failure": false,
    "false_clears": 0,
@@ -163,6 +163,15 @@
  ],
  "runs": [
   {
+   "schema": "release-desk.run.v2",
+   "run_id": "ede053f738f148ea8cb67cf2efd1e291",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "81c1508966ed0d14",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [],
+   "rationale": "Every test is within specification, every step carries two signatures, the documents agree on lot and dates, and no deviation is open.",
    "lot": "LC-24031",
    "run": 1,
    "findings": [],
@@ -178,14 +187,53 @@
     "model_calls": 4,
     "input_tokens": 0,
     "output_tokens": 0,
-    "seconds": 1.45
+    "seconds": 1.44
    },
    "error": null,
    "correct": true
   },
   {
+   "schema": "release-desk.run.v2",
+   "run_id": "1ffa94e2a9cb4ec9ad72cffc35173a8d",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "81c1508966ed0d14",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [],
+   "rationale": "Every test is within specification, every step carries two signatures, the documents agree on lot and dates, and no deviation is open.",
    "lot": "LC-24031",
    "run": 2,
+   "findings": [],
+   "missed": [],
+   "extra": [],
+   "proposal": "release",
+   "expected_proposal": "release",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [],
+   "notes": [],
+   "usage": {
+    "model_calls": 4,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 2.0
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "06c87be0913b478a8b24aef181d2ad50",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "81c1508966ed0d14",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [],
+   "rationale": "Every test is within specification, every step carries two signatures, the documents agree on lot and dates, and no deviation is open.",
+   "lot": "LC-24031",
+   "run": 3,
    "findings": [],
    "missed": [],
    "extra": [],
@@ -205,6 +253,91 @@
    "correct": true
   },
   {
+   "schema": "release-desk.run.v2",
+   "run_id": "48619905707240f393d14ab19272aacc",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "81c1508966ed0d14",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [],
+   "rationale": "Every test is within specification, every step carries two signatures, the documents agree on lot and dates, and no deviation is open.",
+   "lot": "LC-24031",
+   "run": 4,
+   "findings": [],
+   "missed": [],
+   "extra": [],
+   "proposal": "release",
+   "expected_proposal": "release",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [],
+   "notes": [],
+   "usage": {
+    "model_calls": 4,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 1.98
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "26d038b2c0d5442a8f0b7b263541f2a6",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "81c1508966ed0d14",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [],
+   "rationale": "Every test is within specification, every step carries two signatures, the documents agree on lot and dates, and no deviation is open.",
+   "lot": "LC-24031",
+   "run": 5,
+   "findings": [],
+   "missed": [],
+   "extra": [],
+   "proposal": "release",
+   "expected_proposal": "release",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [],
+   "notes": [],
+   "usage": {
+    "model_calls": 4,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 2.01
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "69445609e94d4c469cb9c6db52eb0f78",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "46299652c3fe6e0d",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "test.tymc_cfu_g.out_of_spec",
+     "severity": "critical",
+     "title": "Total yeast and mould count out of specification",
+     "expected": "not more than 10 CFU/g",
+     "observed": "40",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 22,
+       "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | 40 |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Total yeast and mould count out of specification.",
    "lot": "LC-24032",
    "run": 1,
    "findings": [
@@ -233,6 +366,31 @@
    "correct": true
   },
   {
+   "schema": "release-desk.run.v2",
+   "run_id": "5374217900d3461b92a2e9cc3cb7f95a",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "46299652c3fe6e0d",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "test.tymc_cfu_g.out_of_spec",
+     "severity": "critical",
+     "title": "Total yeast and mould count out of specification",
+     "expected": "not more than 10 CFU/g",
+     "observed": "40",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 22,
+       "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | 40 |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Total yeast and mould count out of specification.",
    "lot": "LC-24032",
    "run": 2,
    "findings": [
@@ -250,92 +408,6 @@
    ],
    "notes": [
     "confirm_with_laboratory"
-   ],
-   "usage": {
-    "model_calls": 7,
-    "input_tokens": 0,
-    "output_tokens": 0,
-    "seconds": 3.1
-   },
-   "error": null,
-   "correct": true
-  },
-  {
-   "lot": "LC-24033",
-   "run": 1,
-   "findings": [
-    "deviation.open"
-   ],
-   "missed": [],
-   "extra": [],
-   "proposal": "hold",
-   "expected_proposal": "hold",
-   "false_clear": false,
-   "refused_claims": 0,
-   "investigator_calls": [
-    "list_supporting_records",
-    "open_record",
-    "submit_note"
-   ],
-   "notes": [
-    "route_to_deviation_owner"
-   ],
-   "usage": {
-    "model_calls": 8,
-    "input_tokens": 0,
-    "output_tokens": 0,
-    "seconds": 3.43
-   },
-   "error": null,
-   "correct": true
-  },
-  {
-   "lot": "LC-24033",
-   "run": 2,
-   "findings": [
-    "deviation.open"
-   ],
-   "missed": [],
-   "extra": [],
-   "proposal": "hold",
-   "expected_proposal": "hold",
-   "false_clear": false,
-   "refused_claims": 0,
-   "investigator_calls": [
-    "list_supporting_records",
-    "open_record",
-    "submit_note"
-   ],
-   "notes": [
-    "route_to_deviation_owner"
-   ],
-   "usage": {
-    "model_calls": 8,
-    "input_tokens": 0,
-    "output_tokens": 0,
-    "seconds": 3.45
-   },
-   "error": null,
-   "correct": true
-  },
-  {
-   "lot": "LC-24034",
-   "run": 1,
-   "findings": [
-    "batch.step_unverified"
-   ],
-   "missed": [],
-   "extra": [],
-   "proposal": "hold",
-   "expected_proposal": "hold",
-   "false_clear": false,
-   "refused_claims": 1,
-   "investigator_calls": [
-    "read_document",
-    "submit_note"
-   ],
-   "notes": [
-    "request_missing_evidence"
    ],
    "usage": {
     "model_calls": 7,
@@ -347,6 +419,513 @@
    "correct": true
   },
   {
+   "schema": "release-desk.run.v2",
+   "run_id": "1cd8a85f4e8d462eab7634a0ac936aed",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "46299652c3fe6e0d",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "test.tymc_cfu_g.out_of_spec",
+     "severity": "critical",
+     "title": "Total yeast and mould count out of specification",
+     "expected": "not more than 10 CFU/g",
+     "observed": "40",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 22,
+       "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | 40 |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Total yeast and mould count out of specification.",
+   "lot": "LC-24032",
+   "run": 3,
+   "findings": [
+    "test.tymc_cfu_g.out_of_spec"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "submit_note"
+   ],
+   "notes": [
+    "confirm_with_laboratory"
+   ],
+   "usage": {
+    "model_calls": 7,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.11
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "01ff893ae7c148e0aae8a4f7eba94338",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "46299652c3fe6e0d",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "test.tymc_cfu_g.out_of_spec",
+     "severity": "critical",
+     "title": "Total yeast and mould count out of specification",
+     "expected": "not more than 10 CFU/g",
+     "observed": "40",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 22,
+       "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | 40 |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Total yeast and mould count out of specification.",
+   "lot": "LC-24032",
+   "run": 4,
+   "findings": [
+    "test.tymc_cfu_g.out_of_spec"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "submit_note"
+   ],
+   "notes": [
+    "confirm_with_laboratory"
+   ],
+   "usage": {
+    "model_calls": 7,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.1
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "3f9491b0846c46ca9b6c047ca3b5a9e3",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "46299652c3fe6e0d",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "test.tymc_cfu_g.out_of_spec",
+     "severity": "critical",
+     "title": "Total yeast and mould count out of specification",
+     "expected": "not more than 10 CFU/g",
+     "observed": "40",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 22,
+       "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | 40 |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Total yeast and mould count out of specification.",
+   "lot": "LC-24032",
+   "run": 5,
+   "findings": [
+    "test.tymc_cfu_g.out_of_spec"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "submit_note"
+   ],
+   "notes": [
+    "confirm_with_laboratory"
+   ],
+   "usage": {
+    "model_calls": 7,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.11
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "dacccb7a5e444704915cec28947f4db9",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "0e9b4203f32b99eb",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "deviation.open",
+     "severity": "major",
+     "title": "DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification",
+     "expected": "Closed",
+     "observed": "Open, investigation pending",
+     "evidence": [
+      {
+       "document": "deviation_log.md",
+       "line": 10,
+       "text": "| DEV-0417 | Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification | Open, investigation pending | Not yet assigned |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification.",
+   "lot": "LC-24033",
+   "run": 1,
+   "findings": [
+    "deviation.open"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "open_record",
+    "submit_note"
+   ],
+   "notes": [
+    "route_to_deviation_owner"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 2.86
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "155e4a4e96324743a350913871d846d6",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "0e9b4203f32b99eb",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "deviation.open",
+     "severity": "major",
+     "title": "DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification",
+     "expected": "Closed",
+     "observed": "Open, investigation pending",
+     "evidence": [
+      {
+       "document": "deviation_log.md",
+       "line": 10,
+       "text": "| DEV-0417 | Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification | Open, investigation pending | Not yet assigned |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification.",
+   "lot": "LC-24033",
+   "run": 2,
+   "findings": [
+    "deviation.open"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "open_record",
+    "submit_note"
+   ],
+   "notes": [
+    "route_to_deviation_owner"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.12
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "80338249634d40f7b3b5da29c7ece2c9",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "0e9b4203f32b99eb",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "deviation.open",
+     "severity": "major",
+     "title": "DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification",
+     "expected": "Closed",
+     "observed": "Open, investigation pending",
+     "evidence": [
+      {
+       "document": "deviation_log.md",
+       "line": 10,
+       "text": "| DEV-0417 | Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification | Open, investigation pending | Not yet assigned |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification.",
+   "lot": "LC-24033",
+   "run": 3,
+   "findings": [
+    "deviation.open"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "open_record",
+    "submit_note"
+   ],
+   "notes": [
+    "route_to_deviation_owner"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.39
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "71e621d094f3435a88c128f213c0ab2b",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "0e9b4203f32b99eb",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "deviation.open",
+     "severity": "major",
+     "title": "DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification",
+     "expected": "Closed",
+     "observed": "Open, investigation pending",
+     "evidence": [
+      {
+       "document": "deviation_log.md",
+       "line": 10,
+       "text": "| DEV-0417 | Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification | Open, investigation pending | Not yet assigned |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification.",
+   "lot": "LC-24033",
+   "run": 4,
+   "findings": [
+    "deviation.open"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "open_record",
+    "submit_note"
+   ],
+   "notes": [
+    "route_to_deviation_owner"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.38
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "5ca18c0f044b4510ae11ca6f3af871cd",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "0e9b4203f32b99eb",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "deviation.open",
+     "severity": "major",
+     "title": "DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification",
+     "expected": "Closed",
+     "observed": "Open, investigation pending",
+     "evidence": [
+      {
+       "document": "deviation_log.md",
+       "line": 10,
+       "text": "| DEV-0417 | Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification | Open, investigation pending | Not yet assigned |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification.",
+   "lot": "LC-24033",
+   "run": 5,
+   "findings": [
+    "deviation.open"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_supporting_records",
+    "open_record",
+    "submit_note"
+   ],
+   "notes": [
+    "route_to_deviation_owner"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.42
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "0cbf9850e0394a0fbc0a10daace9dbb3",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "1fca282f4b4aaa27",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "batch.step_unverified",
+     "severity": "major",
+     "title": "Step 7 (Fill into 50 g tubes and crimp) not verified by a second person",
+     "expected": "a second person's name",
+     "observed": "blank or unverified",
+     "evidence": [
+      {
+       "document": "batch_record.md",
+       "line": 18,
+       "text": "| 7 | Fill into 50 g tubes and crimp | A. Moreau |  |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Step 7 (Fill into 50 g tubes and crimp) not verified by a second person.",
+   "lot": "LC-24034",
+   "run": 1,
+   "findings": [
+    "batch.step_unverified"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 1,
+   "investigator_calls": [
+    "read_document",
+    "submit_note"
+   ],
+   "notes": [
+    "request_missing_evidence"
+   ],
+   "usage": {
+    "model_calls": 7,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.08
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "e536f01d4dc44554b2fb0cb023e5267c",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "1fca282f4b4aaa27",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "batch.step_unverified",
+     "severity": "major",
+     "title": "Step 7 (Fill into 50 g tubes and crimp) not verified by a second person",
+     "expected": "a second person's name",
+     "observed": "blank or unverified",
+     "evidence": [
+      {
+       "document": "batch_record.md",
+       "line": 18,
+       "text": "| 7 | Fill into 50 g tubes and crimp | A. Moreau |  |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Step 7 (Fill into 50 g tubes and crimp) not verified by a second person.",
    "lot": "LC-24034",
    "run": 2,
    "findings": [
@@ -369,12 +948,211 @@
     "model_calls": 7,
     "input_tokens": 0,
     "output_tokens": 0,
-    "seconds": 3.12
+    "seconds": 3.08
    },
    "error": null,
    "correct": true
   },
   {
+   "schema": "release-desk.run.v2",
+   "run_id": "7216993258544f9cb20d15934293c5d7",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "1fca282f4b4aaa27",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "batch.step_unverified",
+     "severity": "major",
+     "title": "Step 7 (Fill into 50 g tubes and crimp) not verified by a second person",
+     "expected": "a second person's name",
+     "observed": "blank or unverified",
+     "evidence": [
+      {
+       "document": "batch_record.md",
+       "line": 18,
+       "text": "| 7 | Fill into 50 g tubes and crimp | A. Moreau |  |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Step 7 (Fill into 50 g tubes and crimp) not verified by a second person.",
+   "lot": "LC-24034",
+   "run": 3,
+   "findings": [
+    "batch.step_unverified"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 1,
+   "investigator_calls": [
+    "read_document",
+    "submit_note"
+   ],
+   "notes": [
+    "request_missing_evidence"
+   ],
+   "usage": {
+    "model_calls": 7,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.08
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "3b4453ddf5d84d23902b14e73910f714",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "1fca282f4b4aaa27",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "batch.step_unverified",
+     "severity": "major",
+     "title": "Step 7 (Fill into 50 g tubes and crimp) not verified by a second person",
+     "expected": "a second person's name",
+     "observed": "blank or unverified",
+     "evidence": [
+      {
+       "document": "batch_record.md",
+       "line": 18,
+       "text": "| 7 | Fill into 50 g tubes and crimp | A. Moreau |  |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Step 7 (Fill into 50 g tubes and crimp) not verified by a second person.",
+   "lot": "LC-24034",
+   "run": 4,
+   "findings": [
+    "batch.step_unverified"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 1,
+   "investigator_calls": [
+    "read_document",
+    "submit_note"
+   ],
+   "notes": [
+    "request_missing_evidence"
+   ],
+   "usage": {
+    "model_calls": 7,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.08
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "be90f04cd6a8464680f95465102ec0c5",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "1fca282f4b4aaa27",
+   "versions": {},
+   "governing_revision": "03",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "batch.step_unverified",
+     "severity": "major",
+     "title": "Step 7 (Fill into 50 g tubes and crimp) not verified by a second person",
+     "expected": "a second person's name",
+     "observed": "blank or unverified",
+     "evidence": [
+      {
+       "document": "batch_record.md",
+       "line": 18,
+       "text": "| 7 | Fill into 50 g tubes and crimp | A. Moreau |  |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Step 7 (Fill into 50 g tubes and crimp) not verified by a second person.",
+   "lot": "LC-24034",
+   "run": 5,
+   "findings": [
+    "batch.step_unverified"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 1,
+   "investigator_calls": [
+    "read_document",
+    "submit_note"
+   ],
+   "notes": [
+    "request_missing_evidence"
+   ],
+   "usage": {
+    "model_calls": 7,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 2.28
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "d85cc651c8a048b5ab74efa12974d253",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "7b1b4982663e55dc",
+   "versions": {},
+   "governing_revision": "04",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "identity.lot_mismatch",
+     "severity": "critical",
+     "title": "Lot number on the certificate of analysis does not match",
+     "expected": "LC-24035",
+     "observed": "LC-24053",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 7,
+       "text": "Lot number: LC-24053"
+      }
+     ]
+    },
+    {
+     "id": "F2",
+     "rule": "test.phenoxyethanol_pct.out_of_spec",
+     "severity": "major",
+     "title": "Phenoxyethanol assay out of specification",
+     "expected": "0.80 to 1.00 % w/w",
+     "observed": "0.78",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 19,
+       "text": "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.78 |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Lot number on the certificate of analysis does not match. F2: Phenoxyethanol assay out of specification.",
    "lot": "LC-24035",
    "run": 1,
    "findings": [
@@ -403,12 +1181,52 @@
     "model_calls": 11,
     "input_tokens": 0,
     "output_tokens": 0,
-    "seconds": 4.25
+    "seconds": 4.32
    },
    "error": null,
    "correct": true
   },
   {
+   "schema": "release-desk.run.v2",
+   "run_id": "20e7d6ee54c4419b88cad5fc23d06d0b",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "7b1b4982663e55dc",
+   "versions": {},
+   "governing_revision": "04",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "identity.lot_mismatch",
+     "severity": "critical",
+     "title": "Lot number on the certificate of analysis does not match",
+     "expected": "LC-24035",
+     "observed": "LC-24053",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 7,
+       "text": "Lot number: LC-24053"
+      }
+     ]
+    },
+    {
+     "id": "F2",
+     "rule": "test.phenoxyethanol_pct.out_of_spec",
+     "severity": "major",
+     "title": "Phenoxyethanol assay out of specification",
+     "expected": "0.80 to 1.00 % w/w",
+     "observed": "0.78",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 19,
+       "text": "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.78 |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Lot number on the certificate of analysis does not match. F2: Phenoxyethanol assay out of specification.",
    "lot": "LC-24035",
    "run": 2,
    "findings": [
@@ -437,12 +1255,274 @@
     "model_calls": 11,
     "input_tokens": 0,
     "output_tokens": 0,
-    "seconds": 3.43
+    "seconds": 4.31
    },
    "error": null,
    "correct": true
   },
   {
+   "schema": "release-desk.run.v2",
+   "run_id": "fd67f155539247acae3dcc9b2a2c19d4",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "7b1b4982663e55dc",
+   "versions": {},
+   "governing_revision": "04",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "identity.lot_mismatch",
+     "severity": "critical",
+     "title": "Lot number on the certificate of analysis does not match",
+     "expected": "LC-24035",
+     "observed": "LC-24053",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 7,
+       "text": "Lot number: LC-24053"
+      }
+     ]
+    },
+    {
+     "id": "F2",
+     "rule": "test.phenoxyethanol_pct.out_of_spec",
+     "severity": "major",
+     "title": "Phenoxyethanol assay out of specification",
+     "expected": "0.80 to 1.00 % w/w",
+     "observed": "0.78",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 19,
+       "text": "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.78 |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Lot number on the certificate of analysis does not match. F2: Phenoxyethanol assay out of specification.",
+   "lot": "LC-24035",
+   "run": 3,
+   "findings": [
+    "identity.lot_mismatch",
+    "test.phenoxyethanol_pct.out_of_spec"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_corrected_documents",
+    "read_corrected_document",
+    "submit_note",
+    "list_supporting_records",
+    "open_record",
+    "submit_note"
+   ],
+   "notes": [
+    "reassess_with_corrected_document",
+    "confirm_with_laboratory"
+   ],
+   "usage": {
+    "model_calls": 11,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 4.27
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "6fce42d2c27a4e758b1b058f03d0b2ae",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "7b1b4982663e55dc",
+   "versions": {},
+   "governing_revision": "04",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "identity.lot_mismatch",
+     "severity": "critical",
+     "title": "Lot number on the certificate of analysis does not match",
+     "expected": "LC-24035",
+     "observed": "LC-24053",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 7,
+       "text": "Lot number: LC-24053"
+      }
+     ]
+    },
+    {
+     "id": "F2",
+     "rule": "test.phenoxyethanol_pct.out_of_spec",
+     "severity": "major",
+     "title": "Phenoxyethanol assay out of specification",
+     "expected": "0.80 to 1.00 % w/w",
+     "observed": "0.78",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 19,
+       "text": "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.78 |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Lot number on the certificate of analysis does not match. F2: Phenoxyethanol assay out of specification.",
+   "lot": "LC-24035",
+   "run": 4,
+   "findings": [
+    "identity.lot_mismatch",
+    "test.phenoxyethanol_pct.out_of_spec"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_corrected_documents",
+    "read_corrected_document",
+    "submit_note",
+    "list_supporting_records",
+    "open_record",
+    "submit_note"
+   ],
+   "notes": [
+    "reassess_with_corrected_document",
+    "confirm_with_laboratory"
+   ],
+   "usage": {
+    "model_calls": 11,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 4.32
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "1f63e8660d3a4adb9529fe3558c6e830",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "7b1b4982663e55dc",
+   "versions": {},
+   "governing_revision": "04",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "identity.lot_mismatch",
+     "severity": "critical",
+     "title": "Lot number on the certificate of analysis does not match",
+     "expected": "LC-24035",
+     "observed": "LC-24053",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 7,
+       "text": "Lot number: LC-24053"
+      }
+     ]
+    },
+    {
+     "id": "F2",
+     "rule": "test.phenoxyethanol_pct.out_of_spec",
+     "severity": "major",
+     "title": "Phenoxyethanol assay out of specification",
+     "expected": "0.80 to 1.00 % w/w",
+     "observed": "0.78",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 19,
+       "text": "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.78 |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Lot number on the certificate of analysis does not match. F2: Phenoxyethanol assay out of specification.",
+   "lot": "LC-24035",
+   "run": 5,
+   "findings": [
+    "identity.lot_mismatch",
+    "test.phenoxyethanol_pct.out_of_spec"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_corrected_documents",
+    "read_corrected_document",
+    "submit_note",
+    "list_supporting_records",
+    "open_record",
+    "submit_note"
+   ],
+   "notes": [
+    "reassess_with_corrected_document",
+    "confirm_with_laboratory"
+   ],
+   "usage": {
+    "model_calls": 11,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 4.24
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "c9800625f33a4cdfa5d1795629be990c",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "2ba3981481ebebba",
+   "versions": {},
+   "governing_revision": "04",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "test.tymc_cfu_g.missing",
+     "severity": "critical",
+     "title": "Total yeast and mould count: no usable result",
+     "expected": "not more than 10 CFU/g",
+     "observed": "Pending",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 22,
+       "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | Pending |"
+      }
+     ]
+    },
+    {
+     "id": "F2",
+     "rule": "dates.expiry",
+     "severity": "major",
+     "title": "Expiry date does not match the approved shelf life",
+     "expected": "2029-04 (30 months from manufacture)",
+     "observed": "2029-10",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 9,
+       "text": "Expiry: 2029-10"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Total yeast and mould count: no usable result. F2: Expiry date does not match the approved shelf life.",
    "lot": "LC-24036",
    "run": 1,
    "findings": [
@@ -467,14 +1547,194 @@
     "model_calls": 8,
     "input_tokens": 0,
     "output_tokens": 0,
-    "seconds": 3.36
+    "seconds": 3.41
    },
    "error": null,
    "correct": true
   },
   {
+   "schema": "release-desk.run.v2",
+   "run_id": "4f51f633f4aa4dee9e80d34208a9d5e4",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "2ba3981481ebebba",
+   "versions": {},
+   "governing_revision": "04",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "test.tymc_cfu_g.missing",
+     "severity": "critical",
+     "title": "Total yeast and mould count: no usable result",
+     "expected": "not more than 10 CFU/g",
+     "observed": "Pending",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 22,
+       "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | Pending |"
+      }
+     ]
+    },
+    {
+     "id": "F2",
+     "rule": "dates.expiry",
+     "severity": "major",
+     "title": "Expiry date does not match the approved shelf life",
+     "expected": "2029-04 (30 months from manufacture)",
+     "observed": "2029-10",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 9,
+       "text": "Expiry: 2029-10"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Total yeast and mould count: no usable result. F2: Expiry date does not match the approved shelf life.",
    "lot": "LC-24036",
    "run": 2,
+   "findings": [
+    "dates.expiry",
+    "test.tymc_cfu_g.missing"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_corrected_documents",
+    "read_corrected_document",
+    "submit_note"
+   ],
+   "notes": [
+    "reassess_with_corrected_document"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 2.6
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "0cb1c82ca1b94b3bba2326043ebc3192",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "2ba3981481ebebba",
+   "versions": {},
+   "governing_revision": "04",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "test.tymc_cfu_g.missing",
+     "severity": "critical",
+     "title": "Total yeast and mould count: no usable result",
+     "expected": "not more than 10 CFU/g",
+     "observed": "Pending",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 22,
+       "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | Pending |"
+      }
+     ]
+    },
+    {
+     "id": "F2",
+     "rule": "dates.expiry",
+     "severity": "major",
+     "title": "Expiry date does not match the approved shelf life",
+     "expected": "2029-04 (30 months from manufacture)",
+     "observed": "2029-10",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 9,
+       "text": "Expiry: 2029-10"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Total yeast and mould count: no usable result. F2: Expiry date does not match the approved shelf life.",
+   "lot": "LC-24036",
+   "run": 3,
+   "findings": [
+    "dates.expiry",
+    "test.tymc_cfu_g.missing"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_corrected_documents",
+    "read_corrected_document",
+    "submit_note"
+   ],
+   "notes": [
+    "reassess_with_corrected_document"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.41
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "7ac575240b64422680b82b1215a15740",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "2ba3981481ebebba",
+   "versions": {},
+   "governing_revision": "04",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "test.tymc_cfu_g.missing",
+     "severity": "critical",
+     "title": "Total yeast and mould count: no usable result",
+     "expected": "not more than 10 CFU/g",
+     "observed": "Pending",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 22,
+       "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | Pending |"
+      }
+     ]
+    },
+    {
+     "id": "F2",
+     "rule": "dates.expiry",
+     "severity": "major",
+     "title": "Expiry date does not match the approved shelf life",
+     "expected": "2029-04 (30 months from manufacture)",
+     "observed": "2029-10",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 9,
+       "text": "Expiry: 2029-10"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Total yeast and mould count: no usable result. F2: Expiry date does not match the approved shelf life.",
+   "lot": "LC-24036",
+   "run": 4,
    "findings": [
     "dates.expiry",
     "test.tymc_cfu_g.missing"
@@ -503,6 +1763,121 @@
    "correct": true
   },
   {
+   "schema": "release-desk.run.v2",
+   "run_id": "cc3af18f3be5455385a07dc3a8338207",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "2ba3981481ebebba",
+   "versions": {},
+   "governing_revision": "04",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "test.tymc_cfu_g.missing",
+     "severity": "critical",
+     "title": "Total yeast and mould count: no usable result",
+     "expected": "not more than 10 CFU/g",
+     "observed": "Pending",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 22,
+       "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | Pending |"
+      }
+     ]
+    },
+    {
+     "id": "F2",
+     "rule": "dates.expiry",
+     "severity": "major",
+     "title": "Expiry date does not match the approved shelf life",
+     "expected": "2029-04 (30 months from manufacture)",
+     "observed": "2029-10",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 9,
+       "text": "Expiry: 2029-10"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Total yeast and mould count: no usable result. F2: Expiry date does not match the approved shelf life.",
+   "lot": "LC-24036",
+   "run": 5,
+   "findings": [
+    "dates.expiry",
+    "test.tymc_cfu_g.missing"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "list_corrected_documents",
+    "read_corrected_document",
+    "submit_note"
+   ],
+   "notes": [
+    "reassess_with_corrected_document"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.38
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "cabbcac71e6946938fec68f0afe168a2",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "a2acb520c2b6c498",
+   "versions": {},
+   "governing_revision": "04",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "spec.wrong_revision",
+     "severity": "major",
+     "title": "Certificate tested against the wrong specification revision",
+     "expected": "rev 04, in force from 2026-10-01",
+     "observed": "rev 03",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 10,
+       "text": "Tested against specification: FH-DBC-050 rev 03"
+      },
+      {
+       "document": "batch_record.md",
+       "line": 7,
+       "text": "Manufacture date: 2026-10-15"
+      }
+     ]
+    },
+    {
+     "id": "F2",
+     "rule": "test.viscosity_cp.out_of_spec",
+     "severity": "major",
+     "title": "Viscosity (Brookfield, 25 \u00b0C) out of specification",
+     "expected": "32,000 to 45,000 cP",
+     "observed": "31,400",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 17,
+       "text": "| Viscosity, Brookfield RVT sp. 6, 10 rpm, 25 \u00b0C (cP) | 30,000 to 45,000 | 31,400 |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Certificate tested against the wrong specification revision. F2: Viscosity (Brookfield, 25 \u00b0C) out of specification.",
    "lot": "LC-24037",
    "run": 1,
    "findings": [
@@ -527,12 +1902,57 @@
     "model_calls": 8,
     "input_tokens": 0,
     "output_tokens": 0,
-    "seconds": 3.38
+    "seconds": 3.4
    },
    "error": null,
    "correct": true
   },
   {
+   "schema": "release-desk.run.v2",
+   "run_id": "3d2036af81714f978f99b94c2273c69b",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "a2acb520c2b6c498",
+   "versions": {},
+   "governing_revision": "04",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "spec.wrong_revision",
+     "severity": "major",
+     "title": "Certificate tested against the wrong specification revision",
+     "expected": "rev 04, in force from 2026-10-01",
+     "observed": "rev 03",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 10,
+       "text": "Tested against specification: FH-DBC-050 rev 03"
+      },
+      {
+       "document": "batch_record.md",
+       "line": 7,
+       "text": "Manufacture date: 2026-10-15"
+      }
+     ]
+    },
+    {
+     "id": "F2",
+     "rule": "test.viscosity_cp.out_of_spec",
+     "severity": "major",
+     "title": "Viscosity (Brookfield, 25 \u00b0C) out of specification",
+     "expected": "32,000 to 45,000 cP",
+     "observed": "31,400",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 17,
+       "text": "| Viscosity, Brookfield RVT sp. 6, 10 rpm, 25 \u00b0C (cP) | 30,000 to 45,000 | 31,400 |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Certificate tested against the wrong specification revision. F2: Viscosity (Brookfield, 25 \u00b0C) out of specification.",
    "lot": "LC-24037",
    "run": 2,
    "findings": [
@@ -557,7 +1977,232 @@
     "model_calls": 8,
     "input_tokens": 0,
     "output_tokens": 0,
-    "seconds": 3.36
+    "seconds": 3.42
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "7264bd229511462a99158a5445e4a11f",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "a2acb520c2b6c498",
+   "versions": {},
+   "governing_revision": "04",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "spec.wrong_revision",
+     "severity": "major",
+     "title": "Certificate tested against the wrong specification revision",
+     "expected": "rev 04, in force from 2026-10-01",
+     "observed": "rev 03",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 10,
+       "text": "Tested against specification: FH-DBC-050 rev 03"
+      },
+      {
+       "document": "batch_record.md",
+       "line": 7,
+       "text": "Manufacture date: 2026-10-15"
+      }
+     ]
+    },
+    {
+     "id": "F2",
+     "rule": "test.viscosity_cp.out_of_spec",
+     "severity": "major",
+     "title": "Viscosity (Brookfield, 25 \u00b0C) out of specification",
+     "expected": "32,000 to 45,000 cP",
+     "observed": "31,400",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 17,
+       "text": "| Viscosity, Brookfield RVT sp. 6, 10 rpm, 25 \u00b0C (cP) | 30,000 to 45,000 | 31,400 |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Certificate tested against the wrong specification revision. F2: Viscosity (Brookfield, 25 \u00b0C) out of specification.",
+   "lot": "LC-24037",
+   "run": 3,
+   "findings": [
+    "spec.wrong_revision",
+    "test.viscosity_cp.out_of_spec"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "get_specification",
+    "get_specification",
+    "submit_note"
+   ],
+   "notes": [
+    "request_corrected_document"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.53
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "3690bd927f054dc0a26e77b31a7c5ecc",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "a2acb520c2b6c498",
+   "versions": {},
+   "governing_revision": "04",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "spec.wrong_revision",
+     "severity": "major",
+     "title": "Certificate tested against the wrong specification revision",
+     "expected": "rev 04, in force from 2026-10-01",
+     "observed": "rev 03",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 10,
+       "text": "Tested against specification: FH-DBC-050 rev 03"
+      },
+      {
+       "document": "batch_record.md",
+       "line": 7,
+       "text": "Manufacture date: 2026-10-15"
+      }
+     ]
+    },
+    {
+     "id": "F2",
+     "rule": "test.viscosity_cp.out_of_spec",
+     "severity": "major",
+     "title": "Viscosity (Brookfield, 25 \u00b0C) out of specification",
+     "expected": "32,000 to 45,000 cP",
+     "observed": "31,400",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 17,
+       "text": "| Viscosity, Brookfield RVT sp. 6, 10 rpm, 25 \u00b0C (cP) | 30,000 to 45,000 | 31,400 |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Certificate tested against the wrong specification revision. F2: Viscosity (Brookfield, 25 \u00b0C) out of specification.",
+   "lot": "LC-24037",
+   "run": 4,
+   "findings": [
+    "spec.wrong_revision",
+    "test.viscosity_cp.out_of_spec"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "get_specification",
+    "get_specification",
+    "submit_note"
+   ],
+   "notes": [
+    "request_corrected_document"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.41
+   },
+   "error": null,
+   "correct": true
+  },
+  {
+   "schema": "release-desk.run.v2",
+   "run_id": "11ba3273e8814a1f8765eb8e48ce5d1b",
+   "mode": "offline",
+   "model": "scripted/offline",
+   "document_fingerprint": "a2acb520c2b6c498",
+   "versions": {},
+   "governing_revision": "04",
+   "findings_detail": [
+    {
+     "id": "F1",
+     "rule": "spec.wrong_revision",
+     "severity": "major",
+     "title": "Certificate tested against the wrong specification revision",
+     "expected": "rev 04, in force from 2026-10-01",
+     "observed": "rev 03",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 10,
+       "text": "Tested against specification: FH-DBC-050 rev 03"
+      },
+      {
+       "document": "batch_record.md",
+       "line": 7,
+       "text": "Manufacture date: 2026-10-15"
+      }
+     ]
+    },
+    {
+     "id": "F2",
+     "rule": "test.viscosity_cp.out_of_spec",
+     "severity": "major",
+     "title": "Viscosity (Brookfield, 25 \u00b0C) out of specification",
+     "expected": "32,000 to 45,000 cP",
+     "observed": "31,400",
+     "evidence": [
+      {
+       "document": "certificate_of_analysis.md",
+       "line": 17,
+       "text": "| Viscosity, Brookfield RVT sp. 6, 10 rpm, 25 \u00b0C (cP) | 30,000 to 45,000 | 31,400 |"
+      }
+     ]
+    }
+   ],
+   "rationale": "Blocking findings: F1: Certificate tested against the wrong specification revision. F2: Viscosity (Brookfield, 25 \u00b0C) out of specification.",
+   "lot": "LC-24037",
+   "run": 5,
+   "findings": [
+    "spec.wrong_revision",
+    "test.viscosity_cp.out_of_spec"
+   ],
+   "missed": [],
+   "extra": [],
+   "proposal": "hold",
+   "expected_proposal": "hold",
+   "false_clear": false,
+   "refused_claims": 0,
+   "investigator_calls": [
+    "get_specification",
+    "get_specification",
+    "submit_note"
+   ],
+   "notes": [
+    "request_corrected_document"
+   ],
+   "usage": {
+    "model_calls": 8,
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "seconds": 3.16
    },
    "error": null,
    "correct": true

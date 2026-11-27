@@ -1,7 +1,11 @@
 # Proposed mapping, version 1, as submitted by the implementation vendor (fictional).
 name: Vendor mapping v1
+title: First delivery
+kind: delivery
+description: The vendor's first proposal, as submitted. Several problems at once, the way they usually arrive.
 joins:
   lims_to_mes: {left: lims_results.lot_ref, right: mes_batches.batch_no, normalise: none}
+  deviations: {left: mes_batches.batch_no, right: qms_deviations.batch_no, rows: one_per_deviation}
 results_filter: none
 fields:
   lot_id:             {source: mes_batches.batch_no}

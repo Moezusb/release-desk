@@ -24,7 +24,8 @@ Most lots are clean. The reviewer's time goes into proving that, so less of it i
 | Propose release or hold | Model | No (it is only a proposal) |
 | Place a lot on hold | Tool | No. Holding is safe and reversible |
 | Release a lot | Tool | **Yes, a named reviewer, every time** |
-| Reject a lot, or release over a hold | Person | It is the person |
+| Confirm a hold or reject a lot | Person | It is the person |
+| Release over a hold | Nobody | Not offered. A hold is lifted by better evidence and a reassessment |
 | Apply a corrected document | Person | It is the person; earlier decisions are voided and kept |
 
 ## What counts as an exception
@@ -45,6 +46,7 @@ Rules that apply to everything:
 - The person who performs a step may not be the one who verifies it.
 - A lot is judged by the specification revision in force on its date of manufacture, whatever revision its certificate names.
 - A decision is valid only for the documents it was made on. When a document changes, the lot is reassessed.
+- An approval is valid only for the assessment the reviewer saw. If the findings, proposal or second reading change, the approval no longer authorises a release.
 
 ## When it would be ready for real lots
 
@@ -67,13 +69,29 @@ The golden set should come from real history: lots that were released, held and 
 | Guardrail | Issues found after release that the desk did not raise; audit findings |
 | Benefit | Reviewer time per lot; time from documents complete to decision; review backlog |
 | Quality | False alarms per lot; claims refused by the evidence check |
-| Trust | How often reviewers overrule the desk, and their reasons |
+| Trust | How often reviewers refuse a proposed release or reject a held lot, and their reasons |
 
 Baseline the manual process for a few weeks first. Without a before, there is no after.
 
 ## Data mappings
 
 Before anything is built on a client's systems, a vendor's mapping is checked against the source dictionary, the canonical fields and the documents. Each check ends as validated, failed, or needs business confirmation. A mapping with any failure is not acceptable; one with open confirmations is acceptable once a named owner confirms them.
+
+## Accepting the delivery
+
+The desk's output is accepted by a separate scorer (`acceptance_lab/`) that does not import the desk. It reads labels written by hand before any run, a result bundle, and the source documents, and applies five gates, all required:
+
+| Gate | Rule |
+|---|---|
+| Coverage and identity | Every labelled lot appears once per repeat, with a unique run ID, on the original documents, without errors |
+| No unsafe clearance | No release is proposed for a lot labelled hold |
+| Exception detection with evidence | Every labelled exception is present at the right severity, citing a line about the right attribute |
+| Useful completion | The clean lot is proposed for release. Holding everything is not a pass |
+| Reviewer burden | No unexpected findings |
+
+Passing every gate on a scripted model earns "further evidence required", not a pilot. Only a live run can earn "ready for a limited, supervised pilot", and even that is a recommendation for the people who own the process, not a decision.
+
+Two planted failures run alongside every build to show the scorer refuses what it should. Business UAT tasks test whether a reviewer can use the desk correctly; they stay "not yet run" until a real reviewer runs them.
 
 ## Not in this version
 

@@ -77,6 +77,13 @@ def load_lot(data_dir: Path, lot_id: str, versions: dict[str, str] | None = None
     return LotPackage(lot_id=lot_id, docs=docs, versions=versions)
 
 
+def case_info(data_dir: Path, lot_id: str) -> dict:
+    """The short human title and summary a reviewer sees in the queue."""
+    path = data_dir / "lots" / lot_id / "case.yaml"
+    info = yaml.safe_load(path.read_text(encoding="utf-8")) if path.exists() else {}
+    return {"title": info.get("title", lot_id), "summary": info.get("summary", ""), "product_code": info.get("product_code", "")}
+
+
 def list_records(data_dir: Path, lot_id: str) -> list[str]:
     folder = data_dir / "lots" / lot_id / "records"
     return sorted(p.name for p in folder.glob("*.md")) if folder.is_dir() else []

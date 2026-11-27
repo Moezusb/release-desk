@@ -10,13 +10,15 @@ yes, and no decision outlives the evidence it was made on.
 from __future__ import annotations
 
 import asyncio
+import hashlib
+import json
 from collections.abc import Awaitable, Callable
 
 from continuum.agent.approval import ToolApprovalDecision, ToolApprovalRequest
 
 from . import agents, meter
 from .config import Settings
-from .documents import DOCUMENTS, corrections, load_lot, load_spec, load_specs
+from .documents import DOCUMENTS, case_info, corrections, load_lot, load_spec, load_specs
 from .evidence import verify
 from .investigate import investigate
 from .rules import applicable_spec, evaluate
@@ -30,9 +32,8 @@ HUMAN_ACTIONS = {
     "deny_release": "Refused the proposed release; lot held",
     "confirm_hold": "Confirmed the hold",
     "reject": "Rejected the lot",
-    "release_over_hold": "Released the lot over the desk's hold",
 }
-NEEDS_REASON = {"deny_release", "reject", "release_over_hold"}
+NEEDS_REASON = {"deny_release", "reject"}
 BUSY = {"reading", "checking", "investigating", "proposing"}
 
 
@@ -49,6 +50,19 @@ async def deferring_approver(review: LotReview, request: ToolApprovalRequest) ->
     return ToolApprovalDecision(approved=False, deferred=True, reason="evaluation run: nobody to approve")
 
 
+def assessment_snapshot(review: LotReview) -> str:
+    """A hash of exactly what a reviewer is shown when asked to approve a release:
+    the documents, the findings, the proposal and the second reading. An approval
+    is bound to this; if any part changes, the approval no longer applies."""
+    body = {
+        "documents": review.fingerprint,
+        "findings": [{k: f[k] for k in ("id", "rule", "severity", "observed")} for f in review.findings],
+        "proposal": {k: (review.proposal or {}).get(k) for k in ("decision", "rationale", "finding_ids")},
+        "second_reading": review.second_reading,
+    }
+    return hashlib.sha256(json.dumps(body, sort_keys=True).encode()).hexdigest()[:16]
+
+
 def current_fingerprint(settings: Settings, review: LotReview) -> str:
     return load_lot(settings.data_dir, review.lot_id, review.versions).fingerprint()
 
@@ -61,6 +75,8 @@ async def run_review(settings: Settings, store: Store, lot_id: str, approver: Ap
     meter.install()
     review = store.reset(lot_id)
     review.mode = "offline (scripted stand-in model)" if settings.offline else "live"
+    info = case_info(settings.data_dir, lot_id)
+    review.title, review.summary = info["title"], info["summary"]
     review.model = settings.model
 
     def stage(name: str) -> None:
@@ -147,9 +163,19 @@ async def _propose(settings: Settings, store: Store, review: LotReview, approver
         # is a judgment about a proposal, not a licence to skip rules.
         if lot_id != review.lot_id:
             return f"REFUSED: this review is for {review.lot_id}, not {lot_id}."
-        if review.blocking or evidence_changed(settings, review):
+        approved = (review.decision or {}).get("snapshot")
+        proposed = review.proposal or {}
+        why = None
+        if review.blocking:
+            why = "blocking findings are open"
+        elif evidence_changed(settings, review):
+            why = "the documents changed after review"
+        elif approved != assessment_snapshot(review):
+            why = "the assessment changed after it was approved"
+        elif (rationale, sorted(finding_ids)) != (proposed.get("rationale"), sorted(proposed.get("finding_ids") or [])):
+            why = "the release request differs from the proposal that was approved"
+        if why:
             review.status = "on hold"
-            why = "blocking findings are open" if review.blocking else "the documents changed after review"
             if review.decision:
                 review.decision["outcome"] = f"refused by the release tool: {why}"
             review.log("release tool", f"Refused: {why}. The lot stays on hold.")
@@ -168,6 +194,7 @@ async def _propose(settings: Settings, store: Store, review: LotReview, approver
         set_reading(review, reading)
         review.log("second reader", "Agrees." if reading.agrees else "Disagrees: " + " ".join(reading.concerns))
         review.stage = "awaiting reviewer"
+        review.approval_snapshot = assessment_snapshot(review)
         review.log("desk", "Waiting for a named reviewer to approve or refuse the release.")
         store.save(review)
         return await approver(review, request)
@@ -227,12 +254,15 @@ def decide(settings: Settings, store: Store, review: LotReview, action: str, rev
     waiting = bool(review.pending and not review.pending.done())
     if action in ("approve_release", "deny_release") and not waiting:
         return "There is no release proposal waiting for approval."
-    if action in ("confirm_hold", "reject", "release_over_hold"):
+    if action in ("confirm_hold", "reject"):
         if waiting or review.status != "on hold" or review.decision:
             return "This lot is not waiting for a hold decision."
 
+    if action == "approve_release" and review.approval_snapshot != assessment_snapshot(review):
+        return "The assessment changed while you were reviewing it. Reload and review it again."
     review.decision = {"action": action, "reviewer": reviewer, "reason": reason, "at": now(),
-                       "override": action in ("deny_release", "release_over_hold"), "fingerprint": review.fingerprint}
+                       "override": action == "deny_release", "fingerprint": review.fingerprint,
+                       "snapshot": assessment_snapshot(review)}
     review.log(f"reviewer: {reviewer}", HUMAN_ACTIONS[action] + (f". Reason: {reason}" if reason else "."))
     store.record_decision(review, {**review.decision, "proposal": review.proposal["decision"] if review.proposal else None,
                                    "versions": review.versions,
@@ -243,7 +273,7 @@ def decide(settings: Settings, store: Store, review: LotReview, action: str, rev
     elif action == "deny_release":
         review.pending.set_result(ToolApprovalDecision(approved=False, reviewer=reviewer, reason=reason))
     else:
-        review.status = {"confirm_hold": "on hold", "reject": "rejected", "release_over_hold": "released"}[action]
+        review.status = {"confirm_hold": "on hold", "reject": "rejected"}[action]
         review.stage = "decided"
     store.save(review)
     return None

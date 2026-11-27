@@ -19,17 +19,16 @@ from continuum.agent.approval import ToolApprovalDecision
 
 from .config import ROOT, Settings
 from .documents import list_lots, load_lot
-from .mapping import check_all
+from acceptance_lab.mapping import check_all
 from .pipeline import HUMAN_ACTIONS, apply_correction, decide, run_review
 from .store import Store, metrics
 from .views import lot_context
 
 REVIEWER = "Demo reviewer"
-# What the scripted reviewer does on the first review of each lot. Lots not listed are left waiting.
+# What the scripted reviewer does on the first review of each lot. Lots not listed are
+# left waiting for the visitor, so the demo opens with real decisions still to make.
 FIRST = {
-    "LC-24031": ("approve_release", ""),
     "LC-24032": ("reject", "Yeast and mould count four times the limit. OOS investigation opened; lot to be destroyed."),
-    "LC-24033": ("confirm_hold", ""),
     "LC-24036": ("confirm_hold", ""),
 }
 # Lots whose correction is applied and reassessed in the recording, and what the reviewer does after.
@@ -43,7 +42,8 @@ def _approver(script: dict):
         action = script.get(review.lot_id)
         if action == "approve_release":
             review.decision = {"action": action, "reviewer": REVIEWER, "reason": "", "at": review.proposal["at"],
-                               "override": False, "fingerprint": review.fingerprint}
+                               "override": False, "fingerprint": review.fingerprint,
+                               "snapshot": review.approval_snapshot}
             review.log(f"reviewer: {REVIEWER}", HUMAN_ACTIONS[action] + ".")
             return ToolApprovalDecision(approved=True, reviewer=REVIEWER)
         review.deferred = True
@@ -81,7 +81,7 @@ async def export(settings: Settings) -> Path:
         out["previews"][lot] = _snapshot(settings, side, lot)
 
     reviews = [store.get(lot) for lot in out["lots"]]
-    out["queue"] = [{"lot_id": r.lot_id, "stage": r.stage, "status": r.status, "running": False,
+    out["queue"] = [{"lot_id": r.lot_id, "title": r.title, "summary": r.summary, "stage": r.stage, "status": r.status, "running": False,
                      "proposal": (r.proposal or {}).get("decision"), "blocking": len(r.blocking),
                      "awaiting_release_approval": False, "decision": (r.decision or {}).get("action"),
                      "needs_reassessment": False} for r in reviews]

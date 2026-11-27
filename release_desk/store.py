@@ -39,6 +39,9 @@ class LotReview:
     investigation: dict = field(default_factory=lambda: {"calls": [], "notes": []})
     history: list[dict] = field(default_factory=list)  # earlier reviews of this lot, never deleted
     usage: dict = field(default_factory=dict)  # seconds and tokens for this review
+    approval_snapshot: str = ""  # what the reviewer was shown when asked to approve
+    title: str = ""
+    summary: str = ""
     pending: asyncio.Future | None = field(default=None, repr=False, compare=False)
 
     def superseded_reason(self) -> str | None:

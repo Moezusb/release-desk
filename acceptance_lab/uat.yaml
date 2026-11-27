@@ -1,0 +1,29 @@
+# Business user acceptance tasks. Each is something a Quality reviewer must be
+# able to do with the desk, observed rather than assumed. Status starts at
+# "not yet run": results belong to real sessions with real reviewers.
+
+tasks:
+  - id: UAT-01
+    task: Find the evidence behind an exception
+    scenario: Open LC-24032 and show which line of which document proves the yeast and mould result.
+    pass_when: The reviewer reaches the highlighted certificate line in two clicks or fewer, without help.
+  - id: UAT-02
+    task: Recognise that information is missing
+    scenario: Open LC-24036 and say what the desk could not establish.
+    pass_when: The reviewer names the pending result and does not read it as a pass.
+  - id: UAT-03
+    task: Tell a wrong revision from a failed test
+    scenario: Open LC-24037 and explain why a viscosity of 31,400 fails.
+    pass_when: The reviewer identifies the governing revision and its limit, not the one printed on the certificate.
+  - id: UAT-04
+    task: Understand what an approval authorises
+    scenario: On LC-24031, before approving, say what will happen when you click Approve release.
+    pass_when: The reviewer states that the release tool rechecks the rules and the documents, and that the decision is signed.
+  - id: UAT-05
+    task: Resume a case after new evidence
+    scenario: On LC-24035, apply the corrected certificate and continue the review.
+    pass_when: The reviewer sees that the earlier decision is kept but void, and that one exception remains.
+  - id: UAT-06
+    task: Know the next owner
+    scenario: On LC-24033, say who must act next and why.
+    pass_when: The reviewer routes the case to the deviation owner, citing the investigator's note.

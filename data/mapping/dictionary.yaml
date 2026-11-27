@@ -3,7 +3,7 @@
 
 lims_results:
   key: lot_ref
-  key_format: "LC-NNNNN; lots migrated before 2026-10-10 may appear as LCNNNNN"
+  key_format: "LC-NNNNN; lots migrated from the old system may appear as LCNNNNN"
   status_column: result_status
   status_values:
     approved: "Result approved by the laboratory"
@@ -23,6 +23,7 @@ mes_batches:
   key_format: "LC-NNNNN"
   columns:
     mfg_date: {meaning: "Date the batch was manufactured", event: manufacture, date_convention: "YYYY-MM-DD"}
+    mfg_date_text: {meaning: "Date the batch was manufactured, as keyed by the operator", event: manufacture, date_convention: "not documented"}
     packed_on: {meaning: "Date the batch was packed", event: packing, date_convention: "DD/MM/YYYY"}
     yield_pct: {meaning: "Actual over theoretical quantity", unit: "%"}
 

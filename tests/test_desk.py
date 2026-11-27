@@ -151,6 +151,21 @@ async def test_approved_release_goes_through(settings):
     assert json.loads(log[-1])["reviewer"] == "T. Tester"
 
 
+async def test_an_approval_is_bound_to_the_assessment_the_reviewer_saw(settings):
+    store = Store(settings.runs_dir)
+    task = asyncio.create_task(run_review(settings, store, "LC-24031", pending_approver))
+    for _ in range(100):
+        await asyncio.sleep(0.05)
+        r = store.get("LC-24031")
+        if r.pending and not r.pending.done():
+            break
+    r.second_reading = {**r.second_reading, "agrees": False, "concerns": ["changed after the reviewer looked"]}
+    assert decide(settings, store, r, "approve_release", "T. Tester").startswith("The assessment changed")
+    assert decide(settings, store, r, "deny_release", "T. Tester", "stale") is None
+    review = await task
+    assert review.status == "on hold"
+
+
 class RecklessProvider(OfflineProvider):
     """Reads like the offline model, but always proposes release."""
 
@@ -170,7 +185,8 @@ async def test_even_an_approved_release_is_refused_when_findings_are_open(settin
     store = Store(settings.runs_dir)
 
     async def rubber_stamp(review, request):
-        review.decision = {"action": "approve_release", "reviewer": "Rubber Stamp", "reason": "", "at": "", "override": False}
+        review.decision = {"action": "approve_release", "reviewer": "Rubber Stamp", "reason": "", "at": "", "override": False,
+                           "snapshot": review.approval_snapshot}
         return ToolApprovalDecision(approved=True, reviewer="Rubber Stamp")
 
     review = await run_review(settings, store, "LC-24032", rubber_stamp)
@@ -186,7 +202,8 @@ async def test_decisions_need_a_name_and_overrides_need_a_reason(settings):
     store = Store(settings.runs_dir)
     review = await run_review(settings, store, "LC-24033", deferring_approver)
     assert decide(settings, store, review, "reject", "", "x") == "A decision needs the reviewer's name."
-    assert decide(settings, store, review, "release_over_hold", "T. Tester") == "This decision needs a reason."
+    assert decide(settings, store, review, "deny_release", "T. Tester") == "This decision needs a reason."
+    assert decide(settings, store, review, "release_over_hold", "T. Tester", "x") == "Unknown action."  # removed on purpose
     assert decide(settings, store, review, "approve_release", "T. Tester") == "There is no release proposal waiting for approval."
     assert decide(settings, store, review, "confirm_hold", "T. Tester") is None
     assert decide(settings, store, review, "reject", "T. Tester", "late") == "This lot is not waiting for a hold decision."
@@ -221,7 +238,7 @@ async def test_a_correction_voids_the_old_decision_and_keeps_it_on_record(settin
 
 
 def test_mapping_v1_is_blocked_and_v2_needs_one_confirmation(settings):
-    from release_desk.mapping import FAILED, check
+    from acceptance_lab.mapping import FAILED, check
 
     v1, v2 = check(settings.data_dir, "vendor-v1.yaml"), check(settings.data_dir, "vendor-v2.yaml")
     failed = {(r["field"], r["check"]) for r in v1["rows"] if r["status"] == FAILED}

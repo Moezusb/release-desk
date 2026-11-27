@@ -1,0 +1,44 @@
+# Reference labels for the acceptance lab.
+#
+# Written by hand from the lot documents in data/lots, not computed by the
+# Release Desk rules, and read by an evaluator that does not import
+# release_desk. For each lot: the exceptions a careful reviewer would raise,
+# how serious each is, which line of which document proves it, and the
+# proposal that should follow.
+#
+#   cite:      the document the evidence must come from
+#   mentions:  a phrase the cited line must contain (the right attribute)
+#   shows:     a value the cited line must contain (the right number), if any
+
+dataset: fernhollow-seven-lots-v2
+labels:
+  LC-24031:
+    proposal: release
+    exceptions: []
+  LC-24032:
+    proposal: hold
+    exceptions:
+      - {rule: test.tymc_cfu_g.out_of_spec, severity: critical, cite: certificate_of_analysis.md, mentions: "yeast and mould", shows: "40"}
+  LC-24033:
+    proposal: hold
+    exceptions:
+      - {rule: deviation.open, severity: major, cite: deviation_log.md, mentions: "DEV-0417", shows: "Open"}
+  LC-24034:
+    proposal: hold
+    exceptions:
+      - {rule: batch.step_unverified, severity: major, cite: batch_record.md, mentions: "Fill into 50 g tubes"}
+  LC-24035:
+    proposal: hold
+    exceptions:
+      - {rule: identity.lot_mismatch, severity: critical, cite: certificate_of_analysis.md, mentions: "Lot number", shows: "LC-24053"}
+      - {rule: test.phenoxyethanol_pct.out_of_spec, severity: major, cite: certificate_of_analysis.md, mentions: "Phenoxyethanol", shows: "0.78"}
+  LC-24036:
+    proposal: hold
+    exceptions:
+      - {rule: test.tymc_cfu_g.missing, severity: critical, cite: certificate_of_analysis.md, mentions: "yeast and mould", shows: "Pending"}
+      - {rule: dates.expiry, severity: major, cite: certificate_of_analysis.md, mentions: "Expiry", shows: "2029-10"}
+  LC-24037:
+    proposal: hold
+    exceptions:
+      - {rule: spec.wrong_revision, severity: major, cite: certificate_of_analysis.md, mentions: "specification", shows: "rev 03"}
+      - {rule: test.viscosity_cp.out_of_spec, severity: major, cite: certificate_of_analysis.md, mentions: "Viscosity", shows: "31,400"}

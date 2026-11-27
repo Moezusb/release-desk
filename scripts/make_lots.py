@@ -54,24 +54,31 @@ BASE = {
 }
 
 LOTS = {
-    "LC-24031": {"mfg": "2026-09-03", "expiry": "2029-03",
+    "LC-24031": {"title": "A complete review packet", "summary": "Every result within its limits, every step signed twice, nothing left open.",
+                 "mfg": "2026-09-03", "expiry": "2029-03",
                  "note": "Clean lot. Everything within specification."},
-    "LC-24032": {"mfg": "2026-09-10", "expiry": "2029-03", "tymc_cfu_g": "40",
+    "LC-24032": {"title": "A result above its limit", "summary": "Yeast and mould at four times the limit.",
+                 "mfg": "2026-09-10", "expiry": "2029-03", "tymc_cfu_g": "40",
                  "note": "Yeast and mould count above the limit."},
-    "LC-24033": {"mfg": "2026-09-17", "expiry": "2029-03",
+    "LC-24033": {"title": "An unresolved deviation", "summary": "Every result passes, but a temperature deviation is still open.",
+                 "mfg": "2026-09-17", "expiry": "2029-03",
                  "deviations": [
                      ("DEV-0412", "Label roll changed mid-run; reconciliation completed", "Closed", "None required"),
                      ("DEV-0417", "Mixer temperature reached 81 °C for 6 minutes during emulsification", "Open, investigation pending", "Not yet assigned"),
                  ],
                  "note": "Results in specification, but a deviation is still open."},
-    "LC-24034": {"mfg": "2026-09-24", "expiry": "2029-03", "ph": "6.0", "unverified_step": 7,
+    "LC-24034": {"title": "A missing second signature", "summary": "The filling step was never verified, and pH sits exactly on its limit.",
+                 "mfg": "2026-09-24", "expiry": "2029-03", "ph": "6.0", "unverified_step": 7,
                  "note": "Filling step not verified by a second person. pH sits exactly on the upper limit, which passes."},
-    "LC-24035": {"mfg": "2026-10-01", "expiry": "2029-04", "spec_rev": "04", "phenoxyethanol_pct": "0.78",
+    "LC-24035": {"title": "Two records that disagree", "summary": "A transposed lot number and a low preservative assay.",
+                 "mfg": "2026-10-01", "expiry": "2029-04", "spec_rev": "04", "phenoxyethanol_pct": "0.78",
                  "coa_lot_override": "LC-24053",
                  "note": "Certificate carries a transposed lot number, and the preservative assay is low."},
-    "LC-24036": {"mfg": "2026-10-08", "expiry": "2029-10", "spec_rev": "04", "tymc_cfu_g": "Pending",
+    "LC-24036": {"title": "A result still pending", "summary": "A microbiology result not yet reported, and an expiry set on the wrong shelf life.",
+                 "mfg": "2026-10-08", "expiry": "2029-10", "spec_rev": "04", "tymc_cfu_g": "Pending",
                  "note": "Yeast and mould result not yet reported, and the expiry date uses 36 months instead of 30."},
-    "LC-24037": {"mfg": "2026-10-15", "expiry": "2029-04", "spec_rev": "03", "viscosity_cp": "31,400",
+    "LC-24037": {"title": "The wrong revision", "summary": "Tested against a retired specification; the one in force says otherwise.",
+                 "mfg": "2026-10-15", "expiry": "2029-04", "spec_rev": "03", "viscosity_cp": "31,400",
                  "note": "Tested against the retired revision 03. Viscosity passes rev 03 and fails rev 04, which governs this lot."},
 }
 # Correct expiries: 2026-09 + 30 months = 2029-03; 2026-10 + 30 months = 2029-04.
@@ -275,6 +282,8 @@ def main() -> None:
             for name, lines in RECORDS[lot].items():
                 (folder / "records" / name).write_text("\n".join(lines) + "\n", encoding="utf-8")
         (folder / "README.md").write_text(readme, encoding="utf-8")
+        (folder / "case.yaml").write_text(
+            f"title: {p['title']}\nsummary: {p['summary']}\nproduct_code: {p['product_code']}\n", encoding="utf-8")
         print("wrote", lot)
 
 

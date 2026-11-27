@@ -24,10 +24,11 @@ requires = ["setuptools>=69"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-include = ["release_desk*", "web*"]
+include = ["release_desk*", "web*", "acceptance_lab*"]
 
 [tool.setuptools.package-data]
 release_desk = ["fixtures/*.json"]
+acceptance_lab = ["*.yaml"]
 web = ["static/*"]
 
 [tool.pytest.ini_options]

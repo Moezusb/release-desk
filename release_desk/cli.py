@@ -2,7 +2,7 @@
 
     release-desk serve                 the reviewer's desk in your browser
     release-desk review LC-24031       review one lot in the terminal (or: all)
-    release-desk eval --repeat 3       score every lot against data/golden.yaml, 3 clean runs each
+    release-desk eval --repeat 5       score every lot against data/golden.yaml, 5 clean runs each
     release-desk check-mapping         check the vendor data mappings in data/mapping
     release-desk export-replay         write docs/replay.json for the static demo
 
@@ -32,7 +32,8 @@ async def terminal_approver(review: LotReview, request) -> ToolApprovalDecision:
         print("  Second reader:", "agrees." if r["agrees"] else "disagrees. " + " ".join(r["concerns"]))
     answer = (await asyncio.to_thread(input, "  Approve release? Type your name to approve, or press Enter to refuse: ")).strip()
     if answer:
-        review.decision = {"action": "approve_release", "reviewer": answer, "reason": "", "at": review.proposal["at"], "override": False}
+        review.decision = {"action": "approve_release", "reviewer": answer, "reason": "", "at": review.proposal["at"],
+                           "override": False, "snapshot": review.approval_snapshot}
         return ToolApprovalDecision(approved=True, reviewer=answer)
     review.log("reviewer", "Refused at the terminal.")
     return ToolApprovalDecision(approved=False, reason="refused at the terminal")
@@ -94,7 +95,7 @@ def main(argv: list[str] | None = None) -> None:
 
         asyncio.run(run_eval(settings, args.repeat))
     elif args.cmd == "check-mapping":
-        from .mapping import check, check_all, to_markdown
+        from acceptance_lab.mapping import check, check_all, to_markdown
 
         reports = check_all(settings.data_dir)["reports"] if args.mapping == "all" else [check(settings.data_dir, args.mapping)]
         for rep in reports:

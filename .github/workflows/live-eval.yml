@@ -1,0 +1,93 @@
+name: Live evaluation
+
+# Runs the evaluation against a real model, re-records the public demo from that run,
+# rebuilds the acceptance results and commits all three.
+#
+# Credentials, either one:
+#   1. Workload identity federation (no stored key). Set these repository variables:
+#        ANTHROPIC_FEDERATION_RULE_ID, ANTHROPIC_ORGANIZATION_ID,
+#        ANTHROPIC_SERVICE_ACCOUNT_ID, ANTHROPIC_WORKSPACE_ID
+#   2. An API key, stored as the repository secret ANTHROPIC_API_KEY.
+# If both are present, the API key is used.
+
+on:
+  workflow_dispatch:
+    inputs:
+      repeat:
+        description: Runs per lot
+        default: "5"
+      model:
+        description: Model
+        default: claude-sonnet-5-5
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: live-eval
+  cancel-in-progress: false
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      RELEASE_DESK_MODEL: ${{ inputs.model }}
+      API_KEY_SECRET: ${{ secrets.ANTHROPIC_API_KEY }}
+      ANTHROPIC_FEDERATION_RULE_ID: ${{ vars.ANTHROPIC_FEDERATION_RULE_ID }}
+      ANTHROPIC_ORGANIZATION_ID: ${{ vars.ANTHROPIC_ORGANIZATION_ID }}
+      ANTHROPIC_SERVICE_ACCOUNT_ID: ${{ vars.ANTHROPIC_SERVICE_ACCOUNT_ID }}
+      ANTHROPIC_WORKSPACE_ID: ${{ vars.ANTHROPIC_WORKSPACE_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install -e ".[dev]"
+
+      - name: Choose credentials
+        run: |
+          # An empty key variable is never exported, so it cannot shadow federation.
+          if [ -n "$API_KEY_SECRET" ]; then
+            echo "Using the ANTHROPIC_API_KEY secret."
+            echo "ANTHROPIC_API_KEY=$API_KEY_SECRET" >> "$GITHUB_ENV"
+          elif [ -n "$ANTHROPIC_FEDERATION_RULE_ID" ]; then
+            echo "Using workload identity federation."
+            echo "ANTHROPIC_IDENTITY_TOKEN_FILE=$RUNNER_TEMP/anthropic-oidc-token" >> "$GITHUB_ENV"
+            echo "USE_FEDERATION=1" >> "$GITHUB_ENV"
+          else
+            echo "::error::No credentials. Add the ANTHROPIC_API_KEY secret, or the four federation variables."
+            exit 1
+          fi
+
+      - name: Keep a fresh GitHub identity token on disk
+        if: env.USE_FEDERATION == '1'
+        run: |
+          # GitHub identity tokens expire after about five minutes; refresh well before that.
+          fetch() {
+            curl -sSf -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+              "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=https://api.anthropic.com" \
+              | python -c "import json,sys; print(json.load(sys.stdin)['value'], end='')" > "$ANTHROPIC_IDENTITY_TOKEN_FILE.tmp" \
+              && mv "$ANTHROPIC_IDENTITY_TOKEN_FILE.tmp" "$ANTHROPIC_IDENTITY_TOKEN_FILE"
+          }
+          fetch
+          ( while sleep 240; do fetch; done ) > /dev/null 2>&1 &
+          echo "Token written."
+
+      - name: Evaluate
+        run: release-desk eval --repeat "${{ inputs.repeat }}"
+
+      - name: Record the demo from the live run
+        run: release-desk export-replay
+
+      - name: Rebuild the acceptance results
+        run: python -m acceptance_lab build
+
+      - name: Commit results
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add eval docs/replay.json docs/acceptance.json docs/index.html
+          git commit -m "Live evaluation: ${{ inputs.model }}, ${{ inputs.repeat }} runs per lot" || echo "Nothing to commit."
+          git push

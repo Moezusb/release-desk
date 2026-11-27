@@ -13,7 +13,7 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 from release_desk import config
-from release_desk.documents import list_lots, load_lot
+from release_desk.documents import case_info, list_lots, load_lot
 from release_desk.pipeline import HUMAN_ACTIONS, apply_correction, decide, pending_approver, run_review
 from release_desk.views import lot_context
 from release_desk.store import Store, metrics
@@ -46,7 +46,8 @@ def create_app(settings: config.Settings | None = None) -> FastAPI:
         r = store.get(lot_id)
         d = r.to_dict()
         return {
-            "lot_id": lot_id, "stage": r.stage, "status": r.status, "running": busy(lot_id),
+            "lot_id": lot_id, "title": r.title or case_info(settings.data_dir, lot_id)["title"],
+            "summary": r.summary or case_info(settings.data_dir, lot_id)["summary"], "stage": r.stage, "status": r.status, "running": busy(lot_id),
             "proposal": (r.proposal or {}).get("decision"), "blocking": len(r.blocking),
             "awaiting_release_approval": d["awaiting_release_approval"],
             "decision": (r.decision or {}).get("action"), "needs_reassessment": r.stage == "needs reassessment",
@@ -55,6 +56,14 @@ def create_app(settings: config.Settings | None = None) -> FastAPI:
     @app.get("/")
     async def index() -> FileResponse:
         return FileResponse(STATIC / "index.html")
+
+    @app.get("/acceptance.json")
+    async def acceptance() -> FileResponse:
+        """The acceptance lab's results, as built by `python -m acceptance_lab build`."""
+        path = Path(__file__).parent.parent / "docs" / "acceptance.json"
+        if not path.exists():
+            raise HTTPException(404, "Build the acceptance results first: python -m acceptance_lab build")
+        return FileResponse(path)
 
     @app.get("/api/meta")
     async def meta() -> dict:
@@ -119,7 +128,7 @@ def create_app(settings: config.Settings | None = None) -> FastAPI:
 
     @app.get("/api/mapping")
     async def mapping_reports() -> dict:
-        from release_desk.mapping import check_all
+        from acceptance_lab.mapping import check_all
 
         return check_all(settings.data_dir)
 

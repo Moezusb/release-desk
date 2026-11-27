@@ -24,7 +24,7 @@ from pathlib import Path
 
 import yaml
 
-from .documents import governing_spec, list_lots, load_lot, load_specs
+from release_desk.documents import governing_spec, list_lots, load_lot, load_specs
 
 VALIDATED, FAILED, CONFIRM = "validated", "failed", "needs business confirmation"
 
@@ -73,7 +73,7 @@ def _document_result(data_dir: Path, lot: str, match: list[str]) -> str | None:
 
 def check(data_dir: Path, mapping_file: str) -> dict:
     canonical, dictionary, sources = _load(data_dir)
-    mapping = yaml.safe_load((data_dir / "mapping" / mapping_file).read_text(encoding="utf-8"))
+    mapping = yaml.safe_load((data_dir / "mapping" / "proposals" / mapping_file).read_text(encoding="utf-8"))
     specs = load_specs(data_dir)
     spec_tests = {t["key"]: t for t in specs[-1]["tests"]}
     conversions = {(c["from"], c["to"]): c["multiply"] for c in canonical["approved_conversions"]}
@@ -108,6 +108,33 @@ def check(data_dir: Path, mapping_file: str) -> dict:
     else:
         add("Join", "lot_id", "Every batch finds its laboratory results", VALIDATED,
             f"All {len(mes_keys)} batches match laboratory results after key normalisation ({norm}).")
+
+    # Population: one packet per batch. Equal counts are not enough; check each batch.
+    dev_rows = mapping["joins"].get("deviations", {}).get("rows", "one_per_batch")
+    qms = sources.get("qms_deviations", [])
+    packets = {}
+    for b in sorted(mes_keys):
+        if b not in lims_keys:
+            packets[b] = 0
+        elif dev_rows == "one_per_deviation":
+            packets[b] = max(1, sum(1 for r in qms if r["batch_no"] == b))
+        else:
+            packets[b] = 1
+    lost = [b for b, n in packets.items() if n == 0]
+    doubled = [b for b, n in packets.items() if n > 1]
+    total = sum(packets.values())
+    if lost or doubled:
+        same = total == len(mes_keys)
+        add("Population", "lot_id", "Exactly one review packet per batch", FAILED,
+            (f"{total} packets for {len(mes_keys)} batches, so a row count would pass. " if same else
+             f"{total} packets for {len(mes_keys)} batches. ")
+            + (f"{', '.join(lost)} is missing" if lost else "")
+            + (" and " if lost and doubled else "")
+            + (f"{', '.join(doubled)} appears {max(packets[d] for d in doubled)} times, once per deviation row" if doubled else "")
+            + ".", lost + doubled)
+    else:
+        add("Population", "lot_id", "Exactly one review packet per batch", VALIDATED,
+            f"{total} packets for {len(mes_keys)} batches, each batch exactly once.")
 
     # Cardinality: one result per lot per test, after the declared filter.
     counts: dict[tuple[str, str], int] = {}
@@ -233,14 +260,28 @@ def check(data_dir: Path, mapping_file: str) -> dict:
     confirm = sum(r["status"] == CONFIRM for r in rows)
     verdict = ("Not acceptable: fix the failed checks and retest" if failed
                else "Acceptable once the open questions are confirmed" if confirm else "Acceptable")
-    return {"mapping": mapping_file, "name": mapping.get("name", mapping_file), "verdict": verdict,
+    expected = mapping.get("expected_failures")
+    failed_keys = sorted({f"{r['field']} | {r['check']}" for r in rows if r["status"] == FAILED})
+    self_check = None
+    if expected is not None:  # an authored challenge: did the checker catch exactly what was planted?
+        self_check = {"expected": sorted(expected), "caught": failed_keys,
+                      "passed": set(expected) <= set(failed_keys) and (bool(expected) or not failed_keys)}
+    return {"mapping": mapping_file, "name": mapping.get("name", mapping_file), "title": mapping.get("title", mapping.get("name")),
+            "description": mapping.get("description", ""), "kind": mapping.get("kind", "delivery"),
+            "verdict": verdict, "self_check": self_check, "submitted": mapping,
             "counts": {VALIDATED: sum(r["status"] == VALIDATED for r in rows), FAILED: failed, CONFIRM: confirm},
             "rows": rows}
 
 
+ORDER = ["vendor-v2.yaml", "same-unit-wrong-meaning.yaml", "fraction-as-percent.yaml", "ambiguous-date.yaml",
+         "equal-row-count.yaml", "vendor-v1.yaml"]
+
+
 def check_all(data_dir: Path) -> dict:
-    files = sorted(p.name for p in (data_dir / "mapping").glob("vendor-*.yaml"))
-    return {"reports": [check(data_dir, f) for f in files]}
+    files = [p.name for p in (data_dir / "mapping" / "proposals").glob("*.yaml")]
+    files.sort(key=lambda f: (ORDER.index(f) if f in ORDER else 99, f))
+    canonical, dictionary, _ = _load(data_dir)
+    return {"contract": {"canonical": canonical, "dictionary": dictionary}, "reports": [check(data_dir, f) for f in files]}
 
 
 def to_markdown(report: dict) -> str:
