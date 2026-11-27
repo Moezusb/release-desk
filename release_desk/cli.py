@@ -93,7 +93,11 @@ def main(argv: list[str] | None = None) -> None:
     elif args.cmd == "eval":
         from .evaluate import main as run_eval
 
-        asyncio.run(run_eval(settings, args.repeat))
+        result = asyncio.run(run_eval(settings, args.repeat))
+        errored = [r for r in result["runs"] if r.get("error")]
+        if errored:
+            print(f"{len(errored)} of {len(result['runs'])} runs stopped with an error. First: {errored[0]['error'][:400]}", file=sys.stderr)
+            raise SystemExit(1)
     elif args.cmd == "check-mapping":
         from acceptance_lab.mapping import check, check_all, to_markdown
 

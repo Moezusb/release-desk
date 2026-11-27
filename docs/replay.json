@@ -3,69 +3,67 @@
   "LC-24031": {
    "review": {
     "lot_id": "LC-24031",
-    "stage": "failed",
+    "stage": "awaiting reviewer",
     "status": "on hold",
-    "findings": [
-     {
-      "id": "F1",
-      "rule": "extraction.failed",
-      "severity": "critical",
-      "title": "The documents could not be read",
-      "expected": "a complete extraction",
-      "observed": "[ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.cr",
-      "evidence": []
-     }
-    ],
+    "findings": [],
     "evidence_notes": [],
-    "proposal": null,
-    "second_reading": null,
+    "proposal": {
+     "decision": "release",
+     "rationale": "Every test is within specification, every step carries two signatures, the documents agree on lot and dates, and no deviation is open.",
+     "finding_ids": [],
+     "at": "2026-11-27T05:16:01+00:00"
+    },
+    "second_reading": {
+     "agrees": true,
+     "concerns": []
+    },
     "decision": null,
     "timeline": [
      {
-      "at": "2026-11-27T05:12:54+00:00",
+      "at": "2026-11-27T05:16:00+00:00",
       "actor": "desk",
       "text": "Reading the certificate, batch record and deviation log (originals)."
      },
      {
-      "at": "2026-11-27T05:12:54+00:00",
+      "at": "2026-11-27T05:16:01+00:00",
+      "actor": "rules",
+      "text": "Checked against rev 03: 0 finding(s), 0 blocking."
+     },
+     {
+      "at": "2026-11-27T05:16:01+00:00",
+      "actor": "proposer",
+      "text": "Proposed release. Every test is within specification, every step carries two signatures, the documents agree on lot and dates, and no deviation is open."
+     },
+     {
+      "at": "2026-11-27T05:16:02+00:00",
+      "actor": "second reader",
+      "text": "Agrees."
+     },
+     {
+      "at": "2026-11-27T05:16:02+00:00",
       "actor": "desk",
-      "text": "Reading failed: [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=reader, run_id=run_4ccf342927a74bc4, trace_id=c3ba6c1b-a734-4a44-b5f7-51d2456b86ee | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
-     },
-     {
-      "at": "2026-11-27T05:12:54+00:00",
-      "actor": "investigator",
-      "text": "Looking for evidence that explains the blocking findings."
-     },
-     {
-      "at": "2026-11-27T05:12:54+00:00",
-      "actor": "investigator",
-      "text": "Investigation failed and was skipped: [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=investigator, run_id=run_fc4312c2971a4a28, trace_id=ab3fcfb5-6bcf-406e-a662-ae9856fd4534 | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
-     },
-     {
-      "at": "2026-11-27T05:12:54+00:00",
-      "actor": "desk",
-      "text": "Review stopped by an error; the lot stays on hold. [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=proposer, run_id=run_63e186db6e8841dc, trace_id=0f345548-c617-460f-9bcd-c1e242b3abbc | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "text": "Waiting for a named reviewer to approve or refuse the release."
      }
     ],
-    "mode": "live",
-    "model": "claude-sonnet-5-5",
-    "error": "[ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=proposer, run_id=run_63e186db6e8841dc, trace_id=0f345548-c617-460f-9bcd-c1e242b3abbc | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'",
-    "deferred": false,
+    "mode": "offline (scripted stand-in model)",
+    "model": "scripted/offline",
+    "error": null,
+    "deferred": true,
     "versions": {},
     "fingerprint": "81c1508966ed0d14",
-    "governing_revision": null,
+    "governing_revision": "03",
     "investigation": {
      "calls": [],
      "notes": []
     },
     "history": [],
     "usage": {
-     "model_calls": 0,
+     "model_calls": 4,
      "input_tokens": 0,
      "output_tokens": 0,
-     "seconds": 0.0
+     "seconds": 2.08
     },
-    "approval_snapshot": "",
+    "approval_snapshot": "43fb121ce57eba9b",
     "title": "A complete review packet",
     "summary": "Every result within its limits, every step signed twice, nothing left open.",
     "awaiting_release_approval": false
@@ -330,75 +328,146 @@
     "findings": [
      {
       "id": "F1",
-      "rule": "extraction.failed",
+      "rule": "test.tymc_cfu_g.out_of_spec",
       "severity": "critical",
-      "title": "The documents could not be read",
-      "expected": "a complete extraction",
-      "observed": "[ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.cr",
-      "evidence": []
+      "title": "Total yeast and mould count out of specification",
+      "expected": "not more than 10 CFU/g",
+      "observed": "40",
+      "evidence": [
+       {
+        "document": "certificate_of_analysis.md",
+        "line": 22,
+        "text": "| Total yeast and mould count (CFU/g) | Not more than 10 | 40 |"
+       }
+      ]
      }
     ],
     "evidence_notes": [],
-    "proposal": null,
-    "second_reading": null,
+    "proposal": {
+     "decision": "hold",
+     "rationale": "Blocking findings: F1: Total yeast and mould count out of specification.",
+     "finding_ids": [
+      "F1"
+     ],
+     "at": "2026-11-27T05:16:04+00:00"
+    },
+    "second_reading": {
+     "agrees": true,
+     "concerns": []
+    },
     "decision": {
      "action": "reject",
      "reviewer": "Demo reviewer",
      "reason": "Yeast and mould count four times the limit. OOS investigation opened; lot to be destroyed.",
-     "at": "2026-11-27T05:12:54+00:00",
+     "at": "2026-11-27T05:16:05+00:00",
      "override": false,
      "fingerprint": "46299652c3fe6e0d",
-     "snapshot": "e641733abc9330d3"
+     "snapshot": "0b7655e54b1f0f87"
     },
     "timeline": [
      {
-      "at": "2026-11-27T05:12:54+00:00",
+      "at": "2026-11-27T05:16:02+00:00",
       "actor": "desk",
       "text": "Reading the certificate, batch record and deviation log (originals)."
      },
      {
-      "at": "2026-11-27T05:12:54+00:00",
-      "actor": "desk",
-      "text": "Reading failed: [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=reader, run_id=run_e45adb4aa6bc4193, trace_id=85a23940-7fb9-431f-8d90-8a085b561863 | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "at": "2026-11-27T05:16:03+00:00",
+      "actor": "rules",
+      "text": "Checked against rev 03: 1 finding(s), 1 blocking."
      },
      {
-      "at": "2026-11-27T05:12:54+00:00",
+      "at": "2026-11-27T05:16:03+00:00",
       "actor": "investigator",
       "text": "Looking for evidence that explains the blocking findings."
      },
      {
-      "at": "2026-11-27T05:12:54+00:00",
+      "at": "2026-11-27T05:16:03+00:00",
       "actor": "investigator",
-      "text": "Investigation failed and was skipped: [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=investigator, run_id=run_16908e9ce1094d98, trace_id=8093132c-8f06-48cd-bb1b-641b85952b28 | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "text": "list supporting records()"
      },
      {
-      "at": "2026-11-27T05:12:54+00:00",
-      "actor": "desk",
-      "text": "Review stopped by an error; the lot stays on hold. [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=proposer, run_id=run_40bb3610d30b4a17, trace_id=d861eced-f715-4b42-abcb-448f735be5d1 | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "at": "2026-11-27T05:16:04+00:00",
+      "actor": "investigator",
+      "text": "Note on F1: confirm with laboratory."
      },
      {
-      "at": "2026-11-27T05:12:54+00:00",
+      "at": "2026-11-27T05:16:04+00:00",
+      "actor": "proposer",
+      "text": "Placed on hold. Blocking findings: F1: Total yeast and mould count out of specification."
+     },
+     {
+      "at": "2026-11-27T05:16:05+00:00",
+      "actor": "second reader",
+      "text": "Agrees."
+     },
+     {
+      "at": "2026-11-27T05:16:05+00:00",
       "actor": "reviewer: Demo reviewer",
       "text": "Rejected the lot. Reason: Yeast and mould count four times the limit. OOS investigation opened; lot to be destroyed."
      }
     ],
-    "mode": "live",
-    "model": "claude-sonnet-5-5",
-    "error": "[ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=proposer, run_id=run_40bb3610d30b4a17, trace_id=d861eced-f715-4b42-abcb-448f735be5d1 | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'",
+    "mode": "offline (scripted stand-in model)",
+    "model": "scripted/offline",
+    "error": null,
     "deferred": false,
     "versions": {},
     "fingerprint": "46299652c3fe6e0d",
-    "governing_revision": null,
+    "governing_revision": "03",
     "investigation": {
-     "calls": [],
-     "notes": []
+     "calls": [
+      {
+       "at": "2026-11-27T05:16:03+00:00",
+       "tool": "list_supporting_records",
+       "args": {},
+       "result": "No supporting records are on file for this lot."
+      },
+      {
+       "at": "2026-11-27T05:16:04+00:00",
+       "tool": "submit_note",
+       "args": {
+        "finding_ids": [
+         "F1"
+        ],
+        "next_step": "confirm_with_laboratory",
+        "summary": "No laboratory note or investigation record is on file for this result. The laboratory should confirm it before any disposition.",
+        "evidence": [
+         {
+          "document": "certificate_of_analysis.md",
+          "line": 22
+         }
+        ],
+        "open_questions": [
+         "Has a retest or an out-of-specification investigation been started?"
+        ]
+       },
+       "result": "Note recorded."
+      }
+     ],
+     "notes": [
+      {
+       "finding_ids": [
+        "F1"
+       ],
+       "summary": "No laboratory note or investigation record is on file for this result. The laboratory should confirm it before any disposition.",
+       "evidence": [
+        {
+         "document": "certificate_of_analysis.md",
+         "line": 22
+        }
+       ],
+       "next_step": "confirm_with_laboratory",
+       "open_questions": [
+        "Has a retest or an out-of-specification investigation been started?"
+       ]
+      }
+     ]
     },
     "history": [],
     "usage": {
-     "model_calls": 0,
+     "model_calls": 7,
      "input_tokens": 0,
      "output_tokens": 0,
-     "seconds": 0.0
+     "seconds": 3.11
     },
     "approval_snapshot": "",
     "title": "A result above its limit",
@@ -660,67 +729,158 @@
   "LC-24033": {
    "review": {
     "lot_id": "LC-24033",
-    "stage": "failed",
+    "stage": "awaiting reviewer",
     "status": "on hold",
     "findings": [
      {
       "id": "F1",
-      "rule": "extraction.failed",
-      "severity": "critical",
-      "title": "The documents could not be read",
-      "expected": "a complete extraction",
-      "observed": "[ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.cr",
-      "evidence": []
+      "rule": "deviation.open",
+      "severity": "major",
+      "title": "DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification",
+      "expected": "Closed",
+      "observed": "Open, investigation pending",
+      "evidence": [
+       {
+        "document": "deviation_log.md",
+        "line": 10,
+        "text": "| DEV-0417 | Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification | Open, investigation pending | Not yet assigned |"
+       }
+      ]
      }
     ],
     "evidence_notes": [],
-    "proposal": null,
-    "second_reading": null,
+    "proposal": {
+     "decision": "hold",
+     "rationale": "Blocking findings: F1: DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification.",
+     "finding_ids": [
+      "F1"
+     ],
+     "at": "2026-11-27T05:16:08+00:00"
+    },
+    "second_reading": {
+     "agrees": true,
+     "concerns": []
+    },
     "decision": null,
     "timeline": [
      {
-      "at": "2026-11-27T05:12:54+00:00",
+      "at": "2026-11-27T05:16:05+00:00",
       "actor": "desk",
       "text": "Reading the certificate, batch record and deviation log (originals)."
      },
      {
-      "at": "2026-11-27T05:12:54+00:00",
-      "actor": "desk",
-      "text": "Reading failed: [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=reader, run_id=run_2ea734f0a98d4c9d, trace_id=ddfeaea8-83fb-46c7-ac3e-3b24a69b237c | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "at": "2026-11-27T05:16:06+00:00",
+      "actor": "rules",
+      "text": "Checked against rev 03: 1 finding(s), 1 blocking."
      },
      {
-      "at": "2026-11-27T05:12:54+00:00",
+      "at": "2026-11-27T05:16:06+00:00",
       "actor": "investigator",
       "text": "Looking for evidence that explains the blocking findings."
      },
      {
-      "at": "2026-11-27T05:12:54+00:00",
+      "at": "2026-11-27T05:16:06+00:00",
       "actor": "investigator",
-      "text": "Investigation failed and was skipped: [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=investigator, run_id=run_60ea47f4d2b74f77, trace_id=56cade3e-e079-4592-85b0-288fbd5821fb | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "text": "list supporting records()"
      },
      {
-      "at": "2026-11-27T05:12:54+00:00",
-      "actor": "desk",
-      "text": "Review stopped by an error; the lot stays on hold. [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=proposer, run_id=run_8363e754e013427f, trace_id=c9d7665f-474b-4e3c-b2c6-a87c65b16f05 | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "at": "2026-11-27T05:16:07+00:00",
+      "actor": "investigator",
+      "text": "open record(DEV-0417.md)"
+     },
+     {
+      "at": "2026-11-27T05:16:07+00:00",
+      "actor": "investigator",
+      "text": "Note on F1: route to deviation owner."
+     },
+     {
+      "at": "2026-11-27T05:16:08+00:00",
+      "actor": "proposer",
+      "text": "Placed on hold. Blocking findings: F1: DEV-0417 is not closed: Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification."
+     },
+     {
+      "at": "2026-11-27T05:16:09+00:00",
+      "actor": "second reader",
+      "text": "Agrees."
      }
     ],
-    "mode": "live",
-    "model": "claude-sonnet-5-5",
-    "error": "[ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=proposer, run_id=run_8363e754e013427f, trace_id=c9d7665f-474b-4e3c-b2c6-a87c65b16f05 | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'",
+    "mode": "offline (scripted stand-in model)",
+    "model": "scripted/offline",
+    "error": null,
     "deferred": false,
     "versions": {},
     "fingerprint": "0e9b4203f32b99eb",
-    "governing_revision": null,
+    "governing_revision": "03",
     "investigation": {
-     "calls": [],
-     "notes": []
+     "calls": [
+      {
+       "at": "2026-11-27T05:16:06+00:00",
+       "tool": "list_supporting_records",
+       "args": {},
+       "result": "Records on file: DEV-0417.md"
+      },
+      {
+       "at": "2026-11-27T05:16:07+00:00",
+       "tool": "open_record",
+       "args": {
+        "name": "DEV-0417.md"
+       },
+       "result": "L01: # Deviation record DEV-0417\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Lot: LC-24033\nL06: Raised: 2026-09-17 by P. Lindqvist\nL07: Event: Mixer jacket temperature reached 81 \u00b0C for 6 minutes during emulsification (limit 78 \u00b0C).\nL08: Root cause: Thermocouple TC-2 reading 4 \u00b0C low; replaced 2026-09-19.\nL09: Product impact assessment: Drafted by R. Haddad. Concludes no impact, citing viscosity and pH within specification.\nL10: Impact assessment approval: Awaiting QA approval.\nL11: Status: Open"
+      },
+      {
+       "at": "2026-11-27T05:16:07+00:00",
+       "tool": "submit_note",
+       "args": {
+        "finding_ids": [
+         "F1"
+        ],
+        "next_step": "route_to_deviation_owner",
+        "summary": "DEV-0417 is on file. Its root cause is identified and a drafted impact assessment concludes no impact, but the assessment is still awaiting QA approval, so the deviation remains open.",
+        "evidence": [
+         {
+          "document": "deviation_log.md",
+          "line": 10
+         },
+         {
+          "document": "records/DEV-0417.md"
+         }
+        ],
+        "open_questions": [
+         "Will QA approve the impact assessment?"
+        ]
+       },
+       "result": "Note recorded."
+      }
+     ],
+     "notes": [
+      {
+       "finding_ids": [
+        "F1"
+       ],
+       "summary": "DEV-0417 is on file. Its root cause is identified and a drafted impact assessment concludes no impact, but the assessment is still awaiting QA approval, so the deviation remains open.",
+       "evidence": [
+        {
+         "document": "deviation_log.md",
+         "line": 10
+        },
+        {
+         "document": "records/DEV-0417.md",
+         "line": null
+        }
+       ],
+       "next_step": "route_to_deviation_owner",
+       "open_questions": [
+        "Will QA approve the impact assessment?"
+       ]
+      }
+     ]
     },
     "history": [],
     "usage": {
-     "model_calls": 0,
+     "model_calls": 8,
      "input_tokens": 0,
      "output_tokens": 0,
-     "seconds": 0.0
+     "seconds": 3.39
     },
     "approval_snapshot": "",
     "title": "An unresolved deviation",
@@ -999,67 +1159,155 @@
   "LC-24034": {
    "review": {
     "lot_id": "LC-24034",
-    "stage": "failed",
+    "stage": "awaiting reviewer",
     "status": "on hold",
     "findings": [
      {
       "id": "F1",
-      "rule": "extraction.failed",
-      "severity": "critical",
-      "title": "The documents could not be read",
-      "expected": "a complete extraction",
-      "observed": "[ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.cr",
-      "evidence": []
+      "rule": "batch.step_unverified",
+      "severity": "major",
+      "title": "Step 7 (Fill into 50 g tubes and crimp) not verified by a second person",
+      "expected": "a second person's name",
+      "observed": "blank or unverified",
+      "evidence": [
+       {
+        "document": "batch_record.md",
+        "line": 18,
+        "text": "| 7 | Fill into 50 g tubes and crimp | A. Moreau |  |"
+       }
+      ]
      }
     ],
-    "evidence_notes": [],
-    "proposal": null,
-    "second_reading": null,
+    "evidence_notes": [
+     {
+      "field": "batch_record.step7.verified_by",
+      "document": "batch_record.md",
+      "claimed_value": "R. Haddad",
+      "cited_line": 18,
+      "reason": "value does not appear on the cited line"
+     }
+    ],
+    "proposal": {
+     "decision": "hold",
+     "rationale": "Blocking findings: F1: Step 7 (Fill into 50 g tubes and crimp) not verified by a second person.",
+     "finding_ids": [
+      "F1"
+     ],
+     "at": "2026-11-27T05:16:11+00:00"
+    },
+    "second_reading": {
+     "agrees": true,
+     "concerns": []
+    },
     "decision": null,
     "timeline": [
      {
-      "at": "2026-11-27T05:12:54+00:00",
+      "at": "2026-11-27T05:16:09+00:00",
       "actor": "desk",
       "text": "Reading the certificate, batch record and deviation log (originals)."
      },
      {
-      "at": "2026-11-27T05:12:54+00:00",
-      "actor": "desk",
-      "text": "Reading failed: [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=reader, run_id=run_5e27275e7b14470a, trace_id=a56596db-309a-4c12-b713-711a9b39c3c1 | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "at": "2026-11-27T05:16:09+00:00",
+      "actor": "evidence check",
+      "text": "Refused batch_record.step7.verified_by ('R. Haddad', line 18): value does not appear on the cited line."
      },
      {
-      "at": "2026-11-27T05:12:54+00:00",
+      "at": "2026-11-27T05:16:09+00:00",
+      "actor": "rules",
+      "text": "Checked against rev 03: 1 finding(s), 1 blocking."
+     },
+     {
+      "at": "2026-11-27T05:16:09+00:00",
       "actor": "investigator",
       "text": "Looking for evidence that explains the blocking findings."
      },
      {
-      "at": "2026-11-27T05:12:54+00:00",
+      "at": "2026-11-27T05:16:10+00:00",
       "actor": "investigator",
-      "text": "Investigation failed and was skipped: [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=investigator, run_id=run_9dfc61f6e26c4cfa, trace_id=0dd99a64-441f-4ffc-9a3f-7ac6d93b839a | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "text": "read document(batch_record.md, 17, 19)"
      },
      {
-      "at": "2026-11-27T05:12:54+00:00",
-      "actor": "desk",
-      "text": "Review stopped by an error; the lot stays on hold. [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=proposer, run_id=run_30868d22edbc485b, trace_id=446fea39-4a0d-4a13-9ea2-6001452200cb | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "at": "2026-11-27T05:16:10+00:00",
+      "actor": "investigator",
+      "text": "Note on F1: request missing evidence."
+     },
+     {
+      "at": "2026-11-27T05:16:11+00:00",
+      "actor": "proposer",
+      "text": "Placed on hold. Blocking findings: F1: Step 7 (Fill into 50 g tubes and crimp) not verified by a second person."
+     },
+     {
+      "at": "2026-11-27T05:16:12+00:00",
+      "actor": "second reader",
+      "text": "Agrees."
      }
     ],
-    "mode": "live",
-    "model": "claude-sonnet-5-5",
-    "error": "[ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=proposer, run_id=run_30868d22edbc485b, trace_id=446fea39-4a0d-4a13-9ea2-6001452200cb | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'",
+    "mode": "offline (scripted stand-in model)",
+    "model": "scripted/offline",
+    "error": null,
     "deferred": false,
     "versions": {},
     "fingerprint": "1fca282f4b4aaa27",
-    "governing_revision": null,
+    "governing_revision": "03",
     "investigation": {
-     "calls": [],
-     "notes": []
+     "calls": [
+      {
+       "at": "2026-11-27T05:16:10+00:00",
+       "tool": "read_document",
+       "args": {
+        "document": "batch_record.md",
+        "from_line": 17,
+        "to_line": 19
+       },
+       "result": "L17: | 6 | Adjust pH and sample for in-process checks | R. Haddad | A. Moreau |\nL18: | 7 | Fill into 50 g tubes and crimp | A. Moreau |  |\nL19: | 8 | Code, inspect and pack | J. Okafor | P. Lindqvist |"
+      },
+      {
+       "at": "2026-11-27T05:16:10+00:00",
+       "tool": "submit_note",
+       "args": {
+        "finding_ids": [
+         "F1"
+        ],
+        "next_step": "request_missing_evidence",
+        "summary": "The batch record lines around the step show the verifier's cell is blank. Nothing on file shows a second-person check took place.",
+        "evidence": [
+         {
+          "document": "batch_record.md",
+          "line": 18
+         }
+        ],
+        "open_questions": [
+         "Can the supervisor provide a documented, contemporaneous verification?"
+        ]
+       },
+       "result": "Note recorded."
+      }
+     ],
+     "notes": [
+      {
+       "finding_ids": [
+        "F1"
+       ],
+       "summary": "The batch record lines around the step show the verifier's cell is blank. Nothing on file shows a second-person check took place.",
+       "evidence": [
+        {
+         "document": "batch_record.md",
+         "line": 18
+        }
+       ],
+       "next_step": "request_missing_evidence",
+       "open_questions": [
+        "Can the supervisor provide a documented, contemporaneous verification?"
+       ]
+      }
+     ]
     },
     "history": [],
     "usage": {
-     "model_calls": 0,
+     "model_calls": 7,
      "input_tokens": 0,
      "output_tokens": 0,
-     "seconds": 0.0
+     "seconds": 3.11
     },
     "approval_snapshot": "",
     "title": "A missing second signature",
@@ -1321,67 +1569,248 @@
   "LC-24035": {
    "review": {
     "lot_id": "LC-24035",
-    "stage": "failed",
+    "stage": "awaiting reviewer",
     "status": "on hold",
     "findings": [
      {
       "id": "F1",
-      "rule": "extraction.failed",
+      "rule": "identity.lot_mismatch",
       "severity": "critical",
-      "title": "The documents could not be read",
-      "expected": "a complete extraction",
-      "observed": "[ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.cr",
-      "evidence": []
+      "title": "Lot number on the certificate of analysis does not match",
+      "expected": "LC-24035",
+      "observed": "LC-24053",
+      "evidence": [
+       {
+        "document": "certificate_of_analysis.md",
+        "line": 7,
+        "text": "Lot number: LC-24053"
+       }
+      ]
+     },
+     {
+      "id": "F2",
+      "rule": "test.phenoxyethanol_pct.out_of_spec",
+      "severity": "major",
+      "title": "Phenoxyethanol assay out of specification",
+      "expected": "0.80 to 1.00 % w/w",
+      "observed": "0.78",
+      "evidence": [
+       {
+        "document": "certificate_of_analysis.md",
+        "line": 19,
+        "text": "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.78 |"
+       }
+      ]
      }
     ],
     "evidence_notes": [],
-    "proposal": null,
-    "second_reading": null,
+    "proposal": {
+     "decision": "hold",
+     "rationale": "Blocking findings: F1: Lot number on the certificate of analysis does not match. F2: Phenoxyethanol assay out of specification.",
+     "finding_ids": [
+      "F1",
+      "F2"
+     ],
+     "at": "2026-11-27T05:16:15+00:00"
+    },
+    "second_reading": {
+     "agrees": true,
+     "concerns": []
+    },
     "decision": null,
     "timeline": [
      {
-      "at": "2026-11-27T05:12:54+00:00",
+      "at": "2026-11-27T05:16:12+00:00",
       "actor": "desk",
       "text": "Reading the certificate, batch record and deviation log (originals)."
      },
      {
-      "at": "2026-11-27T05:12:54+00:00",
-      "actor": "desk",
-      "text": "Reading failed: [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=reader, run_id=run_c4477319b380418e, trace_id=d5ff8ee9-8841-404b-804f-ef8ce753cf70 | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "at": "2026-11-27T05:16:12+00:00",
+      "actor": "rules",
+      "text": "Checked against rev 04: 2 finding(s), 2 blocking."
      },
      {
-      "at": "2026-11-27T05:12:54+00:00",
+      "at": "2026-11-27T05:16:12+00:00",
       "actor": "investigator",
       "text": "Looking for evidence that explains the blocking findings."
      },
      {
-      "at": "2026-11-27T05:12:54+00:00",
+      "at": "2026-11-27T05:16:13+00:00",
       "actor": "investigator",
-      "text": "Investigation failed and was skipped: [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=investigator, run_id=run_bbf57a70b1a8454e, trace_id=f66bd43a-92e3-4d02-af15-04fd82a24dc0 | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "text": "list corrected documents()"
      },
      {
-      "at": "2026-11-27T05:12:55+00:00",
-      "actor": "desk",
-      "text": "Review stopped by an error; the lot stays on hold. [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=proposer, run_id=run_02255d42e55a4cb1, trace_id=1c46c643-95fd-4b14-9378-38c168dee2f2 | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "at": "2026-11-27T05:16:13+00:00",
+      "actor": "investigator",
+      "text": "read corrected document(certificate_of_analysis.md, v2)"
+     },
+     {
+      "at": "2026-11-27T05:16:14+00:00",
+      "actor": "investigator",
+      "text": "list supporting records()"
+     },
+     {
+      "at": "2026-11-27T05:16:14+00:00",
+      "actor": "investigator",
+      "text": "open record(LAB-NOTE-1102.md)"
+     },
+     {
+      "at": "2026-11-27T05:16:15+00:00",
+      "actor": "investigator",
+      "text": "Note on F1: reassess with corrected document."
+     },
+     {
+      "at": "2026-11-27T05:16:15+00:00",
+      "actor": "investigator",
+      "text": "Note on F2: confirm with laboratory."
+     },
+     {
+      "at": "2026-11-27T05:16:15+00:00",
+      "actor": "proposer",
+      "text": "Placed on hold. Blocking findings: F1: Lot number on the certificate of analysis does not match. F2: Phenoxyethanol assay out of specification."
+     },
+     {
+      "at": "2026-11-27T05:16:16+00:00",
+      "actor": "second reader",
+      "text": "Agrees."
      }
     ],
-    "mode": "live",
-    "model": "claude-sonnet-5-5",
-    "error": "[ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=proposer, run_id=run_02255d42e55a4cb1, trace_id=1c46c643-95fd-4b14-9378-38c168dee2f2 | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'",
+    "mode": "offline (scripted stand-in model)",
+    "model": "scripted/offline",
+    "error": null,
     "deferred": false,
     "versions": {},
     "fingerprint": "7b1b4982663e55dc",
-    "governing_revision": null,
+    "governing_revision": "04",
     "investigation": {
-     "calls": [],
-     "notes": []
+     "calls": [
+      {
+       "at": "2026-11-27T05:16:13+00:00",
+       "tool": "list_corrected_documents",
+       "args": {},
+       "result": "Corrected versions on file (not applied): certificate_of_analysis.md v2"
+      },
+      {
+       "at": "2026-11-27T05:16:13+00:00",
+       "tool": "read_corrected_document",
+       "args": {
+        "document": "certificate_of_analysis.md",
+        "version": "v2"
+       },
+       "result": "L01: # Certificate of Analysis\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Fernhollow Skincare Ltd., Quality Control Laboratory\nL06: Document version: v2, supersedes v1\nL07: Product: Daily Barrier Cream, 50 g (FH-DBC-050)\nL08: Lot number: LC-24035\nL09: Date of manufacture: 2026-10-01\nL10: Expiry: 2029-04\nL11: Tested against specification: FH-DBC-050 rev 04\nL12: \nL13: | Test | Specification | Result |\nL14: |---|---|---|\nL15: | Appearance | White to off-white smooth cream | White smooth cream |\nL16: | Odour | Characteristic | Char"
+      },
+      {
+       "at": "2026-11-27T05:16:13+00:00",
+       "tool": "submit_note",
+       "args": {
+        "finding_ids": [
+         "F1"
+        ],
+        "next_step": "reassess_with_corrected_document",
+        "summary": "A corrected certificate (v2) is on file but not applied. It appears to address F1. These findings stand until a person applies the correction and the lot is reassessed.",
+        "evidence": [
+         {
+          "document": "certificate_of_analysis.md",
+          "line": 7
+         },
+         {
+          "document": "corrections/certificate_of_analysis.v2.md"
+         }
+        ],
+        "open_questions": [
+         "Is the corrected version the laboratory's approved one?"
+        ]
+       },
+       "result": "Note recorded."
+      },
+      {
+       "at": "2026-11-27T05:16:14+00:00",
+       "tool": "list_supporting_records",
+       "args": {},
+       "result": "Records on file: LAB-NOTE-1102.md"
+      },
+      {
+       "at": "2026-11-27T05:16:14+00:00",
+       "tool": "open_record",
+       "args": {
+        "name": "LAB-NOTE-1102.md"
+       },
+       "result": "L01: # Laboratory note LAB-NOTE-1102\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Lot: LC-24035\nL06: Subject: Phenoxyethanol assay 0.78 % w/w\nL07: The assay was repeated in duplicate on 2026-10-06: 0.78 and 0.79 % w/w.\nL08: No laboratory error identified. Result confirmed.\nL09: Out-of-specification investigation OOS-0233 opened."
+      },
+      {
+       "at": "2026-11-27T05:16:14+00:00",
+       "tool": "submit_note",
+       "args": {
+        "finding_ids": [
+         "F2"
+        ],
+        "next_step": "confirm_with_laboratory",
+        "summary": "LAB-NOTE-1102 is on file. The laboratory repeated the test in duplicate and confirmed the result; an out-of-specification investigation is open.",
+        "evidence": [
+         {
+          "document": "certificate_of_analysis.md",
+          "line": 19
+         },
+         {
+          "document": "records/LAB-NOTE-1102.md"
+         }
+        ],
+        "open_questions": [
+         "What does the OOS investigation conclude?"
+        ]
+       },
+       "result": "Note recorded."
+      }
+     ],
+     "notes": [
+      {
+       "finding_ids": [
+        "F1"
+       ],
+       "summary": "A corrected certificate (v2) is on file but not applied. It appears to address F1. These findings stand until a person applies the correction and the lot is reassessed.",
+       "evidence": [
+        {
+         "document": "certificate_of_analysis.md",
+         "line": 7
+        },
+        {
+         "document": "corrections/certificate_of_analysis.v2.md",
+         "line": null
+        }
+       ],
+       "next_step": "reassess_with_corrected_document",
+       "open_questions": [
+        "Is the corrected version the laboratory's approved one?"
+       ]
+      },
+      {
+       "finding_ids": [
+        "F2"
+       ],
+       "summary": "LAB-NOTE-1102 is on file. The laboratory repeated the test in duplicate and confirmed the result; an out-of-specification investigation is open.",
+       "evidence": [
+        {
+         "document": "certificate_of_analysis.md",
+         "line": 19
+        },
+        {
+         "document": "records/LAB-NOTE-1102.md",
+         "line": null
+        }
+       ],
+       "next_step": "confirm_with_laboratory",
+       "open_questions": [
+        "What does the OOS investigation conclude?"
+       ]
+      }
+     ]
     },
     "history": [],
     "usage": {
-     "model_calls": 0,
+     "model_calls": 11,
      "input_tokens": 0,
      "output_tokens": 0,
-     "seconds": 0.0
+     "seconds": 4.22
     },
     "approval_snapshot": "",
     "title": "Two records that disagree",
@@ -1690,59 +2119,75 @@
   "LC-24036": {
    "review": {
     "lot_id": "LC-24036",
-    "stage": "failed",
-    "status": "on hold",
-    "findings": [
-     {
-      "id": "F1",
-      "rule": "extraction.failed",
-      "severity": "critical",
-      "title": "The documents could not be read",
-      "expected": "a complete extraction",
-      "observed": "[ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.cr",
-      "evidence": []
-     }
-    ],
+    "stage": "decided",
+    "status": "released",
+    "findings": [],
     "evidence_notes": [],
-    "proposal": null,
-    "second_reading": null,
-    "decision": null,
+    "proposal": {
+     "decision": "release",
+     "rationale": "Every test is within specification, every step carries two signatures, the documents agree on lot and dates, and no deviation is open.",
+     "finding_ids": [],
+     "at": "2026-11-27T05:16:21+00:00"
+    },
+    "second_reading": {
+     "agrees": true,
+     "concerns": []
+    },
+    "decision": {
+     "action": "approve_release",
+     "reviewer": "Demo reviewer",
+     "reason": "",
+     "at": "2026-11-27T05:16:21+00:00",
+     "override": false,
+     "fingerprint": "a9c1ce071eb4ff35",
+     "snapshot": "20b6f02e648da9f4"
+    },
     "timeline": [
      {
-      "at": "2026-11-27T05:12:55+00:00",
+      "at": "2026-11-27T05:16:19+00:00",
       "actor": "desk",
       "text": "Reading the certificate, batch record and deviation log (certificate_of_analysis.md v2)."
      },
      {
-      "at": "2026-11-27T05:12:55+00:00",
+      "at": "2026-11-27T05:16:20+00:00",
+      "actor": "rules",
+      "text": "Checked against rev 04: 0 finding(s), 0 blocking."
+     },
+     {
+      "at": "2026-11-27T05:16:21+00:00",
+      "actor": "proposer",
+      "text": "Proposed release. Every test is within specification, every step carries two signatures, the documents agree on lot and dates, and no deviation is open."
+     },
+     {
+      "at": "2026-11-27T05:16:21+00:00",
+      "actor": "second reader",
+      "text": "Agrees."
+     },
+     {
+      "at": "2026-11-27T05:16:21+00:00",
       "actor": "desk",
-      "text": "Reading failed: [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=reader, run_id=run_c723a1b2c74c421b, trace_id=56239778-1574-44da-8768-549beffe79a5 | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "text": "Waiting for a named reviewer to approve or refuse the release."
      },
      {
-      "at": "2026-11-27T05:12:55+00:00",
-      "actor": "investigator",
-      "text": "Looking for evidence that explains the blocking findings."
+      "at": "2026-11-27T05:16:21+00:00",
+      "actor": "reviewer: Demo reviewer",
+      "text": "Approved the proposed release."
      },
      {
-      "at": "2026-11-27T05:12:55+00:00",
-      "actor": "investigator",
-      "text": "Investigation failed and was skipped: [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=investigator, run_id=run_62911603e40a4be3, trace_id=2f401e88-0051-4bce-94d8-13082bf6ac1d | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
-     },
-     {
-      "at": "2026-11-27T05:12:55+00:00",
-      "actor": "desk",
-      "text": "Review stopped by an error; the lot stays on hold. [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=proposer, run_id=run_1d001eff89b443a1, trace_id=9e8f5b12-7d4a-4ba8-a3ff-547872d8cb98 | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "at": "2026-11-27T05:16:21+00:00",
+      "actor": "release tool",
+      "text": "Released, approved by Demo reviewer."
      }
     ],
-    "mode": "live",
-    "model": "claude-sonnet-5-5",
-    "error": "[ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=proposer, run_id=run_1d001eff89b443a1, trace_id=9e8f5b12-7d4a-4ba8-a3ff-547872d8cb98 | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'",
+    "mode": "offline (scripted stand-in model)",
+    "model": "scripted/offline",
+    "error": null,
     "deferred": false,
     "versions": {
      "certificate": "v2"
     },
     "fingerprint": "a9c1ce071eb4ff35",
-    "governing_revision": null,
+    "governing_revision": "04",
     "investigation": {
      "calls": [],
      "notes": []
@@ -1754,30 +2199,39 @@
        "certificate": "v2"
       },
       "status": "on hold",
-      "proposal": null,
+      "proposal": {
+       "decision": "hold",
+       "rationale": "Blocking findings: F1: Total yeast and mould count: no usable result. F2: Expiry date does not match the approved shelf life.",
+       "finding_ids": [
+        "F1",
+        "F2"
+       ],
+       "at": "2026-11-27T05:16:19+00:00"
+      },
       "decision": {
        "action": "confirm_hold",
        "reviewer": "Demo reviewer",
        "reason": "",
-       "at": "2026-11-27T05:12:55+00:00",
+       "at": "2026-11-27T05:16:19+00:00",
        "override": false,
        "fingerprint": "2ba3981481ebebba",
-       "snapshot": "ff1eb31e2030e450"
+       "snapshot": "05d7c5b0b708a9b3"
       },
       "findings": [
-       "F1 The documents could not be read"
+       "F1 Total yeast and mould count: no usable result",
+       "F2 Expiry date does not match the approved shelf life"
       ],
-      "superseded_at": "2026-11-27T05:12:55+00:00",
+      "superseded_at": "2026-11-27T05:16:19+00:00",
       "reason": "certificate_of_analysis.md replaced by corrected version v2. Earlier findings and decisions were made on different evidence and need reassessment."
      }
     ],
     "usage": {
-     "model_calls": 0,
+     "model_calls": 4,
      "input_tokens": 0,
      "output_tokens": 0,
-     "seconds": 0.0
+     "seconds": 1.97
     },
-    "approval_snapshot": "",
+    "approval_snapshot": "20b6f02e648da9f4",
     "title": "A result still pending",
     "summary": "A microbiology result not yet reported, and an expiry set on the wrong shelf life.",
     "awaiting_release_approval": false
@@ -2075,67 +2529,184 @@
   "LC-24037": {
    "review": {
     "lot_id": "LC-24037",
-    "stage": "failed",
+    "stage": "awaiting reviewer",
     "status": "on hold",
     "findings": [
      {
       "id": "F1",
-      "rule": "extraction.failed",
-      "severity": "critical",
-      "title": "The documents could not be read",
-      "expected": "a complete extraction",
-      "observed": "[ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.cr",
-      "evidence": []
+      "rule": "spec.wrong_revision",
+      "severity": "major",
+      "title": "Certificate tested against the wrong specification revision",
+      "expected": "rev 04, in force from 2026-10-01",
+      "observed": "rev 03",
+      "evidence": [
+       {
+        "document": "certificate_of_analysis.md",
+        "line": 10,
+        "text": "Tested against specification: FH-DBC-050 rev 03"
+       },
+       {
+        "document": "batch_record.md",
+        "line": 7,
+        "text": "Manufacture date: 2026-10-15"
+       }
+      ]
+     },
+     {
+      "id": "F2",
+      "rule": "test.viscosity_cp.out_of_spec",
+      "severity": "major",
+      "title": "Viscosity (Brookfield, 25 \u00b0C) out of specification",
+      "expected": "32,000 to 45,000 cP",
+      "observed": "31,400",
+      "evidence": [
+       {
+        "document": "certificate_of_analysis.md",
+        "line": 17,
+        "text": "| Viscosity, Brookfield RVT sp. 6, 10 rpm, 25 \u00b0C (cP) | 30,000 to 45,000 | 31,400 |"
+       }
+      ]
      }
     ],
     "evidence_notes": [],
-    "proposal": null,
-    "second_reading": null,
+    "proposal": {
+     "decision": "hold",
+     "rationale": "Blocking findings: F1: Certificate tested against the wrong specification revision. F2: Viscosity (Brookfield, 25 \u00b0C) out of specification.",
+     "finding_ids": [
+      "F1",
+      "F2"
+     ],
+     "at": "2026-11-27T05:16:24+00:00"
+    },
+    "second_reading": {
+     "agrees": true,
+     "concerns": []
+    },
     "decision": null,
     "timeline": [
      {
-      "at": "2026-11-27T05:12:55+00:00",
+      "at": "2026-11-27T05:16:21+00:00",
       "actor": "desk",
       "text": "Reading the certificate, batch record and deviation log (originals)."
      },
      {
-      "at": "2026-11-27T05:12:55+00:00",
-      "actor": "desk",
-      "text": "Reading failed: [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=reader, run_id=run_3b8b3ae9d32244a0, trace_id=8e279138-4499-452e-b7d4-a1eb48b57dd4 | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "at": "2026-11-27T05:16:22+00:00",
+      "actor": "rules",
+      "text": "Checked against rev 04: 2 finding(s), 2 blocking."
      },
      {
-      "at": "2026-11-27T05:12:55+00:00",
+      "at": "2026-11-27T05:16:22+00:00",
       "actor": "investigator",
       "text": "Looking for evidence that explains the blocking findings."
      },
      {
-      "at": "2026-11-27T05:12:55+00:00",
+      "at": "2026-11-27T05:16:23+00:00",
       "actor": "investigator",
-      "text": "Investigation failed and was skipped: [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=investigator, run_id=run_4b272f422dad4bb8, trace_id=68e74ddc-d547-4050-9f41-96664f9f88a6 | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "text": "get specification(03)"
      },
      {
-      "at": "2026-11-27T05:12:55+00:00",
-      "actor": "desk",
-      "text": "Review stopped by an error; the lot stays on hold. [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=proposer, run_id=run_1548838845804c14, trace_id=aa95fdc2-4b35-4dc4-b744-e4fa232d9f2c | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "at": "2026-11-27T05:16:23+00:00",
+      "actor": "investigator",
+      "text": "get specification(04)"
+     },
+     {
+      "at": "2026-11-27T05:16:23+00:00",
+      "actor": "investigator",
+      "text": "Note on F1, F2: request corrected document."
+     },
+     {
+      "at": "2026-11-27T05:16:24+00:00",
+      "actor": "proposer",
+      "text": "Placed on hold. Blocking findings: F1: Certificate tested against the wrong specification revision. F2: Viscosity (Brookfield, 25 \u00b0C) out of specification."
+     },
+     {
+      "at": "2026-11-27T05:16:25+00:00",
+      "actor": "second reader",
+      "text": "Agrees."
      }
     ],
-    "mode": "live",
-    "model": "claude-sonnet-5-5",
-    "error": "[ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=proposer, run_id=run_1548838845804c14, trace_id=aa95fdc2-4b35-4dc4-b744-e4fa232d9f2c | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'",
+    "mode": "offline (scripted stand-in model)",
+    "model": "scripted/offline",
+    "error": null,
     "deferred": false,
     "versions": {},
     "fingerprint": "a2acb520c2b6c498",
-    "governing_revision": null,
+    "governing_revision": "04",
     "investigation": {
-     "calls": [],
-     "notes": []
+     "calls": [
+      {
+       "at": "2026-11-27T05:16:23+00:00",
+       "tool": "get_specification",
+       "args": {
+        "revision": "03"
+       },
+       "result": "Revision 03, in force 2026-01-05 to 2026-09-30.  Limits: Appearance: white smooth cream, off-white smooth cream; Odour: characteristic; pH (25 \u00b0C): min 5.0, max 6.0; Viscosity (Brookfield, 25 \u00b0C): min 30000, max 45000; Specific gravity: min 0.98, max 1.02; Phenoxyethanol assay: min 0.80, max 1.00; Fill weight (mean of 10): min 50.0, max none; Total aerobic microbial count: min none, max 100; Total yeast and mould count: min none, max 10; Specified pathogens: absent"
+      },
+      {
+       "at": "2026-11-27T05:16:23+00:00",
+       "tool": "get_specification",
+       "args": {
+        "revision": "04"
+       },
+       "result": "Revision 04, in force 2026-10-01 to now. Viscosity lower limit raised from 30,000 to 32,000 cP after a stability study. Limits: Appearance: white smooth cream, off-white smooth cream; Odour: characteristic; pH (25 \u00b0C): min 5.0, max 6.0; Viscosity (Brookfield, 25 \u00b0C): min 32000, max 45000; Specific gravity: min 0.98, max 1.02; Phenoxyethanol assay: min 0.80, max 1.00; Fill weight (mean of 10): min 50.0, max none; Total aerobic microbial count: min none, max 100; Total yeast and mould count: min none, max 10; Specified pathogens: absent"
+      },
+      {
+       "at": "2026-11-27T05:16:23+00:00",
+       "tool": "submit_note",
+       "args": {
+        "finding_ids": [
+         "F1",
+         "F2"
+        ],
+        "next_step": "request_corrected_document",
+        "summary": "The certificate was tested against rev 03, but rev 04 was in force on the date of manufacture. The limits differ between the two, so a result can pass the revision cited and fail the one that governs. The laboratory should re-certify against rev 04.",
+        "evidence": [
+         {
+          "document": "certificate_of_analysis.md",
+          "line": 10
+         },
+         {
+          "document": "certificate_of_analysis.md",
+          "line": 17
+         }
+        ],
+        "open_questions": [
+         "Why was the retired revision still in use at the laboratory?"
+        ]
+       },
+       "result": "Note recorded."
+      }
+     ],
+     "notes": [
+      {
+       "finding_ids": [
+        "F1",
+        "F2"
+       ],
+       "summary": "The certificate was tested against rev 03, but rev 04 was in force on the date of manufacture. The limits differ between the two, so a result can pass the revision cited and fail the one that governs. The laboratory should re-certify against rev 04.",
+       "evidence": [
+        {
+         "document": "certificate_of_analysis.md",
+         "line": 10
+        },
+        {
+         "document": "certificate_of_analysis.md",
+         "line": 17
+        }
+       ],
+       "next_step": "request_corrected_document",
+       "open_questions": [
+        "Why was the retired revision still in use at the laboratory?"
+       ]
+      }
+     ]
     },
     "history": [],
     "usage": {
-     "model_calls": 0,
+     "model_calls": 8,
      "input_tokens": 0,
      "output_tokens": 0,
-     "seconds": 0.0
+     "seconds": 3.42
     },
     "approval_snapshot": "",
     "title": "The wrong revision",
@@ -2399,69 +2970,184 @@
   "LC-24035": {
    "review": {
     "lot_id": "LC-24035",
-    "stage": "failed",
+    "stage": "awaiting reviewer",
     "status": "on hold",
     "findings": [
      {
       "id": "F1",
-      "rule": "extraction.failed",
-      "severity": "critical",
-      "title": "The documents could not be read",
-      "expected": "a complete extraction",
-      "observed": "[ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.cr",
-      "evidence": []
+      "rule": "test.phenoxyethanol_pct.out_of_spec",
+      "severity": "major",
+      "title": "Phenoxyethanol assay out of specification",
+      "expected": "0.80 to 1.00 % w/w",
+      "observed": "0.78",
+      "evidence": [
+       {
+        "document": "certificate_of_analysis.md",
+        "line": 20,
+        "text": "| Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.78 |"
+       }
+      ]
      }
     ],
     "evidence_notes": [],
-    "proposal": null,
-    "second_reading": null,
+    "proposal": {
+     "decision": "hold",
+     "rationale": "Blocking findings: F1: Phenoxyethanol assay out of specification.",
+     "finding_ids": [
+      "F1"
+     ],
+     "at": "2026-11-27T05:16:31+00:00"
+    },
+    "second_reading": {
+     "agrees": true,
+     "concerns": []
+    },
     "decision": null,
     "timeline": [
      {
-      "at": "2026-11-27T05:12:55+00:00",
+      "at": "2026-11-27T05:16:28+00:00",
       "actor": "desk",
       "text": "Reading the certificate, batch record and deviation log (certificate_of_analysis.md v2)."
      },
      {
-      "at": "2026-11-27T05:12:55+00:00",
-      "actor": "desk",
-      "text": "Reading failed: [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=reader, run_id=run_3a74b92422d941ad, trace_id=280c07bf-edb4-4c62-a1a4-6e383162c92d | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "at": "2026-11-27T05:16:29+00:00",
+      "actor": "rules",
+      "text": "Checked against rev 04: 1 finding(s), 1 blocking."
      },
      {
-      "at": "2026-11-27T05:12:55+00:00",
+      "at": "2026-11-27T05:16:29+00:00",
       "actor": "investigator",
       "text": "Looking for evidence that explains the blocking findings."
      },
      {
-      "at": "2026-11-27T05:12:55+00:00",
+      "at": "2026-11-27T05:16:29+00:00",
       "actor": "investigator",
-      "text": "Investigation failed and was skipped: [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=investigator, run_id=run_f2777a2791dd4828, trace_id=44ba83d9-3e2f-4b5a-a791-ec66a858aad2 | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "text": "list supporting records()"
      },
      {
-      "at": "2026-11-27T05:12:55+00:00",
-      "actor": "desk",
-      "text": "Review stopped by an error; the lot stays on hold. [ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=proposer, run_id=run_e720d8f018bf4352, trace_id=3af8b933-dd6c-42b5-897f-abbdbf7bc996 | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'"
+      "at": "2026-11-27T05:16:30+00:00",
+      "actor": "investigator",
+      "text": "open record(LAB-NOTE-1102.md)"
+     },
+     {
+      "at": "2026-11-27T05:16:30+00:00",
+      "actor": "investigator",
+      "text": "Note on F1: confirm with laboratory."
+     },
+     {
+      "at": "2026-11-27T05:16:31+00:00",
+      "actor": "proposer",
+      "text": "Placed on hold. Blocking findings: F1: Phenoxyethanol assay out of specification."
+     },
+     {
+      "at": "2026-11-27T05:16:32+00:00",
+      "actor": "second reader",
+      "text": "Agrees."
      }
     ],
-    "mode": "live",
-    "model": "claude-sonnet-5-5",
-    "error": "[ORCHESTRATOR_ERROR] [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: agent_name=proposer, run_id=run_e720d8f018bf4352, trace_id=3af8b933-dd6c-42b5-897f-abbdbf7bc996 | Caused by: LLMError: [LLM_ERROR] AsyncMessages.create() got an unexpected keyword argument 'temperature' | Context: model=claude-sonnet-5-5, provider=anthropic | Caused by: TypeError: AsyncMessages.create() got an unexpected keyword argument 'temperature'",
+    "mode": "offline (scripted stand-in model)",
+    "model": "scripted/offline",
+    "error": null,
     "deferred": false,
     "versions": {
      "certificate": "v2"
     },
     "fingerprint": "38738d6bed2a0997",
-    "governing_revision": null,
+    "governing_revision": "04",
     "investigation": {
-     "calls": [],
-     "notes": []
+     "calls": [
+      {
+       "at": "2026-11-27T05:16:29+00:00",
+       "tool": "list_supporting_records",
+       "args": {},
+       "result": "Records on file: LAB-NOTE-1102.md"
+      },
+      {
+       "at": "2026-11-27T05:16:30+00:00",
+       "tool": "open_record",
+       "args": {
+        "name": "LAB-NOTE-1102.md"
+       },
+       "result": "L01: # Laboratory note LAB-NOTE-1102\nL02: \nL03: > Synthetic document. Fictional company, product and people, created for demonstration.\nL04: \nL05: Lot: LC-24035\nL06: Subject: Phenoxyethanol assay 0.78 % w/w\nL07: The assay was repeated in duplicate on 2026-10-06: 0.78 and 0.79 % w/w.\nL08: No laboratory error identified. Result confirmed.\nL09: Out-of-specification investigation OOS-0233 opened."
+      },
+      {
+       "at": "2026-11-27T05:16:30+00:00",
+       "tool": "submit_note",
+       "args": {
+        "finding_ids": [
+         "F1"
+        ],
+        "next_step": "confirm_with_laboratory",
+        "summary": "LAB-NOTE-1102 is on file. The laboratory repeated the test in duplicate and confirmed the result; an out-of-specification investigation is open.",
+        "evidence": [
+         {
+          "document": "certificate_of_analysis.md",
+          "line": 20
+         },
+         {
+          "document": "records/LAB-NOTE-1102.md"
+         }
+        ],
+        "open_questions": [
+         "What does the OOS investigation conclude?"
+        ]
+       },
+       "result": "Note recorded."
+      }
+     ],
+     "notes": [
+      {
+       "finding_ids": [
+        "F1"
+       ],
+       "summary": "LAB-NOTE-1102 is on file. The laboratory repeated the test in duplicate and confirmed the result; an out-of-specification investigation is open.",
+       "evidence": [
+        {
+         "document": "certificate_of_analysis.md",
+         "line": 20
+        },
+        {
+         "document": "records/LAB-NOTE-1102.md",
+         "line": null
+        }
+       ],
+       "next_step": "confirm_with_laboratory",
+       "open_questions": [
+        "What does the OOS investigation conclude?"
+       ]
+      }
+     ]
     },
-    "history": [],
+    "history": [
+     {
+      "fingerprint": "7b1b4982663e55dc",
+      "versions": {
+       "certificate": "v2"
+      },
+      "status": "on hold",
+      "proposal": {
+       "decision": "hold",
+       "rationale": "Blocking findings: F1: Lot number on the certificate of analysis does not match. F2: Phenoxyethanol assay out of specification.",
+       "finding_ids": [
+        "F1",
+        "F2"
+       ],
+       "at": "2026-11-27T05:16:27+00:00"
+      },
+      "decision": null,
+      "findings": [
+       "F1 Lot number on the certificate of analysis does not match",
+       "F2 Phenoxyethanol assay out of specification"
+      ],
+      "superseded_at": "2026-11-27T05:16:28+00:00",
+      "reason": "certificate_of_analysis.md replaced by corrected version v2. Earlier findings and decisions were made on different evidence and need reassessment."
+     }
+    ],
     "usage": {
-     "model_calls": 0,
+     "model_calls": 8,
      "input_tokens": 0,
      "output_tokens": 0,
-     "seconds": 0.0
+     "seconds": 3.4
     },
     "approval_snapshot": "",
     "title": "Two records that disagree",
@@ -2776,11 +3462,11 @@
    "lot_id": "LC-24031",
    "title": "A complete review packet",
    "summary": "Every result within its limits, every step signed twice, nothing left open.",
-   "stage": "failed",
+   "stage": "awaiting reviewer",
    "status": "on hold",
    "running": false,
-   "proposal": null,
-   "blocking": 1,
+   "proposal": "release",
+   "blocking": 0,
    "awaiting_release_approval": false,
    "decision": null,
    "needs_reassessment": false
@@ -2792,7 +3478,7 @@
    "stage": "decided",
    "status": "rejected",
    "running": false,
-   "proposal": null,
+   "proposal": "hold",
    "blocking": 1,
    "awaiting_release_approval": false,
    "decision": "reject",
@@ -2802,10 +3488,10 @@
    "lot_id": "LC-24033",
    "title": "An unresolved deviation",
    "summary": "Every result passes, but a temperature deviation is still open.",
-   "stage": "failed",
+   "stage": "awaiting reviewer",
    "status": "on hold",
    "running": false,
-   "proposal": null,
+   "proposal": "hold",
    "blocking": 1,
    "awaiting_release_approval": false,
    "decision": null,
@@ -2815,10 +3501,10 @@
    "lot_id": "LC-24034",
    "title": "A missing second signature",
    "summary": "The filling step was never verified, and pH sits exactly on its limit.",
-   "stage": "failed",
+   "stage": "awaiting reviewer",
    "status": "on hold",
    "running": false,
-   "proposal": null,
+   "proposal": "hold",
    "blocking": 1,
    "awaiting_release_approval": false,
    "decision": null,
@@ -2828,11 +3514,11 @@
    "lot_id": "LC-24035",
    "title": "Two records that disagree",
    "summary": "A transposed lot number and a low preservative assay.",
-   "stage": "failed",
+   "stage": "awaiting reviewer",
    "status": "on hold",
    "running": false,
-   "proposal": null,
-   "blocking": 1,
+   "proposal": "hold",
+   "blocking": 2,
    "awaiting_release_approval": false,
    "decision": null,
    "needs_reassessment": false
@@ -2841,37 +3527,37 @@
    "lot_id": "LC-24036",
    "title": "A result still pending",
    "summary": "A microbiology result not yet reported, and an expiry set on the wrong shelf life.",
-   "stage": "failed",
-   "status": "on hold",
+   "stage": "decided",
+   "status": "released",
    "running": false,
-   "proposal": null,
-   "blocking": 1,
+   "proposal": "release",
+   "blocking": 0,
    "awaiting_release_approval": false,
-   "decision": null,
+   "decision": "approve_release",
    "needs_reassessment": false
   },
   {
    "lot_id": "LC-24037",
    "title": "The wrong revision",
    "summary": "Tested against a retired specification; the one in force says otherwise.",
-   "stage": "failed",
+   "stage": "awaiting reviewer",
    "status": "on hold",
    "running": false,
-   "proposal": null,
-   "blocking": 1,
+   "proposal": "hold",
+   "blocking": 2,
    "awaiting_release_approval": false,
    "decision": null,
    "needs_reassessment": false
   }
  ],
  "metrics": {
-  "lots_reviewed": 0,
-  "blocking_findings": 0,
-  "evidence_rejected": 0,
-  "decided": 0,
-  "agreed": 0,
+  "lots_reviewed": 7,
+  "blocking_findings": 7,
+  "evidence_rejected": 1,
+  "decided": 2,
+  "agreed": 2,
   "overridden": 0,
-  "median_minutes_to_decision": null
+  "median_minutes_to_decision": 0.0
  },
  "mapping": {
   "contract": {
@@ -4578,28 +5264,20 @@
  },
  "evaluation": {
   "bundle_version": 2,
-  "mode": "live",
-  "model": "claude-sonnet-5-5",
-  "commit": "eaee16e",
-  "when": "2026-11-27 05:12 UTC",
+  "mode": "offline (scripted stand-in model)",
+  "model": "scripted/offline",
+  "commit": "d12e5dd",
+  "when": "2026-11-27 01:37 UTC",
   "repeat": 5,
   "lots": 7,
   "summary": {
    "false_clears": 0,
-   "blocking_findings_found": "0/45",
-   "clean_case_completion": "0/5",
-   "all_runs_correct_lots": "0/7",
-   "lots_with_any_failure": [
-    "LC-24031",
-    "LC-24032",
-    "LC-24033",
-    "LC-24034",
-    "LC-24035",
-    "LC-24036",
-    "LC-24037"
-   ],
-   "unexpected_findings": 35,
-   "mean_seconds_per_lot": 0.0,
+   "blocking_findings_found": "45/45",
+   "clean_case_completion": "5/5",
+   "all_runs_correct_lots": "7/7",
+   "lots_with_any_failure": [],
+   "unexpected_findings": 0,
+   "mean_seconds_per_lot": 3.2,
    "mean_input_tokens_per_lot": 0.0,
    "mean_output_tokens_per_lot": 0.0
   },
@@ -4608,14 +5286,12 @@
     "lot": "LC-24031",
     "expected": [],
     "expected_proposal": "release",
-    "runs_correct": 0,
+    "runs_correct": 5,
     "runs": 5,
-    "all_correct": false,
-    "any_failure": true,
+    "all_correct": true,
+    "any_failure": false,
     "false_clears": 0,
-    "seen_in_any_run": [
-     "extraction.failed"
-    ],
+    "seen_in_any_run": [],
     "missed_in_some_run": [],
     "agreement": 1.0,
     "investigator_paths": [
@@ -4628,20 +5304,18 @@
      "test.tymc_cfu_g.out_of_spec"
     ],
     "expected_proposal": "hold",
-    "runs_correct": 0,
+    "runs_correct": 5,
     "runs": 5,
-    "all_correct": false,
-    "any_failure": true,
+    "all_correct": true,
+    "any_failure": false,
     "false_clears": 0,
     "seen_in_any_run": [
-     "extraction.failed"
-    ],
-    "missed_in_some_run": [
      "test.tymc_cfu_g.out_of_spec"
     ],
+    "missed_in_some_run": [],
     "agreement": 1.0,
     "investigator_paths": [
-     ""
+     "list_supporting_records > submit_note"
     ]
    },
    {
@@ -4650,20 +5324,18 @@
      "deviation.open"
     ],
     "expected_proposal": "hold",
-    "runs_correct": 0,
+    "runs_correct": 5,
     "runs": 5,
-    "all_correct": false,
-    "any_failure": true,
+    "all_correct": true,
+    "any_failure": false,
     "false_clears": 0,
     "seen_in_any_run": [
-     "extraction.failed"
-    ],
-    "missed_in_some_run": [
      "deviation.open"
     ],
+    "missed_in_some_run": [],
     "agreement": 1.0,
     "investigator_paths": [
-     ""
+     "list_supporting_records > open_record > submit_note"
     ]
    },
    {
@@ -4672,20 +5344,18 @@
      "batch.step_unverified"
     ],
     "expected_proposal": "hold",
-    "runs_correct": 0,
+    "runs_correct": 5,
     "runs": 5,
-    "all_correct": false,
-    "any_failure": true,
+    "all_correct": true,
+    "any_failure": false,
     "false_clears": 0,
     "seen_in_any_run": [
-     "extraction.failed"
-    ],
-    "missed_in_some_run": [
      "batch.step_unverified"
     ],
+    "missed_in_some_run": [],
     "agreement": 1.0,
     "investigator_paths": [
-     ""
+     "read_document > submit_note"
     ]
    },
    {
@@ -4695,21 +5365,19 @@
      "test.phenoxyethanol_pct.out_of_spec"
     ],
     "expected_proposal": "hold",
-    "runs_correct": 0,
+    "runs_correct": 5,
     "runs": 5,
-    "all_correct": false,
-    "any_failure": true,
+    "all_correct": true,
+    "any_failure": false,
     "false_clears": 0,
     "seen_in_any_run": [
-     "extraction.failed"
-    ],
-    "missed_in_some_run": [
      "identity.lot_mismatch",
      "test.phenoxyethanol_pct.out_of_spec"
     ],
+    "missed_in_some_run": [],
     "agreement": 1.0,
     "investigator_paths": [
-     ""
+     "list_corrected_documents > read_corrected_document > submit_note > list_supporting_records > open_record > submit_note"
     ]
    },
    {
@@ -4719,21 +5387,19 @@
      "test.tymc_cfu_g.missing"
     ],
     "expected_proposal": "hold",
-    "runs_correct": 0,
+    "runs_correct": 5,
     "runs": 5,
-    "all_correct": false,
-    "any_failure": true,
+    "all_correct": true,
+    "any_failure": false,
     "false_clears": 0,
     "seen_in_any_run": [
-     "extraction.failed"
-    ],
-    "missed_in_some_run": [
      "dates.expiry",
      "test.tymc_cfu_g.missing"
     ],
+    "missed_in_some_run": [],
     "agreement": 1.0,
     "investigator_paths": [
-     ""
+     "list_corrected_documents > read_corrected_document > submit_note"
     ]
    },
    {
@@ -4743,29 +5409,27 @@
      "test.viscosity_cp.out_of_spec"
     ],
     "expected_proposal": "hold",
-    "runs_correct": 0,
+    "runs_correct": 5,
     "runs": 5,
-    "all_correct": false,
-    "any_failure": true,
+    "all_correct": true,
+    "any_failure": false,
     "false_clears": 0,
     "seen_in_any_run": [
-     "extraction.failed"
-    ],
-    "missed_in_some_run": [
      "spec.wrong_revision",
      "test.viscosity_cp.out_of_spec"
     ],
+    "missed_in_some_run": [],
     "agreement": 1.0,
     "investigator_paths": [
-     ""
+     "get_specification > get_specification > submit_note"
     ]
    }
   ]
  },
  "meta": {
   "mode": "replay",
-  "recorded": "live (claude-sonnet-5-5)",
-  "model": "claude-sonnet-5-5",
+  "recorded": "offline (scripted stand-in model)",
+  "model": "scripted/offline",
   "actions": {
    "approve_release": "Approved the proposed release",
    "deny_release": "Refused the proposed release; lot held",

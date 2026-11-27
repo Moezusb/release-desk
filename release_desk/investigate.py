@@ -146,9 +146,10 @@ async def investigate(
         name="investigator",
         instructions=INSTRUCTIONS,
         model=settings.model,
+        temperature=None,  # current Claude models reject sampling parameters
         tool_executor=executor,
         tools=executor.get_tool_definitions(),
-        config=AgentConfig(temperature=0.0, max_tokens=2000, max_turns=12),
+        config=AgentConfig(temperature=None, max_tokens=2000, max_turns=12),
     )
     message = (f"Lot: {lot_id}\nDocument versions: {pkg.version_label()}\n\n"
                f"FINDINGS_JSON:\n{json.dumps(findings, indent=1)}\nEND_FINDINGS\n")

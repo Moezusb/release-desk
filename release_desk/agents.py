@@ -47,8 +47,9 @@ async def extract(settings: Settings, pkg: LotPackage, spec: dict) -> LotExtract
         name="reader",
         instructions=EXTRACTOR.format(test_keys=keys),
         model=settings.model,
+        temperature=None,  # current Claude models reject sampling parameters
         output_schema=LotExtraction,
-        config=AgentConfig(temperature=0.0, max_tokens=8000, max_turns=2),
+        config=AgentConfig(temperature=None, max_tokens=8000, max_turns=2),
     )
     message = (
         f"Lot: {pkg.lot_id}\nDocument versions: {pkg.version_label()}\n\n"
@@ -79,8 +80,9 @@ async def second_read(settings: Settings, lot_id: str, findings: list[dict], pro
         name="second-reader",
         instructions=SECOND_READER,
         model=settings.model,
+        temperature=None,  # current Claude models reject sampling parameters
         output_schema=SecondReading,
-        config=AgentConfig(temperature=0.0, max_tokens=1500, max_turns=2),
+        config=AgentConfig(temperature=None, max_tokens=1500, max_turns=2),
     )
     message = (
         f"Lot: {lot_id}\n\nFINDINGS_JSON:\n{json.dumps(findings, indent=1)}\nEND_FINDINGS\n\n"
@@ -146,10 +148,11 @@ async def propose(
         name="proposer",
         instructions=DISPOSITION,
         model=settings.model,
+        temperature=None,  # current Claude models reject sampling parameters
         tool_executor=executor,
         tools=executor.get_tool_definitions(),
         config=AgentConfig(
-            temperature=0.0,
+            temperature=None,
             max_tokens=1500,
             max_turns=4,
             # Releasing needs a person. Holding does not: saying no is cheap,
