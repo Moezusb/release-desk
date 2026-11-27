@@ -1,6 +1,6 @@
 {
  "schema_version": "acceptance-lab.report.v2",
- "generated_at": "2026-11-27T06:27:42+00:00",
+ "generated_at": "2026-11-27T06:56:00+00:00",
  "title": "Acceptance lab",
  "labels": {
   "dataset": "fernhollow-seven-lots-v2",
@@ -133,6 +133,2314 @@
  "candidates": [
   {
    "schema_version": "acceptance-lab.candidate-report.v2",
+   "id": "executed-live",
+   "label": "Executed live workflow",
+   "kind": "executed_live",
+   "description": "Real runs of the Release Desk pipeline with a live model, recorded in GitHub Actions.",
+   "origin": {
+    "mode": "live",
+    "model": "claude-sonnet-5-5",
+    "commit": "5d0b73e",
+    "produced": "2026-11-27 06:49 UTC",
+    "repeat": 3
+   },
+   "evaluated_at": "2026-11-27T06:56:00+00:00",
+   "summary": {
+    "runs_submitted": 21,
+    "runs_expected": 21,
+    "runs_passed": 0,
+    "missing_runs": 0,
+    "unsafe_release_outputs": 0,
+    "unexpected_findings": 21,
+    "acceptance_passed": false
+   },
+   "metrics": {
+    "case_acceptance": {
+     "label": "Runs passing every check",
+     "numerator": 0,
+     "denominator": 21,
+     "value": 0.0,
+     "display": "0/21"
+    },
+    "known_exception_recall": {
+     "label": "Labelled exceptions found",
+     "numerator": 27,
+     "denominator": 27,
+     "value": 1.0,
+     "display": "27/27"
+    },
+    "supported_exception_recall": {
+     "label": "Labelled exceptions found with supporting evidence",
+     "numerator": 27,
+     "denominator": 27,
+     "value": 1.0,
+     "display": "27/27"
+    },
+    "critical_exception_recall": {
+     "label": "Critical exceptions found with supporting evidence",
+     "numerator": 9,
+     "denominator": 9,
+     "value": 1.0,
+     "display": "9/9"
+    },
+    "proposal_match": {
+     "label": "Proposals matching the label",
+     "numerator": 18,
+     "denominator": 21,
+     "value": 0.8571428571428571,
+     "display": "18/21"
+    },
+    "clean_completion": {
+     "label": "Clean lots proposed for release",
+     "numerator": 0,
+     "denominator": 3,
+     "value": 0.0,
+     "display": "0/3"
+    },
+    "citation_validity": {
+     "label": "Citations resolving to the source text",
+     "numerator": 51,
+     "denominator": 51,
+     "value": 1.0,
+     "display": "51/51"
+    }
+   },
+   "gates": [
+    {
+     "id": "coverage",
+     "gate": "Coverage and identity",
+     "rule": "Every labelled lot appears once per repeat, with a unique run ID, on the original documents, without errors.",
+     "passed": true
+    },
+    {
+     "id": "unsafe",
+     "gate": "No unsafe clearance",
+     "rule": "No release is proposed for a lot labelled hold.",
+     "passed": true
+    },
+    {
+     "id": "detection",
+     "gate": "Exception detection with evidence",
+     "rule": "Every labelled exception is present at the right severity, citing a line about the right attribute.",
+     "passed": true
+    },
+    {
+     "id": "completion",
+     "gate": "Useful completion",
+     "rule": "The clean lot is proposed for release. Holding everything is not a pass.",
+     "passed": false
+    },
+    {
+     "id": "burden",
+     "gate": "Reviewer burden",
+     "rule": "No unexpected findings. On a finite labelled set, extras are noise a reviewer must clear.",
+     "passed": false
+    }
+   ],
+   "recommendation": {
+    "verdict": "Not ready for a pilot",
+    "why": "Failed: useful completion, reviewer burden."
+   },
+   "cases": [
+    {
+     "lot": "LC-24031",
+     "run": 1,
+     "run_id": "423f21eb0b694d3896619228949b90e9",
+     "expected_proposal": "release",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "The proposal must match the label.",
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24031"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "423f21eb0b694d3896619228949b90e9"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "81c1508966ed0d14",
+       "actual": "81c1508966ed0d14"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "release",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": false,
+       "message": "The proposal must match the label.",
+       "expected": "release",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [],
+       "actual": []
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [],
+     "unexpected": [
+      "batch.yield"
+     ]
+    },
+    {
+     "lot": "LC-24031",
+     "run": 2,
+     "run_id": "6fad306daef140a2a86eec15caf27264",
+     "expected_proposal": "release",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "The proposal must match the label.",
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24031"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "6fad306daef140a2a86eec15caf27264"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "81c1508966ed0d14",
+       "actual": "81c1508966ed0d14"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "release",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": false,
+       "message": "The proposal must match the label.",
+       "expected": "release",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [],
+       "actual": []
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [],
+     "unexpected": [
+      "batch.yield"
+     ]
+    },
+    {
+     "lot": "LC-24031",
+     "run": 3,
+     "run_id": "37da7f1ca1c542efbf0896bc20ba0a06",
+     "expected_proposal": "release",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "The proposal must match the label.",
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24031"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "37da7f1ca1c542efbf0896bc20ba0a06"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "81c1508966ed0d14",
+       "actual": "81c1508966ed0d14"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "release",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": false,
+       "message": "The proposal must match the label.",
+       "expected": "release",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [],
+       "actual": []
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [],
+     "unexpected": [
+      "batch.yield"
+     ]
+    },
+    {
+     "lot": "LC-24032",
+     "run": 1,
+     "run_id": "eecd8fce0241450cb8b5bb16ccf00738",
+     "expected_proposal": "hold",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24032"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "eecd8fce0241450cb8b5bb16ccf00738"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "46299652c3fe6e0d",
+       "actual": "46299652c3fe6e0d"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": true,
+       "message": "The proposal must match the label.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [
+        "test.tymc_cfu_g.out_of_spec"
+       ],
+       "actual": [
+        "test.tymc_cfu_g.out_of_spec"
+       ]
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [
+      {
+       "rule": "test.tymc_cfu_g.out_of_spec",
+       "severity": "critical",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 22: | Total yeast and mould count (CFU/g) | Not more than 10 | 40 |",
+       "needs": "certificate_of_analysis.md, a line mentioning 'yeast and mould' and showing '40'"
+      }
+     ],
+     "unexpected": [
+      "batch.yield"
+     ]
+    },
+    {
+     "lot": "LC-24032",
+     "run": 2,
+     "run_id": "6ea5a2eb55974317b2a211e60f4e4bdb",
+     "expected_proposal": "hold",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24032"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "6ea5a2eb55974317b2a211e60f4e4bdb"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "46299652c3fe6e0d",
+       "actual": "46299652c3fe6e0d"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": true,
+       "message": "The proposal must match the label.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [
+        "test.tymc_cfu_g.out_of_spec"
+       ],
+       "actual": [
+        "test.tymc_cfu_g.out_of_spec"
+       ]
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [
+      {
+       "rule": "test.tymc_cfu_g.out_of_spec",
+       "severity": "critical",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 22: | Total yeast and mould count (CFU/g) | Not more than 10 | 40 |",
+       "needs": "certificate_of_analysis.md, a line mentioning 'yeast and mould' and showing '40'"
+      }
+     ],
+     "unexpected": [
+      "batch.yield"
+     ]
+    },
+    {
+     "lot": "LC-24032",
+     "run": 3,
+     "run_id": "539e056c626d4b97a479b3dad5065597",
+     "expected_proposal": "hold",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24032"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "539e056c626d4b97a479b3dad5065597"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "46299652c3fe6e0d",
+       "actual": "46299652c3fe6e0d"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": true,
+       "message": "The proposal must match the label.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [
+        "test.tymc_cfu_g.out_of_spec"
+       ],
+       "actual": [
+        "test.tymc_cfu_g.out_of_spec"
+       ]
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [
+      {
+       "rule": "test.tymc_cfu_g.out_of_spec",
+       "severity": "critical",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 22: | Total yeast and mould count (CFU/g) | Not more than 10 | 40 |",
+       "needs": "certificate_of_analysis.md, a line mentioning 'yeast and mould' and showing '40'"
+      }
+     ],
+     "unexpected": [
+      "batch.yield"
+     ]
+    },
+    {
+     "lot": "LC-24033",
+     "run": 1,
+     "run_id": "874e8fc7a8af4f51a39019e78cf982d7",
+     "expected_proposal": "hold",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24033"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "874e8fc7a8af4f51a39019e78cf982d7"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "0e9b4203f32b99eb",
+       "actual": "0e9b4203f32b99eb"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": true,
+       "message": "The proposal must match the label.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [
+        "deviation.open"
+       ],
+       "actual": [
+        "deviation.open"
+       ]
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [
+      {
+       "rule": "deviation.open",
+       "severity": "major",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "deviation_log.md line 10: | DEV-0417 | Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification | Open, investigation pending | Not yet assigned |",
+       "needs": "deviation_log.md, a line mentioning 'DEV-0417' and showing 'Open'"
+      }
+     ],
+     "unexpected": [
+      "batch.yield"
+     ]
+    },
+    {
+     "lot": "LC-24033",
+     "run": 2,
+     "run_id": "ae9ffb4fa42449249897026797234e7d",
+     "expected_proposal": "hold",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24033"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "ae9ffb4fa42449249897026797234e7d"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "0e9b4203f32b99eb",
+       "actual": "0e9b4203f32b99eb"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": true,
+       "message": "The proposal must match the label.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [
+        "deviation.open"
+       ],
+       "actual": [
+        "deviation.open"
+       ]
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [
+      {
+       "rule": "deviation.open",
+       "severity": "major",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "deviation_log.md line 10: | DEV-0417 | Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification | Open, investigation pending | Not yet assigned |",
+       "needs": "deviation_log.md, a line mentioning 'DEV-0417' and showing 'Open'"
+      }
+     ],
+     "unexpected": [
+      "batch.yield"
+     ]
+    },
+    {
+     "lot": "LC-24033",
+     "run": 3,
+     "run_id": "2328159ed81c41d382435fc46100031e",
+     "expected_proposal": "hold",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24033"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "2328159ed81c41d382435fc46100031e"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "0e9b4203f32b99eb",
+       "actual": "0e9b4203f32b99eb"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": true,
+       "message": "The proposal must match the label.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [
+        "deviation.open"
+       ],
+       "actual": [
+        "deviation.open"
+       ]
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [
+      {
+       "rule": "deviation.open",
+       "severity": "major",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "deviation_log.md line 10: | DEV-0417 | Mixer temperature reached 81 \u00b0C for 6 minutes during emulsification | Open, investigation pending | Not yet assigned |",
+       "needs": "deviation_log.md, a line mentioning 'DEV-0417' and showing 'Open'"
+      }
+     ],
+     "unexpected": [
+      "batch.yield"
+     ]
+    },
+    {
+     "lot": "LC-24034",
+     "run": 1,
+     "run_id": "0beaa935c5404592acc91d1e309a5d61",
+     "expected_proposal": "hold",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24034"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "0beaa935c5404592acc91d1e309a5d61"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "1fca282f4b4aaa27",
+       "actual": "1fca282f4b4aaa27"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": true,
+       "message": "The proposal must match the label.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [
+        "batch.step_unverified"
+       ],
+       "actual": [
+        "batch.step_unverified"
+       ]
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [
+      {
+       "rule": "batch.step_unverified",
+       "severity": "major",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "batch_record.md line 18: | 7 | Fill into 50 g tubes and crimp | A. Moreau |  |",
+       "needs": "batch_record.md, a line mentioning 'Fill into 50 g tubes'"
+      }
+     ],
+     "unexpected": [
+      "batch.yield"
+     ]
+    },
+    {
+     "lot": "LC-24034",
+     "run": 2,
+     "run_id": "7068782ddf1e49e0bb98dd3126c262d5",
+     "expected_proposal": "hold",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24034"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "7068782ddf1e49e0bb98dd3126c262d5"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "1fca282f4b4aaa27",
+       "actual": "1fca282f4b4aaa27"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": true,
+       "message": "The proposal must match the label.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [
+        "batch.step_unverified"
+       ],
+       "actual": [
+        "batch.step_unverified"
+       ]
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [
+      {
+       "rule": "batch.step_unverified",
+       "severity": "major",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "batch_record.md line 18: | 7 | Fill into 50 g tubes and crimp | A. Moreau |  |",
+       "needs": "batch_record.md, a line mentioning 'Fill into 50 g tubes'"
+      }
+     ],
+     "unexpected": [
+      "batch.yield"
+     ]
+    },
+    {
+     "lot": "LC-24034",
+     "run": 3,
+     "run_id": "43b5385f79a747adad683e7b23cfc9f8",
+     "expected_proposal": "hold",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24034"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "43b5385f79a747adad683e7b23cfc9f8"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "1fca282f4b4aaa27",
+       "actual": "1fca282f4b4aaa27"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": true,
+       "message": "The proposal must match the label.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [
+        "batch.step_unverified"
+       ],
+       "actual": [
+        "batch.step_unverified"
+       ]
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [
+      {
+       "rule": "batch.step_unverified",
+       "severity": "major",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "batch_record.md line 18: | 7 | Fill into 50 g tubes and crimp | A. Moreau |  |",
+       "needs": "batch_record.md, a line mentioning 'Fill into 50 g tubes'"
+      }
+     ],
+     "unexpected": [
+      "batch.yield"
+     ]
+    },
+    {
+     "lot": "LC-24035",
+     "run": 1,
+     "run_id": "a86c0767ed2c4b6f8de9af25b934f644",
+     "expected_proposal": "hold",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24035"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "a86c0767ed2c4b6f8de9af25b934f644"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "7b1b4982663e55dc",
+       "actual": "7b1b4982663e55dc"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": true,
+       "message": "The proposal must match the label.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [
+        "identity.lot_mismatch",
+        "test.phenoxyethanol_pct.out_of_spec"
+       ],
+       "actual": [
+        "identity.lot_mismatch",
+        "test.phenoxyethanol_pct.out_of_spec"
+       ]
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [
+      {
+       "rule": "identity.lot_mismatch",
+       "severity": "critical",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 7: Lot number: LC-24053",
+       "needs": "certificate_of_analysis.md, a line mentioning 'Lot number' and showing 'LC-24053'"
+      },
+      {
+       "rule": "test.phenoxyethanol_pct.out_of_spec",
+       "severity": "major",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 19: | Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.78 |",
+       "needs": "certificate_of_analysis.md, a line mentioning 'Phenoxyethanol' and showing '0.78'"
+      }
+     ],
+     "unexpected": [
+      "batch.yield"
+     ]
+    },
+    {
+     "lot": "LC-24035",
+     "run": 2,
+     "run_id": "ee60dfb3602d450aaacf1352536e3981",
+     "expected_proposal": "hold",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24035"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "ee60dfb3602d450aaacf1352536e3981"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "7b1b4982663e55dc",
+       "actual": "7b1b4982663e55dc"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": true,
+       "message": "The proposal must match the label.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [
+        "identity.lot_mismatch",
+        "test.phenoxyethanol_pct.out_of_spec"
+       ],
+       "actual": [
+        "identity.lot_mismatch",
+        "test.phenoxyethanol_pct.out_of_spec"
+       ]
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [
+      {
+       "rule": "identity.lot_mismatch",
+       "severity": "critical",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 7: Lot number: LC-24053",
+       "needs": "certificate_of_analysis.md, a line mentioning 'Lot number' and showing 'LC-24053'"
+      },
+      {
+       "rule": "test.phenoxyethanol_pct.out_of_spec",
+       "severity": "major",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 19: | Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.78 |",
+       "needs": "certificate_of_analysis.md, a line mentioning 'Phenoxyethanol' and showing '0.78'"
+      }
+     ],
+     "unexpected": [
+      "batch.yield"
+     ]
+    },
+    {
+     "lot": "LC-24035",
+     "run": 3,
+     "run_id": "742e0c9bcd3248f891a10c70be09f187",
+     "expected_proposal": "hold",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24035"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "742e0c9bcd3248f891a10c70be09f187"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "7b1b4982663e55dc",
+       "actual": "7b1b4982663e55dc"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": true,
+       "message": "The proposal must match the label.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [
+        "identity.lot_mismatch",
+        "test.phenoxyethanol_pct.out_of_spec"
+       ],
+       "actual": [
+        "identity.lot_mismatch",
+        "test.phenoxyethanol_pct.out_of_spec"
+       ]
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [
+      {
+       "rule": "identity.lot_mismatch",
+       "severity": "critical",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 7: Lot number: LC-24053",
+       "needs": "certificate_of_analysis.md, a line mentioning 'Lot number' and showing 'LC-24053'"
+      },
+      {
+       "rule": "test.phenoxyethanol_pct.out_of_spec",
+       "severity": "major",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 19: | Phenoxyethanol assay, HPLC (% w/w) | 0.80 to 1.00 | 0.78 |",
+       "needs": "certificate_of_analysis.md, a line mentioning 'Phenoxyethanol' and showing '0.78'"
+      }
+     ],
+     "unexpected": [
+      "batch.yield"
+     ]
+    },
+    {
+     "lot": "LC-24036",
+     "run": 1,
+     "run_id": "cf302cc7bef9406588bce500761dd8ce",
+     "expected_proposal": "hold",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24036"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "cf302cc7bef9406588bce500761dd8ce"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "2ba3981481ebebba",
+       "actual": "2ba3981481ebebba"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": true,
+       "message": "The proposal must match the label.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [
+        "test.tymc_cfu_g.missing",
+        "dates.expiry"
+       ],
+       "actual": [
+        "test.tymc_cfu_g.missing",
+        "dates.expiry"
+       ]
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [
+      {
+       "rule": "test.tymc_cfu_g.missing",
+       "severity": "critical",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 22: | Total yeast and mould count (CFU/g) | Not more than 10 | Pending |",
+       "needs": "certificate_of_analysis.md, a line mentioning 'yeast and mould' and showing 'Pending'"
+      },
+      {
+       "rule": "dates.expiry",
+       "severity": "major",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 9: Expiry: 2029-10",
+       "needs": "certificate_of_analysis.md, a line mentioning 'Expiry' and showing '2029-10'"
+      }
+     ],
+     "unexpected": [
+      "batch.yield"
+     ]
+    },
+    {
+     "lot": "LC-24036",
+     "run": 2,
+     "run_id": "5aafec8ec3aa4c2bac5d362d39c290a5",
+     "expected_proposal": "hold",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24036"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "5aafec8ec3aa4c2bac5d362d39c290a5"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "2ba3981481ebebba",
+       "actual": "2ba3981481ebebba"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": true,
+       "message": "The proposal must match the label.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [
+        "test.tymc_cfu_g.missing",
+        "dates.expiry"
+       ],
+       "actual": [
+        "test.tymc_cfu_g.missing",
+        "dates.expiry"
+       ]
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [
+      {
+       "rule": "test.tymc_cfu_g.missing",
+       "severity": "critical",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 22: | Total yeast and mould count (CFU/g) | Not more than 10 | Pending |",
+       "needs": "certificate_of_analysis.md, a line mentioning 'yeast and mould' and showing 'Pending'"
+      },
+      {
+       "rule": "dates.expiry",
+       "severity": "major",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 9: Expiry: 2029-10",
+       "needs": "certificate_of_analysis.md, a line mentioning 'Expiry' and showing '2029-10'"
+      }
+     ],
+     "unexpected": [
+      "batch.yield"
+     ]
+    },
+    {
+     "lot": "LC-24036",
+     "run": 3,
+     "run_id": "1827192f1aa8439e984011eb1a5d62ae",
+     "expected_proposal": "hold",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24036"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "1827192f1aa8439e984011eb1a5d62ae"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "2ba3981481ebebba",
+       "actual": "2ba3981481ebebba"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": true,
+       "message": "The proposal must match the label.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [
+        "test.tymc_cfu_g.missing",
+        "dates.expiry"
+       ],
+       "actual": [
+        "test.tymc_cfu_g.missing",
+        "dates.expiry"
+       ]
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [
+      {
+       "rule": "test.tymc_cfu_g.missing",
+       "severity": "critical",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 22: | Total yeast and mould count (CFU/g) | Not more than 10 | Pending |",
+       "needs": "certificate_of_analysis.md, a line mentioning 'yeast and mould' and showing 'Pending'"
+      },
+      {
+       "rule": "dates.expiry",
+       "severity": "major",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 9: Expiry: 2029-10",
+       "needs": "certificate_of_analysis.md, a line mentioning 'Expiry' and showing '2029-10'"
+      }
+     ],
+     "unexpected": [
+      "batch.yield"
+     ]
+    },
+    {
+     "lot": "LC-24037",
+     "run": 1,
+     "run_id": "ba1c9127ad074565b099945d2557071e",
+     "expected_proposal": "hold",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24037"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "ba1c9127ad074565b099945d2557071e"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "a2acb520c2b6c498",
+       "actual": "a2acb520c2b6c498"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": true,
+       "message": "The proposal must match the label.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [
+        "spec.wrong_revision",
+        "test.viscosity_cp.out_of_spec"
+       ],
+       "actual": [
+        "spec.wrong_revision",
+        "test.viscosity_cp.out_of_spec"
+       ]
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [
+      {
+       "rule": "spec.wrong_revision",
+       "severity": "major",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 10: Tested against specification: FH-DBC-050 rev 03",
+       "needs": "certificate_of_analysis.md, a line mentioning 'specification' and showing 'rev 03'"
+      },
+      {
+       "rule": "test.viscosity_cp.out_of_spec",
+       "severity": "major",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 17: | Viscosity, Brookfield RVT sp. 6, 10 rpm, 25 \u00b0C (cP) | 30,000 to 45,000 | 31,400 |",
+       "needs": "certificate_of_analysis.md, a line mentioning 'Viscosity' and showing '31,400'"
+      }
+     ],
+     "unexpected": [
+      "batch.yield"
+     ]
+    },
+    {
+     "lot": "LC-24037",
+     "run": 2,
+     "run_id": "2dc2e3eedfac4147903948b682c2a03b",
+     "expected_proposal": "hold",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24037"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "2dc2e3eedfac4147903948b682c2a03b"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "a2acb520c2b6c498",
+       "actual": "a2acb520c2b6c498"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": true,
+       "message": "The proposal must match the label.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [
+        "spec.wrong_revision",
+        "test.viscosity_cp.out_of_spec"
+       ],
+       "actual": [
+        "spec.wrong_revision",
+        "test.viscosity_cp.out_of_spec"
+       ]
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [
+      {
+       "rule": "spec.wrong_revision",
+       "severity": "major",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 10: Tested against specification: FH-DBC-050 rev 03",
+       "needs": "certificate_of_analysis.md, a line mentioning 'specification' and showing 'rev 03'"
+      },
+      {
+       "rule": "test.viscosity_cp.out_of_spec",
+       "severity": "major",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 17: | Viscosity, Brookfield RVT sp. 6, 10 rpm, 25 \u00b0C (cP) | 30,000 to 45,000 | 31,400 |",
+       "needs": "certificate_of_analysis.md, a line mentioning 'Viscosity' and showing '31,400'"
+      }
+     ],
+     "unexpected": [
+      "batch.yield"
+     ]
+    },
+    {
+     "lot": "LC-24037",
+     "run": 3,
+     "run_id": "53f17d3a6f264a818fc3e6eca3d62fb8",
+     "expected_proposal": "hold",
+     "proposal": "hold",
+     "passed": false,
+     "reasons": [
+      "Unexpected findings are reviewer burden on a finite labelled set."
+     ],
+     "checks": [
+      {
+       "id": "labelled",
+       "passed": true,
+       "message": "The lot must be one the reference labels cover.",
+       "expected": "a labelled lot",
+       "actual": "LC-24037"
+      },
+      {
+       "id": "schema",
+       "passed": true,
+       "message": "Run schema and execution mode must be declared.",
+       "expected": "release-desk.run.*, mode",
+       "actual": [
+        "release-desk.run.v2",
+        "live"
+       ]
+      },
+      {
+       "id": "identity",
+       "passed": true,
+       "message": "Run IDs and (lot, repeat) pairs must be unique.",
+       "expected": "unique",
+       "actual": "53f17d3a6f264a818fc3e6eca3d62fb8"
+      },
+      {
+       "id": "no_error",
+       "passed": true,
+       "message": "A run that failed cannot pass.",
+       "expected": null,
+       "actual": null
+      },
+      {
+       "id": "source_snapshot",
+       "passed": true,
+       "message": "The run must have read the original documents the labels describe.",
+       "expected": "a2acb520c2b6c498",
+       "actual": "a2acb520c2b6c498"
+      },
+      {
+       "id": "no_unsafe_release",
+       "passed": true,
+       "message": "No release may be proposed for a lot labelled hold.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "proposal",
+       "passed": true,
+       "message": "The proposal must match the label.",
+       "expected": "hold",
+       "actual": "hold"
+      },
+      {
+       "id": "exceptions",
+       "passed": true,
+       "message": "Every labelled exception must be present, at the right severity, with supporting evidence.",
+       "expected": [
+        "spec.wrong_revision",
+        "test.viscosity_cp.out_of_spec"
+       ],
+       "actual": [
+        "spec.wrong_revision",
+        "test.viscosity_cp.out_of_spec"
+       ]
+      },
+      {
+       "id": "no_unexpected",
+       "passed": false,
+       "message": "Unexpected findings are reviewer burden on a finite labelled set.",
+       "expected": [],
+       "actual": [
+        "batch.yield"
+       ]
+      }
+     ],
+     "findings": [
+      {
+       "rule": "spec.wrong_revision",
+       "severity": "major",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 10: Tested against specification: FH-DBC-050 rev 03",
+       "needs": "certificate_of_analysis.md, a line mentioning 'specification' and showing 'rev 03'"
+      },
+      {
+       "rule": "test.viscosity_cp.out_of_spec",
+       "severity": "major",
+       "present": true,
+       "severity_ok": true,
+       "supported": true,
+       "cited": "certificate_of_analysis.md line 17: | Viscosity, Brookfield RVT sp. 6, 10 rpm, 25 \u00b0C (cP) | 30,000 to 45,000 | 31,400 |",
+       "needs": "certificate_of_analysis.md, a line mentioning 'Viscosity' and showing '31,400'"
+      }
+     ],
+     "unexpected": [
+      "batch.yield"
+     ]
+    }
+   ],
+   "repeat_agreement": [
+    {
+     "lot": "LC-24031",
+     "observations": 3,
+     "distinct_outputs": 1,
+     "agree": true,
+     "all_correct": false
+    },
+    {
+     "lot": "LC-24032",
+     "observations": 3,
+     "distinct_outputs": 1,
+     "agree": true,
+     "all_correct": false
+    },
+    {
+     "lot": "LC-24033",
+     "observations": 3,
+     "distinct_outputs": 1,
+     "agree": true,
+     "all_correct": false
+    },
+    {
+     "lot": "LC-24034",
+     "observations": 3,
+     "distinct_outputs": 1,
+     "agree": true,
+     "all_correct": false
+    },
+    {
+     "lot": "LC-24035",
+     "observations": 3,
+     "distinct_outputs": 1,
+     "agree": true,
+     "all_correct": false
+    },
+    {
+     "lot": "LC-24036",
+     "observations": 3,
+     "distinct_outputs": 1,
+     "agree": true,
+     "all_correct": false
+    },
+    {
+     "lot": "LC-24037",
+     "observations": 3,
+     "distinct_outputs": 1,
+     "agree": true,
+     "all_correct": false
+    }
+   ],
+   "usage": {
+    "mean_seconds_per_lot": 35.2,
+    "mean_input_tokens_per_lot": 29244.2,
+    "mean_output_tokens_per_lot": 5189.3
+   }
+  },
+  {
+   "schema_version": "acceptance-lab.candidate-report.v2",
    "id": "executed-offline",
    "label": "Executed offline workflow",
    "kind": "executed_offline",
@@ -144,7 +2452,7 @@
     "produced": "2026-11-27 01:37 UTC",
     "repeat": 5
    },
-   "evaluated_at": "2026-11-27T06:27:41+00:00",
+   "evaluated_at": "2026-11-27T06:56:00+00:00",
    "summary": {
     "runs_submitted": 35,
     "runs_expected": 35,
@@ -3663,7 +5971,7 @@
     "produced": "2026-11-27 01:37 UTC",
     "repeat": 1
    },
-   "evaluated_at": "2026-11-27T06:27:41+00:00",
+   "evaluated_at": "2026-11-27T06:56:00+00:00",
    "summary": {
     "runs_submitted": 7,
     "runs_expected": 7,
@@ -4504,7 +6812,7 @@
     "produced": "2026-11-27 01:37 UTC",
     "repeat": 1
    },
-   "evaluated_at": "2026-11-27T06:27:41+00:00",
+   "evaluated_at": "2026-11-27T06:56:00+00:00",
    "summary": {
     "runs_submitted": 7,
     "runs_expected": 7,
@@ -7075,7 +9383,11 @@
   }
  ],
  "value": {
-  "measured": null,
+  "measured": {
+   "mean_seconds_per_lot": 35.2,
+   "mean_input_tokens_per_lot": 29244.2,
+   "mean_output_tokens_per_lot": 5189.3
+  },
   "assumptions": {
    "lots_per_month": 100,
    "manual_minutes": 30,
@@ -7088,12 +9400,12 @@
   "lots": 7,
   "labelled_exceptions": 9,
   "critical_exceptions": 3,
-  "candidates": 3,
+  "candidates": 4,
   "mapping_scenarios": 6,
   "mapping_challenges_caught": 4,
   "mapping_challenges": 4,
   "failure_tests_refused": 2,
-  "live_run": false
+  "live_run": true
  },
  "limitations": [
   "Seven synthetic lots and hand-written labels. Passing them shows the controls work on these cases, not production readiness or compliance.",
