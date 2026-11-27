@@ -89,7 +89,7 @@ release-desk eval --repeat 5
 | Agreement between runs | Secondary. Useful only once the runs are right. |
 | Time and tokens per lot | Measured, so the cost of the workflow is a number, not a guess. |
 
-Results go to `eval/report-*.md` and a result bundle, `eval/results-*.json`, which the acceptance lab scores independently. Offline runs use a scripted model, so they prove the checks and controls, not a model. The live run in GitHub Actions is the one to read, and it has not been run yet.
+Results go to `eval/report-*.md` and a result bundle, `eval/results-*.json`, which the acceptance lab scores independently. Offline runs use a scripted model, so they prove the checks and controls, not a model. The live run in GitHub Actions is the one to read. The first one found all 27 labelled exceptions across 21 runs, every critical one, with every citation valid and no unsafe release. It also failed every lot, on a bug of ours: the model copied a yield as "98.4%", the number parser expected "98.4", and an unreadable value fails closed. The parser now reads units, a simulated-API test copies values verbatim the same way, and the result on the page stands until the next live run replaces it.
 
 ## The lots
 

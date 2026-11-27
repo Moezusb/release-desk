@@ -7,14 +7,17 @@ choice, a tool call left without its result), and answers in Anthropic's wire
 format: content blocks, tool_use blocks, thinking blocks, usage. The answers
 themselves come from the scripted model, so the run can be scored.
 
-Three answer styles are tried, because a live model is not obliged to answer
+Four answer styles are tried, because a live model is not obliged to answer
 the same way twice: through the schema tool; in text, inside a code fence,
-after some prose; and with a thinking block before the answer.
+after some prose; with a thinking block before the answer; and with every
+value copied as the document writes it, units included ("98.4%", "<10 CFU/g"),
+which is what the first live run did.
 """
 
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import replace
 
 import pytest
@@ -82,6 +85,21 @@ def _to_continuum(kw: dict) -> tuple[list[dict], list[dict]]:
     return msgs, tools
 
 
+def _verbatim(node):
+    """Copy each value with the unit its quoted line gives it: '98.4' quoted as 'Yield: 98.4%' becomes '98.4%'."""
+    if isinstance(node, list):
+        return [_verbatim(n) for n in node]
+    if not isinstance(node, dict):
+        return node
+    out = {k: _verbatim(v) for k, v in node.items()}
+    value, quote = out.get("value"), out.get("quote")
+    if isinstance(value, str) and isinstance(quote, str) and value:
+        m = re.search(re.escape(value) + r"(\s?(?:%|°C|[A-Za-z]+/[A-Za-z]+|[A-Za-z]{1,4})\b|%)", quote)
+        if m:
+            out["value"] = m.group(0)
+    return out
+
+
 def simulated_api(style: str, log: list[dict]):
     scripted = OfflineProvider()
 
@@ -90,6 +108,8 @@ def simulated_api(style: str, log: list[dict]):
         log.append(kw)
         msgs, tools = _to_continuum(kw)
         answer = await scripted.acomplete(msgs, LLMConfig(model=kw["model"]), tools=tools or None)
+        if style == "verbatim" and "Role: extractor" in (kw.get("system") or "") and answer.content:
+            answer = answer.model_copy(update={"content": json.dumps(_verbatim(json.loads(answer.content)))})
         schema_tool = any(t["name"] == STRUCTURED_OUTPUT_TOOL for t in kw.get("tools") or [])
         blocks: list = []
         if style == "thinking":
@@ -114,7 +134,7 @@ def simulated_api(style: str, log: list[dict]):
     return create
 
 
-@pytest.mark.parametrize("style", ["tool", "text", "thinking"])
+@pytest.mark.parametrize("style", ["tool", "text", "thinking", "verbatim"])
 async def test_the_live_path_runs_clean_against_a_strict_api(style, monkeypatch, tmp_path):
     monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-ant-simulated")
     log: list[dict] = []

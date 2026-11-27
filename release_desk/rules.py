@@ -16,11 +16,15 @@ from datetime import date
 from .documents import LotPackage, governing_spec
 from .schemas import Cited, Evidence, Finding, LotExtraction
 
-_NUM = re.compile(r"^\s*([<>]=?|≤|≥)?\s*([0-9][0-9,]*\.?[0-9]*)\s*$")
+# A number, optionally with a comparison before it and a unit after it ("98.4%", "<10 CFU/g",
+# "38,200 cP"), because a model copies values as the document writes them. The unit may hold
+# no digits and must start with a letter, %, ° or "(", so "8 x 10^3" and a range
+# such as "10-20" stay unreadable and fail closed.
+_NUM = re.compile(r"^\s*([<>]=?|≤|≥)?\s*([0-9][0-9,]*\.?[0-9]*)\s*(?:(?:[%°(]|[^\W\d_])[^\d]*)?\s*$")
 
 
 def parse_number(text: str | None) -> tuple[str, float] | None:
-    """'38,200' -> ('', 38200.0); '<10' -> ('<', 10.0); 'Pending' -> None."""
+    """'38,200 cP' -> ('', 38200.0); '<10 CFU/g' -> ('<', 10.0); '98.4%' -> ('', 98.4); 'Pending' -> None."""
     if text is None:
         return None
     m = _NUM.match(text)

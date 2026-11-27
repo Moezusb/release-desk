@@ -251,3 +251,13 @@ def test_mapping_v1_is_blocked_and_v2_needs_one_confirmation(settings):
 def test_golden_file_covers_every_lot(settings):
     gold = yaml.safe_load((settings.data_dir / "golden.yaml").read_text())
     assert sorted(gold) == sorted(p.name for p in (settings.data_dir / "lots").iterdir() if p.is_dir())
+
+
+def test_numbers_are_read_with_their_units_but_ranges_and_words_fail_closed():
+    from release_desk.rules import parse_number
+    assert parse_number("98.4%") == ("", 98.4)          # the first live run copied the % sign
+    assert parse_number("<10 CFU/g") == ("<", 10.0)
+    assert parse_number("38,200 cP") == ("", 38200.0)
+    assert parse_number("0.80% w/w") == ("", 0.8)
+    for unreadable in ("Pending", "8 x 10^3", "10-20", "NMT 10", ""):
+        assert parse_number(unreadable) is None
