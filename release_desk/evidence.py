@@ -9,13 +9,19 @@ on it instead of trusting it.
 from __future__ import annotations
 
 import re
+import unicodedata
 
 from .documents import LotPackage
 from .schemas import Cited, EvidenceNote, LotExtraction
 
 
+_DASHES = str.maketrans({c: "-" for c in "\u2010\u2011\u2012\u2013\u2014\u2212"})
+
+
 def _norm(text: str | None) -> str:
-    return re.sub(r"\s+", " ", (text or "")).strip().lower()
+    """Compare text, not typography: NFKC (so a non-breaking space is a space), one kind of dash, case-free."""
+    text = unicodedata.normalize("NFKC", text or "").translate(_DASHES)
+    return re.sub(r"\s+", " ", text).strip().lower()
 
 
 def check_one(pkg: LotPackage, section: str, field: str, cited: Cited, must_mention: list[str] | None = None) -> EvidenceNote | None:

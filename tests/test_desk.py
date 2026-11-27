@@ -261,3 +261,36 @@ def test_numbers_are_read_with_their_units_but_ranges_and_words_fail_closed():
     assert parse_number("0.80% w/w") == ("", 0.8)
     for unreadable in ("Pending", "8 x 10^3", "10-20", "NMT 10", ""):
         assert parse_number(unreadable) is None
+
+
+def test_a_negated_result_never_passes_a_text_test():
+    from release_desk.rules import text_passes
+    assert text_passes("Absent", ["absent"]) and text_passes("Absent in 1 g", ["absent"])
+    for result in ("Not absent", "Present", "absence not confirmed"):
+        assert not text_passes(result, ["absent"]), result          # pathogens are critical
+    for result in ("Uncharacteristic", "Non-characteristic", "Not characteristic"):
+        assert not text_passes(result, ["characteristic"]), result
+
+
+def test_a_placeholder_is_not_a_signature():
+    from release_desk.rules import signed
+    assert signed("M. Chen, 2026-09-23") == "m. chen"
+    for blank in ("N/A", "—", "-", "pending", "unsigned", "  ", "2026-09-17", None):
+        assert signed(blank) is None, blank
+
+
+def test_values_copied_with_their_labels_read_the_same():
+    from release_desk.rules import code, day, month, revision
+    assert code("Lot number: LC-24033") == "LC-24033"
+    assert code("Product: Daily Barrier Cream, 50 g (FH-DBC-050)") == "FH-DBC-050"
+    assert code("LC-24053") == "LC-24053"                       # a transposed lot stays transposed
+    assert revision("rev 03") == revision("3") == revision("03") == 3
+    assert day("Date of manufacture: 2026-09-17").isoformat() == "2026-09-17"
+    assert month("Expiry: 2029-03") == month("2029-03-01") == "2029-03"
+
+
+def test_typography_does_not_change_a_value():
+    from release_desk.evidence import _norm
+    from release_desk.rules import code
+    assert code("FH‑DBC‑050") == "FH-DBC-050"               # non-breaking hyphens
+    assert _norm("LC–24033") in _norm("Lot number: LC-24033")   # an en dash

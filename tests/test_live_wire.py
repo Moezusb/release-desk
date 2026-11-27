@@ -11,13 +11,17 @@ Four answer styles are tried, because a live model is not obliged to answer
 the same way twice: through the schema tool; in text, inside a code fence,
 after some prose; with a thinking block before the answer; and with every
 value copied as the document writes it, units included ("98.4%", "<10 CFU/g"),
-which is what the first live run did.
+which is what the first live run did; and with every single-value field
+copied with its label from the line ("Lot number: LC-24033", "M. Chen,
+2026-09-23", "rev 03"), which the evidence check accepts because it is all
+on the line.
 """
 
 from __future__ import annotations
 
 import json
 import re
+from pathlib import Path
 from dataclasses import replace
 
 import pytest
@@ -100,6 +104,28 @@ def _verbatim(node):
     return out
 
 
+_FILES = {"certificate": "certificate_of_analysis.md", "batch_record": "batch_record.md", "deviation_log": "deviation_log.md"}
+_SINGLE = {"lot_id", "product_code", "manufacture_date", "expiry", "spec_revision", "approved_by", "line_clearance_by"}
+
+
+def _labelled(extraction: dict, lot: str) -> dict:
+    """Replace each single-value field with the whole line it came from, as a model might."""
+    root = Path(__file__).resolve().parents[1] / "data" / "lots" / lot
+    for section, fields in extraction.items():
+        if section not in _FILES or not isinstance(fields, dict):
+            continue
+        lines = (root / _FILES[section]).read_text(encoding="utf-8").splitlines()
+        for name, cited in fields.items():
+            if name not in _SINGLE or not isinstance(cited, dict) or not cited.get("value") or not cited.get("line"):
+                continue
+            line = lines[cited["line"] - 1].strip()
+            if "|" in line or cited["value"] not in line:
+                continue
+            cited["value"] = re.search(r"rev \d+", line).group(0) if name == "spec_revision" else line
+            cited["quote"] = cited["value"]
+    return extraction
+
+
 def simulated_api(style: str, log: list[dict]):
     scripted = OfflineProvider()
 
@@ -110,6 +136,11 @@ def simulated_api(style: str, log: list[dict]):
         answer = await scripted.acomplete(msgs, LLMConfig(model=kw["model"]), tools=tools or None)
         if style == "verbatim" and "Role: extractor" in (kw.get("system") or "") and answer.content:
             answer = answer.model_copy(update={"content": json.dumps(_verbatim(json.loads(answer.content)))})
+        user = json.dumps(kw["messages"][0])
+        if style == "labelled" and "Role: extractor" in (kw.get("system") or "") and answer.content \
+                and "Document versions: originals" in user:
+            lot = re.search(r"Lot: (\S+?)\\n", user).group(1)
+            answer = answer.model_copy(update={"content": json.dumps(_labelled(json.loads(answer.content), lot))})
         schema_tool = any(t["name"] == STRUCTURED_OUTPUT_TOOL for t in kw.get("tools") or [])
         blocks: list = []
         if style == "thinking":
@@ -134,7 +165,7 @@ def simulated_api(style: str, log: list[dict]):
     return create
 
 
-@pytest.mark.parametrize("style", ["tool", "text", "thinking", "verbatim"])
+@pytest.mark.parametrize("style", ["tool", "text", "thinking", "verbatim", "labelled"])
 async def test_the_live_path_runs_clean_against_a_strict_api(style, monkeypatch, tmp_path):
     monkeypatch.setenv("ANTHROPIC_API_KEY", "sk-ant-simulated")
     log: list[dict] = []
